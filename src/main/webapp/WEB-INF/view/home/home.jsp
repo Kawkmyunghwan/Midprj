@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<script src="js/jquery-3.6.0.min.js"></script>
+	
 <div class="slider-area ">
 	<!-- Mobile Menu -->
 	<div class="slider-active">
@@ -50,6 +51,8 @@
 				<div class="section-tittle text-center">
 					<span>FEATURED TOURS Packages</span>
 					<h2>${id }님에게맞는 일자리는?</h2>
+					<a href="sample.do">dd</a>
+					
 				</div>
 			</div>
 		</div>
@@ -286,3 +289,13 @@
 	</div>
 </section>
 <!-- Featured_job_end -->
+
+<script>
+var xhtp = new XMLHttpRequest();
+xhtp.open('get', 'sample.do');
+xhtp.send();
+xhtp.onload = function() {	
+	var result = xhtp.responseText;	
+	console.log(result);			
+}
+</script>
