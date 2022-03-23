@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="js/jquery-3.6.0.min.js"></script>
 	
 <div class="slider-area ">
@@ -10,7 +11,7 @@
 				<div class="row">
 					<div class="col-xl-6 col-lg-9 col-md-10">
 						<div class="hero__caption">
-							<h1>Find the most exciting startup jobs</h1>
+							<h1>Find the most exciting startup jobs!!!!</h1>
 						</div>
 					</div>
 				</div>
@@ -199,12 +200,25 @@
 				<div class="section-tittle text-center">
 					<span>Recent Job</span>
 					<h2>구직공고</h2>
+					<form action="searchLocation.do" method="get">
+						<div>
+							<table border="1" align="center">
+								<tr>
+									<td><input type="checkbox" name="locationCheck" id="locationCheck" value="대구">대구</td>													
+									<td><input type="checkbox" name="locationCheck" id="locationCheck" value="서울">서울</td>
+									<td><input type="checkbox" name="locationCheck" id="locationCheck" value="부산">부산</td>
+								</tr>
+							</table>  							
+						</div>	
+						<button>검색</button>
+					</form>
 				</div>
 			</div>
 		</div>
 		<div class="row justify-content-center">
 			<div class="col-xl-10">
 				<!-- single-job-content -->
+				<c:forEach items="${jobList }" var="list">
 				<div class="single-job-items mb-30">
 					<div class="job-items">
 						<div class="company-img">
@@ -212,10 +226,10 @@
 								src="assets/img/icon/job-list1.png" alt=""></a>
 						</div>
 						<div class="job-tittle">
-							<a href="job_details.html"><h4>Digital Marketer</h4></a>
+							<a href="job_details.html"><h4>${list.companyName }</h4></a>
 							<ul>
 								<li>Creative Agency</li>
-								<li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
+								<li><i class="fas fa-map-marker-alt"></i>${list.companyAddress }</li>
 								<li>$3500 - $4000</li>
 							</ul>
 						</div>
@@ -224,78 +238,27 @@
 						<a href="job_details.html">Full Time</a> <span>7 hours ago</span>
 					</div>
 				</div>
-				<!-- single-job-content -->
-				<div class="single-job-items mb-30">
-					<div class="job-items">
-						<div class="company-img">
-							<a href="job_details.html"><img
-								src="assets/img/icon/job-list2.png" alt=""></a>
-						</div>
-						<div class="job-tittle">
-							<a href="job_details.html"><h4>Digital Marketer</h4></a>
-							<ul>
-								<li>Creative Agency</li>
-								<li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-								<li>$3500 - $4000</li>
-							</ul>
-						</div>
-					</div>
-					<div class="items-link f-right">
-						<a href="job_details.html">Full Time</a> <span>7 hours ago</span>
-					</div>
-				</div>
-				<!-- single-job-content -->
-				<div class="single-job-items mb-30">
-					<div class="job-items">
-						<div class="company-img">
-							<a href="job_details.html"><img
-								src="assets/img/icon/job-list3.png" alt=""></a>
-						</div>
-						<div class="job-tittle">
-							<a href="job_details.html"><h4>Digital Marketer</h4></a>
-							<ul>
-								<li>Creative Agency</li>
-								<li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-								<li>$3500 - $4000</li>
-							</ul>
-						</div>
-					</div>
-					<div class="items-link f-right">
-						<a href="job_details.html">Full Time</a> <span>7 hours ago</span>
-					</div>
-				</div>
-				<!-- single-job-content -->
-				<div class="single-job-items mb-30">
-					<div class="job-items">
-						<div class="company-img">
-							<a href="job_details.html"><img
-								src="assets/img/icon/job-list4.png" alt=""></a>
-						</div>
-						<div class="job-tittle">
-							<a href="job_details.html"><h4>Digital Marketer</h4></a>
-							<ul>
-								<li>Creative Agency</li>
-								<li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-								<li>$3500 - $4000</li>
-							</ul>
-						</div>
-					</div>
-					<div class="items-link f-right">
-						<a href="job_details.html">Full Time</a> <span>7 hours ago</span>
-					</div>
-				</div>
+				</c:forEach>				
 			</div>
 		</div>
 	</div>
 </section>
 <!-- Featured_job_end -->
-
 <script>
-var xhtp = new XMLHttpRequest();
-xhtp.open('get', 'sample.do');
-xhtp.send();
-xhtp.onload = function() {	
-	var result = xhtp.responseText;	
-	console.log(result);			
+//var xhtp = new XMLHttpRequest();
+//xhtp.open('get', 'sample.do');
+//xhtp.send();
+//xhtp.onload = function() {	
+//	var result = xhtp.responseText;	
+//	console.log(result);			
+//}
+
+function getCheckboxValue(){
+	 const query = 'input[name="location"]:checked';
+	 console.log(query.value);
+	 
+
+	 const selectedEls = document.querySelectorAll(query);
 }
+
 </script>

@@ -10,7 +10,7 @@ import co.micol.prj.jobOpening.service.JobOpeningService;
 import co.micol.prj.jobOpening.service.JobOpeningVO;
 import co.micol.prj.member.service.MemberVO;
 
-public class jobOpeningServiceImpl implements JobOpeningService {
+public class JobOpeningServiceImpl implements JobOpeningService {
 	
 	private SqlSession sqlSession = DataSource.getInstance().openSession(true);
 	private JobOpeningMapper map = sqlSession.getMapper(JobOpeningMapper.class);
@@ -43,6 +43,18 @@ public class jobOpeningServiceImpl implements JobOpeningService {
 	public int deleteJobOpening(JobOpeningVO vo) {
 		// TODO Auto-generated method stub
 		return map.deleteJobOpening(vo);
+	}
+
+	@Override
+	public List<JobOpeningVO> selectJobOpeningListByHit() {
+		// TODO Auto-generated method stub
+		return map.selectJobOpeningListByHit();
+	}
+
+	@Override
+	public List<JobOpeningVO> selectJobOpeningListByZzim() {
+		// TODO Auto-generated method stub
+		return map.selectJobOpeningListByZzim();
 	}
 
 }
