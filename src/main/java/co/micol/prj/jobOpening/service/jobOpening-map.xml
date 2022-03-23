@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="co.micol.prj.jobOpening.service.jobOpening-map">
+<mapper namespace="co.micol.prj.jobOpening.service.JobOpeningMapper">
 	<select id="selectJobOpeningList" 
 		resultType="co.micol.prj.jobOpening.service.JobOpeningVO">
 		SELECT * FROM JOBOPENING	
 	</select>
-
+	
+	<select id="selectJobOpeningListByHit"
+		resultType="co.micol.prj.jobOpening.service.JobOpeningVO">
+		SELECT * FROM JOBOPENING ORDER BY JOBOPENINGHIT DESC
+	</select>
+	
+	<select id="selectJobOpeningListByZzim"
+		resultType="co.micol.prj.jobOpening.service.JobOpeningVO">
+		SELECT * FROM JOBOPENING ORDER BY JOBOPENINGZZIM DESC
+	</select>
+	
 </mapper>

@@ -11,7 +11,7 @@ public class JobOpeningVO {
 	private String companyName;
 	private String companyImage;
 	private String location;
-	private int jobGroup;
+	private String jobGroup;
 	private String companyAddress;
 	private int salary;
 	private String companyContent;
@@ -21,4 +21,16 @@ public class JobOpeningVO {
 	private String homepage;
 	private String jobOpeningHit;
 	private int jobOpeningZzim;
+	
+	@Override
+	public String toString() {
+		return "JobOpeningVO [jobOpeningNum=" + jobOpeningNum + ", companyName=" + companyName + ", companyImage="
+				+ companyImage + ", location=" + location + ", jobGroup=" + jobGroup + ", companyAddress="
+				+ companyAddress + ", salary=" + salary + ", companyContent=" + companyContent + ", representative="
+				+ representative + ", employeeNum=" + employeeNum + ", companyBuildDate=" + companyBuildDate
+				+ ", homepage=" + homepage + ", jobOpeningHit=" + jobOpeningHit + ", jobOpeningZzim=" + jobOpeningZzim
+				+ "]";
+	}
+	
+	
 }
