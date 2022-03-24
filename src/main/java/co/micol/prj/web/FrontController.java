@@ -17,6 +17,9 @@ import co.micol.prj.border.command.BorderInsertForm;
 import co.micol.prj.border.command.BorderList;
 import co.micol.prj.border.command.BorderView;
 import co.micol.prj.common.Command;
+import co.micol.prj.contact.comm.ContactForm;
+import co.micol.prj.contact.comm.InquiryForm;
+import co.micol.prj.contact.comm.InquiryInsertForm;
 import co.micol.prj.home.command.HomeCommand;
 import co.micol.prj.jobOpening.command.HotSearch;
 import co.micol.prj.jobOpening.command.Sample;
@@ -57,6 +60,11 @@ public class FrontController extends HttpServlet {
 		
 		map.put("/hotSearch.do", new HotSearch());
 		map.put("/zzimSearch.do", new ZzimSearch());
+		
+		//고객센터
+		map.put("/contactForm.do", new ContactForm()); //고객센터 메인폼
+		map.put("/inquiryForm.do", new InquiryForm()); //문의게시판
+		map.put("/inquiryInsertForm.do", new InquiryInsertForm()); //문의게시판 글쓰기 폼
 	}
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
