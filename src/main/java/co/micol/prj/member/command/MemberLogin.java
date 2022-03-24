@@ -15,12 +15,12 @@ public class MemberLogin implements Command {
 		// 로그인 처리 과정
 		MemberService memberDao = new MemberServiceImpl();
 		MemberVO vo = new MemberVO();
-		vo.setId("park@abc.com");
-		vo.setPassword("1234");
+		vo.setMemberId("park@abc.com");
+		vo.setMemberPassword("1234");
 		vo = memberDao.selectMember(vo);
 		if(vo != null) {
 			//여기서 세션 처리하고
-			request.setAttribute("message", vo.getName() + " 님 환영합니다.");
+			request.setAttribute("message", vo.getMemberName() + " 님 환영합니다.");
 		}else {
 			request.setAttribute("message", "아이디 또는 패스워드가 일치하지 않습니다.");
 		}
