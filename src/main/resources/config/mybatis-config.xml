@@ -23,7 +23,7 @@
 	</environments>
 	<mappers>
 		<mapper resource="co/micol/prj/member/service/member-map.xml" />
-		<mapper resource="co/micol/prj/border/service/border-map.xml"/>
+		<mapper resource="co/micol/prj/board/service/board-map.xml"/>
 		<mapper resource="co/micol/prj/jobOpening/service/jobOpening-map.xml"/>
 	</mappers>
 </configuration>
