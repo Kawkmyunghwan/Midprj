@@ -13,7 +13,7 @@ public class MemberList implements Command {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		// 전체 조회
 		MemberService memberDao = new MemberServiceImpl();
-		request.setAttribute("members", memberDao.selectMemberList());
+		request.setAttribute("member", memberDao.selectMemberList());
 		
 		return "member/memberList";
 	}

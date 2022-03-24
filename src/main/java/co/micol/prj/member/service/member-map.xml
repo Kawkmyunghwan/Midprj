@@ -16,8 +16,13 @@
 
 	<insert id="insertMember"
 		parameterType="co.micol.prj.member.service.MemberVO">
+		 <selectKey keyProperty="memberNum" resultType="int" order="BEFORE">
+     SELECT NVL(MAX(memberNum+1),1) FROM member
+  </selectKey>
 		INSERT INTO MEMBER
-		VALUES(#{id}, #{password}, #{name}, #{tel}, #{address}, 'USER')
+		(memberNum, memberEmail, memberId, memberPassword, memberName, memberPhone)
+		VALUES
+		(#{memberNum}, #{memberEmail}, #{memberId}, #{memberPassword}, #{memberName}, #{memberPhone})
 	</insert>
 
 	<update id="updateMember"
