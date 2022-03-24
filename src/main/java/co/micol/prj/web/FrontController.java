@@ -10,17 +10,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import co.micol.prj.border.command.AjaxBorderSearch;
-import co.micol.prj.border.command.AjaxSortBorder;
-import co.micol.prj.border.command.BorderInsert;
-import co.micol.prj.border.command.BorderInsertForm;
-import co.micol.prj.border.command.BorderList;
-import co.micol.prj.border.command.BorderView;
+import co.micol.prj.board.command.AjaxBoardSearch;
+import co.micol.prj.board.command.AjaxSortBoard;
+import co.micol.prj.board.command.BoardInsert;
+import co.micol.prj.board.command.BoardInsertForm;
+import co.micol.prj.board.command.BoardList;
+import co.micol.prj.board.command.BoardUpdate;
+import co.micol.prj.board.command.BoardView;
 import co.micol.prj.common.Command;
 import co.micol.prj.home.command.HomeCommand;
-import co.micol.prj.jobOpening.command.HotSearch;
-import co.micol.prj.jobOpening.command.Sample;
-import co.micol.prj.jobOpening.command.ZzimSearch;
 import co.micol.prj.member.command.AjaxMemberIdCheck;
 import co.micol.prj.member.command.MemberDelete;
 import co.micol.prj.member.command.MemberJoin;
@@ -50,6 +48,7 @@ public class FrontController extends HttpServlet {
 		map.put("/ajaxMemberIdCheck.do", new AjaxMemberIdCheck()); // ajax로 아이디 중복체크
 		map.put("/memberJoinForm.do", new MemberJoinForm()); // 회원가입 폼 호출
 		map.put("/memberJoin.do", new MemberJoin());
+
 		map.put("/borderList.do", new BorderList()); // 게시글 목록
 		map.put("/borderInsertForm.do", new BorderInsertForm()); // 게시글 작성폼 호출
 		map.put("/borderInsert.do", new BorderInsert()); // 게시글 등록
@@ -68,6 +67,15 @@ public class FrontController extends HttpServlet {
 		map.put("/memberDelete.do", new MemberDelete()); // 회원 탈퇴
 
 		map.put("/notesListForm.do", new NotesListForm()); // 쪽지함 폼
+
+		map.put("/boardList.do", new BoardList()); // 게시글 목록
+		map.put("/boardInsertForm.do", new BoardInsertForm()); //게시글 작성폼 호출
+		map.put("/boardInsert.do", new BoardInsert()); // 게시글 등록
+		map.put("/boardUpdate.do", new BoardUpdate());	//게시글 수정
+		map.put("/borderView.do", new BoardView());
+		map.put("/ajaxBorderSearch.do", new AjaxBoardSearch()); //게시글 리스트에서 검색
+		map.put("/ajaxSortBorder.do", new AjaxSortBoard()); //게시글 정렬
+
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

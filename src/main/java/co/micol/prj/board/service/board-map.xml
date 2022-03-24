@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.micol.prj.board.service.BoardMapper">
+	<resultMap type="co.micol.prj.board.service.BoardVO" id="boardMap">
+		<id property="boardNum" column="boardnum"/>
+		<result property="boardWriter" column="boardwriter"/>
+		<result property="boardDate" column="boarddate"/>
+		<result property="boardName" column="boardname"/>
+		<result property="boardContents" column="boardcontents"/>
+		<result property="boardHit" column="boardhit"/>
+	</resultMap>
+
+
+	<select id="boardSelectList" resultMap="boardMap">
+		SELECT * FROM BOARD ORDER BY BOARDNUM DESC
+	</select>
+	
+	<select id="boardSelect" parameterType="co.micol.prj.board.service.BoardVO"
+			resultMap="boardMap">
+		SELECT * FROM BOARD WHERE BOARDNUM = #{boardNum}
+	</select>
+	<insert id="boardInsert" parameterType="co.micol.prj.board.service.BoardVO">
+		<selectKey keyProperty="boardNum" resultType="int" order="BEFORE">
+			SELECT CASE WHEN MAX(BOARDNUM) IS NULL THEN 1 ELSE MAX(BOARDNUM)+1 END AS ID FROM BOARD		
+		</selectKey>		
+		INSERT INTO BOARD 
+		VALUES(#{boardNum}, #{boardWriter}, #{boardDate}, #{boardName}, #{boardContents}, 0)
+	</insert>
+	
+	<update id="boardUpdate" parameterType="co.micol.prj.board.service.BoardVO">
+		UPDATE BOARD SET BOARDCONTENTS = #{boardContents} WHERE BOARDNUM = #{num}
+	</update>
+	<delete id="boardDelete" parameterType="co.micol.prj.board.service.BoardVO">
+		DELETE FROM BOARD WHERE BOARDNUM = #{num}
+	</delete>
+	
+	<select id="boardSelectSearchList" resultMap="boardMap">
+		SELECT * FROM BOARD
+		WHERE
+		<if test='key == "1"'>1 = 1</if>
+		<if test='key == "2"'>BOARDWRITER LIKE '%'||#{val}||'%'</if> 
+		<if test='key == "3"'>BOARDNAME LIKE '%'||#{val}||'%'</if>
+		<if test='key == "4"'>BOARDCONTENTS LIKE '%'||#{val}||'%'</if>  
+		ORDER BY BOARDNUM DESC
+	</select>
+	
+	<select id="boardSortList" parameterType="String" resultMap="boardMap">
+		SELECT * FROM BOARD ORDER BY BOARDNUM
+		<if test='key == "A"'>ASC</if>
+		<if test='key == "D"'>DESC</if>
+	</select>
+	
+	<update id="boardUpdateHit" parameterType="int">
+		UPDATE BOARD SET BOARDHIT = BOARDHIT + 1 WHERE BOARDNUM = #{num}
+	</update>
+</mapper>
