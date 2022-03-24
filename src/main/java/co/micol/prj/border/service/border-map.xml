@@ -19,6 +19,7 @@
 			resultMap="borderMap">
 		select * from border where border_id = #{borderId}
 	</select>
+	
 	<insert id="borderInsert" parameterType="co.micol.prj.border.service.BorderVO">
 		<selectKey keyProperty="borderId" resultType="int" order="BEFORE">
 			SELECT CASE WHEN MAX(BORDER_ID) IS NULL THEN 1 ELSE MAX(BORDER_ID)+1 END AS ID FROM BORDER		

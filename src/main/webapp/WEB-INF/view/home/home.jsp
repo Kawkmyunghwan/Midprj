@@ -200,7 +200,7 @@
 				<div class="section-tittle text-center">
 					<span>Recent Job</span>
 					<h2>구직공고</h2>
-					<form action="searchLocation.do" method="get">
+					<form action="searchLocation.do" onclick="open1()" method="get">
 						<div>
 							<table border="1" align="center">
 								<tr>
@@ -215,6 +215,9 @@
 				</div>
 			</div>
 		</div>
+		<form action="jobDetail.do" method="get" name="quickFrm">
+				<input type="hidden" name="jobOpeningNum">
+		</form>
 		<div class="row justify-content-center">
 			<div class="col-xl-10">
 				<!-- single-job-content -->
@@ -226,7 +229,7 @@
 								src="assets/img/icon/job-list1.png" alt=""></a>
 						</div>
 						<div class="job-tittle">
-							<a href="job_details.html"><h4>${list.companyName }</h4></a>
+							<a href="javascript:formFnc.submit())" onclick='formFnc(${list.jobOpeningNum})'><h4>${list.companyName }</h4></a>
 							<ul>
 								<li>Creative Agency</li>
 								<li><i class="fas fa-map-marker-alt"></i>${list.companyAddress }</li>
@@ -253,12 +256,17 @@
 //	console.log(result);			
 //}
 
-function getCheckboxValue(){
-	 const query = 'input[name="location"]:checked';
-	 console.log(query.value);
-	 
+function open1(){
+	event.preventDefault();
+	window.open('searchLocation.do')
+}
 
-	 const selectedEls = document.querySelectorAll(query);
+
+function formFnc(jobOpening_num) {
+	event.preventDefault();
+	console.log(jobOpening_num)
+	quickFrm.jobOpeningNum.value=jobOpening_num;
+	quickFrm.submit();
 }
 
 </script>

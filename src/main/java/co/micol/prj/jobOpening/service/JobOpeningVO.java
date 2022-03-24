@@ -21,6 +21,7 @@ public class JobOpeningVO {
 	private String homepage;
 	private String jobOpeningHit;
 	private int jobOpeningZzim;
+	private String jobOpeningName;
 	
 	@Override
 	public String toString() {

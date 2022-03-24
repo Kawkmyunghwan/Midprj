@@ -19,7 +19,10 @@ import co.micol.prj.border.command.BorderView;
 import co.micol.prj.common.Command;
 import co.micol.prj.home.command.HomeCommand;
 import co.micol.prj.jobOpening.command.HotSearch;
+import co.micol.prj.jobOpening.command.JobDetail;
+import co.micol.prj.jobOpening.command.LoginPage;
 import co.micol.prj.jobOpening.command.Sample;
+import co.micol.prj.jobOpening.command.SearchLocation;
 import co.micol.prj.jobOpening.command.ZzimSearch;
 import co.micol.prj.member.command.AjaxMemberIdCheck;
 import co.micol.prj.member.command.MemberJoin;
@@ -27,6 +30,7 @@ import co.micol.prj.member.command.MemberJoinForm;
 import co.micol.prj.member.command.MemberList;
 import co.micol.prj.member.command.MemberLogin;
 import co.micol.prj.member.command.MemberSearch;
+import co.micol.prj.zzim.command.Zzim;
 
 
 public class FrontController extends HttpServlet {
@@ -56,8 +60,16 @@ public class FrontController extends HttpServlet {
 		map.put("/sample.do", new Sample());
 		
 		map.put("/hotSearch.do", new HotSearch());
-		map.put("/zzimSearch.do", new ZzimSearch());
-	}
+		map.put("/zzimSearch.do", new ZzimSearch());		
+		map.put("/searchLocation.do", new SearchLocation());
+		
+		map.put("/jobDetail.do", new JobDetail());
+		
+		map.put("/loginPage.do", new LoginPage());
+		
+		map.put("/zzim.do", new Zzim());
+		}
+	
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8"); // 한글 깨짐 방지

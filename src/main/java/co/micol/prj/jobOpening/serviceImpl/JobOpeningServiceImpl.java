@@ -22,7 +22,7 @@ public class JobOpeningServiceImpl implements JobOpeningService {
 	}
 
 	@Override
-	public MemberVO selectJobOpening(JobOpeningVO vo) {
+	public JobOpeningVO selectJobOpening(JobOpeningVO vo) {
 		// TODO Auto-generated method stub
 		return map.selectJobOpening(vo);
 	}
@@ -55,6 +55,12 @@ public class JobOpeningServiceImpl implements JobOpeningService {
 	public List<JobOpeningVO> selectJobOpeningListByZzim() {
 		// TODO Auto-generated method stub
 		return map.selectJobOpeningListByZzim();
+	}
+
+	@Override
+	public JobOpeningVO selectJobOpeningByNum(JobOpeningVO vo) {
+		// TODO Auto-generated method stub
+		return map.selectJobOpeningByNum(vo);
 	}
 
 }
