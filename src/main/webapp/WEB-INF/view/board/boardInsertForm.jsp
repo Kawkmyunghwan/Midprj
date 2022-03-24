@@ -37,10 +37,10 @@
 					</tr>
 				</table>
 			</div><br>
-			<div>
-				<button type="submit">글등록</button>&nbsp;&nbsp;&nbsp;
-				<button type="reset">취 소</button>&nbsp;&nbsp;&nbsp;
-				<button type="button" onclick="location.href = 'boardList.do'">목 록</button>&nbsp;&nbsp;&nbsp;
+			<div style="padding-bottom:100px">
+				<button type="submit" style="background-color:black">글등록</button>&nbsp;&nbsp;&nbsp;
+				<button type="reset" style="background-color:black">취 소</button>&nbsp;&nbsp;&nbsp;
+				<button type="button" onclick="location.href = 'boardList.do'" style="background-color:black">목 록</button>&nbsp;&nbsp;&nbsp;
 			</div>
 		</form>
 	</div>

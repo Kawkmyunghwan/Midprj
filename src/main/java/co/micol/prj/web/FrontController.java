@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.micol.prj.board.command.AjaxBoardSearch;
 import co.micol.prj.board.command.AjaxSortBoard;
+import co.micol.prj.board.command.BoardDelete;
 import co.micol.prj.board.command.BoardInsert;
 import co.micol.prj.board.command.BoardInsertForm;
 import co.micol.prj.board.command.BoardList;
@@ -49,16 +50,8 @@ public class FrontController extends HttpServlet {
 		map.put("/memberJoinForm.do", new MemberJoinForm()); // 회원가입 폼 호출
 		map.put("/memberJoin.do", new MemberJoin());
 
-		map.put("/borderList.do", new BorderList()); // 게시글 목록
-		map.put("/borderInsertForm.do", new BorderInsertForm()); // 게시글 작성폼 호출
-		map.put("/borderInsert.do", new BorderInsert()); // 게시글 등록
-		map.put("/borderView.do", new BorderView());
-		map.put("/ajaxBorderSearch.do", new AjaxBorderSearch()); // 게시글 리스트에서 검색
-		map.put("/ajaxSortBorder.do", new AjaxSortBorder()); // 게시글 정렬
-		map.put("/sample.do", new Sample());
 
-		map.put("/hotSearch.do", new HotSearch());
-		map.put("/zzimSearch.do", new ZzimSearch());
+
 
 		// 마이페이지
 		map.put("/myInfo.do", new MyInfo()); // 마이페이지
@@ -72,9 +65,10 @@ public class FrontController extends HttpServlet {
 		map.put("/boardInsertForm.do", new BoardInsertForm()); //게시글 작성폼 호출
 		map.put("/boardInsert.do", new BoardInsert()); // 게시글 등록
 		map.put("/boardUpdate.do", new BoardUpdate());	//게시글 수정
-		map.put("/borderView.do", new BoardView());
-		map.put("/ajaxBorderSearch.do", new AjaxBoardSearch()); //게시글 리스트에서 검색
-		map.put("/ajaxSortBorder.do", new AjaxSortBoard()); //게시글 정렬
+		map.put("/boardDelete.do", new BoardDelete());	//게시글 삭제
+		map.put("/boardView.do", new BoardView());
+		map.put("/ajaxBoardSearch.do", new AjaxBoardSearch()); //게시글 리스트에서 검색
+		map.put("/ajaxSortBoard.do", new AjaxSortBoard()); //게시글 정렬
 
 	}
 
