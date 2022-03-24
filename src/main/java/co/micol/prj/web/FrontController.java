@@ -49,16 +49,6 @@ public class FrontController extends HttpServlet {
 		map.put("/memberJoinForm.do", new MemberJoinForm()); // 회원가입 폼 호출
 		map.put("/memberJoin.do", new MemberJoin());
 
-		map.put("/borderList.do", new BorderList()); // 게시글 목록
-		map.put("/borderInsertForm.do", new BorderInsertForm()); // 게시글 작성폼 호출
-		map.put("/borderInsert.do", new BorderInsert()); // 게시글 등록
-		map.put("/borderView.do", new BorderView());
-		map.put("/ajaxBorderSearch.do", new AjaxBorderSearch()); // 게시글 리스트에서 검색
-		map.put("/ajaxSortBorder.do", new AjaxSortBorder()); // 게시글 정렬
-		map.put("/sample.do", new Sample());
-
-		map.put("/hotSearch.do", new HotSearch());
-		map.put("/zzimSearch.do", new ZzimSearch());
 
 		// 마이페이지
 		map.put("/myInfo.do", new MyInfo()); // 마이페이지

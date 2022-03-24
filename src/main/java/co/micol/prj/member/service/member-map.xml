@@ -41,8 +41,10 @@
 		DELETE FROM MEMBER WHERE MEMBERID = #{memberId}
 	</delete>
 
-	<select id="isIdCheck" parameterType="String" resultType="boolean">
-		SELECT CASE WHEN COUNT(ID) = 1 THEN 0 ELSE 1 END AS ID
-		FROM MEMBER WHERE ID = #{str}
+	<select id="isIdCheck" parameterType="String"
+		resultType="boolean">
+		SELECT CASE WHEN COUNT(MEMBERID) = 1 THEN 0 ELSE 1 END AS
+		MEMBERID
+		FROM MEMBER WHERE MEMBERID = #{str}
 	</select>
 </mapper>
