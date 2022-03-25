@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<<<<<<< HEAD
+<mapper namespace="co.micol.prj.zzim.service.ZzimMapper">
+
+	<insert id="insertZzim" parameterType="co.micol.prj.zzim.service.ZzimVO">
+		INSERT INTO ZZIM(memberNum, jobOpeningNum) 
+		VALUES(#{memberNum}, #{jobOpeningNum})
+	</insert>
+	
+=======
+<mapper namespace="co.micol.prj.zzim.service.zzim-map">
+	<insert id="insertZzim" parameterType="co.micol.prj.zzim.service.ZzimVO">
+		INSERT INTO ZZIM VALUES(#{memberNum}, #{jobOpeningNum})
+	</insert>
+>>>>>>> branch 'kmh' of https://github.com/Kawkmyunghwan/Midprj.git
+</mapper>
