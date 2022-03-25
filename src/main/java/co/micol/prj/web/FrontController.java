@@ -19,6 +19,12 @@ import co.micol.prj.board.command.BoardList;
 import co.micol.prj.board.command.BoardUpdate;
 import co.micol.prj.board.command.BoardView;
 import co.micol.prj.common.Command;
+import co.micol.prj.contact.comm.ContactForm;
+import co.micol.prj.contact.comm.InquiryForm;
+import co.micol.prj.contact.comm.InquiryInsert;
+import co.micol.prj.contact.comm.InquiryInsertForm;
+import co.micol.prj.contact.comm.InquiryUpdate;
+import co.micol.prj.contact.comm.InquiryView;
 import co.micol.prj.home.command.HomeCommand;
 import co.micol.prj.jobOpening.command.HotSearch;
 import co.micol.prj.jobOpening.command.JobDetail;
@@ -67,6 +73,14 @@ public class FrontController extends HttpServlet {
 
 		map.put("/hotSearch.do", new HotSearch());
 		map.put("/zzimSearch.do", new ZzimSearch());
+		
+		//고객센터
+		map.put("/contactForm.do", new ContactForm()); //고객센터 메인폼
+		map.put("/inquiryForm.do", new InquiryForm()); //문의게시판
+		map.put("/inquiryInsertForm.do", new InquiryInsertForm()); //문의게시판 글쓰기 폼
+		map.put("/inquiryInsert.do", new InquiryInsert()); // 게시판 등록
+		map.put("/inquiryView.do", new InquiryView()); //상세보기
+		map.put("/inquiryUpdate.do", new InquiryUpdate());
 		map.put("/searchLocation.do", new SearchLocation());
 
 		map.put("/jobDetail.do", new JobDetail());
