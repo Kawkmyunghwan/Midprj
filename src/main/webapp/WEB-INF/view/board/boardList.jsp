@@ -11,7 +11,7 @@
 </head>
 <body>
 <div align="center">
-	<div><h1>커뮤니티 목록</h1></div>
+	<div><h1>커뮤니티 게시글 목록</h1></div>
 	<form id="frm" method="post">
 	
 	<div style="padding:100px 0px 100px 0px">			
@@ -35,7 +35,7 @@
 					<c:forEach items="${boarders }" var="b">
 						<tr onmouseover='this.style.background="#fcecae";' 
 							onmouseleave='this.style.background="#FFFFFF";'
-							onclick="borderContents(${b.boardNum})">
+							onclick="boardContents(${b.boardNum})">
 							<td>${b.boardNum }</td>
 							<td>${b.boardWriter }</td>
 							<td>${b.boardName }</td>
