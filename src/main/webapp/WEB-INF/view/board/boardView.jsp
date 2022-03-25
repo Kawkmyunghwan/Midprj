@@ -35,13 +35,15 @@
 				</tr>
 			</table>
 		</div><br>
-	<input type="hidden" name="boardNum" value=${boarders.boardNum }>
+	<div>작성자 : ${comments.memberId} 댓글내용 : ${comments.commentsContent } 작성일자 : ${comments.commentsDate }</div>
 	</div>
+	<input type="hidden" name="boardNum" value=${boarders.boardNum }>
 </form>
 
 	<form id="frmd" action="boardDelete.do" method="post">
 	<input type="hidden" name="boardNum" value=${boarders.boardNum }>
 	</form>
+
 	<div align="center">
 		<button type="button" onclick="location.href = 'boardList.do'" style="background-color:black">목록가기</button>&nbsp;&nbsp;
 		<button type="submit" form="frmu" style="background-color:black">수정</button>&nbsp;&nbsp;
