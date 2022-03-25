@@ -34,7 +34,7 @@
 								</div>
 							</div>
 							<div class="search-form">
-								<a href="#">Find job</a>
+								<a href="myInfo.do">Find job</a>								
 							</div>
 						</form>
 					</div>
