@@ -18,6 +18,7 @@ public class Zzim implements Command {
 		ZzimVO vo = new ZzimVO();
 		ZzimService dao = new ZzimServiceImpl();		
 				
+<<<<<<< HEAD
 		
 		vo.setMemberNum((int)session.getAttribute("memberNum"));
 		vo.setJobOpeningNum(Integer.parseInt(request.getParameter("jobOpeningNum")));
@@ -25,6 +26,14 @@ public class Zzim implements Command {
 		
 		request.setAttribute("zzim", vo.getMemberNum());
 		return "jobOpening/jobDetail.tiles";
+=======
+		vo.setMemberNum((int)session.getAttribute("memberNum"));
+		vo.setJobOpeningNum(Integer.parseInt(request.getParameter("jobOpeningNum")));
+		
+		dao.insertZzim(vo);
+		
+		return null;
+>>>>>>> branch 'kmh' of https://github.com/Kawkmyunghwan/Midprj.git
 	}
 
 }

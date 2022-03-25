@@ -38,6 +38,7 @@ import co.micol.prj.member.command.MemberUpdateForm;
 import co.micol.prj.myinfo.command.MyInfo;
 import co.micol.prj.myinfo.command.NotesListForm;
 import co.micol.prj.zzim.command.Zzim;
+import co.micol.prj.zzim.command.Zzim;
 
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -91,6 +92,14 @@ public class FrontController extends HttpServlet {
 		map.put("/ajaxBoardSearch.do", new AjaxBoardSearch()); // 게시글 리스트에서 검색
 		map.put("/ajaxSortBoard.do", new AjaxSortBoard()); // 게시글 정렬
 
+		map.put("/zzimSearch.do", new ZzimSearch());
+		map.put("/searchLocation.do", new SearchLocation());
+
+		map.put("/jobDetail.do", new JobDetail());
+
+		map.put("/loginPage.do", new LoginPage());
+
+		map.put("/zzim.do", new Zzim());
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

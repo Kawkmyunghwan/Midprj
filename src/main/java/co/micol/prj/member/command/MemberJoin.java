@@ -18,7 +18,10 @@ public class MemberJoin implements Command {
 		vo.setMemberId(request.getParameter("id"));
 		vo.setMemberPassword(request.getParameter("password"));
 		vo.setMemberName(request.getParameter("name"));
+<<<<<<< HEAD
 		vo.setMemberGrade(request.getParameter("tel"));		
+=======
+>>>>>>> branch 'kmh' of https://github.com/Kawkmyunghwan/Midprj.git
 		int n = memberDao.insertMember(vo);
 		if(n != 0) {
 			request.setAttribute("message", "회원 가입에 성공했다.");
