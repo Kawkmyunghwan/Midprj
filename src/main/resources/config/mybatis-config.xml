@@ -24,5 +24,8 @@
 	<mappers>
 		<mapper resource="co/micol/prj/member/service/member-map.xml" />
 		<mapper resource="co/micol/prj/border/service/border-map.xml"/>
+		<mapper resource="co/micol/prj/jobOpening/service/jobOpening-map.xml"/>
+		<mapper resource="co/micol/prj/zzim/service/zzim-map.xml"/>	
+		<mapper resource="co/micol/prj/apply/service/apply-map.xml"/>
 	</mappers>
 </configuration>

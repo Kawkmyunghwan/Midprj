@@ -15,7 +15,7 @@ public class MemberSearch implements Command {
 		// 단건 조회
 		MemberService memberDao = new MemberServiceImpl();
 		MemberVO vo = new MemberVO();
-		vo.setId("park@abc.com");
+		vo.setMemberId("park@abc.com");
 		vo = memberDao.selectMember(vo);
 		if(vo != null) {
 			request.setAttribute("member", vo);
