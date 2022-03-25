@@ -3,8 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="js/jquery-3.6.0.min.js"></script>
 	
-<<<<<<< HEAD
-=======
+
 <div class="slider-area ">
 	<!-- Mobile Menu -->
 	<div class="slider-active">
@@ -272,4 +271,3 @@ function formFnc(jobOpening_num) {
 }
 
 </script>
->>>>>>> branch 'kmh' of https://github.com/Kawkmyunghwan/Midprj.git

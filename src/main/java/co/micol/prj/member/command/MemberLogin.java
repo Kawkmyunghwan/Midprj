@@ -9,6 +9,7 @@ import co.micol.prj.member.service.MemberService;
 import co.micol.prj.member.service.MemberVO;
 import co.micol.prj.member.serviceImpl.MemberServiceImpl;
 
+
 public class MemberLogin implements Command {
 
 	@Override
@@ -18,43 +19,22 @@ public class MemberLogin implements Command {
 		MemberService memberDao = new MemberServiceImpl();
 		MemberVO vo = new MemberVO();
 		
-<<<<<<< HEAD
 		
 		
 		vo.setMemberId(request.getParameter("memberId"));
 		vo.setMemberPassword(request.getParameter("memberPassword"));
-		vo.setMemberId("park@abc.com");
-		vo.setMemberPassword("1234");
-=======
-		vo.setMemberId(request.getParameter("memberId"));
-		vo.setMemberPassword(request.getParameter("memberPassword"));
->>>>>>> branch 'kmh' of https://github.com/Kawkmyunghwan/Midprj.git
 		vo = memberDao.selectMember(vo);
-<<<<<<< HEAD
 		if(vo.getMemberId() != null) {
-=======
-		if(vo.getMemberId() != request.getParameter("memberId")) {
->>>>>>> branch 'kmh' of https://github.com/Kawkmyunghwan/Midprj.git
 			//여기서 세션 처리하고
 			session.setAttribute("memberId", vo.getMemberId());
-<<<<<<< HEAD
 			session.setAttribute("memberNum", vo.getMemberNum());
 			request.setAttribute("message", vo.getMemberName() + " 님 환영합니다.");
 			return "home.do";
-=======
-//			session.setAttribute("memberNum", vo.getMemberNum());
-			request.setAttribute("message", vo.getMemberName() + " 님 환영합니다.");
-			return "home/home.tiles";
->>>>>>> branch 'kmh' of https://github.com/Kawkmyunghwan/Midprj.git
 		}else {
 			request.setAttribute("message", "아이디 또는 패스워드가 일치하지 않습니다.");
 			return "home.do";
 		}
-<<<<<<< HEAD
 		
-=======
-		return "home/home.tiles";
->>>>>>> branch 'kmh' of https://github.com/Kawkmyunghwan/Midprj.git
 	}
 
 }
