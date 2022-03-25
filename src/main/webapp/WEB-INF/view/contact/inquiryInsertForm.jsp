@@ -10,7 +10,7 @@
 <div align="center">
 	<div><h1>게시글 작성</h1></div>
 	<div>
-		<form id="frm" action="inquiryForm.do" method="post">
+		<form id="frm" action="inquiryInsert.do" method="post">
 			<div>
 				<table border="1">
 					<tr>

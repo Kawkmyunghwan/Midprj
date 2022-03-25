@@ -2,55 +2,74 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="co.micol.prj.contact.service.ContactMapper">
-	
-	<resultMap type="co.micol.prj.contact.service.ContactVO" id="contactMap">
-		<id property="infoNum" column="info_num"/>
-		<result property="infoName" column="info_name"/>
-		<result property="infoWriter" column="info_writer"/>
-		<result property="infoDate" column="info_date"/>
-		<result property="infoHit" column="info_hit"/>
-		<result property="infoAnswerContent" column="info_answercontent"/>
-		<result property="isAnswer" column="is_Answer"/>
-		<result property="infoTitle" column="info_title"/>
+
+	<resultMap type="co.micol.prj.contact.service.ContactVO"
+		id="contactMap">
+		<id property="infoNum" column="info_num" />
+		<result property="infoName" column="info_name" />
+		<result property="infoWriter" column="info_writer" />
+		<result property="infoDate" column="info_date" />
+		<result property="infoHit" column="info_hit" />
+		<result property="infoAnswerContent"
+			column="info_answercontent" />
+		<result property="isAnswer" column="is_Answer" />
+		<result property="infoTitle" column="info_title" />
 	</resultMap>
 
 
 	<select id="contactSelectList" resultMap="contactMap">
-		SELECT * FROM contact ORDER BY info_num DESC
+		SELECT * FROM contact
+		ORDER BY info_num DESC
 	</select>
-	
-	<select id="contactSelect" parameterType="co.micol.prj.contact.service.ContactVO"
-			resultMap="contactMap">
+
+	<select id="contactSelect"
+		parameterType="co.micol.prj.contact.service.ContactVO"
+		resultMap="contactMap">
 		select * from contact where info_num = #{infoNum}
 	</select>
-	<insert id="contactInsert" parameterType="co.micol.prj.contact.service.ContactVO">
-		<selectKey keyProperty="info_num" resultType="int" order="BEFORE">
-			SELECT CASE WHEN MAX(BORDER_ID) IS NULL THEN 1 ELSE MAX(BORDER_ID)+1 END AS ID FROM BORDER		
-		</selectKey>		
-		INSERT INTO BORDER 
-		VALUES(#{borderId}, #{borderWriter}, #{borderDate}, #{borderTitle}, #{borderContents}, 0)
+
+
+	<insert id="contactInsert"
+		parameterType="co.micol.prj.contact.service.ContactVO">
+		<selectKey keyProperty="infoNum" resultType="int"
+			order="BEFORE">
+			SELECT CASE WHEN MAX(info_num) IS NULL THEN 1 ELSE
+			MAX(info_num)+1 END AS ID FROM CONTACT
+		</selectKey>
+
+		INSERT INTO CONTACT(info_num,
+		info_writer,info_date,info_title,info_answercontent,info_hit)
+		VALUES(#{infoNum}, #{infoWriter}, #{infoDate}, #{infoTitle},
+		#{infoAnswerContent},0)
+
 	</insert>
-	
-	<update id="contactUpdate"></update>
+
+
+	<update id="contactUpdate" 
+	parameterType="co.micol.prj.contact.service.ContactVO">
+	update contact set #{infoAnswerContent} where #{infoNum};
+	</update>
 	<delete id="contactDelete"></delete>
-	
+
 	<select id="contactSelectSearchList" resultMap="contactMap">
 		SELECT * FROM BORDER
 		WHERE
 		<if test='key == "1"'>1 = 1</if>
-		<if test='key == "2"'>INFO_WRITER LIKE '%'||#{val}||'%'</if> 
+		<if test='key == "2"'>INFO_WRITER LIKE '%'||#{val}||'%'</if>
 		<if test='key == "3"'>INFO_TITLE LIKE '%'||#{val}||'%'</if>
-		<if test='key == "4"'>INFO_AnswerContent LIKE '%'||#{val}||'%'</if>  
+		<if test='key == "4"'>INFO_AnswerContent LIKE '%'||#{val}||'%'</if>
 		ORDER BY BORDER_ID DESC
 	</select>
-	
-	<select id="contactSortList" parameterType="String" resultMap="contactMap">
+
+	<select id="contactSortList" parameterType="String"
+		resultMap="contactMap">
 		SELECT * FROM BORDER ORDER BY BORDER_ID
 		<if test='key == "A"'>ASC</if>
 		<if test='key == "D"'>DESC</if>
 	</select>
-	
+
 	<update id="contactUpdateHit" parameterType="int">
-		UPDATE BORDER SET BORDER_HIT = BORDER_HIT + 1 WHERE BORDER_ID = #{id}
+		UPDATE CONTACT SET
+		info_Hit = info_Hit + 1 WHERE info_Num = #{id}
 	</update>
 </mapper>

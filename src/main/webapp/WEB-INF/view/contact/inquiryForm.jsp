@@ -35,10 +35,10 @@
                <c:forEach items="${contacts }" var="c">
                   <tr onmouseover='this.style.background="#fcecae";' 
                      onmouseleave='this.style.background="#FFFFFF";'
-                     onclick="borderContents(${c.infoNum})">
+                     onclick="contactContents(${c.infoNum})">
                      <td>${c.infoNum }</td>
+                     <td>${c.infoTitle }</td>
                      <td>${c.infoWriter }</td>
-                     <td>${c.infoName }</td>
                      <td>${c.infoDate }</td>
                      <td>${c.infoHit }</td>
                      
@@ -72,9 +72,9 @@
    </form>
 </div>
 <script>
-function boardContents(n){
+function contactContents(n){
    frm.infoNum.value = n;
-   frm.action = "inquiryInsertForm.do";
+   frm.action = "inquiryView.do";
    frm.submit();
 }
 
@@ -106,11 +106,11 @@ function searchList(){
             'onmouseleave' : 'this.style.background="#FFFFFF";',
             'onclick' : 'boardContents('+ item.boardNum +')'
          }).append(
-         $("<td align='center'/>").text(item.boardNum),      
-         $("<td align='center'/>").text(item.boardWriter),
-         $("<td />").text(item.boardTitle),
-         $("<td align='center'/>").text(item.boardDate),
-         $("<td align='center'/>").text(item.boardHit),
+         $("<td align='center'/>").text(item.infoNum),      
+         $("<td align='center'/>").text(item.infoWriter),
+         $("<td />").text(item.infoTitle),
+         $("<td align='center'/>").text(item.infoDate),
+         $("<td align='center'/>").text(item.infoHit),
       );
       tb.append(html);
    });
@@ -129,14 +129,6 @@ function searchList(){
          }
       });
    }
-
-
-
-
-
-
-
-
 
 </script>
 
