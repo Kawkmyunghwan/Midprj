@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>Insert title her1e</title>
 </head>
 <body>
 
