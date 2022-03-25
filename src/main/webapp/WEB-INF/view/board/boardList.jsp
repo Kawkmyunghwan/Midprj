@@ -104,7 +104,7 @@ function searchList(){
 			}).append(
 			$("<td align='center'/>").text(item.boardNum),		
 			$("<td align='center'/>").text(item.boardWriter),
-			$("<td />").text(item.boardTitle),
+			$("<td />").text(item.boardName),
 			$("<td align='center'/>").text(item.boardDate),
 			$("<td align='center'/>").text(item.boardHit),
 		);

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper	namespace="co.micol.prj.comments.service.CommentsMapper">
+	<resultMap type="co.micol.prj.comments.service.CommentsVO"
+		id="commentsMap">
+		<id property="commentsNum" column="commentsnum" />
+		<id property="boardNum" column="boardnum" />
+		<id property="memberId" column="memberid" />
+		<id property="commentsContent" column="commentscontent" />
+	</resultMap>
+	
+	<select id="commentsSelect"
+		parameterType="co.micol.prj.comments.service.CommentsVO"
+		resultMap="commentsMap">
+		SELECT COMMENTSCONTENT FROM COMMENTS WHERE BOARDNUM = #{boardNum}
+	</select>
+	
+</mapper>
