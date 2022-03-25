@@ -32,6 +32,7 @@ import co.micol.prj.member.command.MemberUpdate;
 import co.micol.prj.member.command.MemberUpdateForm;
 import co.micol.prj.myinfo.command.MyInfo;
 import co.micol.prj.myinfo.command.NotesListForm;
+import co.micol.prj.notes.command.AjaxNotesDelete;
 
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -68,6 +69,7 @@ public class FrontController extends HttpServlet {
 		map.put("/memberDelete.do", new MemberDelete()); // 회원 탈퇴
 
 		map.put("/notesListForm.do", new NotesListForm()); // 쪽지함 폼
+		map.put("/ajaxNotesDelete.do", new AjaxNotesDelete()); // 쪽지 삭제
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
