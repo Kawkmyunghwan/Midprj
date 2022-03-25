@@ -22,6 +22,8 @@ public class MemberLogin implements Command {
 		
 		vo.setMemberId(request.getParameter("memberId"));
 		vo.setMemberPassword(request.getParameter("memberPassword"));
+		vo.setMemberId("park@abc.com");
+		vo.setMemberPassword("1234");
 		vo = memberDao.selectMember(vo);
 		if(vo.getMemberId() != null) {
 			//여기서 세션 처리하고

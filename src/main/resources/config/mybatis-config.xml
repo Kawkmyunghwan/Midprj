@@ -23,9 +23,14 @@
 	</environments>
 	<mappers>
 		<mapper resource="co/micol/prj/member/service/member-map.xml" />
+<<<<<<< HEAD
 		<mapper resource="co/micol/prj/border/service/border-map.xml"/>
 		<mapper resource="co/micol/prj/jobOpening/service/jobOpening-map.xml"/>
 		<mapper resource="co/micol/prj/zzim/service/zzim-map.xml"/>	
 		<mapper resource="co/micol/prj/apply/service/apply-map.xml"/>
+=======
+		<mapper resource="co/micol/prj/board/service/board-map.xml"/>
+		<mapper resource="co/micol/prj/jobOpening/service/jobOpening-map.xml"/>
+>>>>>>> branch 'master' of https://github.com/Kawkmyunghwan/Midprj.git
 	</mappers>
 </configuration>
