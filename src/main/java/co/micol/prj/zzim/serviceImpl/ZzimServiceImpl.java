@@ -20,7 +20,7 @@ public class ZzimServiceImpl implements ZzimService {
 	}
 
 	@Override
-	public ZzimVO selectZzim(ZzimVO vo) {
+	public List<ZzimVO> selectZzim(ZzimVO vo) {
 		// TODO Auto-generated method stub
 		return map.selectZzim(vo);
 	}

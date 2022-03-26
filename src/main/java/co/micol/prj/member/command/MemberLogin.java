@@ -10,6 +10,7 @@ import co.micol.prj.member.service.MemberVO;
 import co.micol.prj.member.serviceImpl.MemberServiceImpl;
 
 
+
 public class MemberLogin implements Command {
 
 	@Override
@@ -18,17 +19,19 @@ public class MemberLogin implements Command {
 		HttpSession session = request.getSession();
 		MemberService memberDao = new MemberServiceImpl();
 		MemberVO vo = new MemberVO();
-		
-		
-		
+			
 		vo.setMemberId(request.getParameter("memberId"));
 		vo.setMemberPassword(request.getParameter("memberPassword"));
 		vo = memberDao.selectMember(vo);
+		
+		
+		
+		
 		if(vo.getMemberId() != null) {
 			//여기서 세션 처리하고
 			session.setAttribute("memberId", vo.getMemberId());
 			session.setAttribute("memberNum", vo.getMemberNum());
-			request.setAttribute("message", vo.getMemberName() + " 님 환영합니다.");
+						
 			return "home.do";
 		}else {
 			request.setAttribute("message", "아이디 또는 패스워드가 일치하지 않습니다.");

@@ -52,7 +52,7 @@
 			<div class="col-lg-12">
 				<div class="section-tittle text-center">
 					<span>FEATURED TOURS Packages</span>
-					<h2>${id }님에게맞는 일자리는?</h2>
+					<h2>${memberId }님에게맞는 일자리는?</h2>
 					<a href="sample.do">dd</a>
 					
 				</div>

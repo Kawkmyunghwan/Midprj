@@ -8,4 +8,11 @@ import lombok.Setter;
 public class ZzimVO {
 	private int memberNum;
 	private int jobOpeningNum;
+	
+	@Override
+	public String toString() {
+		return "ZzimVO [memberNum=" + memberNum + ", jobOpeningNum=" + jobOpeningNum + "]";
+	}
+	
+	
 }
