@@ -21,10 +21,9 @@ public class Zzim implements Command {
 		
 		vo.setMemberNum((int)session.getAttribute("memberNum"));
 		vo.setJobOpeningNum(Integer.parseInt(request.getParameter("jobOpeningNum")));
-		dao.insertZzim(vo);		
-		
-		request.setAttribute("zzim", vo.getMemberNum());
-		return "jobOpening/jobDetail.tiles";
+		dao.insertZzim(vo);				
+
+		return "jobDetail.do";
 	}
 
 }
