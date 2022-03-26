@@ -47,9 +47,15 @@
 
 	<update id="contactUpdate" 
 	parameterType="co.micol.prj.contact.service.ContactVO">
-	update contact set #{infoAnswerContent} where #{infoNum};
+	update contact set 
+	info_answercontent = #{infoAnswerContent}
+	where info_num = #{infoNum}
 	</update>
-	<delete id="contactDelete"></delete>
+	
+	<delete id="contactDelete">
+		delete from contact
+		where info_num = #{infoNum}
+	</delete>
 
 	<select id="contactSelectSearchList" resultMap="contactMap">
 		SELECT * FROM BORDER
