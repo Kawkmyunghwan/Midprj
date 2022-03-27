@@ -2,14 +2,13 @@ package co.micol.prj.web;
 
 import java.io.IOException;
 import java.util.HashMap;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import co.micol.prj.apply.command.NotilesApply;
 import co.micol.prj.board.command.AjaxBoardSearch;
 import co.micol.prj.board.command.AjaxSortBoard;
 import co.micol.prj.board.command.BoardDelete;
@@ -44,7 +43,6 @@ import co.micol.prj.member.command.MemberUpdateForm;
 import co.micol.prj.myinfo.command.MyInfo;
 import co.micol.prj.myinfo.command.NotesListForm;
 import co.micol.prj.zzim.command.Zzim;
-import co.micol.prj.zzim.command.Zzim;
 
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -69,10 +67,19 @@ public class FrontController extends HttpServlet {
 		map.put("/borderView.do", new BoardView());
 		map.put("/ajaxBorderSearch.do", new AjaxBoardSearch()); // 게시글 리스트에서 검색
 		map.put("/ajaxSortBorder.do", new AjaxSortBoard()); // 게시글 정렬
-		map.put("/sample.do", new Sample());
-
+		
+// ----------------------곽명환------------------------
 		map.put("/hotSearch.do", new HotSearch());
 		map.put("/zzimSearch.do", new ZzimSearch());
+		map.put("/notilesApply.do", new NotilesApply());
+		map.put("/sample.do", new Sample());
+		map.put("/jobDetail.do", new JobDetail());
+		map.put("/loginPage.do", new LoginPage());
+		map.put("/zzim.do", new Zzim());
+		map.put("/zzimSearch.do", new ZzimSearch());
+		map.put("/searchLocation.do", new SearchLocation());
+// ---------------------------------------------------
+
 		
 		//고객센터
 		map.put("/contactForm.do", new ContactForm()); //고객센터 메인폼
@@ -83,11 +90,7 @@ public class FrontController extends HttpServlet {
 		map.put("/inquiryUpdate.do", new InquiryUpdate());
 		map.put("/searchLocation.do", new SearchLocation());
 
-		map.put("/jobDetail.do", new JobDetail());
-
-		map.put("/loginPage.do", new LoginPage());
-
-		map.put("/zzim.do", new Zzim());
+		
 
 		// 마이페이지
 		map.put("/myInfo.do", new MyInfo()); // 마이페이지
@@ -106,14 +109,7 @@ public class FrontController extends HttpServlet {
 		map.put("/ajaxBoardSearch.do", new AjaxBoardSearch()); // 게시글 리스트에서 검색
 		map.put("/ajaxSortBoard.do", new AjaxSortBoard()); // 게시글 정렬
 
-		map.put("/zzimSearch.do", new ZzimSearch());
-		map.put("/searchLocation.do", new SearchLocation());
-
-		map.put("/jobDetail.do", new JobDetail());
-
-		map.put("/loginPage.do", new LoginPage());
-
-		map.put("/zzim.do", new Zzim());
+		
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
@@ -126,9 +122,9 @@ public class FrontController extends HttpServlet {
 		Command comm = map.get(page);
 		String viewPage = comm.exec(request, response);
 
-		if (!viewPage.endsWith(".do")) {
-			if (viewPage.startsWith("ajax:")) {
-				// ajax 처리
+		if(!viewPage.endsWith(".do")) {
+			if(viewPage.startsWith("ajax:")) {
+				//ajax 처리
 				response.setContentType("text/html; charset=UTF-8");
 				response.getWriter().append(viewPage.substring(5));
 				return;
@@ -136,8 +132,10 @@ public class FrontController extends HttpServlet {
 //				viewPage = "WEB-INF/view/" + viewPage + ".jsp";
 				viewPage = viewPage + ".tiles";
 			}
-
+			
 		}
+		
+		
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

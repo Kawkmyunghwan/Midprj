@@ -13,4 +13,12 @@
  	 <definition name="WILDCARD:*/*" extends="myapp.homepage">
  	 	<put-attribute name="body" value="/WEB-INF/view/{1}/{2}.jsp"></put-attribute>
  	 </definition>
+ 	 
+ 	 <definition name="empty" template="/WEB-INF/view/layout/empty.jsp">
+ 	 	 <put-attribute name="content" value=""/>  
+ 	 </definition>
+ 	 
+ 	 <definition name="notiles/*" extends="empty">
+ 	 	<put-attribute name="content" value="/WEB-INF/notiles/{1}.jsp"></put-attribute>
+ 	 </definition>
 </tiles-definitions>
