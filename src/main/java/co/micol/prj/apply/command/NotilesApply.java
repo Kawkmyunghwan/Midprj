@@ -12,7 +12,7 @@ public class NotilesApply implements Command {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
-		
+		System.out.println(request.getParameter("jobOpeningNum"));
 		return "jobOpening/apply.tiles";
 	}
 
