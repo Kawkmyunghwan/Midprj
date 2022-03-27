@@ -18,14 +18,14 @@
       <table border="1" id="contents">
          <thead>
             <tr align="center">
-                  <th width="150">No</th>
+                  <th width="150"><a onclick="sortContact(1)">No</a></th>
                   <th width="300">제 목</th>
-                  <th width="150">글쓴이</th>
+                  <th width="100">글쓴이</th>
                   <th width="150">작성시간</th>
                   <th width="70">조회수</th>
                </tr>
          </thead>
-         <tbody id="contactBody">
+         <tbody align="center" id="contactBody">
             <c:if test="${empty contacts }">
                <tr>
                   <td colspan="5">게시글이 존재하지 않습니다.</td>
@@ -52,8 +52,9 @@
       
       <div align="right" style="padding:10px 541px 0px 0px">
 
-      <span style="padding-right:380px"><button class="genric-btn primary small" type="button" 
-      		onclick="location.href='inquiryInsertForm.do'">글쓰기</button></span>
+      <span style="padding-right:380px">
+     	 <button class="genric-btn primary small" type="button" onclick="location.href='inquiryInsertForm.do'">글쓰기</button>
+      </span>
       
       <select id="searchKey">
          <option value="1">전체</option>
@@ -80,7 +81,7 @@ function contactContents(n){
 
 function searchList(){
    $.ajax({
-      url : "ajaxBoardSearch.do",
+      url : "ajaxcontactSearch.do",
       type : "post",
       data : {"key" : $("#searchKey").val(), "val" : $("#searchVal").val()},
       dataType : "json",
@@ -104,11 +105,11 @@ function searchList(){
          var html = $("<tr />").attr({
             'onmouseover' : 'this.style.background="#fcecae";',
             'onmouseleave' : 'this.style.background="#FFFFFF";',
-            'onclick' : 'boardContents('+ item.boardNum +')'
+            'onclick' : 'contactContents('+ item.infoNum +')'
          }).append(
          $("<td align='center'/>").text(item.infoNum),      
-         $("<td align='center'/>").text(item.infoWriter),
-         $("<td />").text(item.infoTitle),
+         $("<td align='center'/>").text(item.infoTitle),
+         $("<td />").text(item.infoWriter),
          $("<td align='center'/>").text(item.infoDate),
          $("<td align='center'/>").text(item.infoHit),
       );
@@ -118,9 +119,9 @@ function searchList(){
    $("#contents").append(tb);
 }
 
-   function sortBoard(key){
+   function sortContact(key){
       $.ajax({
-         url : "ajaxSortBoard.do",
+         url : "ajaxSortContact.do",
          type : "post",
          data : {"key" : key},
          dataType : "json",

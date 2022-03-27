@@ -18,7 +18,10 @@ import co.micol.prj.board.command.BoardList;
 import co.micol.prj.board.command.BoardUpdate;
 import co.micol.prj.board.command.BoardView;
 import co.micol.prj.common.Command;
+import co.micol.prj.contact.comm.AjaxSortContact;
+import co.micol.prj.contact.comm.AjaxcontactSearch;
 import co.micol.prj.contact.comm.ContactForm;
+import co.micol.prj.contact.comm.InquiryDelete;
 import co.micol.prj.contact.comm.InquiryForm;
 import co.micol.prj.contact.comm.InquiryInsert;
 import co.micol.prj.contact.comm.InquiryInsertForm;
@@ -87,8 +90,11 @@ public class FrontController extends HttpServlet {
 		map.put("/inquiryInsertForm.do", new InquiryInsertForm()); //문의게시판 글쓰기 폼
 		map.put("/inquiryInsert.do", new InquiryInsert()); // 게시판 등록
 		map.put("/inquiryView.do", new InquiryView()); //상세보기
-		map.put("/inquiryUpdate.do", new InquiryUpdate());
+		map.put("/inquiryUpdate.do", new InquiryUpdate()); //수정
 		map.put("/searchLocation.do", new SearchLocation());
+		map.put("/inquiryDelete.do", new InquiryDelete()); // 삭제
+		map.put("/ajaxcontactSearch.do", new AjaxcontactSearch()); //리스트검색
+		map.put("/ajaxSortContact.do", new AjaxSortContact()); //정렬
 
 		
 
