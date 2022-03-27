@@ -97,7 +97,7 @@
                               <li>회사 홈페이지 :<span><a href="http://www.naver.com" style="color: black">${jobOpening.homepage }</a></span></li>                         
                           </ul>
                          <div class="apply-btn2" id="btn2">
-                           <a href="" onclick="window.open('notilesApply.do','window_name','width=800,height=1000,location=no,status=no,scrollbars=yes');" id="a" class="btn">Apply Now</a>                                                                                                           
+                            <a href="" onclick='windowFnc()' id="a" class="btn">Apply Now</a>                                                                                                           
                             <a href="" onclick='formFnc(${jobOpening.jobOpeningNum})' id="btn" class="btn">♡</a>                                                                                                
                          </div>
                        </div>
@@ -134,6 +134,10 @@
 	    quickFrm.jobOpeningNum.value=jobOpening_num;
 	    quickFrm.submit();      
 	    }
+	
+	function windowFnc{
+		window.open('notilesApply.do','window_name','width=800,height=1000,location=no,status=no,scrollbars=yes');
+	}
 		
 // -----------------------------------------------------------------	
 	var jobOpNum = "<c:out value = '${jobOpening.jobOpeningNum}'/>";	
