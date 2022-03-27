@@ -97,7 +97,7 @@
                               <li>회사 홈페이지 :<span><a href="http://www.naver.com" style="color: black">${jobOpening.homepage }</a></span></li>                         
                           </ul>
                          <div class="apply-btn2" id="btn2">
-                            <a href="" onclick='windowFnc()' id="a" class="btn">Apply Now</a>                                                                                                           
+                            <a href="" onclick='windowFnc(${jobOpening.jobOpeningNum});' id="a" class="btn">Apply Now</a>                                                                                                           
                             <a href="" onclick='formFnc(${jobOpening.jobOpeningNum})' id="btn" class="btn">♡</a>                                                                                                
                          </div>
                        </div>
@@ -105,6 +105,9 @@
                        
                        
                        <form action="zzim.do" method="get" name="quickFrm">
+                       		<input type="hidden" name="jobOpeningNum">
+                       </form>
+                       <form action="notilesApply.do" method="get" name="quickFrm1">
                        		<input type="hidden" name="jobOpeningNum">
                        </form>
 
@@ -128,15 +131,21 @@
             </div>
         </div>
         <!-- job post company End -->
-<script>
+<script type="text/javascript">
 	function formFnc(jobOpening_num) {
 	    event.preventDefault();
 	    quickFrm.jobOpeningNum.value=jobOpening_num;
 	    quickFrm.submit();      
 	    }
 	
-	function windowFnc{
-		window.open('notilesApply.do','window_name','width=800,height=1000,location=no,status=no,scrollbars=yes');
+	function windowFnc(jobOpening_num){
+		event.preventDefault();
+		quickFrm1.jobOpeningNum.value=jobOpening_num;
+		quickFrm1.submit();
+		var popUrl = 'notilesApply.do';
+		var popOption = 'width=800,height=1000,location=no,status=no,scrollbars=yes'
+		window.open(popUrl, popOption)
+		
 	}
 		
 // -----------------------------------------------------------------	
