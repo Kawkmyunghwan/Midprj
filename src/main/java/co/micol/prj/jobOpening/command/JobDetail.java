@@ -25,8 +25,8 @@ public class JobDetail implements Command {
 		ZzimVO zVo = new ZzimVO();
 		ZzimService zDao = new ZzimServiceImpl();	
 		
-		zVo.setMemberNum((int)session.getAttribute("memberNum"));		
-		
+
+		zVo.setMemberNum((int)session.getAttribute("memberNum"));				
 		request.setAttribute("jobOpening", dao.selectJobOpeningByNum(vo));
 		request.setAttribute("zzim", zDao.selectZzim(zVo));
 		

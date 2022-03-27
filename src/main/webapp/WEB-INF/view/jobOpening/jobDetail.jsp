@@ -97,8 +97,8 @@
                               <li>회사 홈페이지 :<span><a href="http://www.naver.com" style="color: black">${jobOpening.homepage }</a></span></li>                         
                           </ul>
                          <div class="apply-btn2" id="btn2">
-                            <a href="javascript:formFnc1.submit())" onclick='formFnc1(${jobOpening.jobOpeningNum})' id="a" class="btn">Apply Now</a>                                                                                                           
-                            <a href="javascript:formFnc.submit())" onclick='formFnc(${jobOpening.jobOpeningNum})' id="btn" class="btn">♡</a>                                                                                                
+                           <a href="" onclick="window.open('notilesApply.do','window_name','width=800,height=1000,location=no,status=no,scrollbars=yes');" id="a" class="btn">Apply Now</a>                                                                                                           
+                            <a href="" onclick='formFnc(${jobOpening.jobOpeningNum})' id="btn" class="btn">♡</a>                                                                                                
                          </div>
                        </div>
                        
@@ -107,10 +107,7 @@
                        <form action="zzim.do" method="get" name="quickFrm">
                        		<input type="hidden" name="jobOpeningNum">
                        </form>
-                       
-                       <form action="apply.do" method="get" name="quickFrm1">
-                       		<input type="hidden" name="jobOpeningNum">
-                       </form>
+
                        
                        
                         <div class="post-details4  mb-50">
@@ -133,24 +130,18 @@
         <!-- job post company End -->
 <script>
 	function formFnc(jobOpening_num) {
-		event.preventDefault();
-		quickFrm.jobOpeningNum.value=jobOpening_num;
-		quickFrm.submit();		
-        }
-	
-	function formFnc1(jobOpening_num) {
-		event.preventDefault();
-		quickFrm1.jobOpeningNum.value=jobOpening_num;
-		quickFrm1.submit();
-        }
+	    event.preventDefault();
+	    quickFrm.jobOpeningNum.value=jobOpening_num;
+	    quickFrm.submit();      
+	    }
+		
 // -----------------------------------------------------------------	
 	var jobOpNum = "<c:out value = '${jobOpening.jobOpeningNum}'/>";	
 	var zzimJobOpNum = [] 
 	   <c:forEach items='${zzim}' var='zzim'>
 	   zzimJobOpNum.push("${zzim.jobOpeningNum}");
 	   </c:forEach>
-	console.log(zzimJobOpNum);
-	console.log(jobOpNum);
+
 	if(zzimJobOpNum.indexOf(jobOpNum) != -1){
 		document.getElementById('btn').remove();
 		var btn = document.createElement('a');
@@ -160,9 +151,9 @@
 		console.log(btn);
 		var btn2 = document.getElementById('btn2');
 		btn2.append(btn);
-//		찜 목록에 추가한 구인공고가 아니면 비어있는 하트, 찜 목록에 추가했으면 빨간색 하트가 뜨게 함..
-//		비어있는 a 태그 속성에는 찜 테이블에서 삭제시키는 기능 만들 예정.(빨간색 하트일때 클릭하면 찜 테이블에서 삭제되게 끔)
-// -----------------------------------------------------------------
 	}
+//	찜 목록에 추가한 구인공고가 아니면 비어있는 하트, 찜 목록에 추가했으면 빨간색 하트가 뜨게 함..
+//	비어있는 a 태그 속성에는 찜 테이블에서 삭제시키는 기능 만들 예정.(빨간색 하트일때 클릭하면 찜 테이블에서 삭제되게 끔)
+//-----------------------------------------------------------------
 	
 </script>

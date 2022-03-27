@@ -8,4 +8,9 @@ import lombok.Setter;
 public class ApplyVO {
 	private int memberNum;
 	private int	jobOpeningNum;
+	
+	@Override
+	public String toString() {
+		return "ApplyVO [memberNum=" + memberNum + ", jobOpeningNum=" + jobOpeningNum + "]";
+	}
 }

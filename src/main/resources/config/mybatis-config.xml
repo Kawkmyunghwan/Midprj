@@ -32,6 +32,7 @@
 		<mapper resource="co/micol/prj/jobOpening/service/jobOpening-map.xml"/>
 
 		<mapper resource="co/micol/prj/comments/service/comments-map.xml"/>
-		<mapper resource="co/micol/prj/zzim/service/zzim-map.xml"/>		
+		<mapper resource="co/micol/prj/zzim/service/zzim-map.xml"/>
+		<mapper resource="co/micol/prj/apply/service/apply-map.xml"/>		
 	</mappers>
 </configuration>
