@@ -8,6 +8,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import co.micol.prj.apply.command.Application;
 import co.micol.prj.apply.command.NotilesApply;
 import co.micol.prj.board.command.AjaxBoardSearch;
 import co.micol.prj.board.command.AjaxSortBoard;
@@ -83,6 +85,7 @@ public class FrontController extends HttpServlet {
 		map.put("/zzim.do", new Zzim());
 		map.put("/zzimSearch.do", new ZzimSearch());
 		map.put("/searchLocation.do", new SearchLocation());
+		map.put("/application.do", new Application());
 // ---------------------------------------------------
 
 		
