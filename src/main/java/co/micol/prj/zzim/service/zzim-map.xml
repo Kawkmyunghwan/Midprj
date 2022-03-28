@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.micol.prj.zzim.service.ZzimMapper">
+	
+	<select id="selectZzim" 
+		parameterType="co.micol.prj.zzim.service.ZzimVO"
+		resultType="co.micol.prj.zzim.service.ZzimVO">
+		SELECT * FROM ZZIM WHERE MEMBERNUM = #{memberNum}	
+	</select>
+
+
+	<insert id="insertZzim" parameterType="co.micol.prj.zzim.service.ZzimVO">
+		INSERT INTO ZZIM(memberNum, jobOpeningNum) 
+		VALUES(#{memberNum}, #{jobOpeningNum})
+	</insert>
+	
+</mapper>

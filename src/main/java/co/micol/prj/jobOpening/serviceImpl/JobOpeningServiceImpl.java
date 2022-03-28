@@ -8,7 +8,6 @@ import co.micol.prj.common.DataSource;
 import co.micol.prj.jobOpening.service.JobOpeningMapper;
 import co.micol.prj.jobOpening.service.JobOpeningService;
 import co.micol.prj.jobOpening.service.JobOpeningVO;
-import co.micol.prj.member.service.MemberVO;
 
 public class JobOpeningServiceImpl implements JobOpeningService {
 	
@@ -22,7 +21,7 @@ public class JobOpeningServiceImpl implements JobOpeningService {
 	}
 
 	@Override
-	public MemberVO selectJobOpening(JobOpeningVO vo) {
+	public JobOpeningVO selectJobOpening(JobOpeningVO vo) {
 		// TODO Auto-generated method stub
 		return map.selectJobOpening(vo);
 	}
@@ -55,6 +54,12 @@ public class JobOpeningServiceImpl implements JobOpeningService {
 	public List<JobOpeningVO> selectJobOpeningListByZzim() {
 		// TODO Auto-generated method stub
 		return map.selectJobOpeningListByZzim();
+	}
+
+	@Override
+	public JobOpeningVO selectJobOpeningByNum(JobOpeningVO vo) {
+		// TODO Auto-generated method stub
+		return map.selectJobOpeningByNum(vo);
 	}
 
 }

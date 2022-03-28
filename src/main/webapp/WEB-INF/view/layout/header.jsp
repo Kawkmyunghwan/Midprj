@@ -56,22 +56,22 @@
                                                 </ul>
                                             </li>
                                             <li><a href="about.html">About</a></li>
-                                            <li><a href="#">Page</a>
+                                            <li><a href="boardList.do">커뮤니티</a></li>
+                                            <li><a href="contact.html">Contact</a></li>
+                                            <li><a href="contactForm.do">고객센터</a>
                                                 <ul class="submenu">
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="single-blog.html">Blog Details</a></li>
-                                                    <li><a href="elements.html">Elements</a></li>
-                                                    <li><a href="job_details.html">job Details</a></li>
+                                                    <li><a href="reviewForm.do">취업후기</a></li>
+                                                    <li><a href="inquiryForm.do">문의게시판</a></li>
+                                                    <li><a href="faqForm.do">FAQ</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="contact.html">Contact</a></li>
                                         </ul>
                                     </nav>
                                 </div>          
                                 <!-- Header-btn -->
                                 <div class="header-btn d-none f-right d-lg-block">
                                     <a href="#" class="btn head-btn1">Register</a>
-                                    <a href="#" class="btn head-btn2">Login</a>
+                                    <a href="loginPage.do" class="btn head-btn2">Login</a>
                                 </div>
                             </div>
                         </div>

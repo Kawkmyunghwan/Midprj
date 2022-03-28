@@ -11,6 +11,8 @@ import co.micol.prj.member.serviceImpl.MemberServiceImpl;
 
 
 
+
+
 public class MemberDelete implements Command {
 
 	@Override

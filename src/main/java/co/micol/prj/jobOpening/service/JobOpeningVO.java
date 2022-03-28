@@ -21,6 +21,8 @@ public class JobOpeningVO {
 	private String homepage;
 	private String jobOpeningHit;
 	private int jobOpeningZzim;
+	private String jobOpeningName;
+	private int count;
 	
 	@Override
 	public String toString() {
@@ -29,8 +31,10 @@ public class JobOpeningVO {
 				+ companyAddress + ", salary=" + salary + ", companyContent=" + companyContent + ", representative="
 				+ representative + ", employeeNum=" + employeeNum + ", companyBuildDate=" + companyBuildDate
 				+ ", homepage=" + homepage + ", jobOpeningHit=" + jobOpeningHit + ", jobOpeningZzim=" + jobOpeningZzim
-				+ "]";
+				+ ", jobOpeningName=" + jobOpeningName + ", count=" + count + "]";
 	}
+	
+	
 	
 	
 }
