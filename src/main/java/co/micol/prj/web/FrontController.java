@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.ibatis.javassist.tools.Callback;
+
 import co.micol.prj.apply.command.Application;
 import co.micol.prj.apply.command.NotilesApply;
 import co.micol.prj.board.command.AjaxBoardSearch;
@@ -132,12 +134,12 @@ public class FrontController extends HttpServlet {
 		map.put("/ajaxSortBoard.do", new AjaxSortBoard()); // 게시글 정렬
 		
 		map.put("/commentsInsert.do", new CommentsInsert());
-	  map.put("/commentsUpdate.do", new CommentsUpdate()); //댓글 수정
-	  map.put("/commentsDelete.do", new CommentsDelete()); //댓글 삭제
+		map.put("/commentsUpdate.do", new CommentsUpdate()); //댓글 수정
+	  	map.put("/commentsDelete.do", new CommentsDelete()); //댓글 삭제
 		
-    map.put("/memberLogout.do", new MemberLogout());   //로그아웃
-    map.put("/naverLogin.do", new NaverLogin());
-    map.put("/calBack.do", new Callback());
+//	  	map.put("/memberLogout.do", new MemberLogout());   //로그아웃
+//	  	map.put("/naverLogin.do", new NaverLogin());
+//	  	map.put("/calBack.do", new Callback());
 
 	}
 

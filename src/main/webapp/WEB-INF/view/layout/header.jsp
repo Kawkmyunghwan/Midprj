@@ -82,11 +82,7 @@
                         <c:if test="${ memberId ne null }">
                            <div class="header-btn d-none f-right d-lg-block">
                               <a href="memberLogout.do" class="btn head-btn2">Logout</a>
-                        </c:if>
-                        <!-- Mobile Menu -->
-                        <div class="col-12">
-                            <div class="mobile_menu d-block d-lg-none"></div>
-                        </div>
+                        </c:if>                      
                     </div>
                 </div>
            </div>
