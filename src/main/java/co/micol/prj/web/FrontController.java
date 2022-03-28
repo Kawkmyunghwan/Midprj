@@ -45,7 +45,9 @@ import co.micol.prj.member.command.MemberUpdate;
 import co.micol.prj.member.command.MemberUpdateForm;
 import co.micol.prj.myinfo.command.MyInfo;
 import co.micol.prj.myinfo.command.NotesListForm;
+import co.micol.prj.notes.command.AjaxNotesDelete;
 import co.micol.prj.zzim.command.Zzim;
+
 
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -98,13 +100,14 @@ public class FrontController extends HttpServlet {
 
 		
 
-		// 마이페이지
+		// 김세명 마이페이지------------------------------------
 		map.put("/myInfo.do", new MyInfo()); // 마이페이지
 		map.put("/memberUpdateForm.do", new MemberUpdateForm()); // 내 정보 수정 폼
 		map.put("/memberUpdate.do", new MemberUpdate()); // 내 정보 수정
 		map.put("/memberDelete.do", new MemberDelete()); // 회원 탈퇴
-
 		map.put("/notesListForm.do", new NotesListForm()); // 쪽지함 폼
+		map.put("/ajaxNotesDelete.do", new AjaxNotesDelete()); // 쪽지 삭제
+//		---------------------------------------------------
 
 		map.put("/boardList.do", new BoardList()); // 게시글 목록
 		map.put("/boardInsertForm.do", new BoardInsertForm()); // 게시글 작성폼 호출
@@ -116,6 +119,7 @@ public class FrontController extends HttpServlet {
 		map.put("/ajaxSortBoard.do", new AjaxSortBoard()); // 게시글 정렬
 
 		
+
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

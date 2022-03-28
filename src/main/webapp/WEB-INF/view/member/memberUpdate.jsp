@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-	
+<script src="js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 	<div>
@@ -13,7 +13,7 @@
 	</div>
 	<form id="frm" action="memberUpdate.do" method="post">
 
-		<div>
+		<div align="center">
 			<table>
 				<tr>
 					<th>ÀÌ¸§</th>
@@ -35,19 +35,21 @@
 			</table>
 		</div>
 
-		<div>
+		<div align="center">
 			<button type="submit">¼ö Á¤</button>
 			&nbsp;&nbsp;&nbsp;
 			<button type="reset">Ãë ¼Ò</button>
 			&nbsp;&nbsp;&nbsp;
-			<button type="button" onclick="delete()">È¸¿øÅ»Åð</button>
+			<span><input type="button" onclick="delete()" value="È¸¿øÅ»Åð"></span>
 		</div>
 	</form>
 
-<script type="text/javascript">
+	<script>
 function delete(){
+	event.preventDefault();
 var check = confirm("Á¤¸»·Î Å»ÅðÇÏ½Ã°Ú½À´Ï±î?");
 if(check == true){
+	frm.submit();
 	alert("Å»Åð°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
 	return "memberDelete.do";
 } else{

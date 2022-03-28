@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.micol.prj.notes.service.NotesMapper">
+	<resultMap type="co.micol.prj.notes.service.NotesVO"
+		id="notesMap">
+		<id property="no" column="no" />
+		<result property="recvId" column="recvId" />
+		<result property="sentId" column="sentId" />
+		<result property="title" column="title" />
+		<result property="note" column="note" />
+		<result property="dateSent" column="dateSent" />
+	</resultMap>
+
+	<!-- 만약 안 되면 맵퍼를 사용해볼것 -->
+	<select id="notesSelectList"
+		parameterType="co.micol.prj.notes.service.NotesVO"
+		resultMap="notesMap">
+		<!-- <select id="notesSelectList" resultType="co.micol.prj.notes.service.NotesVO"> -->
+		SELECT * FROM notes WHERE recvId = #{recvId} ORDER BY no DESC
+	</select>
+	
+	<delete id="notesDelete" parameterType="co.micol.prj.notes.service.NotesVO">
+	delete from notes where no = #{no}
+	</delete>
+
+</mapper>
