@@ -27,6 +27,7 @@ import co.micol.prj.contact.comm.InquiryInsert;
 import co.micol.prj.contact.comm.InquiryInsertForm;
 import co.micol.prj.contact.comm.InquiryUpdate;
 import co.micol.prj.contact.comm.InquiryView;
+import co.micol.prj.contact.comm.ReviewInsert;
 import co.micol.prj.home.command.HomeCommand;
 import co.micol.prj.jobOpening.command.HotSearch;
 import co.micol.prj.jobOpening.command.JobDetail;
@@ -91,13 +92,13 @@ public class FrontController extends HttpServlet {
 		map.put("/inquiryInsert.do", new InquiryInsert()); // 게시판 등록
 		map.put("/inquiryView.do", new InquiryView()); //상세보기
 		map.put("/inquiryUpdate.do", new InquiryUpdate()); //수정
-		map.put("/searchLocation.do", new SearchLocation());
+		map.put("/searchLocation.do", new SearchLocation()); //검색
 		map.put("/inquiryDelete.do", new InquiryDelete()); // 삭제
 		map.put("/ajaxcontactSearch.do", new AjaxcontactSearch()); //리스트검색
 		map.put("/ajaxSortContact.do", new AjaxSortContact()); //정렬
-
+		map.put("/reviewInsert.do", new ReviewInsert());
 		
-
+// ----------------------------------------------------------------------------
 		// 마이페이지
 		map.put("/myInfo.do", new MyInfo()); // 마이페이지
 		map.put("/memberUpdateForm.do", new MemberUpdateForm()); // 내 정보 수정 폼

@@ -20,7 +20,7 @@ public class ContactVO {
 	private Date infoDate;
 	private int infoHit;
 	private String infoAnswerContent;
-	private int isAnswer;
+	private String isAnswer;
 	private String infoTitle;
 
 }
