@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.micol.prj.apply.command.Application;
+import co.micol.prj.apply.command.NotilesApply;
 import co.micol.prj.board.command.AjaxBoardSearch;
 import co.micol.prj.board.command.AjaxSortBoard;
 import co.micol.prj.board.command.BoardDelete;
@@ -22,7 +24,10 @@ import co.micol.prj.comments.command.CommentsDelete;
 import co.micol.prj.comments.command.CommentsInsert;
 import co.micol.prj.comments.command.CommentsUpdate;
 import co.micol.prj.common.Command;
+import co.micol.prj.contact.comm.AjaxSortContact;
+import co.micol.prj.contact.comm.AjaxcontactSearch;
 import co.micol.prj.contact.comm.ContactForm;
+import co.micol.prj.contact.comm.InquiryDelete;
 import co.micol.prj.contact.comm.InquiryForm;
 import co.micol.prj.contact.comm.InquiryInsert;
 import co.micol.prj.contact.comm.InquiryInsertForm;
@@ -46,7 +51,9 @@ import co.micol.prj.member.command.MemberUpdate;
 import co.micol.prj.member.command.MemberUpdateForm;
 import co.micol.prj.myinfo.command.MyInfo;
 import co.micol.prj.myinfo.command.NotesListForm;
+import co.micol.prj.notes.command.AjaxNotesDelete;
 import co.micol.prj.zzim.command.Zzim;
+
 
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -65,10 +72,25 @@ public class FrontController extends HttpServlet {
 		map.put("/ajaxMemberIdCheck.do", new AjaxMemberIdCheck()); // ajax로 아이디 중복체크
 		map.put("/memberJoinForm.do", new MemberJoinForm()); // 회원가입 폼 호출
 		map.put("/memberJoin.do", new MemberJoin());
-		map.put("/sample.do", new Sample());
+		map.put("/borderList.do", new BoardList()); // 게시글 목록
+		map.put("/borderInsertForm.do", new BoardInsertForm()); // 게시글 작성폼 호출
+		map.put("/borderInsert.do", new BoardInsert()); // 게시글 등록
+		map.put("/borderView.do", new BoardView());
+		map.put("/ajaxBorderSearch.do", new AjaxBoardSearch()); // 게시글 리스트에서 검색
+		map.put("/ajaxSortBorder.do", new AjaxSortBoard()); // 게시글 정렬
+		
+// ----------------------곽명환------------------------
+		map.put("/hotSearch.do", new HotSearch()); 					// 조회수 기반 HOT100 조회
+		map.put("/zzimSearch.do", new ZzimSearch());				// 찜 기반 HOT100 조회
+		map.put("/notilesApply.do", new NotilesApply());			// 지원신청서 팝업창
+		map.put("/sample.do", new Sample());						// 
+		map.put("/jobDetail.do", new JobDetail());					// 구인공고 상세페이지
+		map.put("/loginPage.do", new LoginPage());					// 로그인 페이지
+		map.put("/zzim.do", new Zzim());							// 찜 버튼 클릭 시 찜 테이블로 INSERT
+		map.put("/searchLocation.do", new SearchLocation());		// 지역별 구인공고 조회
+		map.put("/application.do", new Application());				// 지원신청서 작성 후 버튼 클릭 시 APPLY테이블로 INSERT
+// ---------------------------------------------------
 
-		map.put("/hotSearch.do", new HotSearch());
-		map.put("/zzimSearch.do", new ZzimSearch());
 		
 		//고객센터
 		map.put("/contactForm.do", new ContactForm()); //고객센터 메인폼
@@ -76,22 +98,26 @@ public class FrontController extends HttpServlet {
 		map.put("/inquiryInsertForm.do", new InquiryInsertForm()); //문의게시판 글쓰기 폼
 		map.put("/inquiryInsert.do", new InquiryInsert()); // 게시판 등록
 		map.put("/inquiryView.do", new InquiryView()); //상세보기
-		map.put("/inquiryUpdate.do", new InquiryUpdate());
+		map.put("/inquiryUpdate.do", new InquiryUpdate()); //수정
 		map.put("/searchLocation.do", new SearchLocation());
+		map.put("/inquiryDelete.do", new InquiryDelete()); // 삭제
+		map.put("/ajaxcontactSearch.do", new AjaxcontactSearch()); //리스트검색
+		map.put("/ajaxSortContact.do", new AjaxSortContact()); //정렬
 
-		map.put("/jobDetail.do", new JobDetail());
+		
 
-		map.put("/loginPage.do", new LoginPage());
-
-		map.put("/zzim.do", new Zzim());
-
-		// 마이페이지
+		// 김세명 마이페이지------------------------------------
 		map.put("/myInfo.do", new MyInfo()); // 마이페이지
 		map.put("/memberUpdateForm.do", new MemberUpdateForm()); // 내 정보 수정 폼
 		map.put("/memberUpdate.do", new MemberUpdate()); // 내 정보 수정
 		map.put("/memberDelete.do", new MemberDelete()); // 회원 탈퇴
-
 		map.put("/notesListForm.do", new NotesListForm()); // 쪽지함 폼
+		map.put("/ajaxNotesDelete.do", new AjaxNotesDelete()); // 쪽지 삭제
+    map.put("/ajaxNotesDelete.do", new AjaxNotesDelete()); // 쪽지 삭제
+    map.put("/noteViewForm.do", new NoteViewForm()); // 쪽지 내용 폼
+    map.put("/notesInsertForm.do", new NotesInsertForm()); // 쪽지 쓰기 폼
+    map.put("/noteInsert.do", new NoteInsert()); // 쪽지 쓰기
+//		---------------------------------------------------
 
 		map.put("/boardList.do", new BoardList()); // 게시글 목록
 		map.put("/boardInsertForm.do", new BoardInsertForm()); // 게시글 작성폼 호출
@@ -101,19 +127,12 @@ public class FrontController extends HttpServlet {
 		map.put("/boardView.do", new BoardView());
 		map.put("/ajaxBoardSearch.do", new AjaxBoardSearch()); // 게시글 리스트에서 검색
 		map.put("/ajaxSortBoard.do", new AjaxSortBoard()); // 게시글 정렬
+		
 		map.put("/commentsInsert.do", new CommentsInsert());
-		map.put("/commentsUpdate.do", new CommentsUpdate()); //댓글 수정
-		map.put("/commentsDelete.do", new CommentsDelete()); //댓글 삭제
+	    map.put("/commentsUpdate.do", new CommentsUpdate()); //댓글 수정
+	    map.put("/commentsDelete.do", new CommentsDelete()); //댓글 삭제
 		
-		
-		map.put("/zzimSearch.do", new ZzimSearch());
-		map.put("/searchLocation.do", new SearchLocation());
 
-		map.put("/jobDetail.do", new JobDetail());
-
-		map.put("/loginPage.do", new LoginPage());
-
-		map.put("/zzim.do", new Zzim());
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
@@ -126,9 +145,9 @@ public class FrontController extends HttpServlet {
 		Command comm = map.get(page);
 		String viewPage = comm.exec(request, response);
 
-		if (!viewPage.endsWith(".do")) {
-			if (viewPage.startsWith("ajax:")) {
-				// ajax 처리
+		if(!viewPage.endsWith(".do")) {
+			if(viewPage.startsWith("ajax:")) {
+				//ajax 처리
 				response.setContentType("text/html; charset=UTF-8");
 				response.getWriter().append(viewPage.substring(5));
 				return;
@@ -136,8 +155,10 @@ public class FrontController extends HttpServlet {
 //				viewPage = "WEB-INF/view/" + viewPage + ".jsp";
 				viewPage = viewPage + ".tiles";
 			}
-
+			
 		}
+		
+		
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

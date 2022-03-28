@@ -22,8 +22,8 @@ public class MemberDelete implements Command {
 		HttpSession session = request.getSession();
 		MemberService mDao = new MemberServiceImpl();
 		
-		vo.setMemberId("sem");
-		//vo.setMemberId((String)session.getAttribute("memberId"));
+		
+		vo.setMemberId((String)session.getAttribute("memberId"));
 		
 		mDao.deleteMember(vo);
 		
