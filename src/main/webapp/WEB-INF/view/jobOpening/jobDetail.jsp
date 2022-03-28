@@ -94,22 +94,10 @@
                               <li>Job nature : <span>Full time</span></li>
                               <li>Salary :  <span>${jobOpening.salary }</span></li>
                               <li>Application date : <span>12 Sep 2020</span></li>
-                              <li>회사 홈페이지 :<span><a href="http://www.naver.com" style="color: black">${jobOpening.homepage }</a></span></li>                         
+                              <li>회사 홈페이지 :<span><a href="http://www.naver.com" style="color: black">${jobOpening.homepage }</a></span></li>                   
                           </ul>
-                         <div class="apply-btn2" id="btn2">
-                         <c:choose>
-							    <c:when test="${name eq '홍길동'}">
-							        홍길동이 맞습니다.
-							    </c:when>																					
-							    <c:when test="${name eq '철수'}">
-							        홍길동이 아닙니다.
-							    </c:when>																					
-							    <c:otherwise>
-							        사람이 없습니다 ㅜㅜ
-							    </c:otherwise>												
-						</c:choose>
-
-                         	<button type="button" class="btn btn-primary" onclick="windowFnc(${jobOpening.jobOpeningNum})">Apply Now</button>            
+                         <div class="apply-btn2" id="btn2">                                              							       
+							<button type="button" class="btn btn-primary" id="a" onclick="windowFnc(${jobOpening.jobOpeningNum})">Apply Now</button>							  					                        	            
                             <a href="" onclick='formFnc(${jobOpening.jobOpeningNum})' id="btn" class="btn">♡</a>                                                                                                
                          </div>
                        </div>
@@ -152,9 +140,8 @@
 	
 	function windowFnc(jobOpening_num){
 		var popUrl = 'notilesApply.do?jobOpeningNum='+jobOpening_num+'';
-		var popOption = 'width=800, height=1000, location=no, status=no, scrollbars=yes'
-		window.open(popUrl, popOption)
-		
+		var popOption = 'left=600, width=600, height=650, location=no, status=no, scrollbars=yes'
+		window.open(popUrl, "name", popOption);	
 	}
 		
 // -----------------------------------------------------------------	
@@ -177,8 +164,20 @@
 //	찜 목록에 추가한 구인공고가 아니면 비어있는 하트, 찜 목록에 추가했으면 빨간색 하트가 뜨게 함..
 //	비어있는 a 태그 속성에는 찜 테이블에서 삭제시키는 기능 만들 예정.(빨간색 하트일때 클릭하면 찜 테이블에서 삭제되게 끔)
 //-----------------------------------------------------------------
-	$('#exampleModal').on('shown.bs.modal', function () {
-		
-  		$('#exampleModal').trigger('focus')
-	})
+	var applyJobOpNum = []
+	   <c:forEach items='${apply}' var='apply'>
+	   applyJobOpNum.push("${apply.jobOpeningNum}");
+	   </c:forEach>
+	   
+	   console.log(applyJobOpNum);
+	   console.log(jobOpNum);
+	   
+	if(applyJobOpNum.indexOf(jobOpNum) != -1){
+		document.getElementById('a').remove();
+		var aBtn = document.createElement('a');
+		aBtn.setAttribute('href', '');
+		aBtn.setAttribute('class', 'btn');
+		btn.innerText = '지원완료';
+		btn2.append(aBtn);
+	}
 </script>
