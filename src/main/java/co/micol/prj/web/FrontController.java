@@ -52,6 +52,9 @@ import co.micol.prj.member.command.MemberUpdateForm;
 import co.micol.prj.myinfo.command.MyInfo;
 import co.micol.prj.myinfo.command.NotesListForm;
 import co.micol.prj.notes.command.AjaxNotesDelete;
+import co.micol.prj.notes.command.NoteInsert;
+import co.micol.prj.notes.command.NoteViewForm;
+import co.micol.prj.notes.command.NotesInsertForm;
 import co.micol.prj.zzim.command.Zzim;
 
 
@@ -113,10 +116,10 @@ public class FrontController extends HttpServlet {
 		map.put("/memberDelete.do", new MemberDelete()); // 회원 탈퇴
 		map.put("/notesListForm.do", new NotesListForm()); // 쪽지함 폼
 		map.put("/ajaxNotesDelete.do", new AjaxNotesDelete()); // 쪽지 삭제
-    map.put("/ajaxNotesDelete.do", new AjaxNotesDelete()); // 쪽지 삭제
-    map.put("/noteViewForm.do", new NoteViewForm()); // 쪽지 내용 폼
-    map.put("/notesInsertForm.do", new NotesInsertForm()); // 쪽지 쓰기 폼
-    map.put("/noteInsert.do", new NoteInsert()); // 쪽지 쓰기
+		map.put("/ajaxNotesDelete.do", new AjaxNotesDelete()); // 쪽지 삭제
+		map.put("/noteViewForm.do", new NoteViewForm()); // 쪽지 내용 폼
+		map.put("/notesInsertForm.do", new NotesInsertForm()); // 쪽지 쓰기 폼
+		map.put("/noteInsert.do", new NoteInsert()); // 쪽지 쓰기
 //		---------------------------------------------------
 
 		map.put("/boardList.do", new BoardList()); // 게시글 목록
@@ -129,9 +132,12 @@ public class FrontController extends HttpServlet {
 		map.put("/ajaxSortBoard.do", new AjaxSortBoard()); // 게시글 정렬
 		
 		map.put("/commentsInsert.do", new CommentsInsert());
-	    map.put("/commentsUpdate.do", new CommentsUpdate()); //댓글 수정
-	    map.put("/commentsDelete.do", new CommentsDelete()); //댓글 삭제
+	  map.put("/commentsUpdate.do", new CommentsUpdate()); //댓글 수정
+	  map.put("/commentsDelete.do", new CommentsDelete()); //댓글 삭제
 		
+    map.put("/memberLogout.do", new MemberLogout());   //로그아웃
+    map.put("/naverLogin.do", new NaverLogin());
+    map.put("/calBack.do", new Callback());
 
 	}
 
