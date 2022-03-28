@@ -39,7 +39,7 @@
 					<tr>
 						<th width="100">답변</th>
 						<td width="746">
-							<pre>${contact.infoAnswerContent}</pre>
+							<pre>${contact.isAnswer}</pre>
 						</td>
 					</tr>
 					
