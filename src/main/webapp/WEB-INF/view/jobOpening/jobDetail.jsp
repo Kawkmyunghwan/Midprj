@@ -78,6 +78,62 @@
                                </ul>
                             </div>
                         </div>
+                        
+                        
+                        
+                        
+                        <c:forEach items="comment" var="comment">
+                        <!-- 코맨트 테이블에 들어있는 데이터 만큼 반복 -->
+                   		<div class="comments-area">
+			                  <h4>05 Comments</h4>
+			                  <div class="comment-list">
+			                     <div class="single-comment justify-content-between d-flex">
+			                        <div class="user justify-content-between d-flex">
+			                           <div class="thumb">
+			                              <img src="assets/img/comment/comment_1.png" alt="">
+			                           </div>
+			                           <div class="desc">
+			                              <p class="comment">
+			                                 Multiply sea night grass fourth day sea lesser rule open subdue female fill which them
+			                                 Blessed, give fill lesser bearing multiply sea night grass fourth day sea lesser
+			                              </p>
+			                              <div class="d-flex justify-content-between">
+			                                 <div class="d-flex align-items-center">
+			                                    <h5 id="commentName">
+			                                       <a href="#" >Emilly Blunt</a>
+			                                    </h5>
+			                                    <p class="date">December 4, 2017 at 3:12 pm </p>
+			                                 </div>
+			                                 <div class="reply-btn">
+			                                    <a href="#" class="btn-reply text-uppercase">reply</a>
+			                                 </div>
+			                              </div>
+			                           </div>
+			                        </div>
+			                     </div>
+			                  </div>
+			               </div>
+			               </c:forEach>
+               
+               
+               
+               
+               <div class="comment-form">
+                  <h4>기업 리뷰</h4>
+                  <form class="form-contact comment_form" action="#" id="commentForm">
+                     <div class="row">
+                        <div class="col-12">
+                           <div class="form-group">
+                              <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9"
+                                 placeholder="Write Comment" ></textarea>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <button type="submit" class="button button-contactForm btn_1 boxed-btn" onClick="insertComment()">Send Message</button>
+                     </div>
+                  </form>
+               </div>
 
                     </div>
                     <!-- Right Content -->
@@ -123,12 +179,15 @@
                                 <li>Web : <span> colorlib.com</span></li>
                                 <li>Email: <span>carrier.colorlib@gmail.com</span></li>
                             </ul>
+                            
+                            
                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- job post company End -->
+       
 <script type="text/javascript">
 
 
@@ -180,4 +239,74 @@
 		btn.innerText = '지원완료';
 		btn2.append(aBtn);
 	}
+	
+	
+	
+	
+	
+	// 댓글 INSERT
+	
+	function insertComment(){
+		event.preventdefault()
+		var memberNum = "<c:out value = '${memberNum}'/>";
+		var cv = comment.value
+		
+		var xhtp = new XMLHttpRequest();
+		xhtp.open('post', 'jobOpeningComment.do')
+		xhtp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhtp.send('commentContent='+cv+'&jobOpeningNum='+jobOpNum+'&memberNum='+memberNum);
+		xhtp.onload = function() {
+			var result = xhtp.responseText;
+			result = JSON.parse(result);
+			var desc = document.querySelector('.desc');
+			var p = document.createElement('p');
+			p.innerText = result.commentContent;
+			desc.append(p);
+			
+			var commentName = document.getElementById('commentName');
+			var aTag = document.createElement('a');
+			aTag.setAttribute('href', '');
+			aTag.innerText = result.memberId;
+			commentName.append(aTag);
+			
+			var sysdate = document.querySelector('.d-flex align-items-center');
+			var sp = document.createElement('p');
+			sp.innerText = result.commentDate;
+			sysdate.append(sp);
+			
+		}
+	}
+	
+	
+	//댓글 SELECT
+	
+	var xhtp = new XMLHttpRequest();
+	xhtp.open('post', 'jobOpeningComment.do')
+	xhtp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhtp.send('commentContent='+cv+'&jobOpeningNum='+jobOpNum+'&memberNum='+memberNum);
+	xhtp.onload = function() {
+		var result = xhtp.responseText;
+		result = JSON.parse(result);
+		var desc = document.querySelector('.desc');
+		var p = document.createElement('p');
+		p.innerText = result.commentContent;
+		desc.append(p);
+		
+		var commentName = document.getElementById('commentName');
+		var aTag = document.createElement('a');
+		aTag.setAttribute('href', '');
+		aTag.innerText = result.memberId;
+		commentName.append(aTag);
+		
+		var sysdate = document.querySelector('.d-flex align-items-center');
+		var sp = document.createElement('p');
+		sp.innerText = result.commentDate;
+		sysdate.append(sp);
+		
+	}
+	
+	
+	
+	
+	
 </script>

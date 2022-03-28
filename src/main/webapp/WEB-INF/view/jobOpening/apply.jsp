@@ -71,11 +71,11 @@ textarea:focus, input:focus {
     <h1>${jobOpening.companyName } / ${jobOpening.jobGroup }</h1>
     	<input type="hidden" id="jobOpeningNum" name="jobOpeningNum" value="${jobOpening.jobOpeningNum }">
     <label>
-      <span>Your Id</span><input id="memberId" type="text" name="memberId" />
+      <span>Your Id</span><input id="memberId" type="text" name="memberId" value="${memberId}" readonly/>
     </label>
 
     <label>
-      <span>Email Address</span><input id="memberEmail" type="text" name="memberEmail" />
+      <span>Email Address</span><input id="memberEmail" type="text" name="memberEmail" value="${memberEmail}" readonly/>
     </label>
 
     <label>
