@@ -19,8 +19,9 @@
 			<div>
 				<table border="1" id="contents">
 					<thead>
-						<tr>
-							<th width="75">선 택</th>
+						<tr align="center">
+							<th width="100"><input type="checkbox" name="deleteSel"
+										id="deleteSel" onclick="selectAll(this)">전체선택</th>
 							<th width="150">발신자</th>
 							<th width="300">제 목</th>
 							<th width="150">발신일</th>
@@ -49,8 +50,7 @@
 			</div>
 			<br>
 
-			<div>
-				<button type="button" onclick="selectAll(this)">전체 선택</button>
+			<div>				
 				<button type="button" onclick="notesDelete">삭 제</button>
 				<button type="button" onclick="location.href='notesInsertForm.do'">쪽지
 					쓰기</button>
@@ -60,14 +60,19 @@
 	</div>
 
 	<script>
-	function selectAll(){
-		
+	function selectAll(selectAll){
+		const check = document.getElementsByName('deleteSel');
+		check.forEach((checkbox) => {
+			checkbox.checked = selectAll.checked;
+		})
 	}
 	function notesContents(n){
-		
+		frm.no.value = n;
+		frm.action = "noteViewForm.do";
+		frm.submit();
 	}
 	function notesDelete(){
-		if($.('deleteSel:checked').length == null){
+		if($('deleteSel:checked').length == null){
 			alert("삭제할 쪽지를 체크해주세요!");
 		}else{
 		$.ajax({

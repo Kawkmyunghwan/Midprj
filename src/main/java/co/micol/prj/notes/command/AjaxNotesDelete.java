@@ -33,12 +33,8 @@ public class AjaxNotesDelete implements Command {
 			vo.setNo(del2[i]);
 			dao.notesDelete(vo);
 		}
-		
-		MemberVO memberVo = new MemberVO();
-		memberVo.setMemberId("sem");		
-		//mVo.setMemberId((String)session.getAttribute("memberId"));
-		String recvId = memberVo.getMemberId();
-		vo.setRecvId(recvId);
+						
+		vo.setRecvId((String)session.getAttribute("memberId"));
 		
 		List<NotesVO> list = dao.notesSelectList(vo);
 		String data = null;

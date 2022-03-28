@@ -22,19 +22,20 @@ public class NotesServiceImpl implements NotesService {
 	@Override
 	public int notesDelete(NotesVO vo) {
 		// TODO Auto-generated method stub
-		return notesDelete(vo);
+		return map.notesDelete(vo);
 	}
 
 	@Override
 	public int notesSent(NotesVO vo) {
 		// TODO Auto-generated method stub
-		return notesSent(vo);
+		return map.notesSent(vo);
 	}
 
+		
 	@Override
-	public int noteView(NotesVO vo) {
+	public NotesVO notesSelect(NotesVO vo) {
 		// TODO Auto-generated method stub
-		return noteView(vo);
+		return map.notesSelect(vo);
 	}
 	
 
