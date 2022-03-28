@@ -35,21 +35,26 @@
 				</table>
 				<br/>
 				
-				<table border="1">
-					<tr>
-						<th width="100">답변</th>
-						<td width="746">
-							<pre>${contact.infoAnswerContent}</pre>
-						</td>
-					</tr>
+				<div class="row">
+					<div class="card-body">		
+					<table border="1">
+						<tr>
+							<th width="100">답변</th>
+							<td width="746">
+								<pre>${contact.isAnswer}</pre>
+							</td>
+						</tr>
+						
+					</table>
+					</div>
 					
-				</table>
-			
-				<input type="hidden" id="infoNum" name="infoNum"
-					value="${contact.infoNum}">
-			</div>
+					
+
+				</div>	
+					
+				<input type="hidden" id="infoNum" name="infoNum" value="${contact.infoNum}">
 			<br>
-		
+	
 		</div>
 		<div align="center">
 			<button type="button" onclick="location.href = 'inquiryForm.do'">목록가기</button>
@@ -58,9 +63,10 @@
 			<button type="submit">수정</button>
 			&nbsp;&nbsp;
 			<button type="button" onclick="contentsDelete()">삭제</button>
-			&nbsp;&nbsp;
-			<button type="button" onclick="review.do()">댓글작성</button>
+
 		</div>
+	</div>
+		
 	</form>
 
 </body>

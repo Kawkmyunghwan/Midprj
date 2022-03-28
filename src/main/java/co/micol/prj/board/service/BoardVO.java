@@ -20,4 +20,6 @@ public class BoardVO {
 	private Date boardDate;
 	private String boardContents;
 	private int boardHit;
+	
+	
 }

@@ -7,8 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 <div align="center">
 	<div><h1>게시글 작성</h1></div>
+	
 	<div>
 		<form id="frm" action="inquiryInsert.do" method="post">
 			<div>
@@ -16,7 +18,8 @@
 					<tr>
 						<th width="100">작성자</th>
 						<td width="150">
-							<input type="text" id="infoWriter" name="infoWriter" required="required">
+							${memberName}
+							<input type="hidden" id="infoWriter" name="infoWriter" required="required" value="${memberName}">
 						</td>
 						<th width="100">작성일자</th>
 						<td width="150">
