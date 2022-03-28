@@ -22,15 +22,15 @@ public class MemberLogin implements Command {
 			
 		vo.setMemberId(request.getParameter("memberId"));
 		vo.setMemberPassword(request.getParameter("memberPassword"));
+		
 		vo = memberDao.selectMember(vo);
-		
-		
 		
 		
 		if(vo.getMemberId() != null) {
 			//여기서 세션 처리하고
 			session.setAttribute("memberId", vo.getMemberId());
 			session.setAttribute("memberNum", vo.getMemberNum());
+			session.setAttribute("memberName", vo.getMemberName());
 						
 			return "home.do";
 		}else {
