@@ -31,7 +31,7 @@ public class MemberLogin implements Command {
 			//여기서 세션 처리하고
 			session.setAttribute("memberId", vo.getMemberId());
 			session.setAttribute("memberNum", vo.getMemberNum());
-						
+
 			return "home.do";
 		}else {
 			request.setAttribute("message", "아이디 또는 패스워드가 일치하지 않습니다.");

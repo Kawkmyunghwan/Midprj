@@ -56,10 +56,12 @@
 						<td colspan="4" class="commentContent">${c.commentsContent }</td>
 					</tr>
 				</table>
+				<c:if test="${c.memberId == memberId }">
 				<button type="button" onclick='updateBtnVisible(${c.commentsNum })'>수정</button>
 				<button type="button" onclick="commentsDelete(${c.commentsNum})">삭제</button>
 				<input type="hidden" id="boardNum" name="boardNum" value=${boarders.boardNum }>
 				<input type="hidden" id="commentsNum" name="commentsNum" value="">
+				</c:if>
 				<br>
 		</c:forEach>
 	</div>

@@ -65,12 +65,6 @@ public class FrontController extends HttpServlet {
 		map.put("/ajaxMemberIdCheck.do", new AjaxMemberIdCheck()); // ajax로 아이디 중복체크
 		map.put("/memberJoinForm.do", new MemberJoinForm()); // 회원가입 폼 호출
 		map.put("/memberJoin.do", new MemberJoin());
-		map.put("/borderList.do", new BoardList()); // 게시글 목록
-		map.put("/borderInsertForm.do", new BoardInsertForm()); // 게시글 작성폼 호출
-		map.put("/borderInsert.do", new BoardInsert()); // 게시글 등록
-		map.put("/borderView.do", new BoardView());
-		map.put("/ajaxBorderSearch.do", new AjaxBoardSearch()); // 게시글 리스트에서 검색
-		map.put("/ajaxSortBorder.do", new AjaxSortBoard()); // 게시글 정렬
 		map.put("/sample.do", new Sample());
 
 		map.put("/hotSearch.do", new HotSearch());
