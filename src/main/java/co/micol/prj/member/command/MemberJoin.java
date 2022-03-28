@@ -11,7 +11,7 @@ import co.micol.prj.member.serviceImpl.MemberServiceImpl;
 
 
 
-public class MemberLogin implements Command {
+public class MemberJoin implements Command {
 
    @Override
    public String exec(HttpServletRequest request, HttpServletResponse response) {
@@ -24,8 +24,7 @@ public class MemberLogin implements Command {
       vo.setMemberPassword(request.getParameter("memberPassword"));
       vo = memberDao.selectMember(vo);
       
-      
-      
+       
       
       if(vo.getMemberId() != null) {
          //여기서 세션 처리하고
