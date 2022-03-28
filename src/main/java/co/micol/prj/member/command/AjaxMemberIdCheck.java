@@ -7,6 +7,7 @@ import co.micol.prj.common.Command;
 import co.micol.prj.member.service.MemberService;
 import co.micol.prj.member.serviceImpl.MemberServiceImpl;
 
+
 public class AjaxMemberIdCheck implements Command {
 
 	@Override

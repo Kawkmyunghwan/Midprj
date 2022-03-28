@@ -13,7 +13,18 @@
 	
 	<select id="selectJobOpeningListByZzim"
 		resultType="co.micol.prj.jobOpening.service.JobOpeningVO">
-		SELECT * FROM JOBOPENING ORDER BY JOBOPENINGZZIM DESC
+		SELECT  J.JOBOPENINGNUM, J.COMPANYNAME, J.SALARY, J.COMPANYADDRESS, J.COMPANYIMAGE, COUNT(J.JOBOPENINGNUM) AS COUNT
+		FROM   JOBOPENING J JOIN ZZIM Z
+		ON J.JOBOPENINGNUM = Z.JOBOPENINGNUM
+		WHERE 1=1
+		GROUP BY J.JOBOPENINGNUM, J.COMPANYNAME, J.SALARY, J.COMPANYADDRESS, J.COMPANYIMAGE
+		ORDER BY COUNT DESC
+	</select>
+	
+	<select id="selectJobOpeningByNum" 
+		parameterType="co.micol.prj.jobOpening.service.JobOpeningVO"	
+		resultType="co.micol.prj.jobOpening.service.JobOpeningVO">
+		SELECT * FROM JOBOPENING WHERE JOBOPENINGNUM = #{jobOpeningNum}
 	</select>
 	
 </mapper>

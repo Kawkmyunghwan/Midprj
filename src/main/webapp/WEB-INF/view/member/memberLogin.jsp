@@ -7,30 +7,29 @@
                 <div class="col-lg-6 offset-lg-3">
                     <div class="login-form">
                         <h2>Login</h2>
-                        <form action="login.do" method="POST">
+                        <form action="memberLogin.do" method="POST">
                             <div class="group-input">
-                                <label for="username">Username or email address *</label>
+                                <label for="username">Username *</label>
                                 <input type="text" id="memberId" name="memberId">
                             </div>
                             <div class="group-input">
                                 <label for="pass">Password *</label>
-                                <input type="text" id="memberPassword" name="memberPassword">
+                                <input type="password" id="memberPassword" name="memberPassword">
                             </div>
                             <div class="group-input gi-check">
                                 <div class="gi-more">
-                                    <label for="save-pass">
-                                        Save Password
-                                        <input type="checkbox" id="save-pass">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <a href="#" class="forget-pass">Forget your Password</a>
+                                    
+                                       
                                 </div>
                             </div>
-                            <button type="submit" class="site-btn login-btn">Sign In</button>
-                        </form>
-                        <div class="switch-login">
-                            <a href="registerForm.do" class="or-login">Or Create An Account</a>
-                        </div>
+                            <button class="btn head-btn1">Sign In</button>
+                            <a href="naverLogin.do" id="naverIdLogin_loginButton" class="btn head-btn2">
+                                 <span>네이버 로그인</span>
+                              </a>
+                              <a href="naverLogin.do" id="naverIdLogin_loginButton" class="btn head-btn2">
+                                 <span>카카오 로그인</span>
+                              </a>
+                        </form>                       
                     </div>
                 </div>
             </div>

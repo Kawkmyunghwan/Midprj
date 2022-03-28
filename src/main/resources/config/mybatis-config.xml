@@ -22,8 +22,13 @@
 		</environment>
 	</environments>
 	<mappers>
-		<mapper resource="co/micol/prj/member/service/member-map.xml" />
+		<mapper resource="co/micol/prj/member/service/member-map.xml" />		
+		<mapper resource="co/micol/prj/jobOpening/service/jobOpening-map.xml"/>				
+		<mapper resource="co/micol/prj/notes/service/notes-map.xml"/>
+		<mapper resource="co/micol/prj/contact/service/contact-map.xml" />
+		<mapper resource="co/micol/prj/zzim/service/zzim-map.xml"/>	
+		<mapper resource="co/micol/prj/apply/service/apply-map.xml"/>
 		<mapper resource="co/micol/prj/board/service/board-map.xml"/>
-		<mapper resource="co/micol/prj/jobOpening/service/jobOpening-map.xml"/>
+		<mapper resource="co/micol/prj/comments/service/comments-map.xml"/>	
 	</mappers>
 </configuration>

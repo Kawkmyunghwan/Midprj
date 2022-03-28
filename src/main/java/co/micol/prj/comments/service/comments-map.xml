@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.micol.prj.comments.service.CommentsMapper">
+	<resultMap type="co.micol.prj.comments.service.CommentsVO"
+		id="commentsMap">
+		<id property="commentsNum" column="commentsnum" />
+		<id property="boardNum" column="boardnum" />
+		<id property="memberId" column="memberid" />
+		<id property="commentsContent" column="commentscontent" />
+	</resultMap>
+
+	<select id="commentsSelectList" parameterType="int"
+		resultMap="commentsMap">
+		SELECT * FROM COMMENTS WHERE BOARDNUM = #{boardNum}
+	</select>
+
+	<insert id="commentsInsert"
+		parameterType="co.micol.prj.comments.service.CommentsVO">
+		<selectKey keyProperty="commentsNum" resultType="int"
+			order="BEFORE">
+			SELECT CASE WHEN MAX(COMMENTSNUM) IS NULL THEN 1 ELSE
+			MAX(COMMENTSNUM)+1 END AS COMMENTSNUM FROM COMMENTS
+		</selectKey>
+		INSERT INTO COMMENTS
+		VALUES(#{commentsNum}, #{boardNum}, #{memberId},
+		SYSDATE ,#{commentsContent})
+	</insert>
+
+	<update id="commentsUpdate" parameterType="co.micol.prj.comments.service.CommentsVO">
+		UPDATE COMMENTS SET
+		COMMENTSCONTENT = #{commentsContent} WHERE COMMENTSNUM = #{commentsNum}
+	</update>
+	
+	<delete id="commentsDelete" parameterType="co.micol.prj.comments.service.CommentsVO">
+		DELETE FROM COMMENTS WHERE COMMENTSNUM = #{commentsNum} 
+	</delete>
+</mapper>

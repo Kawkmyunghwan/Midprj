@@ -10,11 +10,10 @@
 
 </head>
 <body>
-<div align="center">
-	<div><h1>커뮤니티 목록</h1></div>
+<div class="container" style="max-width:850px;" align="left">
+	<div><h1>커뮤니티 게시글 목록</h1></div>
 	<form id="frm" method="post">
-	
-	<div style="padding:100px 0px 100px 0px">			
+			
 		<table border="1" id="contents">
 			<thead>
 				<tr align="center">
@@ -35,7 +34,7 @@
 					<c:forEach items="${boarders }" var="b">
 						<tr onmouseover='this.style.background="#fcecae";' 
 							onmouseleave='this.style.background="#FFFFFF";'
-							onclick="borderContents(${b.boardNum})">
+							onclick="boardContents(${b.boardNum})">
 							<td>${b.boardNum }</td>
 							<td>${b.boardWriter }</td>
 							<td>${b.boardName }</td>
@@ -49,21 +48,24 @@
 	
 		
 		
-		<div align="right" style="padding:10px 541px 0px 0px">
-		<span style="padding-right:380px"><button class="genric-btn primary small" type="button" onclick="location.href='boardInsertForm.do'">글쓰기</button></span>
-		<select id="searchKey">
-			<option value="1">전체</option>
-			<option value="2">작성자</option>
-			<option value="3">제목</option>
-			<option value="4">내용</option>
-		</select>
-		<span>
-			<input type="text" id="searchVal">&nbsp;
-			<input type="button" onclick="searchList()" value="검색">
-		</span>
-		</div>
-	</div><br>
-	
+		<div class="row">
+				<div class="col-md-6">
+					<button class="genric-btn primary small" style="float: left; height: 38px;" type="button" onclick="location.href='boardInsertForm.do'">글쓰기</button>
+				</div>
+
+				<div class="col-md-6 mb-2" align="right">
+					<div class="input-group">
+						<select class="form-control" id="searchKey">
+							<option value="1">전체</option>
+							<option value="2">작성자</option>
+							<option value="3">제목</option>
+							<option value="4">내용</option>
+						</select> 
+						<input class="form-control form-control me-3" style="width:150px;" type="text" id="searchVal" placeholder="검색어를 입력하세요." aria-label=".form-control-sm example"> 
+						<input class="genric-btn primary small" type="button" onclick="searchList()" value="검색">
+					</div>
+				</div>
+			</div>
 		<input type="hidden" id="boardNum" name="boardNum">
 	</form>
 </div>
@@ -104,7 +106,7 @@ function searchList(){
 			}).append(
 			$("<td align='center'/>").text(item.boardNum),		
 			$("<td align='center'/>").text(item.boardWriter),
-			$("<td />").text(item.boardTitle),
+			$("<td />").text(item.boardName),
 			$("<td align='center'/>").text(item.boardDate),
 			$("<td align='center'/>").text(item.boardHit),
 		);

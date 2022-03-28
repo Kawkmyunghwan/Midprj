@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html class="no-js" lang="zxx">
     <head>
@@ -24,6 +25,9 @@
             <link rel="stylesheet" href="assets/css/slick.css">
             <link rel="stylesheet" href="assets/css/nice-select.css">
             <link rel="stylesheet" href="assets/css/style.css">
+            
+            <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
    </head>
 
    <body>
@@ -47,8 +51,7 @@
                                 <!-- Main-menu -->
                                 <div class="main-menu">
                                     <nav class="d-none d-lg-block">
-                                        <ul id="navigation">
-                                            <li><a href="index.html">Home</a></li>
+                                        <ul id="navigation">                                           
                                             <li><a href="">HOT 100 </a>
                                             	<ul class="submenu">
                                                     <li><a href="hotSearch.do">조회수</a></li>
@@ -56,25 +59,30 @@
                                                 </ul>
                                             </li>
                                             <li><a href="about.html">About</a></li>
-                                            <li><a href="#">Page</a>
+                                            <li><a href="boardList.do">커뮤니티</a></li>
+                                            <li><a href="contact.html">Contact</a></li>
+                                            <li><a href="contactForm.do">고객센터</a>
                                                 <ul class="submenu">
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="single-blog.html">Blog Details</a></li>
-                                                    <li><a href="elements.html">Elements</a></li>
-                                                    <li><a href="job_details.html">job Details</a></li>
+                                                    <li><a href="reviewForm.do">취업후기</a></li>
+                                                    <li><a href="inquiryForm.do">문의게시판</a></li>
+                                                    <li><a href="faqForm.do">FAQ</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="contact.html">Contact</a></li>
                                         </ul>
                                     </nav>
                                 </div>          
                                 <!-- Header-btn -->
-                                <div class="header-btn d-none f-right d-lg-block">
-                                    <a href="memberJoinForm.do" class="btn head-btn1">Register</a>
-                                    <a href="memberLogin.do" class="btn head-btn2">Login</a>
-                                </div>
-                            </div>
-                        </div>
+                                <c:if test="${ memberId eq null }">
+                           <div class="header-btn d-none f-right d-lg-block">
+                              <a href="memberJoinForm.do" class="btn head-btn2">Register</a>
+                              <a href="loginPage.do" class="btn head-btn2">Login</a> 
+                              
+                           </div>
+                        </c:if>
+                        <c:if test="${ memberId ne null }">
+                           <div class="header-btn d-none f-right d-lg-block">
+                              <a href="memberLogout.do" class="btn head-btn2">Logout</a>
+                        </c:if>
                         <!-- Mobile Menu -->
                         <div class="col-12">
                             <div class="mobile_menu d-block d-lg-none"></div>

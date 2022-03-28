@@ -8,6 +8,7 @@ import co.micol.prj.member.service.MemberService;
 import co.micol.prj.member.service.MemberVO;
 import co.micol.prj.member.serviceImpl.MemberServiceImpl;
 
+
 public class MemberSearch implements Command {
 
 	@Override

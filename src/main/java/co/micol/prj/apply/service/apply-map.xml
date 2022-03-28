@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.micol.prj.apply.service.ApplyMapper">
+	
+	<insert id="ApplyInsert"
+		parameterType="co.micol.prj.apply.service.ApplyVO">
+		INSERT(MEMBERNUM, JOBOPENINGNUM) INTO APPLY 
+		VALUES(#{memberNum}, #{jobOpeningNum})
+	</insert>
+	
+	<insert id="ApplicationInsert" 
+		parameterType="co.micol.prj.apply.service.ApplyVO">
+		INSERT INTO APPLY
+		VALUES(#{memberNum}, #{jobOpeningNum}, #{memberId}, #{memberEmail}, #{title}, #{content})
+	</insert>
+	
+	<select id="ApplySelect"
+		parameterType="co.micol.prj.apply.service.ApplyVO" 
+		resultType="co.micol.prj.apply.service.ApplyVO">
+		SELECT * FROM APPLY WHERE MEMBERNUM = #{memberNum}
+	</select>
+</mapper>
