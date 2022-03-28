@@ -68,7 +68,7 @@
 	}
 	function notesDelete(){
 		if($.('deleteSel:checked').length == null){
-			alert("삭제할 쪽지를 체크해주세요.");
+			alert("삭제할 쪽지를 체크해주세요!");
 		}else{
 		$.ajax({
 			url : "ajaxNotesDelete.do"
