@@ -48,7 +48,6 @@ import co.micol.prj.myinfo.command.MyInfo;
 import co.micol.prj.myinfo.command.NotesListForm;
 import co.micol.prj.zzim.command.Zzim;
 
-
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HashMap<String, Command> map = new HashMap<String, Command>();
