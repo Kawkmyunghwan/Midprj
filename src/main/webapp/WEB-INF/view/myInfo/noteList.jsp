@@ -27,7 +27,7 @@
 						</tr>
 					</thead>
 
-					<tbody>
+					<tbody id="notesBody">
 						<c:if test="${empty notes }">
 							<tr>
 								<td colspan="5">게시글이 존재하지 않습니다.</td>
@@ -35,12 +35,12 @@
 						</c:if>
 						<c:if test="${not empty notes }">
 							<c:forEach items="${notes }" var="no">
-								<tr onclick="notesContents(${no.no})">
+								<tr>
 									<td align="center"><input type="checkbox" name="deleteSel"
 										id="deleteSel" value="${no.no }"></td>
-									<td>${no.sentId }</td>
-									<td>${no.title }</td>
-									<td>${no.dateSent }</td>
+									<td align='center'>${no.sentId }</td>
+									<td align='center' onclick="notesContents(${no.no})">${no.title }</td>
+									<td align='center'>${no.dateSent }</td>
 								</tr>
 							</c:forEach>
 						</c:if>
@@ -51,7 +51,7 @@
 
 			<div>
 				<button type="button" onclick="selectAll(this)">전체 선택</button>
-				<button type="button" onclick="">삭 제</button>
+				<button type="button" onclick="notesDelete">삭 제</button>
 				<button type="button" onclick="location.href='notesInsertForm.do'">쪽지
 					쓰기</button>
 			</div>
@@ -75,15 +75,33 @@
 			type : "post",
 			data : {"deleteSel" : deleteSel.value},
 		    dataType : "json",
-		    success : function(result){
-		    	deleteResult(result);
+		    success : function(data){
+		    	deleteResult(data);
 		    }
 		})
 	}
 	}
 	
 	function deleteResult(result){
+		var tb = $('#notesBody');
+		$("#notesBody").empty();
 		
+		$.each(result, function(index, item){
+			var html = $("<tr />").append(
+					$("<td />").attr({
+						'align' : 'center'
+						'type' : 'checkbox',
+						'name' : 'deleteSel',
+						'id' : 'deleteSel',
+						value : 'notesConetents('+ item.no +')'
+					}),
+					$("<td align='center'/>").text(item.sentId),
+					$("<td align='center' onclick='notesContents(${no.no})'/>").text(item.title),
+					$("<td align='center'/>").text(item.dateSent)
+					);
+			tb.append(html);
+		});
+		$("#contents").append(tb);
 	} 
 	</script>
 </body>
