@@ -15,8 +15,8 @@ public class CommentsServiceImpl implements CommentsService {
 	private CommentsMapper map = sqlSession.getMapper(CommentsMapper.class);
 	
 	@Override
-	public List<CommentsVO> commentsSelectList() {
-		return map.commentsSelectList();
+	public List<CommentsVO> commentsSelectList(int boardNum) {
+		return map.commentsSelectList(boardNum);
 	}
 
 	@Override
