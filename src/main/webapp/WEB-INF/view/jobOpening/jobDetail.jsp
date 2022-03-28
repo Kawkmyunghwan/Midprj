@@ -97,13 +97,11 @@
                               <li>회사 홈페이지 :<span><a href="http://www.naver.com" style="color: black">${jobOpening.homepage }</a></span></li>                         
                           </ul>
                          <div class="apply-btn2" id="btn2">
-                            <a href="" onclick='windowFnc(${jobOpening.jobOpeningNum});' id="a" class="btn">Apply Now</a>                                                                                                           
+                         	<button type="button" class="btn btn-primary" onclick="windowFnc(${jobOpening.jobOpeningNum})">Apply Now</button>            
                             <a href="" onclick='formFnc(${jobOpening.jobOpeningNum})' id="btn" class="btn">♡</a>                                                                                                
                          </div>
                        </div>
-                       
-                       
-                       
+                                                                                            
                        <form action="zzim.do" method="get" name="quickFrm">
                        		<input type="hidden" name="jobOpeningNum">
                        </form>
@@ -132,6 +130,8 @@
         </div>
         <!-- job post company End -->
 <script type="text/javascript">
+
+
 	function formFnc(jobOpening_num) {
 	    event.preventDefault();
 	    quickFrm.jobOpeningNum.value=jobOpening_num;
@@ -139,11 +139,8 @@
 	    }
 	
 	function windowFnc(jobOpening_num){
-		event.preventDefault();
-		quickFrm1.jobOpeningNum.value=jobOpening_num;
-		quickFrm1.submit();
-		var popUrl = 'notilesApply.do';
-		var popOption = 'width=800,height=1000,location=no,status=no,scrollbars=yes'
+		var popUrl = 'notilesApply.do?jobOpeningNum='+jobOpening_num+'';
+		var popOption = 'width=800, height=1000, location=no,status=no,scrollbars=yes'
 		window.open(popUrl, popOption)
 		
 	}
@@ -168,5 +165,8 @@
 //	찜 목록에 추가한 구인공고가 아니면 비어있는 하트, 찜 목록에 추가했으면 빨간색 하트가 뜨게 함..
 //	비어있는 a 태그 속성에는 찜 테이블에서 삭제시키는 기능 만들 예정.(빨간색 하트일때 클릭하면 찜 테이블에서 삭제되게 끔)
 //-----------------------------------------------------------------
-	
+	$('#exampleModal').on('shown.bs.modal', function () {
+		
+  		$('#exampleModal').trigger('focus')
+	})
 </script>
