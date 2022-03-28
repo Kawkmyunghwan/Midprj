@@ -97,6 +97,18 @@
                               <li>회사 홈페이지 :<span><a href="http://www.naver.com" style="color: black">${jobOpening.homepage }</a></span></li>                         
                           </ul>
                          <div class="apply-btn2" id="btn2">
+                         <c:choose>
+							    <c:when test="${name eq '홍길동'}">
+							        홍길동이 맞습니다.
+							    </c:when>																					
+							    <c:when test="${name eq '철수'}">
+							        홍길동이 아닙니다.
+							    </c:when>																					
+							    <c:otherwise>
+							        사람이 없습니다 ㅜㅜ
+							    </c:otherwise>												
+						</c:choose>
+
                          	<button type="button" class="btn btn-primary" onclick="windowFnc(${jobOpening.jobOpeningNum})">Apply Now</button>            
                             <a href="" onclick='formFnc(${jobOpening.jobOpeningNum})' id="btn" class="btn">♡</a>                                                                                                
                          </div>
@@ -140,7 +152,7 @@
 	
 	function windowFnc(jobOpening_num){
 		var popUrl = 'notilesApply.do?jobOpeningNum='+jobOpening_num+'';
-		var popOption = 'width=800, height=1000, location=no,status=no,scrollbars=yes'
+		var popOption = 'width=800, height=1000, location=no, status=no, scrollbars=yes'
 		window.open(popUrl, popOption)
 		
 	}

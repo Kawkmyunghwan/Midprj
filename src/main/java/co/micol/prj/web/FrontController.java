@@ -2,6 +2,7 @@ package co.micol.prj.web;
 
 import java.io.IOException;
 import java.util.HashMap;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -19,6 +20,9 @@ import co.micol.prj.board.command.BoardInsertForm;
 import co.micol.prj.board.command.BoardList;
 import co.micol.prj.board.command.BoardUpdate;
 import co.micol.prj.board.command.BoardView;
+import co.micol.prj.comments.command.CommentsDelete;
+import co.micol.prj.comments.command.CommentsInsert;
+import co.micol.prj.comments.command.CommentsUpdate;
 import co.micol.prj.common.Command;
 import co.micol.prj.contact.comm.AjaxSortContact;
 import co.micol.prj.contact.comm.AjaxcontactSearch;
@@ -120,7 +124,10 @@ public class FrontController extends HttpServlet {
 		map.put("/boardView.do", new BoardView());
 		map.put("/ajaxBoardSearch.do", new AjaxBoardSearch()); // 게시글 리스트에서 검색
 		map.put("/ajaxSortBoard.do", new AjaxSortBoard()); // 게시글 정렬
-
+		
+		map.put("/commentsInsert.do", new CommentsInsert());
+	    map.put("/commentsUpdate.do", new CommentsUpdate()); //댓글 수정
+	    map.put("/commentsDelete.do", new CommentsDelete()); //댓글 삭제
 		
 
 	}
