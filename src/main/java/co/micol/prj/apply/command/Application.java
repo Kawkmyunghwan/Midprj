@@ -24,9 +24,8 @@ public class Application implements Command {
 		
 		ApplyService dao = new ApplyServiceImpl();
 		dao.ApplicationInsert(vo);
-//		--------------------------------------------------
-		
-		return "home.do";
+
+		return "jobDetail.do";
 	}
 
 }

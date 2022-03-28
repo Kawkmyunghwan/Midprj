@@ -14,5 +14,9 @@
 		VALUES(#{memberNum}, #{jobOpeningNum}, #{memberId}, #{memberEmail}, #{title}, #{content})
 	</insert>
 	
-	<select id=""></select>
+	<select id="ApplySelect"
+		parameterType="co.micol.prj.apply.service.ApplyVO" 
+		resultType="co.micol.prj.apply.service.ApplyVO">
+		SELECT * FROM APPLY WHERE MEMBERNUM = #{memberNum}
+	</select>
 </mapper>

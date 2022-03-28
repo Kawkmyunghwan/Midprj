@@ -50,8 +50,7 @@
                                 <!-- Main-menu -->
                                 <div class="main-menu">
                                     <nav class="d-none d-lg-block">
-                                        <ul id="navigation">
-                                            <li><a href="index.html">Home</a></li>
+                                        <ul id="navigation">                                           
                                             <li><a href="">HOT 100 </a>
                                             	<ul class="submenu">
                                                     <li><a href="hotSearch.do">조회수</a></li>
