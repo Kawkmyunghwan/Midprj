@@ -17,6 +17,7 @@ public class InquiryView implements Command {
 		vo.setInfoNum(Integer.parseInt(request.getParameter("infoNum")));
 		request.setAttribute("contact", contactDao.contactSelect(vo));
 		contactDao.contactUpdateHit(vo.getInfoNum()); //조회수증가
+		System.out.println(vo.getInfoAnswerContent());
 		return "contact/contactView";
 	}
 

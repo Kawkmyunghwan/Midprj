@@ -31,12 +31,25 @@
 							<textarea rows="10" id="infoAnswerContent" name="infoAnswerContent" cols="80">${contact.infoAnswerContent}</textarea>
 						</td>
 					</tr>
+					
 				</table>
+				<br/>
+				
+				<table border="1">
+					<tr>
+						<th width="100">답변</th>
+						<td width="746">
+							<pre>${contact.infoAnswerContent}</pre>
+						</td>
+					</tr>
+					
+				</table>
+			
 				<input type="hidden" id="infoNum" name="infoNum"
 					value="${contact.infoNum}">
 			</div>
 			<br>
-
+		
 		</div>
 		<div align="center">
 			<button type="button" onclick="location.href = 'inquiryForm.do'">목록가기</button>
@@ -46,8 +59,10 @@
 			&nbsp;&nbsp;
 			<button type="button" onclick="contentsDelete()">삭제</button>
 			&nbsp;&nbsp;
+			<button type="button" onclick="review.do()">댓글작성</button>
 		</div>
 	</form>
+
 </body>
 <script type="text/javascript">
 	function contentsDelete(){
@@ -55,5 +70,6 @@
 			location.href = 'inquiryDelete.do?infoNum=${contact.infoNum}';	
 		}
 	}
+	
 </script>
 </html>
