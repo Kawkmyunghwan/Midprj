@@ -2,15 +2,12 @@ package co.micol.prj.web;
 
 import java.io.IOException;
 import java.util.HashMap;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import co.micol.prj.apply.command.Application;
 import co.micol.prj.apply.command.NotilesApply;
 import co.micol.prj.board.command.AjaxBoardSearch;
 import co.micol.prj.board.command.AjaxSortBoard;
@@ -20,9 +17,6 @@ import co.micol.prj.board.command.BoardInsertForm;
 import co.micol.prj.board.command.BoardList;
 import co.micol.prj.board.command.BoardUpdate;
 import co.micol.prj.board.command.BoardView;
-import co.micol.prj.comments.command.CommentsDelete;
-import co.micol.prj.comments.command.CommentsInsert;
-import co.micol.prj.comments.command.CommentsUpdate;
 import co.micol.prj.common.Command;
 import co.micol.prj.contact.comm.AjaxSortContact;
 import co.micol.prj.contact.comm.AjaxcontactSearch;
@@ -62,6 +56,8 @@ import co.micol.prj.notes.command.AjaxNotesDelete;
 import co.micol.prj.notes.command.NoteInsert;
 import co.micol.prj.notes.command.NoteViewForm;
 import co.micol.prj.notes.command.NotesInsertForm;
+import co.micol.prj.notes.command.NotesSentListForm;
+
 import co.micol.prj.zzim.command.Zzim;
 
 
@@ -124,7 +120,9 @@ public class FrontController extends HttpServlet {
 		map.put("/memberUpdate.do", new MemberUpdate()); // 내 정보 수정
 		map.put("/memberDelete.do", new MemberDelete()); // 회원 탈퇴
 		map.put("/notesListForm.do", new NotesListForm()); // 쪽지함 폼
+		map.put("/notesSentListForm.do", new NotesSentListForm()); // 보낸 쪽지함 폼
 		map.put("/ajaxNotesDelete.do", new AjaxNotesDelete()); // 쪽지 삭제
+
 		map.put("/ajaxNotesDelete.do", new AjaxNotesDelete()); // 쪽지 삭제
 		map.put("/noteViewForm.do", new NoteViewForm()); // 쪽지 내용 폼
 		map.put("/notesInsertForm.do", new NotesInsertForm()); // 쪽지 쓰기 폼
@@ -139,11 +137,13 @@ public class FrontController extends HttpServlet {
 		map.put("/boardView.do", new BoardView());
 		map.put("/ajaxBoardSearch.do", new AjaxBoardSearch()); // 게시글 리스트에서 검색
 		map.put("/ajaxSortBoard.do", new AjaxSortBoard()); // 게시글 정렬
+
 		map.put("/reviewInsert.do", new ReviewInsert());
 		
 		map.put("/commentsInsert.do", new CommentsInsert());
 		map.put("/commentsUpdate.do", new CommentsUpdate()); //댓글 수정
 		map.put("/commentsDelete.do", new CommentsDelete()); //댓글 삭제
+
 		
 
 	  	map.put("/memberLogout.do", new MemberLogout());   //로그아웃

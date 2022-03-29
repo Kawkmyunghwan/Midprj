@@ -43,10 +43,4 @@ public class ApplyServiceImpl implements ApplyService {
 		return map.ApplyDelete(vo);
 	}
 
-	@Override
-	public int ApplicationInsert(ApplyVO vo) {
-		// TODO Auto-generated method stub
-		return map.ApplicationInsert(vo);
-	}
-
 }

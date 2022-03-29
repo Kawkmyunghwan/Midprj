@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 @Getter
 public class NotesVO {
-private int no;
+private String no;
 private String recvId;
 private String sentId;
 private String title;

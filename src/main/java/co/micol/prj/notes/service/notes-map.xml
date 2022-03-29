@@ -18,6 +18,12 @@
 		<!-- <select id="notesSelectList" resultType="co.micol.prj.notes.service.NotesVO"> -->
 		SELECT * FROM notes WHERE recvId = #{recvId} ORDER BY no DESC
 	</select>
+	
+	<select id="notesSentList"
+		parameterType="co.micol.prj.notes.service.NotesVO"
+		resultMap="notesMap">
+		SELECT * FROM notes WHERE sentId = #{sentId} ORDER BY no DESC
+		</select>
 
 	<select id="notesSelect"
 		parameterType="co.micol.prj.notes.service.NotesVO"
@@ -29,7 +35,7 @@
 		parameterType="co.micol.prj.notes.service.NotesVO">
 		INSERT INTO notes (no, recvid, sentid, title, note, dateSent)
 		VALUES(no_seq.nextval, #{recvId}, #{sentId}, #{title}, #{note},
-		sysdate);
+		sysdate)
 	</insert>
 
 	<delete id="notesDelete"
