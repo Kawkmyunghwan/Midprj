@@ -60,7 +60,7 @@
 	var fav3 = document.getElementById("fav3");
 
 	var fav = '${fav}';
-	fav = fav.split(", ");
+	fav = fav.split(",");
 
 	console.log(fav[1]);
 	for(let i=0;i<fav.length;i++){
