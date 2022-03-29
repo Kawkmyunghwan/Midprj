@@ -20,9 +20,9 @@
 				<div class="row">
 					<div class="col-xl-8">
 						<!-- form -->
-						<form action="#" class="search-box">
+						<form action="Jsearch.do" class="search-box">
 							<div class="input-form">
-								<input type="text" placeholder="Job Tittle or keyword">
+								<input type="text" name="Jsearch" placeholder="Job Tittle or keyword">
 							</div>
 							<div class="select-form">
 								<div class="select-itms">
@@ -35,7 +35,7 @@
 								</div>
 							</div>
 							<div class="search-form">
-								<a href="myInfo.do">Find job</a>								
+								<button type="submit">Find job</button>								
 							</div>
 						</form>
 					</div>
