@@ -199,6 +199,7 @@
 		var popUrl = 'notilesApply.do?jobOpeningNum='+jobOpening_num+'';
 		var popOption = 'left=600, width=600, height=650, location=no, status=no, scrollbars=yes'
 		window.open(popUrl, "name", popOption);	
+		
 	}
 		
 // -----------------------------------------------------------------	
@@ -312,11 +313,17 @@
 			date.innerText = result[result.length-1].commentTime;
 			dFlex2.append(date);
 			
+			var infoA = document.createElement('a');
+			infoA.setAttribute('href', '#');
+			infoA.setAttribute('class', 'genric-btn info');
+			infoA.style.styleFloat = 'right';
+			infoA.innerText = '삭제'
+			dFlex2.append(infoA);
+			
 		}
 	}			
 	
-	
-	//댓글 SELECT
+		
 	var xhtp = new XMLHttpRequest();
 		xhtp.open('post', 'AjaxJobOpeningCommentSel.do')		
 		xhtp.send();
@@ -324,64 +331,72 @@
 			var result = xhtp.responseText;			
 			result = JSON.parse(result);
 			console.log(result);
+			
 			for(let i=0; i<result.length; i++){
-				var commentList = document.createElement('div');
-				commentList.setAttribute('class', 'comment-list');
-				
-				var commentArea = document.querySelector('.comments-area');
-				commentArea.append(commentList);
-				
-				var singleComment = document.createElement('div');
-				singleComment.setAttribute('class', 'single-comment justify-content-between d-flex');
-				commentList.append(singleComment);
-				
-				var userJustify = document.createElement('div');
-				userJustify.setAttribute('class', 'user justify-content-between d-flex')
-				singleComment.append(userJustify);
-				
-				var thumb = document.createElement('div');
-				thumb.setAttribute('class', 'thumb');
-				userJustify.append(thumb);
-				
-				var img = document.createElement('img');
-				img.setAttribute('src', "assets/img/comment/comment_1.png");
-				img.setAttribute('alt', "");
-				thumb.append(img);
-				
-				var desc = document.createElement('div');
-				desc.setAttribute('class', 'desc');
-				userJustify.append(desc);
-				
-				var p = document.createElement('p');
-				p.innerText = result[i].commentContent;
-				desc.append(p);
-				
-				var dFlex = document.createElement('div');
-				dFlex.setAttribute('class', 'd-flex justify-content-between')
-				desc.append(dFlex);
-				
-				var dFlex2 = document.createElement('div');
-				dFlex2.setAttribute('class', 'd-flex align-items-center');
-				dFlex.append(dFlex2);
-				
-				var h5 = document.createElement('h5');
-				dFlex2.append(h5);
-				
-				var a = document.createElement('a');
-				a.setAttribute('href', '#')
-				a.innerText = result[i].memberName;
-				h5.append(a);
-				
-				var date = document.createElement('p');
-				date.setAttribute('class', 'date');
-				date.innerText = result[i].commentTime;
-				dFlex2.append(date);
+				if(jobOpNumComment[i] == jobOpNum){
+					var commentList = document.createElement('div');
+					commentList.setAttribute('class', 'comment-list');
+					
+					var commentArea = document.querySelector('.comments-area');
+					commentArea.append(commentList);
+					
+					var singleComment = document.createElement('div');
+					singleComment.setAttribute('class', 'single-comment justify-content-between d-flex');
+					commentList.append(singleComment);
+					
+					var userJustify = document.createElement('div');
+					userJustify.setAttribute('class', 'user justify-content-between d-flex')
+					singleComment.append(userJustify);
+					
+					var thumb = document.createElement('div');
+					thumb.setAttribute('class', 'thumb');
+					userJustify.append(thumb);
+					
+					var img = document.createElement('img');
+					img.setAttribute('src', "assets/img/comment/comment_1.png");
+					img.setAttribute('alt', "");
+					thumb.append(img);
+					
+					var desc = document.createElement('div');
+					desc.setAttribute('class', 'desc');
+					userJustify.append(desc);
+					
+					var p = document.createElement('p');
+					p.innerText = result[i].commentContent;
+					desc.append(p);
+					
+					var dFlex = document.createElement('div');
+					dFlex.setAttribute('class', 'd-flex justify-content-between')
+					desc.append(dFlex);
+					
+					var dFlex2 = document.createElement('div');
+					dFlex2.setAttribute('class', 'd-flex align-items-center');
+					dFlex.append(dFlex2);
+					
+					var h5 = document.createElement('h5');
+					dFlex2.append(h5);
+					
+					var a = document.createElement('a');
+					a.setAttribute('href', '#')
+					a.innerText = result[i].memberName;
+					h5.append(a);
+					
+					var date = document.createElement('p');
+					date.setAttribute('class', 'date');
+					date.innerText = result[i].commentTime;
+					dFlex2.append(date);
+					
+					var infoA = document.createElement('a');
+					infoA.setAttribute('href', '#');		
+					infoA.setAttribute('class', 'genric-btn info');
+					infoA.style.styleFloat = 'right';
+					infoA.innerText = '삭제'
+					dFlex2.append(infoA);
+				}
 			}
 			
 		}
-	
-	
-	
+
 	
 	
 	
