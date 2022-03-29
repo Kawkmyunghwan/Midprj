@@ -37,7 +37,7 @@ import co.micol.prj.contact.comm.InquiryUpdate;
 import co.micol.prj.contact.comm.InquiryView;
 import co.micol.prj.contact.comm.ReviewInsert;
 import co.micol.prj.home.command.HomeCommand;
-import co.micol.prj.jOComment.command.JobOpeningComment;
+import co.micol.prj.jOComment.command.AjaxJobOpeningComment;
 import co.micol.prj.jobOpening.command.HotSearch;
 import co.micol.prj.jobOpening.command.JobDetail;
 import co.micol.prj.jobOpening.command.LoginPage;
@@ -99,7 +99,7 @@ public class FrontController extends HttpServlet {
 		map.put("/zzim.do", new Zzim());							// 찜 버튼 클릭 시 찜 테이블로 INSERT
 		map.put("/searchLocation.do", new SearchLocation());		// 지역별 구인공고 조회
 		map.put("/application.do", new Application());				// 지원신청서 작성 후 버튼 클릭 시 APPLY테이블로 INSERT
-		map.put("/jobOpeningComment.do", new JobOpeningComment());
+		map.put("/jobOpeningComment.do", new AjaxJobOpeningComment());
 // ---------------------------------------------------
 
 		
