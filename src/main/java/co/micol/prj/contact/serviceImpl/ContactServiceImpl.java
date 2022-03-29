@@ -58,4 +58,10 @@ public class ContactServiceImpl implements ContactService {
 		return map.contactSortList(key);
 	}
 
+	@Override
+	public int rewiewInsert(ContactVO vo) {
+		// TODO Auto-generated method stub
+		return map.rewiewInsert(vo);
+	}
+
 }
