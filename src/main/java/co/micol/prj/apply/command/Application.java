@@ -26,7 +26,7 @@ public class Application implements Command {
       dao.ApplicationInsert(vo);
       
 
-      return "jobDetail.do";
-   }
+		return "jobOpening/jobApplyClose.tiles";
+	}
 
 }

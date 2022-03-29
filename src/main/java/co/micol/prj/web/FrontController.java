@@ -33,9 +33,11 @@ import co.micol.prj.contact.comm.InquiryInsert;
 import co.micol.prj.contact.comm.InquiryInsertForm;
 import co.micol.prj.contact.comm.InquiryUpdate;
 import co.micol.prj.contact.comm.InquiryView;
+import co.micol.prj.contact.comm.Paging;
 import co.micol.prj.contact.comm.ReviewInsert;
 import co.micol.prj.home.command.HomeCommand;
 import co.micol.prj.jOComment.command.AjaxJobOpeningComment;
+import co.micol.prj.jOComment.command.AjaxJobOpeningCommentSel;
 import co.micol.prj.jobOpening.command.HotSearch;
 import co.micol.prj.jobOpening.command.JobDetail;
 import co.micol.prj.jobOpening.command.Jsearch;
@@ -91,16 +93,17 @@ public class FrontController extends HttpServlet {
 		map.put("/ajaxSortBorder.do", new AjaxSortBoard()); // 게시글 정렬
 		
 // ----------------------곽명환------------------------
-		map.put("/hotSearch.do", new HotSearch()); 					// 조회수 기반 HOT100 조회
-		map.put("/zzimSearch.do", new ZzimSearch());				// 찜 기반 HOT100 조회
-		map.put("/notilesApply.do", new NotilesApply());			// 지원신청서 팝업창
-		map.put("/sample.do", new Sample());						// 
-		map.put("/jobDetail.do", new JobDetail());					// 구인공고 상세페이지
-		map.put("/loginPage.do", new LoginPage());					// 로그인 페이지
-		map.put("/zzim.do", new Zzim());							// 찜 버튼 클릭 시 찜 테이블로 INSERT
-		map.put("/searchLocation.do", new SearchLocation());		// 지역별 구인공고 조회
-		map.put("/application.do", new Application());				// 지원신청서 작성 후 버튼 클릭 시 APPLY테이블로 INSERT
+		map.put("/hotSearch.do", new HotSearch()); 								// 조회수 기반 HOT100 조회
+		map.put("/zzimSearch.do", new ZzimSearch());							// 찜 기반 HOT100 조회
+		map.put("/notilesApply.do", new NotilesApply());						// 지원신청서 팝업창
+		map.put("/sample.do", new Sample());									// 
+		map.put("/jobDetail.do", new JobDetail());								// 구인공고 상세페이지
+		map.put("/loginPage.do", new LoginPage());								// 로그인 페이지
+		map.put("/zzim.do", new Zzim());										// 찜 버튼 클릭 시 찜 테이블로 INSERT
+		map.put("/searchLocation.do", new SearchLocation());					// 지역별 구인공고 조회
+		map.put("/application.do", new Application());							// 지원신청서 작성 후 버튼 클릭 시 APPLY테이블로 INSERT
 		map.put("/jobOpeningComment.do", new AjaxJobOpeningComment());
+		map.put("/AjaxJobOpeningCommentSel.do", new AjaxJobOpeningCommentSel());
 // ---------------------------------------------------
 
 		
@@ -115,7 +118,7 @@ public class FrontController extends HttpServlet {
 		map.put("/inquiryDelete.do", new InquiryDelete()); // 삭제
 		map.put("/ajaxcontactSearch.do", new AjaxcontactSearch()); //리스트검색
 		map.put("/ajaxSortContact.do", new AjaxSortContact()); //정렬
-		
+		map.put("/paging.do", new Paging());
 		
 
 		// 김세명 마이페이지------------------------------------
@@ -152,9 +155,10 @@ public class FrontController extends HttpServlet {
 		
 
 	  	map.put("/memberLogout.do", new MemberLogout());   //로그아웃
-	  	map.put("/naverLogin.do", new NaverLogin());
-	  	map.put("/callBack.do", new CBack());
-	  	map.put("/Jsearch.do", new Jsearch());
+	  	map.put("/naverLogin.do", new NaverLogin()); //네이버 로그인 API
+	  	map.put("/callBack.do", new CBack()); // 네이버 로그인 API 콜백
+	  	map.put("/Jsearch.do", new Jsearch()); //구인광고 검색
+	  	
 
 
 	}

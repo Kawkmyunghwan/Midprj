@@ -4,15 +4,16 @@
 	
 	<select id="selectJOCommentList" 
 		resultType="co.micol.prj.jOComment.service.JOCommentVO">
-		SELECT R.COMMENTCONTENT, R.COMMENTTIME, M.MEMBERNAME
+		SELECT R.COMMENTCONTENT, R.COMMENTTIME, M.MEMBERNAME, R.JOBOPENINGNUM, R.COMMENTNUMBER
 		FROM   REVIEWCOMMENT R JOIN MEMBER M
 		ON     R.MEMBERNUM = M.MEMBERNUM
 		WHERE  1=1
+        ORDER BY R.COMMENTNUMBER ASC
 	</select>
 	
 	<insert id="insertJOComment" parameterType="co.micol.prj.jOComment.service.JOCommentVO">
 		INSERT INTO REVIEWCOMMENT
-		VALUES(#{jobOpeningNum}, #{memberNum}, #{commentContent}, SYSDATE)
+		VALUES(#{jobOpeningNum}, #{memberNum}, #{commentContent}, SYSDATE, COM_SEQ.NEXTVAL)
 	</insert>
 		
 </mapper>

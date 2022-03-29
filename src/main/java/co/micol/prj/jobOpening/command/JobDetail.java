@@ -26,6 +26,7 @@ public class JobDetail implements Command {
 		JobOpeningService dao = new JobOpeningServiceImpl();
 		ZzimService zDao = new ZzimServiceImpl();	
 		ApplyService applyDao = new ApplyServiceImpl();
+		JOCommentService jDao = new JOCommentServiceImpl();
 		
 		JobOpeningVO vo = new JobOpeningVO();
 		ZzimVO zVo = new ZzimVO();
@@ -38,7 +39,7 @@ public class JobDetail implements Command {
 		request.setAttribute("apply", applyDao.ApplySelect(aVo));
 		request.setAttribute("jobOpening", dao.selectJobOpeningByNum(vo));
 		request.setAttribute("zzim", zDao.selectZzim(zVo));
-		
+		request.setAttribute("comment", jDao.selectJOCommentList());
 		return "jobOpening/jobDetail.tiles";
 	}
 
