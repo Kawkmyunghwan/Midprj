@@ -43,7 +43,7 @@ import co.micol.prj.jobOpening.command.Sample;
 import co.micol.prj.jobOpening.command.SearchLocation;
 import co.micol.prj.jobOpening.command.ZzimSearch;
 import co.micol.prj.member.command.AjaxMemberIdCheck;
-import co.micol.prj.member.command.Cback;
+import co.micol.prj.member.command.CBack;
 import co.micol.prj.member.command.MemberDelete;
 import co.micol.prj.member.command.MemberJoin;
 import co.micol.prj.member.command.MemberJoinForm;
@@ -141,9 +141,11 @@ public class FrontController extends HttpServlet {
 		map.put("/commentsUpdate.do", new CommentsUpdate()); //댓글 수정
 	  map.put("/commentsDelete.do", new CommentsDelete()); //댓글 삭제
 		
-	  map.put("/memberLogout.do", new MemberLogout());   //로그아웃
-	  map.put("/naverLogin.do", new NaverLogin());
-	  map.put("/callBack.do", new Cback());
+
+	  	map.put("/memberLogout.do", new MemberLogout());   //로그아웃
+	  	map.put("/naverLogin.do", new NaverLogin());
+	  	map.put("/callBack.do", new CBack());
+
 
 	}
 
