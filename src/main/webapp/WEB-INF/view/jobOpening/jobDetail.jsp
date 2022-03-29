@@ -160,7 +160,7 @@
 							<button type="button" class="btn btn-primary" id="a" onclick="windowFnc(${jobOpening.jobOpeningNum})">Apply Now</button>							  					                        	            
                             <a href="" onclick='formFnc(${jobOpening.jobOpeningNum})' id="btn" class="btn">♡</a>                                                                                                
                          </div>
-                       </div>
+                       </div> 
                                                                                             
                        <form action="zzim.do" method="get" name="quickFrm">
                        		<input type="hidden" name="jobOpeningNum">
