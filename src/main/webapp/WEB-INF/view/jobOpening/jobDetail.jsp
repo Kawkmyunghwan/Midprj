@@ -78,6 +78,58 @@
                                </ul>
                             </div>
                         </div>
+                        
+                        
+                        
+                        
+                        <!-- 코맨트 테이블에 들어있는 데이터 만큼 반복 -->
+                   		<div class="comments-area">	
+                   			<c:if test="${ SUBSCRIPTION ne null }">                   			                  					                  
+			                  <div class="comment-list">
+			                     <div class="single-comment justify-content-between d-flex">
+			                        <div class="user justify-content-between d-flex">
+			                           <div class="thumb">
+			                              <img src="assets/img/comment/comment_1.png" alt="">
+			                           </div>
+			                           <div class="desc">
+			                              <p class="comment">
+			                                 Multiply sea night grass fourth day sea lesser rule open subdue female fill which them
+			                                 Blessed, give fill lesser bearing multiply sea night grass fourth day sea lesser
+			                              </p>
+			                              <div class="d-flex justify-content-between">
+			                                 <div class="d-flex align-items-center">
+			                                    <h5 id="commentName">
+			                                       <a href="#" >Emilly Blunt</a>
+			                                    </h5>
+			                                    <p class="date">December 4, 2017 at 3:12 pm </p>
+			                                 </div>
+			                              </div>
+			                           </div>
+			                        </div>
+			                     </div>
+			                  </div>
+			                  </c:if>
+			               </div>
+               
+               
+               
+               
+               <div class="comment-form">
+                  <h4>기업 리뷰</h4>
+                  <form class="form-contact comment_form" action="#" id="commentForm">
+                     <div class="row">
+                        <div class="col-12">
+                           <div class="form-group">
+                              <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9"
+                                 placeholder="Write Comment" ></textarea>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <button type="button" class="button button-contactForm btn_1 boxed-btn" onClick="insertComment()">Send Message</button>
+                     </div>
+                  </form>
+               </div>
 
                     </div>
                     <!-- Right Content -->
@@ -92,18 +144,18 @@
                               <li>Location : <span>${jobOpening.companyAddress }</span></li>
                               <li>Vacancy : <span>02</span></li>
                               <li>Job nature : <span>Full time</span></li>
+                              <c:if test="${ SUBSCRIPTION ne null }">
                               <li>Salary :  <span>${jobOpening.salary }</span></li>
+                              </c:if>
                               <li>Application date : <span>12 Sep 2020</span></li>
-                              <li>회사 홈페이지 :<span><a href="http://www.naver.com" style="color: black">${jobOpening.homepage }</a></span></li>                         
+                              <li>회사 홈페이지 :<span><a href="http://www.naver.com" style="color: black">${jobOpening.homepage }</a></span></li>                             
                           </ul>
-                         <div class="apply-btn2" id="btn2">
-                            <a href="" onclick='windowFnc(${jobOpening.jobOpeningNum});' id="a" class="btn">Apply Now</a>                                                                                                           
+                         <div class="apply-btn2" id="btn2">                                              							       
+							<button type="button" class="btn btn-primary" id="a" onclick="windowFnc(${jobOpening.jobOpeningNum})">Apply Now</button>							  					                        	            
                             <a href="" onclick='formFnc(${jobOpening.jobOpeningNum})' id="btn" class="btn">♡</a>                                                                                                
                          </div>
                        </div>
-                       
-                       
-                       
+                                                                                            
                        <form action="zzim.do" method="get" name="quickFrm">
                        		<input type="hidden" name="jobOpeningNum">
                        </form>
@@ -125,13 +177,18 @@
                                 <li>Web : <span> colorlib.com</span></li>
                                 <li>Email: <span>carrier.colorlib@gmail.com</span></li>
                             </ul>
+                            
+                            
                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- job post company End -->
+       
 <script type="text/javascript">
+
+
 	function formFnc(jobOpening_num) {
 	    event.preventDefault();
 	    quickFrm.jobOpeningNum.value=jobOpening_num;
@@ -139,13 +196,9 @@
 	    }
 	
 	function windowFnc(jobOpening_num){
-		event.preventDefault();
-		quickFrm1.jobOpeningNum.value=jobOpening_num;
-		quickFrm1.submit();
-		var popUrl = 'notilesApply.do';
-		var popOption = 'width=800,height=1000,location=no,status=no,scrollbars=yes'
-		window.open(popUrl, popOption)
-		
+		var popUrl = 'notilesApply.do?jobOpeningNum='+jobOpening_num+'';
+		var popOption = 'left=600, width=600, height=650, location=no, status=no, scrollbars=yes'
+		window.open(popUrl, "name", popOption);	
 	}
 		
 // -----------------------------------------------------------------	
@@ -168,5 +221,168 @@
 //	찜 목록에 추가한 구인공고가 아니면 비어있는 하트, 찜 목록에 추가했으면 빨간색 하트가 뜨게 함..
 //	비어있는 a 태그 속성에는 찜 테이블에서 삭제시키는 기능 만들 예정.(빨간색 하트일때 클릭하면 찜 테이블에서 삭제되게 끔)
 //-----------------------------------------------------------------
+	var applyJobOpNum = []
+	   <c:forEach items='${apply}' var='apply'>
+	   applyJobOpNum.push("${apply.jobOpeningNum}");
+	   </c:forEach>
+	   
+	   console.log(applyJobOpNum);
+	   console.log(jobOpNum);
+	   
+	if(applyJobOpNum.indexOf(jobOpNum) != -1){
+		document.getElementById('a').remove();
+		var aBtn = document.createElement('a');
+		aBtn.setAttribute('href', '');
+		aBtn.setAttribute('class', 'btn');
+		btn.innerText = '지원완료';
+		btn2.append(aBtn);
+	}
+	
+	
+	
+	
+	
+	// 댓글 INSERT	
+	
+		
+		
+	function insertComment(){	
+		var cm = document.getElementById('comment');
+		var cv = cm.value;	
+		var memberNum = "<c:out value = '${memberNum}'/>";
+			
+		var xhtp = new XMLHttpRequest();
+		xhtp.open('post', 'jobOpeningComment.do')
+		xhtp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhtp.send('commentContent='+cv+'&jobOpeningNum='+jobOpNum+'&memberNum='+memberNum);
+		xhtp.onload = function() {
+			var result = xhtp.responseText;
+	        result = JSON.parse(result);
+	        console.log(result);
+
+			var commentList = document.createElement('div');
+			commentList.setAttribute('class', 'comment-list');
+			
+			var commentArea = document.querySelector('.comments-area');
+			commentArea.append(commentList);
+			
+			var singleComment = document.createElement('div');
+			singleComment.setAttribute('class', 'single-comment justify-content-between d-flex');
+			commentList.append(singleComment);
+			
+			var userJustify = document.createElement('div');
+			userJustify.setAttribute('class', 'user justify-content-between d-flex')
+			singleComment.append(userJustify);
+			
+			var thumb = document.createElement('div');
+			thumb.setAttribute('class', 'thumb');
+			userJustify.append(thumb);
+			
+			var img = document.createElement('img');
+			img.setAttribute('src', "assets/img/comment/comment_1.png");
+			img.setAttribute('alt', "");
+			thumb.append(img);
+			
+			var desc = document.createElement('div');
+			desc.setAttribute('class', 'desc');
+			userJustify.append(desc);
+			
+			var p = document.createElement('p');
+			p.innerText = result[result.length-1].commentContent;
+			desc.append(p);
+			
+			var dFlex = document.createElement('div');
+			dFlex.setAttribute('class', 'd-flex justify-content-between')
+			desc.append(dFlex);
+			
+			var dFlex2 = document.createElement('div');
+			dFlex2.setAttribute('class', 'd-flex align-items-center');
+			dFlex.append(dFlex2);
+			
+			var h5 = document.createElement('h5');
+			dFlex2.append(h5);
+			
+			var a = document.createElement('a');
+			a.setAttribute('href', '#')
+			a.innerText = result[result.length-1].memberName;
+			h5.append(a);
+			
+			var date = document.createElement('p');
+			date.setAttribute('class', 'date');
+			date.innerText = result[result.length-1].commentTime;
+			dFlex2.append(date);
+			
+		}
+	}			
+	
+	
+	//댓글 SELECT
+	var xhtp = new XMLHttpRequest();
+		xhtp.open('post', 'AjaxJobOpeningCommentSel.do')		
+		xhtp.send();
+		xhtp.onload = function() {
+			var result = xhtp.responseText;			
+			result = JSON.parse(result);
+			console.log(result);
+			for(let i=0; i<result.length; i++){
+				var commentList = document.createElement('div');
+				commentList.setAttribute('class', 'comment-list');
+				
+				var commentArea = document.querySelector('.comments-area');
+				commentArea.append(commentList);
+				
+				var singleComment = document.createElement('div');
+				singleComment.setAttribute('class', 'single-comment justify-content-between d-flex');
+				commentList.append(singleComment);
+				
+				var userJustify = document.createElement('div');
+				userJustify.setAttribute('class', 'user justify-content-between d-flex')
+				singleComment.append(userJustify);
+				
+				var thumb = document.createElement('div');
+				thumb.setAttribute('class', 'thumb');
+				userJustify.append(thumb);
+				
+				var img = document.createElement('img');
+				img.setAttribute('src', "assets/img/comment/comment_1.png");
+				img.setAttribute('alt', "");
+				thumb.append(img);
+				
+				var desc = document.createElement('div');
+				desc.setAttribute('class', 'desc');
+				userJustify.append(desc);
+				
+				var p = document.createElement('p');
+				p.innerText = result[i].commentContent;
+				desc.append(p);
+				
+				var dFlex = document.createElement('div');
+				dFlex.setAttribute('class', 'd-flex justify-content-between')
+				desc.append(dFlex);
+				
+				var dFlex2 = document.createElement('div');
+				dFlex2.setAttribute('class', 'd-flex align-items-center');
+				dFlex.append(dFlex2);
+				
+				var h5 = document.createElement('h5');
+				dFlex2.append(h5);
+				
+				var a = document.createElement('a');
+				a.setAttribute('href', '#')
+				a.innerText = result[i].memberName;
+				h5.append(a);
+				
+				var date = document.createElement('p');
+				date.setAttribute('class', 'date');
+				date.innerText = result[i].commentTime;
+				dFlex2.append(date);
+			}
+			
+		}
+	
+	
+	
+	
+	
 	
 </script>

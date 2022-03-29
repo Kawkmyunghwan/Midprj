@@ -20,7 +20,7 @@ public class ApplyServiceImpl implements ApplyService {
 	}
 
 	@Override
-	public ApplyVO ApplySelect(ApplyVO vo) {
+	public List<ApplyVO> ApplySelect(ApplyVO vo) {
 		// TODO Auto-generated method stub
 		return map.ApplySelect(vo);
 	}

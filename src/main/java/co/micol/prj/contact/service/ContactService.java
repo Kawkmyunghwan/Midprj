@@ -16,4 +16,5 @@ public interface ContactService {
 	//검색할 항목, 검색할 내용	
 	//넘어온 파라미터 키 값을, String key에 담겠다는 뜻.
 	List<ContactVO> contactSortList(String key);
+	int rewiewInsert(ContactVO vo);
 }

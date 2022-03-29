@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface ApplyService {
 	List<ApplyVO> ApplySelectList();
-	ApplyVO ApplySelect(ApplyVO vo);
+	List<ApplyVO> ApplySelect(ApplyVO vo);
 	int ApplyInsert(ApplyVO vo);
 	int ApplyUpdate(ApplyVO vo);
 	int ApplyDelete(ApplyVO vo);

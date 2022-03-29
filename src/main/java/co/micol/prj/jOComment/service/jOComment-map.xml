@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.micol.prj.jOComment.service.JOCommentMapper">
+	
+	<select id="selectJOCommentList" 
+		resultType="co.micol.prj.jOComment.service.JOCommentVO">
+		SELECT R.COMMENTCONTENT, R.COMMENTTIME, M.MEMBERNAME
+		FROM   REVIEWCOMMENT R JOIN MEMBER M
+		ON     R.MEMBERNUM = M.MEMBERNUM
+		WHERE  1=1
+	</select>
+	
+	<insert id="insertJOComment" parameterType="co.micol.prj.jOComment.service.JOCommentVO">
+		INSERT INTO REVIEWCOMMENT
+		VALUES(#{jobOpeningNum}, #{memberNum}, #{commentContent}, SYSDATE)
+	</insert>
+		
+</mapper>
