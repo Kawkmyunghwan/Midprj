@@ -41,7 +41,6 @@
 		info_writer,info_date,info_title,info_answercontent,info_hit)
 		VALUES(#{infoNum}, #{infoWriter}, #{infoDate}, #{infoTitle},
 		#{infoAnswerContent},0)
-
 	</insert>
 	
 	<update id="rewiewInsert" parameterType="co.micol.prj.contact.service.ContactVO">
@@ -51,10 +50,10 @@
 	</update>
 
 	<update id="contactUpdate" 
-	parameterType="co.micol.prj.contact.service.ContactVO">
-	update contact set 
-	info_answercontent = #{infoAnswerContent}
-	where info_num = #{infoNum}
+		parameterType="co.micol.prj.contact.service.ContactVO">
+		update contact set 
+		info_answercontent = #{infoAnswerContent}
+		where info_num = #{infoNum}
 	</update>
 	
 	<delete id="contactDelete">
@@ -83,4 +82,9 @@
 		UPDATE CONTACT SET
 		info_Hit = info_Hit + 1 WHERE info_Num = #{id}
 	</update>
+	
+	<select id="pagingTotalCount" parameterType="int">
+		SELECT COUNT(*) FROM contact;
+	</select>
+	
 </mapper>
