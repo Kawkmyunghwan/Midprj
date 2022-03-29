@@ -147,9 +147,10 @@ public class FrontController extends HttpServlet {
 		
 
 	  	map.put("/memberLogout.do", new MemberLogout());   //로그아웃
-	  	map.put("/naverLogin.do", new NaverLogin());
-	  	map.put("/callBack.do", new CBack());
-	  	map.put("/Jsearch.do", new Jsearch());
+	  	map.put("/naverLogin.do", new NaverLogin()); //네이버 로그인 API
+	  	map.put("/callBack.do", new CBack()); // 네이버 로그인 API 콜백
+	  	map.put("/Jsearch.do", new Jsearch()); //구인광고 검색
+	  	
 
 
 	}

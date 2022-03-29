@@ -2,8 +2,31 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="js/jquery-3.6.0.min.js"></script>
-	
 
+<style>
+.w-btn-gra1 {
+    background: linear-gradient(-45deg, #33ccff 0%, #ff99cc 100%);
+    color: white;
+}
+
+
+
+.w-btn {
+    position: relative;
+    border: none;
+    display: inline-block;
+    padding: 23px 30px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+    float: left;
+}
+
+
+
+</style>	
 <div class="slider-area ">
 	<!-- Mobile Menu -->
 	<div class="slider-active">
@@ -23,19 +46,9 @@
 						<form action="Jsearch.do" class="search-box">
 							<div class="input-form">
 								<input type="text" name="Jsearch" placeholder="Job Tittle or keyword">
-							</div>
-							<div class="select-form">
-								<div class="select-itms">
-									<select name="select" id="select1">
-										<option value="">Location BD</option>
-										<option value="">Location PK</option>
-										<option value="">Location US</option>
-										<option value="">Location UK</option>
-									</select>
-								</div>
-							</div>
+							</div>							
 							<div class="search-form">
-								<button type="submit">Find job</button>								
+								<button class="w-btn w-btn-gra1"  type="submit">Find job</button>								
 							</div>
 						</form>
 					</div>
@@ -79,7 +92,7 @@
 					</div>
 					<div class="services-cap">
 						<h5>
-							<a href="job_listing.html">Design & Development</a>
+							<a href="job_listing.html">	</a>
 						</h5>
 						<span>(658)</span>
 					</div>
