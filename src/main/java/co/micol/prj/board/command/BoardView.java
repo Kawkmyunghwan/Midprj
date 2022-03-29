@@ -1,10 +1,8 @@
 package co.micol.prj.board.command;
 
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 
 import co.micol.prj.board.service.BoardService;
 import co.micol.prj.board.service.BoardVO;
@@ -24,12 +22,12 @@ public class BoardView implements Command {
 		CommentsVO cvo = new CommentsVO();
 		HttpSession session = request.getSession();
 		
+
 		cvo.setMemberId((String)session.getAttribute("memberId"));
+		cvo.setBoardNum(Integer.parseInt(request.getParameter("boardNum")));
+		request.setAttribute("comments", commentsDao.commentsSelect(cvo));
 		
-		int boardNum = Integer.parseInt(request.getParameter("boardNum"));
-		request.setAttribute("comments", commentsDao.commentsSelectList(boardNum));
-		
-		vo.setBoardNum(boardNum);
+		vo.setBoardNum(Integer.parseInt(request.getParameter("boardNum")));
 		request.setAttribute("boarders", boardDao.boardSelect(vo));
 		boardDao.boardUpdateHit(vo.getBoardNum()); // 조회수 증가
 		
