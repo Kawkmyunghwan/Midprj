@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.ibatis.javassist.tools.Callback;
-
 import co.micol.prj.apply.command.Application;
 import co.micol.prj.apply.command.NotilesApply;
 import co.micol.prj.board.command.AjaxBoardSearch;
@@ -40,6 +38,7 @@ import co.micol.prj.home.command.HomeCommand;
 import co.micol.prj.jOComment.command.AjaxJobOpeningComment;
 import co.micol.prj.jobOpening.command.HotSearch;
 import co.micol.prj.jobOpening.command.JobDetail;
+import co.micol.prj.jobOpening.command.Jsearch;
 import co.micol.prj.jobOpening.command.LoginPage;
 import co.micol.prj.jobOpening.command.Sample;
 import co.micol.prj.jobOpening.command.SearchLocation;
@@ -148,6 +147,7 @@ public class FrontController extends HttpServlet {
 	  	map.put("/memberLogout.do", new MemberLogout());   //로그아웃
 	  	map.put("/naverLogin.do", new NaverLogin());
 	  	map.put("/callBack.do", new CBack());
+	  	map.put("/Jsearch.do", new Jsearch());
 
 
 	}

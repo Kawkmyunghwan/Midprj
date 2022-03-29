@@ -84,6 +84,10 @@
                         
                         <!-- 코맨트 테이블에 들어있는 데이터 만큼 반복 -->
                    		<div class="comments-area">			                  
+                        <c:if test="${ SUBSCRIPTION ne null }">
+                   		<div class="comments-area">
+			                  <h4>05 Comments</h4>
+
 			                  <div class="comment-list">
 			                     <div class="single-comment justify-content-between d-flex">
 			                        <div class="user justify-content-between d-flex">
@@ -108,6 +112,10 @@
 			                     </div>
 			                  </div>
 			               </div>
+
+			               </c:if>
+			               </c:forEach>
+
                
                
                
@@ -142,7 +150,9 @@
                               <li>Location : <span>${jobOpening.companyAddress }</span></li>
                               <li>Vacancy : <span>02</span></li>
                               <li>Job nature : <span>Full time</span></li>
+                              <c:if test="${ SUBSCRIPTION ne null }">
                               <li>Salary :  <span>${jobOpening.salary }</span></li>
+                              </c:if>
                               <li>Application date : <span>12 Sep 2020</span></li>
                               <li>회사 홈페이지 :<span><a href="http://www.naver.com" style="color: black">${jobOpening.homepage }</a></span></li>                   
                           </ul>
@@ -150,7 +160,7 @@
 							<button type="button" class="btn btn-primary" id="a" onclick="windowFnc(${jobOpening.jobOpeningNum})">Apply Now</button>							  					                        	            
                             <a href="" onclick='formFnc(${jobOpening.jobOpeningNum})' id="btn" class="btn">♡</a>                                                                                                
                          </div>
-                       </div>
+                       </div> 
                                                                                             
                        <form action="zzim.do" method="get" name="quickFrm">
                        		<input type="hidden" name="jobOpeningNum">
