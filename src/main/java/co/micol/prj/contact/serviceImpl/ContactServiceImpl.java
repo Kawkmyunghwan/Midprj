@@ -64,4 +64,11 @@ public class ContactServiceImpl implements ContactService {
 		return map.rewiewInsert(vo);
 	}
 
+	@Override
+	public int pagingTotalCount(ContactVO vo) {
+		return map.pagingTotalCount(vo);
+	}
+
+
+
 }
