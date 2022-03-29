@@ -247,9 +247,9 @@
 	// 댓글 INSERT
 	
 	function insertComment(){
-		event.preventdefault()
 		var memberNum = "<c:out value = '${memberNum}'/>";
-		var cv = comment.value
+		var cm = document.getElementById('comment');
+		var cv = cm.value;
 		
 		var xhtp = new XMLHttpRequest();
 		xhtp.open('post', 'jobOpeningComment.do')
@@ -266,12 +266,12 @@
 			var commentName = document.getElementById('commentName');
 			var aTag = document.createElement('a');
 			aTag.setAttribute('href', '');
-			aTag.innerText = result.memberId;
+			aTag.innerText = result.memberNum;
 			commentName.append(aTag);
 			
 			var sysdate = document.querySelector('.d-flex align-items-center');
 			var sp = document.createElement('p');
-			sp.innerText = result.commentDate;
+			sp.innerText = result.commentTime;
 			sysdate.append(sp);
 			
 		}
