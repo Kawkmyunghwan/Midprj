@@ -60,6 +60,7 @@ import co.micol.prj.member.command.NaverLogin;
 import co.micol.prj.myinfo.command.MyInfo;
 import co.micol.prj.myinfo.command.NotesListForm;
 import co.micol.prj.notes.command.AjaxNotesDelete;
+import co.micol.prj.notes.command.NoteDelete;
 import co.micol.prj.notes.command.NoteInsert;
 import co.micol.prj.notes.command.NoteViewForm;
 import co.micol.prj.notes.command.NotesInsertForm;
@@ -133,6 +134,7 @@ public class FrontController extends HttpServlet {
 		map.put("/noteViewForm.do", new NoteViewForm()); // 쪽지 내용 폼
 		map.put("/notesInsertForm.do", new NotesInsertForm()); // 쪽지 쓰기 폼
 		map.put("/noteInsert.do", new NoteInsert()); // 쪽지 쓰기
+		map.put("/noteDelete.do", new NoteDelete()); // 단일 쪽지 삭제
 //		---------------------------------------------------
 
 		map.put("/boardList.do", new BoardList()); // 게시글 목록

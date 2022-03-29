@@ -93,13 +93,6 @@ function selectAll(allSelect){
 		
 		var data = '';
 		
-		
-		
-		
-		
-		
-		
-		
 		for(var i=0; i<val.length; i++){
 			if(val[i].checked == true){
 				

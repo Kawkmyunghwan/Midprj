@@ -112,7 +112,7 @@ function selectAll(allSelect){
 			  alert("삭제에 실패했습니다.");
 		  }else{
 			alert(result+"건이 삭제되었습니다.");
-			location.href='notesListForm.do';
+			location.href='notesSentListForm.do';
 		  }
 		  }
 		})

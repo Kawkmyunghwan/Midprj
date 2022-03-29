@@ -28,7 +28,7 @@
 			<div>
 				<button type="button" onclick="reSentNote('${note.sentId }')">답 장</button>
 				&nbsp;&nbsp;&nbsp;
-				<button type="button">삭 제</button>
+				<button type="button" onclick="deleteNote('${note.no}')">삭 제</button>
 				&nbsp;&nbsp;&nbsp;
 				<button type="button" onclick="location.href = 'notesListForm.do'">쪽지함</button>
 			</div>
@@ -42,6 +42,12 @@
 function reSentNote(n){
 	frm.reSent.value = n;
 	frm.action = "notesInsertForm.do";
+	frm.submit();
+}
+
+function deleteNote(n){
+	frm.reSent.value = n;
+	frm.action = "noteDelete.do";
 	frm.submit();
 }
 </script>
