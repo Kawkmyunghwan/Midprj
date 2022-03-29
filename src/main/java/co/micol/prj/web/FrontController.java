@@ -135,14 +135,17 @@ public class FrontController extends HttpServlet {
 		map.put("/boardView.do", new BoardView());
 		map.put("/ajaxBoardSearch.do", new AjaxBoardSearch()); // 게시글 리스트에서 검색
 		map.put("/ajaxSortBoard.do", new AjaxSortBoard()); // 게시글 정렬
+    map.put("/reviewInsert.do", new ReviewInsert());
 		
 		map.put("/commentsInsert.do", new CommentsInsert());
 		map.put("/commentsUpdate.do", new CommentsUpdate()); //댓글 수정
-	  	map.put("/commentsDelete.do", new CommentsDelete()); //댓글 삭제
+	  map.put("/commentsDelete.do", new CommentsDelete()); //댓글 삭제
 		
+
 	  	map.put("/memberLogout.do", new MemberLogout());   //로그아웃
 	  	map.put("/naverLogin.do", new NaverLogin());
 	  	map.put("/callBack.do", new CBack());
+
 
 	}
 

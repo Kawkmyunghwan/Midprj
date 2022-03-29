@@ -8,16 +8,16 @@ import co.micol.prj.contact.service.ContactService;
 import co.micol.prj.contact.service.ContactVO;
 import co.micol.prj.contact.serviceImpl.ContactServiceImpl;
 
-public class InquiryView implements Command {
+public class ReviewInsert implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		ContactService contactDao = new ContactServiceImpl();
+
+		ContactService Dao = new ContactServiceImpl();
 		ContactVO vo = new ContactVO();
 		vo.setInfoNum(Integer.parseInt(request.getParameter("infoNum")));
-		request.setAttribute("contact", contactDao.contactSelect(vo));
-		contactDao.contactUpdateHit(vo.getInfoNum()); //조회수증가
-		return "contact/contactView";
+		vo.setIsAnswer(request.getParameter("isAnswer"));
+		Dao.rewiewInsert(vo);
+		return "inquiryForm.do";
 	}
-
 }

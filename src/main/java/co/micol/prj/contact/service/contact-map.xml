@@ -12,7 +12,7 @@
 		<result property="infoHit" column="info_hit" />
 		<result property="infoAnswerContent"
 			column="info_answercontent" />
-		<result property="isAnswer" column="is_Answer" />
+		<result property="isAnswer" column="is_answer" />
 		<result property="infoTitle" column="info_title" />
 	</resultMap>
 
@@ -43,7 +43,12 @@
 		#{infoAnswerContent},0)
 
 	</insert>
-
+	
+	<update id="rewiewInsert" parameterType="co.micol.prj.contact.service.ContactVO">
+		update CONTACT set
+		is_answer = #{isAnswer}
+		where info_num = #{infoNum}
+	</update>
 
 	<update id="contactUpdate" 
 	parameterType="co.micol.prj.contact.service.ContactVO">
