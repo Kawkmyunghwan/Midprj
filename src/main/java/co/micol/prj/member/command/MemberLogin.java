@@ -22,16 +22,16 @@ public class MemberLogin implements Command {
 			
 		vo.setMemberId(request.getParameter("memberId"));
 		vo.setMemberPassword(request.getParameter("memberPassword"));
-		
 		vo = memberDao.selectMember(vo);
+		
+		
 		
 		
 		if(vo.getMemberId() != null) {
 			//여기서 세션 처리하고
 			session.setAttribute("memberId", vo.getMemberId());
 			session.setAttribute("memberNum", vo.getMemberNum());
-			session.setAttribute("memberName", vo.getMemberName());
-						
+			session.setAttribute("memberEmail", vo.getMemberEmail());
 			return "home.do";
 		}else {
 			request.setAttribute("message", "아이디 또는 패스워드가 일치하지 않습니다.");

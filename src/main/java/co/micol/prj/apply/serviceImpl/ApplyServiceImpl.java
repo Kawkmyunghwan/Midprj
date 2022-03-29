@@ -20,7 +20,7 @@ public class ApplyServiceImpl implements ApplyService {
 	}
 
 	@Override
-	public ApplyVO ApplySelect(ApplyVO vo) {
+	public List<ApplyVO> ApplySelect(ApplyVO vo) {
 		// TODO Auto-generated method stub
 		return map.ApplySelect(vo);
 	}
@@ -41,6 +41,12 @@ public class ApplyServiceImpl implements ApplyService {
 	public int ApplyDelete(ApplyVO vo) {
 		// TODO Auto-generated method stub
 		return map.ApplyDelete(vo);
+	}
+
+	@Override
+	public int ApplicationInsert(ApplyVO vo) {
+		// TODO Auto-generated method stub
+		return map.ApplicationInsert(vo);
 	}
 
 }

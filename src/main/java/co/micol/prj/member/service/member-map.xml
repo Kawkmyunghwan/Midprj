@@ -14,7 +14,7 @@
       <!-- 로그인 기능 -->
    </select>
 
-   <insert id="insertMember"
+<insert id="insertMember"
       parameterType="co.micol.prj.member.service.MemberVO">
        <selectKey keyProperty="memberNum" resultType="int" order="BEFORE">
      SELECT NVL(MAX(memberNum+1),1) FROM member
@@ -23,21 +23,17 @@
       (memberNum, memberEmail, memberId, memberPassword, memberName, memberPhone)
       VALUES
       (#{memberNum}, #{memberEmail}, #{memberId}, #{memberPassword}, #{memberName}, #{memberPhone})
-   </insert>
-
-   
+  </insert>   
 
    <update id="updateMember"
       parameterType="co.micol.prj.member.service.MemberVO">
       UPDATE MEMBER
       <set>
-         <if test="password != null">SET PASSWORD = #{memberPassword},</if>
-         <if test="name != null">SET NAME = #{memberName},</if>
-         <if test="tel != null">SET PHONE = #{memberPassword},</if>
-         <if test="email != null">SET EMAIL = #{memberEmail},</if>
-         <if test="memberGrade != null">SET GRADE = #{memberGrade},</if>
+         MEMBERPASSWORD = #{memberPassword},
+         MEMBERNAME = #{memberName},
+         MEMBERPHONE = #{memberPhone}
       </set>
-      WHERE MEMBERID = #{MEMBERID}
+      WHERE MEMBERID = #{memberId}
    </update>
 
    <delete id="deleteMember"

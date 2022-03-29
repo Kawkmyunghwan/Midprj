@@ -4,7 +4,19 @@
 	
 	<insert id="ApplyInsert"
 		parameterType="co.micol.prj.apply.service.ApplyVO">
-		INSERT INTO APPLY 
+		INSERT(MEMBERNUM, JOBOPENINGNUM) INTO APPLY 
 		VALUES(#{memberNum}, #{jobOpeningNum})
 	</insert>
+	
+	<insert id="ApplicationInsert" 
+		parameterType="co.micol.prj.apply.service.ApplyVO">
+		INSERT INTO APPLY
+		VALUES(#{memberNum}, #{jobOpeningNum}, #{memberId}, #{memberEmail}, #{title}, #{content})
+	</insert>
+	
+	<select id="ApplySelect"
+		parameterType="co.micol.prj.apply.service.ApplyVO" 
+		resultType="co.micol.prj.apply.service.ApplyVO">
+		SELECT * FROM APPLY WHERE MEMBERNUM = #{memberNum}
+	</select>
 </mapper>
