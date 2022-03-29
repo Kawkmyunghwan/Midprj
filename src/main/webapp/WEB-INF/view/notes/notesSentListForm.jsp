@@ -15,9 +15,8 @@
 			<h1>쪽지함</h1>
 			
 			<h2>
-				<b>받은 쪽지</b>|<a onclick="location.href='notesSentListForm.do'">보낸 쪽지</a>
+				<a onclick="location.href='notesListForm.do'">받은 쪽지</a>|<b>보낸 쪽지</b>
 			</h2>
-			
 		</div>
 		<form id="frm" method="post">
 			<div>
@@ -26,7 +25,7 @@
 						<tr align="center">
 							<th width="100"><input type="checkbox" name="allSel"
 								id="allSel" value="allSelect" onclick="selectAll(this)">전체선택</th>
-							<th width="150">발신자</th>
+							<th width="150">수신자</th>
 							<th width="300">제 목</th>
 							<th width="150">발신일</th>
 						</tr>
@@ -35,7 +34,7 @@
 					<tbody id="notesBody">
 						<c:if test="${empty notes }">
 							<tr>
-								<td colspan="5">받은 쪽지가 없습니다.</td>
+								<td colspan="5">보낸 쪽지가 없습니다.</td>
 							</tr>
 						</c:if>
 						<c:if test="${not empty notes }">
@@ -43,7 +42,7 @@
 								<tr>
 									<td align="center"><input type="checkbox" name="deleteSel"
 										id="deleteSel${no.no }" value="${no.no }"></td>
-									<td align='center'>${no.sentId }</td>
+									<td align='center'>${no.recvId }</td>
 									<td align='center' onclick="notesContents(${no.no})">${no.title }</td>
 									<td align='center'>${no.dateSent }</td>
 								</tr>
@@ -83,35 +82,21 @@ function selectAll(allSelect){
 	
 	function notesDelete(){
 		
-		var val = document.getElementsByName("deleteSel");
-		console.log(val);
-		
-		var check = false;
-		
+		var val = document.getElementsByName("deleteSel");		
+		var check = false;		
 		var count = 0;
-		var delArray = [];
-		
+		//var delArray = [];		
 		var data = '';
-		
-		
-		
-		
-		
-		
-		
 		
 		for(var i=0; i<val.length; i++){
 			if(val[i].checked == true){
 				
-				delArray.push(val[i].value);
+				//delArray.push(val[i].value);
 				data = data + '-' + val[i].value;
 				
 				count++;
 			}
 		}
-		console.log(delArray);		
-		console.log(data);
-		
 
 		if(count < 1){	
 			alert("삭제할 쪽지를 체크해주세요!");			
@@ -134,20 +119,6 @@ function selectAll(allSelect){
 	}
 	}
 	
-	/*function deleteResult(result){
-		var tb = $('#notesBody');
-		$("#notesBody").empty();
-		
-		$.each(result, function(index, item){
-			var html = $("<tr align='center'/>").append(					
-					$("<td align='center'/>").$('<input type="checkbox" name="deleteSel" id="deleteSel'+item.no+'" value="'+item.no'"'),
-					$("<td align='center'/>").text(item.sentId),
-					$("<td align='center' onclick='notesContents("+item.no)'/>").text(item.title),
-					$("<td align='center'/>").text(item.dateSent)
-					);
-			tb.append(html);
-		});
-		$("#contents").append(tb);
-	} */
+	
 	</script>
 </html>

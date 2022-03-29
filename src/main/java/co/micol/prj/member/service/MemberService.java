@@ -10,4 +10,6 @@ public interface MemberService {
    int deleteMember(MemberVO vo);      //삭제
    
    boolean isIdCheck(String str);      //아이디 중복체크. 존재하면 false
+   
+   MemberVO selectMemberTwo(MemberVO vo); // 업데이트용 셀렉트
 }

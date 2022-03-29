@@ -16,5 +16,4 @@ public class CommentsVO {
 	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
 	private Date commentsDate;
 	private String commentsContent;
-	
 }

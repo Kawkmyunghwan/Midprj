@@ -37,6 +37,12 @@ public class NotesServiceImpl implements NotesService {
 		// TODO Auto-generated method stub
 		return map.notesSelect(vo);
 	}
+
+	@Override
+	public List<NotesVO> notesSentList(NotesVO vo) {
+		// TODO Auto-generated method stub
+		return map.notesSentList(vo);
+	}
 	
 
 }
