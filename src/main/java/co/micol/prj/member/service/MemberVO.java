@@ -14,4 +14,5 @@ private String memberGrade;
 private int subscription;
 private int memberNum;
 private String memberEmail;
+private String favorite;
 }
