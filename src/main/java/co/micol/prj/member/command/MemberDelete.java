@@ -29,7 +29,7 @@ public class MemberDelete implements Command {
 		
 		dao.deleteMember(vo);
 		
-		return "home.do"; //나중에 로그아웃.do로 교체
+		return "memberLogout.do"; //나중에 로그아웃.do로 교체
 	}
 
 }

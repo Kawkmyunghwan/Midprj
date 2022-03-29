@@ -34,7 +34,7 @@ public class MemberUpdate implements Command {
 			vo.setMemberPassword(request.getParameter("memberPassword"));
 		} 
 		
-		System.out.println("" + vo.getMemberId() + vo.getMemberName() + vo.getMemberPassword() + vo.getMemberPhone());
+		
 
 		dao.updateMember(vo);
 

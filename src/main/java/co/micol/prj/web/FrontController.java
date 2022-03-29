@@ -2,12 +2,15 @@ package co.micol.prj.web;
 
 import java.io.IOException;
 import java.util.HashMap;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import co.micol.prj.apply.command.Application;
 import co.micol.prj.apply.command.NotilesApply;
 import co.micol.prj.board.command.AjaxBoardSearch;
 import co.micol.prj.board.command.AjaxSortBoard;
@@ -17,6 +20,9 @@ import co.micol.prj.board.command.BoardInsertForm;
 import co.micol.prj.board.command.BoardList;
 import co.micol.prj.board.command.BoardUpdate;
 import co.micol.prj.board.command.BoardView;
+import co.micol.prj.comments.command.CommentsDelete;
+import co.micol.prj.comments.command.CommentsInsert;
+import co.micol.prj.comments.command.CommentsUpdate;
 import co.micol.prj.common.Command;
 import co.micol.prj.contact.comm.AjaxSortContact;
 import co.micol.prj.contact.comm.AjaxcontactSearch;
@@ -52,11 +58,11 @@ import co.micol.prj.member.command.NaverLogin;
 import co.micol.prj.myinfo.command.MyInfo;
 import co.micol.prj.myinfo.command.NotesListForm;
 import co.micol.prj.notes.command.AjaxNotesDelete;
+import co.micol.prj.notes.command.NoteDelete;
 import co.micol.prj.notes.command.NoteInsert;
 import co.micol.prj.notes.command.NoteViewForm;
 import co.micol.prj.notes.command.NotesInsertForm;
 import co.micol.prj.notes.command.NotesSentListForm;
-
 import co.micol.prj.zzim.command.Zzim;
 
 
@@ -125,6 +131,7 @@ public class FrontController extends HttpServlet {
 		map.put("/noteViewForm.do", new NoteViewForm()); // 쪽지 내용 폼
 		map.put("/notesInsertForm.do", new NotesInsertForm()); // 쪽지 쓰기 폼
 		map.put("/noteInsert.do", new NoteInsert()); // 쪽지 쓰기
+		map.put("/noteDelete.do", new NoteDelete()); // 단일 쪽지 삭제
 //		---------------------------------------------------
 
 		map.put("/boardList.do", new BoardList()); // 게시글 목록

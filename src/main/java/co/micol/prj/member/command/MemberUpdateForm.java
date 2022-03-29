@@ -13,7 +13,17 @@ public class MemberUpdateForm implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
+		MemberVO vo = new MemberVO();		
+		HttpSession session = request.getSession();
+		MemberService dao = new MemberServiceImpl();
 		
+		vo.setMemberId((String) session.getAttribute("memberId"));
+		vo = dao.selectMemberTwo(vo);
+		
+		
+		String str = vo.getFavorite();
+		
+		request.setAttribute("fav", str);
 		
 		return "member/memberUpdate";
 	}

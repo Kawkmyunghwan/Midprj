@@ -15,14 +15,14 @@ public class MemberJoin implements Command {
 		// 회원가입
 		MemberService memberDao = new MemberServiceImpl();
 		MemberVO vo = new MemberVO();
-		;
+		
 		vo.setMemberEmail(request.getParameter("memberEmail"));
 		vo.setMemberId(request.getParameter("memberId"));
 		vo.setMemberPassword(request.getParameter("memberPassword"));
 		vo.setMemberName(request.getParameter("memberName"));
 		vo.setMemberPhone(request.getParameter("memberPhone"));
 		String[] favArr  = request.getParameterValues("favorite");
-		String favorite = String.join(", ", favArr);
+		String favorite = String.join(",", favArr);
 		System.out.println(favorite);
 		vo.setFavorite(favorite);
 		

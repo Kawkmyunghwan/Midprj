@@ -15,7 +15,7 @@ public class CommentsList implements Command {
 		CommentsService commentsDao = new CommentsServiceImpl();
 		CommentsVO vo = new CommentsVO();
 		vo.setBoardNum(Integer.parseInt(request.getParameter("boardNum")));
-		request.setAttribute("comments", commentsDao.commentsSelectList());
+		//request.setAttribute("comments", commentsDao.commentsSelectList());
 		return "board/boardView";
 	}
 
