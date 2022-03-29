@@ -15,9 +15,11 @@
 			<div>
 				<h1>게시글 상세보기</h1>
 			</div>
-
+			
 			<div>
-				<table border="1">
+				<div class="container"style="max-width:950px;">
+				<div class="container"style="max-width:900px;">
+				<table border="1" >
 					<tr>
 						<th width="100">작성자</th>
 						<td width="150">${contact.infoWriter}</td>
@@ -37,44 +39,33 @@
 					
 				</table>
 				<br/>
+				</div>
+				</div>
 				
 				
-				
+				<div class="container"style="max-width:880px;">
 				<div class="card">
 					<div class="card-body">		
 						<div class="row">
-						<div class="col-md-2">
-							<label>답변</label>
+						<div class="col-md-1" align="left">
+							<label>답변: </label>
 						</div>
-						<div class="col-md-10">
+						<div class="col-md-11" align="left">
 							<pre id="isAnswerText">${contact.isAnswer}</pre>
 							<textarea id="isAnswer" name="isAnswer">${contact.isAnswer}</textarea>
-						</div>
-						<button type="button" onclick="reviewShow()">수정</button>	
+						</div>	
 						</div>
 						
-<!-- 					<table border="1"> -->
-<!-- 						<tr> -->
-<!-- 							<th width="100">답변</th> -->
-<!-- 							<td width="746"> -->
-								
-<!-- 							</td> -->
-<!-- 						</tr> -->
-<!-- 					</table> -->
 					</div>
 				</div>	
 					<c:if test="${memberId eq 'admin'}">
-					<div class="col-md-8" id="the" align="center">
+					<div class="col-md-12" id="the" align="left">
 					<table border="1">
-<!-- 						<tr> -->
-<!-- 							<th width="100">답변</th> -->
-<!-- 							<td width=""> -->
-<%-- 								<textarea id="isAnswer" name="isAnswer">${contact.isAnswer}</textarea> --%>
-<!-- 							</td> -->
-<!-- 						</tr> -->
 					</table>
-						<button type="button" onclick="reviewInsert()">답변등록</button>
-						<button type="button" onclick="reviewUpdate()">답변수정</button>
+						
+
+						<button type="button" onclick="reviewShow()">수정</button>
+						<button type="button" onclick="reviewUpdate()">수정완료</button>
 					</div>
 					</c:if>
 				
@@ -95,7 +86,7 @@
 
 		</div>
 	</div>
-		
+	</div>
 	</form>
 </div>
 </body>
@@ -131,6 +122,11 @@
 	function reviewUpdate(){
 		$("#isAnswer").hide();
 		$("#isAnswerText").show();
+		frm.infoNum.value = "${contact.infoNum}";
+		frm.isAnswer.value = $("#isAnswer").val();
+		frm.action = "reviewInsert.do";
+		frm.submit();
+
 	}
 	
 	function reviewShow(){
