@@ -35,7 +35,9 @@ import co.micol.prj.contact.comm.InquiryInsert;
 import co.micol.prj.contact.comm.InquiryInsertForm;
 import co.micol.prj.contact.comm.InquiryUpdate;
 import co.micol.prj.contact.comm.InquiryView;
+import co.micol.prj.contact.comm.ReviewInsert;
 import co.micol.prj.home.command.HomeCommand;
+import co.micol.prj.jOComment.command.JobOpeningComment;
 import co.micol.prj.jobOpening.command.HotSearch;
 import co.micol.prj.jobOpening.command.JobDetail;
 import co.micol.prj.jobOpening.command.LoginPage;
@@ -97,6 +99,7 @@ public class FrontController extends HttpServlet {
 		map.put("/zzim.do", new Zzim());							// 찜 버튼 클릭 시 찜 테이블로 INSERT
 		map.put("/searchLocation.do", new SearchLocation());		// 지역별 구인공고 조회
 		map.put("/application.do", new Application());				// 지원신청서 작성 후 버튼 클릭 시 APPLY테이블로 INSERT
+		map.put("/jobOpeningComment.do", new JobOpeningComment());
 // ---------------------------------------------------
 
 		
@@ -135,11 +138,11 @@ public class FrontController extends HttpServlet {
 		map.put("/boardView.do", new BoardView());
 		map.put("/ajaxBoardSearch.do", new AjaxBoardSearch()); // 게시글 리스트에서 검색
 		map.put("/ajaxSortBoard.do", new AjaxSortBoard()); // 게시글 정렬
-    map.put("/reviewInsert.do", new ReviewInsert());
+		map.put("/reviewInsert.do", new ReviewInsert());
 		
 		map.put("/commentsInsert.do", new CommentsInsert());
 		map.put("/commentsUpdate.do", new CommentsUpdate()); //댓글 수정
-	  map.put("/commentsDelete.do", new CommentsDelete()); //댓글 삭제
+		map.put("/commentsDelete.do", new CommentsDelete()); //댓글 삭제
 		
 
 	  	map.put("/memberLogout.do", new MemberLogout());   //로그아웃
