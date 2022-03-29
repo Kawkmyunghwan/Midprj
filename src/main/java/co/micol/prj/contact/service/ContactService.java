@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 public interface ContactService {
 	
-	List<ContactVO> contactSelectList();
+	List<ContactVO> contactSelectList(SearchCriteria cri);
 	ContactVO contactSelect(ContactVO vo);
 	int contactInsert(ContactVO vo);
 	int contactUpdate(ContactVO vo);

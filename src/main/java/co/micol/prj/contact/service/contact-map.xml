@@ -18,8 +18,22 @@
 
 
 	<select id="contactSelectList" resultMap="contactMap">
-		SELECT * FROM contact
-		ORDER BY info_num DESC
+		<if test="pageStart == null">
+		<![CDATA[
+		SELECT * FROM (SELECT ROWNUM AS rownumber, info_num, info_title, info_writer, info_date, info_hit FROM contact ORDER BY info_num DESC) 
+		WHERE rownumber > 0 and rownumber <= 5
+		]]>
+		</if>
+		<if test="pageStart != null">
+		<![CDATA[
+		SELECT * FROM (SELECT ROWNUM AS rownumber, info_num, info_title, info_writer, info_date, info_hit FROM contact ORDER BY info_num DESC) 
+		WHERE rownumber > #{pageStart} and rownumber <= #{pageStart}+5
+		]]>
+		</if>
+		
+<!-- 		SELECT * FROM (select * from contact where rownum > #{pageStart}) -->
+<!-- 		where rownum < #{perPageNum} -->
+<!-- 		ORDER BY info_num DESC -->
 	</select>
 
 	<select id="contactSelect"
@@ -83,8 +97,8 @@
 		info_Hit = info_Hit + 1 WHERE info_Num = #{id}
 	</update>
 	
-	<select id="pagingTotalCount" parameterType="int">
-		SELECT COUNT(*) FROM contact;
+	<select id="pagingTotalCount" resultType="int">
+		SELECT COUNT(*) FROM contact
 	</select>
 	
 </mapper>
