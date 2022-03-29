@@ -20,9 +20,9 @@
      SELECT NVL(MAX(memberNum+1),1) FROM member
   </selectKey>
       INSERT INTO MEMBER
-      (memberNum, memberEmail, memberId, memberPassword, memberName, memberPhone)
+      (memberNum, memberEmail, memberId, memberPassword, memberName, memberPhone, favorite)
       VALUES
-      (#{memberNum}, #{memberEmail}, #{memberId}, #{memberPassword}, #{memberName}, #{memberPhone})
+      (#{memberNum}, #{memberEmail}, #{memberId}, #{memberPassword}, #{memberName}, #{memberPhone}, #{favorite})
   </insert>   
 
    <update id="updateMember"
