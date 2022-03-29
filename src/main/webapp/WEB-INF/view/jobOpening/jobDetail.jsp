@@ -84,6 +84,7 @@
                         
                         <c:forEach items="comment" var="comment">
                         <!-- 코맨트 테이블에 들어있는 데이터 만큼 반복 -->
+                        <c:if test="${ SUBSCRIPTION ne null }">
                    		<div class="comments-area">
 			                  <h4>05 Comments</h4>
 			                  <div class="comment-list">
@@ -113,6 +114,7 @@
 			                     </div>
 			                  </div>
 			               </div>
+			               </c:if>
 			               </c:forEach>
                
                
@@ -148,7 +150,9 @@
                               <li>Location : <span>${jobOpening.companyAddress }</span></li>
                               <li>Vacancy : <span>02</span></li>
                               <li>Job nature : <span>Full time</span></li>
+                              <c:if test="${ SUBSCRIPTION ne null }">
                               <li>Salary :  <span>${jobOpening.salary }</span></li>
+                              </c:if>
                               <li>Application date : <span>12 Sep 2020</span></li>
                               <li>회사 홈페이지 :<span><a href="http://www.naver.com" style="color: black">${jobOpening.homepage }</a></span></li>                   
                           </ul>
