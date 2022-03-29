@@ -43,7 +43,7 @@ import co.micol.prj.jobOpening.command.Sample;
 import co.micol.prj.jobOpening.command.SearchLocation;
 import co.micol.prj.jobOpening.command.ZzimSearch;
 import co.micol.prj.member.command.AjaxMemberIdCheck;
-import co.micol.prj.member.command.Cback;
+import co.micol.prj.member.command.CBack;
 import co.micol.prj.member.command.MemberDelete;
 import co.micol.prj.member.command.MemberJoin;
 import co.micol.prj.member.command.MemberJoinForm;
@@ -111,7 +111,7 @@ public class FrontController extends HttpServlet {
 		map.put("/inquiryDelete.do", new InquiryDelete()); // 삭제
 		map.put("/ajaxcontactSearch.do", new AjaxcontactSearch()); //리스트검색
 		map.put("/ajaxSortContact.do", new AjaxSortContact()); //정렬
-
+		
 		
 
 		// 김세명 마이페이지------------------------------------
@@ -142,7 +142,7 @@ public class FrontController extends HttpServlet {
 		
 	  	map.put("/memberLogout.do", new MemberLogout());   //로그아웃
 	  	map.put("/naverLogin.do", new NaverLogin());
-	  	map.put("/callBack.do", new Cback());
+	  	map.put("/callBack.do", new CBack());
 
 	}
 
