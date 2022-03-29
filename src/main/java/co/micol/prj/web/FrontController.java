@@ -43,14 +43,17 @@ import co.micol.prj.jobOpening.command.Sample;
 import co.micol.prj.jobOpening.command.SearchLocation;
 import co.micol.prj.jobOpening.command.ZzimSearch;
 import co.micol.prj.member.command.AjaxMemberIdCheck;
+import co.micol.prj.member.command.Cback;
 import co.micol.prj.member.command.MemberDelete;
 import co.micol.prj.member.command.MemberJoin;
 import co.micol.prj.member.command.MemberJoinForm;
 import co.micol.prj.member.command.MemberList;
 import co.micol.prj.member.command.MemberLogin;
+import co.micol.prj.member.command.MemberLogout;
 import co.micol.prj.member.command.MemberSearch;
 import co.micol.prj.member.command.MemberUpdate;
 import co.micol.prj.member.command.MemberUpdateForm;
+import co.micol.prj.member.command.NaverLogin;
 import co.micol.prj.myinfo.command.MyInfo;
 import co.micol.prj.myinfo.command.NotesListForm;
 import co.micol.prj.notes.command.AjaxNotesDelete;
@@ -137,9 +140,9 @@ public class FrontController extends HttpServlet {
 		map.put("/commentsUpdate.do", new CommentsUpdate()); //댓글 수정
 	  	map.put("/commentsDelete.do", new CommentsDelete()); //댓글 삭제
 		
-//	  	map.put("/memberLogout.do", new MemberLogout());   //로그아웃
-//	  	map.put("/naverLogin.do", new NaverLogin());
-//	  	map.put("/calBack.do", new Callback());
+	  	map.put("/memberLogout.do", new MemberLogout());   //로그아웃
+	  	map.put("/naverLogin.do", new NaverLogin());
+	  	map.put("/callBack.do", new Cback());
 
 	}
 
