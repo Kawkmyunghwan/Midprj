@@ -6,7 +6,6 @@ public interface ApplyService {
 	List<ApplyVO> ApplySelectList();
 	List<ApplyVO> ApplySelect(ApplyVO vo);
 	int ApplyInsert(ApplyVO vo);
-	int ApplicationInsert(ApplyVO vo);
 	int ApplyUpdate(ApplyVO vo);
 	int ApplyDelete(ApplyVO vo);
 }
