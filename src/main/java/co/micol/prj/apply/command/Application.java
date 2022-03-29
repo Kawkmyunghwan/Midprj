@@ -25,7 +25,7 @@ public class Application implements Command {
 		ApplyService dao = new ApplyServiceImpl();
 		dao.ApplicationInsert(vo);
 
-		return "jobDetail.do";
+		return "jobOpening/jobApplyClose.tiles";
 	}
 
 }
