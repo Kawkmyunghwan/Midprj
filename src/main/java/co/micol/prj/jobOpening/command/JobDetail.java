@@ -8,6 +8,8 @@ import co.micol.prj.apply.service.ApplyService;
 import co.micol.prj.apply.service.ApplyVO;
 import co.micol.prj.apply.serviceImpl.ApplyServiceImpl;
 import co.micol.prj.common.Command;
+import co.micol.prj.jOComment.service.JOCommentService;
+import co.micol.prj.jOComment.serviceImpl.JOCommentServiceImpl;
 import co.micol.prj.jobOpening.service.JobOpeningService;
 import co.micol.prj.jobOpening.service.JobOpeningVO;
 import co.micol.prj.jobOpening.serviceImpl.JobOpeningServiceImpl;
