@@ -8,6 +8,8 @@ import co.micol.prj.apply.service.ApplyService;
 import co.micol.prj.apply.service.ApplyVO;
 import co.micol.prj.apply.serviceImpl.ApplyServiceImpl;
 import co.micol.prj.common.Command;
+import co.micol.prj.jOComment.service.JOCommentService;
+import co.micol.prj.jOComment.serviceImpl.JOCommentServiceImpl;
 import co.micol.prj.jobOpening.service.JobOpeningService;
 import co.micol.prj.jobOpening.service.JobOpeningVO;
 import co.micol.prj.jobOpening.serviceImpl.JobOpeningServiceImpl;
@@ -24,6 +26,7 @@ public class JobDetail implements Command {
 		JobOpeningService dao = new JobOpeningServiceImpl();
 		ZzimService zDao = new ZzimServiceImpl();	
 		ApplyService applyDao = new ApplyServiceImpl();
+		JOCommentService jDao = new JOCommentServiceImpl();
 		
 		JobOpeningVO vo = new JobOpeningVO();
 		ZzimVO zVo = new ZzimVO();
@@ -36,7 +39,7 @@ public class JobDetail implements Command {
 		request.setAttribute("apply", applyDao.ApplySelect(aVo));
 		request.setAttribute("jobOpening", dao.selectJobOpeningByNum(vo));
 		request.setAttribute("zzim", zDao.selectZzim(zVo));
-		
+		request.setAttribute("comment", jDao.selectJOCommentList());
 		return "jobOpening/jobDetail.tiles";
 	}
 

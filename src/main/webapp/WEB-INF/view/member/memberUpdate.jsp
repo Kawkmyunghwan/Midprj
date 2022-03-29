@@ -36,26 +36,26 @@
 		</div>
 
 		<div align="center">
-			<button type="submit">수 정</button>
-			&nbsp;&nbsp;&nbsp;
-			<button type="reset">취 소</button>
-			&nbsp;&nbsp;&nbsp;
-			<span><input type="button" onclick="delete()" value="회원탈퇴"></span>
+			<button type="submit" class="btn head-btn1">수 정</button>
+
+			<button type="reset" class="btn head-btn1">취 소</button>
+
+			<button type="button" onclick="deleteInfo()" class="btn head-btn1">회원탈퇴</button>
 		</div>
 	</form>
 
-	<script>
-function delete(){
-	event.preventDefault();
+
+</body>
+<script>
+function deleteInfo(){
+	//event.preventDefault();
 var check = confirm("정말로 탈퇴하시겠습니까?");
-if(check == true){
-	frm.submit();
+if(check == true){	
 	alert("탈퇴가 완료되었습니다.");
-	return "memberDelete.do";
+	return location.href="memberDelete.do";
 } else{
 	alert("회원탈퇴를 취소했습니다.");
 }
 }
 </script>
-</body>
 </html>

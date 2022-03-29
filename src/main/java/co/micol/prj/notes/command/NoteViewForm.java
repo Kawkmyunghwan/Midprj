@@ -15,8 +15,10 @@ public class NoteViewForm implements Command {
 		NotesService dao = new NotesServiceImpl();
 		NotesVO vo = new NotesVO();
 		
-		vo.setNo(Integer.parseInt(request.getParameter("no")));
+		vo.setNo(request.getParameter("notesNo"));
 		request.setAttribute("note", dao.notesSelect(vo));
+		
+		
 		
 		return "notes/notesView";
 	}

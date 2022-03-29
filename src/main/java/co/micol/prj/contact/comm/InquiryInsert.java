@@ -4,24 +4,16 @@ import java.sql.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import co.micol.prj.common.Command;
 import co.micol.prj.contact.service.ContactService;
 import co.micol.prj.contact.service.ContactVO;
 import co.micol.prj.contact.serviceImpl.ContactServiceImpl;
-import co.micol.prj.member.service.MemberVO;
 
 public class InquiryInsert implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		HttpSession session = request.getSession();
-		MemberVO membervo = new MemberVO();
-		session.setAttribute("name", membervo.getMemberName());
-		request.setAttribute("membername", membervo.getMemberName());
-		
-		
 		ContactService contactDao = new ContactServiceImpl();
 		ContactVO vo = new ContactVO();
 		vo.setInfoWriter(request.getParameter("infoWriter"));

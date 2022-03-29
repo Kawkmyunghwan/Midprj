@@ -1,46 +1,48 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 	<div>
 		<div>
-			<h2>ÂÊÁö º¸³»±â</h2>
+			<h2>ìª½ì§€ ë³´ë‚´ê¸°</h2>
 		</div>
 		<div align="center">
 			<form id="frm" action="noteInsert.do" method="post">
 				<div>
 					<table border="1">
 						<tr>
-							<th width="100">¹Þ´Â »ç¶÷ID</th>
+							<th width="100">ë°›ëŠ” ì‚¬ëžŒID!</th>
+							
 							<td width="150"><input type="text" id="recvId" name="recvId"
-								required="required"></td>
+								required="required" value="${recv }"></td>							
+							
 						</tr>
 						<tr>
-							<th>Á¦¸ñ</th>
+							<th>ì œëª©</th>
 							<td colspan="3"><input type="text" size="80" id="title"
 								name="title" required="required"></td>
 						</tr>
 						<tr>
-							<th>³»¿ë</th>
-							<td colspan="3"><textarea rows="10" cols="80" name="note"></textarea>
+							<th>ë‚´ìš©</th>
+							<td colspan="3"><textarea rows="10" cols="80" name="note" required="required"></textarea>
 							</td>
 						</tr>
 					</table>
 				</div>
 				<br>
 				<div>
-					<button type="submit">º¸³»±â</button>
+					<button type="submit">ë³´ë‚´ê¸°</button>
 					&nbsp;&nbsp;&nbsp;
-					<button type="reset">Ãë ¼Ò</button>
+					<button type="reset">ì·¨ ì†Œ</button>
 					&nbsp;&nbsp;&nbsp;
-					<button type="button" onclick="location.href = 'noteList.do'">ÂÊÁöÇÔ
+					<button type="button" onclick="location.href = 'notesListForm.do'">ìª½ì§€í•¨
 						</button>
-					&nbsp;&nbsp;&nbsp;
+					
 				</div>
 			</form>
 		</div>
