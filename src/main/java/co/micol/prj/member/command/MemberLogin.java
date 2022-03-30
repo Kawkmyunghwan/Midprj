@@ -23,10 +23,8 @@ public class MemberLogin implements Command {
 		vo.setMemberId(request.getParameter("memberId"));
 		vo.setMemberPassword(request.getParameter("memberPassword"));
 		vo = memberDao.selectMember(vo);
-		
-		
-		
-		
+		request.setAttribute("member", vo);
+		String viewPage;
 		if(vo.getMemberId() != null) {
 			//여기서 세션 처리하고
 			session.setAttribute("memberId", vo.getMemberId());
@@ -34,12 +32,11 @@ public class MemberLogin implements Command {
 			session.setAttribute("memberEmail", vo.getMemberEmail());
 			session.setAttribute("favorite", vo.getFavorite());
 			session.setAttribute("memberName", vo.getMemberName());
-			return "home.do";
+			viewPage = "member/memberLoginSuccess.tiles";
 		}else {
-			request.setAttribute("message", "아이디 또는 패스워드가 일치하지 않습니다.");
-			return "home.do";
+			viewPage = "member/memberLoginFail.tiles";
 		}
-		
+		return viewPage;
 	}
 
 }
