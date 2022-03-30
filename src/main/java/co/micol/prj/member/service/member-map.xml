@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.micol.prj.member.service.MemberMapper">
-   <select id="selectMemberList"
-      resultType="co.micol.prj.member.service.MemberVO">
-      SELECT * FROM MEMBER
-   </select>
+	<select id="selectMemberList"
+		resultType="co.micol.prj.member.service.MemberVO">
+		SELECT * FROM MEMBER
+	</select>
 
    <select id="selectMember"
       parameterType="co.micol.prj.member.service.MemberVO"
@@ -31,26 +31,52 @@
       (#{memberNum}, #{memberEmail}, #{memberId}, #{memberPassword}, #{memberName}, #{memberPhone}, #{favorite})
   </insert>   
 
-   <update id="updateMember"
-      parameterType="co.micol.prj.member.service.MemberVO">
-      UPDATE MEMBER
-      <set>
-         MEMBERPASSWORD = #{memberPassword},
-         MEMBERNAME = #{memberName},
-         MEMBERPHONE = #{memberPhone}
-      </set>
-      WHERE MEMBERID = #{memberId}
-   </update>
+		<selectKey keyProperty="memberNum,memberSub"
+			resultType="int" order="BEFORE">
+			SELECT NVL(MAX(memberNum+1),1), CASE WHEN
+			MAX(subscription) IS NULL THEN 1 END AS SUBSCRIPTION FROM (select
+			p.*, m.subscription from payment p, member m where p.membernum =
+			m.membernum)
+		</selectKey>
+		INSERT INTO MEMBER
+		(MEMBERNUM, MEMBEREMAIL, MEMBERID, MEMBERPASSWORD,
+		MEMBERNAME, MEMBERPHONE, MEMBERSUBSCRIPTION)
+		VALUES
+		(#{memberNum}, #{memberEmail},
+		#{memberId}, #{memberPassword}, #{memberName},
+		#{memberPhone}, #{memberSub})
+	</insert>
 
-   <delete id="deleteMember"
-      parameterType="co.micol.prj.member.service.MemberVO">
-      DELETE FROM MEMBER WHERE MEMBERID = #{memberId}
-   </delete>
 
-   <select id="isIdCheck" parameterType="String"
-      resultType="boolean">
-      SELECT CASE WHEN COUNT(MEMBERID) = 1 THEN 0 ELSE 1 END AS
-      MEMBERID
-      FROM MEMBER WHERE MEMBERID = #{str}
-   </select>
+	<update id="updateMember"
+		parameterType="co.micol.prj.member.service.MemberVO">
+		UPDATE MEMBER
+		<set>
+			MEMBERPASSWORD = #{memberPassword},
+			MEMBERNAME = #{memberName},
+			MEMBERPHONE = #{memberPhone}
+		</set>
+		WHERE MEMBERID = #{memberId}
+	</update>
+
+	<delete id="deleteMember"
+		parameterType="co.micol.prj.member.service.MemberVO">
+		DELETE FROM MEMBER WHERE ID = #{memberId}
+	</delete>
+
+	<select id="isIdCheck" parameterType="String"
+		resultType="boolean">
+		SELECT CASE WHEN COUNT(MEMBERID) = 1 THEN 0 ELSE 1 END AS
+		MEMBERID
+		FROM MEMBER WHERE MEMBERID = #{str}
+	</select>
+	
+	<update id="updateSub"
+		parameterType="co.micol.prj.member.service.MemberVO">
+		UPDATE MEMBER
+		<set>
+			SUBSCRIPTION = 1
+		</set>
+		WHERE MEMBERID = #{memberNum}
+	</update>
 </mapper>

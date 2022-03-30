@@ -33,7 +33,6 @@ import co.micol.prj.contact.comm.InquiryInsert;
 import co.micol.prj.contact.comm.InquiryInsertForm;
 import co.micol.prj.contact.comm.InquiryUpdate;
 import co.micol.prj.contact.comm.InquiryView;
-import co.micol.prj.contact.comm.Paging;
 import co.micol.prj.contact.comm.ReviewInsert;
 import co.micol.prj.home.command.HomeCommand;
 import co.micol.prj.jOComment.command.AjaxJobOpeningComment;
@@ -65,6 +64,8 @@ import co.micol.prj.notes.command.NoteDelete;
 import co.micol.prj.notes.command.NoteInsert;
 import co.micol.prj.notes.command.NoteViewForm;
 import co.micol.prj.notes.command.NotesInsertForm;
+import co.micol.prj.payment.command.PaymentInsert;
+import co.micol.prj.payment.command.PaymentInsertForm;
 import co.micol.prj.notes.command.NotesSentListForm;
 import co.micol.prj.zzim.command.Zzim;
 
@@ -119,8 +120,6 @@ public class FrontController extends HttpServlet {
 		map.put("/inquiryDelete.do", new InquiryDelete()); // 삭제
 		map.put("/ajaxcontactSearch.do", new AjaxcontactSearch()); //리스트검색
 		map.put("/ajaxSortContact.do", new AjaxSortContact()); //정렬
-		map.put("/paging.do", new Paging());
-		
 
 		// 김세명 마이페이지------------------------------------
 		map.put("/myInfo.do", new MyInfo()); // 마이페이지
@@ -135,7 +134,10 @@ public class FrontController extends HttpServlet {
 		map.put("/noteViewForm.do", new NoteViewForm()); // 쪽지 내용 폼
 		map.put("/notesInsertForm.do", new NotesInsertForm()); // 쪽지 쓰기 폼
 		map.put("/noteInsert.do", new NoteInsert()); // 쪽지 쓰기
+		map.put("/paymentInsertForm.do", new PaymentInsertForm()); // 구독권결제 페이지
+		map.put("/paymentInsert.do", new PaymentInsert()); //구독권결제
 		map.put("/noteDelete.do", new NoteDelete()); // 단일 쪽지 삭제
+
 //		---------------------------------------------------
 
 		map.put("/boardList.do", new BoardList()); // 게시글 목록
