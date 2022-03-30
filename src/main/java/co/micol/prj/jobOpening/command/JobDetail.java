@@ -40,6 +40,7 @@ public class JobDetail implements Command {
 		request.setAttribute("jobOpening", dao.selectJobOpeningByNum(vo));
 		request.setAttribute("zzim", zDao.selectZzim(zVo));
 		request.setAttribute("comment", jDao.selectJOCommentList());
+		
 		return "jobOpening/jobDetail.tiles";
 	}
 

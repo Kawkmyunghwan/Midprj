@@ -8,13 +8,6 @@
 	<div class="container">
 		<!-- Section Tittle -->
 		<div class="row">
-			<div class="col-lg-12">
-				<div class="section-tittle text-center">
-					<h2>찜 목록</h2>
-				</div>
-			</div>
-		</div>
-		<div class="row justify-content-center">
 			<div class="col-xl-10">
 				<!-- single-job-content -->
 				<c:forEach items="${zzim}" var="list">
@@ -34,7 +27,6 @@
 							</ul>
 						</div>
 					</div>
-					
 				</div>
 				</c:forEach>				
 			</div>
