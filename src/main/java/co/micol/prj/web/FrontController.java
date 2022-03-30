@@ -35,6 +35,7 @@ import co.micol.prj.contact.comm.InquiryInsert;
 import co.micol.prj.contact.comm.InquiryInsertForm;
 import co.micol.prj.contact.comm.InquiryUpdate;
 import co.micol.prj.contact.comm.InquiryView;
+import co.micol.prj.contact.comm.ReviewInsert;
 import co.micol.prj.home.command.HomeCommand;
 import co.micol.prj.jobOpening.command.HotSearch;
 import co.micol.prj.jobOpening.command.JobDetail;
@@ -60,6 +61,8 @@ import co.micol.prj.notes.command.AjaxNotesDelete;
 import co.micol.prj.notes.command.NoteInsert;
 import co.micol.prj.notes.command.NoteViewForm;
 import co.micol.prj.notes.command.NotesInsertForm;
+import co.micol.prj.payment.command.PaymentInsert;
+import co.micol.prj.payment.command.PaymentInsertForm;
 import co.micol.prj.zzim.command.Zzim;
 
 
@@ -125,6 +128,8 @@ public class FrontController extends HttpServlet {
 		map.put("/noteViewForm.do", new NoteViewForm()); // 쪽지 내용 폼
 		map.put("/notesInsertForm.do", new NotesInsertForm()); // 쪽지 쓰기 폼
 		map.put("/noteInsert.do", new NoteInsert()); // 쪽지 쓰기
+		map.put("/paymentInsertForm.do", new PaymentInsertForm()); // 구독권결제 페이지
+		map.put("/paymentInsert.do", new PaymentInsert()); //구독권결제
 //		---------------------------------------------------
 
 		map.put("/boardList.do", new BoardList()); // 게시글 목록
@@ -135,11 +140,11 @@ public class FrontController extends HttpServlet {
 		map.put("/boardView.do", new BoardView());
 		map.put("/ajaxBoardSearch.do", new AjaxBoardSearch()); // 게시글 리스트에서 검색
 		map.put("/ajaxSortBoard.do", new AjaxSortBoard()); // 게시글 정렬
-    map.put("/reviewInsert.do", new ReviewInsert());
+		map.put("/reviewInsert.do", new ReviewInsert());
 		
 		map.put("/commentsInsert.do", new CommentsInsert());
 		map.put("/commentsUpdate.do", new CommentsUpdate()); //댓글 수정
-	  map.put("/commentsDelete.do", new CommentsDelete()); //댓글 삭제
+		map.put("/commentsDelete.do", new CommentsDelete()); //댓글 삭제
 		
 
 	  	map.put("/memberLogout.do", new MemberLogout());   //로그아웃

@@ -1,50 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.micol.prj.member.service.MemberMapper">
-   <select id="selectMemberList"
-      resultType="co.micol.prj.member.service.MemberVO">
-      SELECT * FROM MEMBER
-   </select>
+	<select id="selectMemberList"
+		resultType="co.micol.prj.member.service.MemberVO">
+		SELECT * FROM MEMBER
+	</select>
 
-   <select id="selectMember"
-      parameterType="co.micol.prj.member.service.MemberVO"
-      resultType="co.micol.prj.member.service.MemberVO">
-      SELECT * FROM MEMBER WHERE MEMBERID = #{memberId}
-      AND MEMBERPASSWORD = #{memberPassword}
-      <!-- 로그인 기능 -->
-   </select>
+	<select id="selectMember"
+		parameterType="co.micol.prj.member.service.MemberVO"
+		resultType="co.micol.prj.member.service.MemberVO">
+		SELECT * FROM MEMBER WHERE MEMBERID = #{memberId}
+		AND MEMBERPASSWORD =
+		#{memberPassword}
+		<!-- 로그인 기능 -->
+	</select>
 
-<insert id="insertMember"
-      parameterType="co.micol.prj.member.service.MemberVO">
-       <selectKey keyProperty="memberNum" resultType="int" order="BEFORE">
-     SELECT NVL(MAX(memberNum+1),1) FROM member
-  </selectKey>
-      INSERT INTO MEMBER
-      (memberNum, memberEmail, memberId, memberPassword, memberName, memberPhone)
-      VALUES
-      (#{memberNum}, #{memberEmail}, #{memberId}, #{memberPassword}, #{memberName}, #{memberPhone})
-  </insert>   
+	<insert id="insertMember"
+		parameterType="co.micol.prj.member.service.MemberVO">
 
-   <update id="updateMember"
-      parameterType="co.micol.prj.member.service.MemberVO">
-      UPDATE MEMBER
-      <set>
-         MEMBERPASSWORD = #{memberPassword},
-         MEMBERNAME = #{memberName},
-         MEMBERPHONE = #{memberPhone}
-      </set>
-      WHERE MEMBERID = #{memberId}
-   </update>
+		<selectKey keyProperty="memberNum,memberSub"
+			resultType="int" order="BEFORE">
+			SELECT NVL(MAX(memberNum+1),1), CASE WHEN
+			MAX(subscription) IS NULL THEN 1 END AS SUBSCRIPTION FROM (select
+			p.*, m.subscription from payment p, member m where p.membernum =
+			m.membernum)
+		</selectKey>
+		INSERT INTO MEMBER
+		(MEMBERNUM, MEMBEREMAIL, MEMBERID, MEMBERPASSWORD,
+		MEMBERNAME, MEMBERPHONE, MEMBERSUBSCRIPTION)
+		VALUES
+		(#{memberNum}, #{memberEmail},
+		#{memberId}, #{memberPassword}, #{memberName},
+		#{memberPhone}, #{memberSub})
+	</insert>
 
-   <delete id="deleteMember"
-      parameterType="co.micol.prj.member.service.MemberVO">
-      DELETE FROM MEMBER WHERE ID = #{memberId}
-   </delete>
+	<update id="updateMember"
+		parameterType="co.micol.prj.member.service.MemberVO">
+		UPDATE MEMBER
+		<set>
+			MEMBERPASSWORD = #{memberPassword},
+			MEMBERNAME = #{memberName},
+			MEMBERPHONE = #{memberPhone}
+		</set>
+		WHERE MEMBERID = #{memberId}
+	</update>
 
-   <select id="isIdCheck" parameterType="String"
-      resultType="boolean">
-      SELECT CASE WHEN COUNT(MEMBERID) = 1 THEN 0 ELSE 1 END AS
-      MEMBERID
-      FROM MEMBER WHERE MEMBERID = #{str}
-   </select>
+	<delete id="deleteMember"
+		parameterType="co.micol.prj.member.service.MemberVO">
+		DELETE FROM MEMBER WHERE ID = #{memberId}
+	</delete>
+
+	<select id="isIdCheck" parameterType="String"
+		resultType="boolean">
+		SELECT CASE WHEN COUNT(MEMBERID) = 1 THEN 0 ELSE 1 END AS
+		MEMBERID
+		FROM MEMBER WHERE MEMBERID = #{str}
+	</select>
 </mapper>
