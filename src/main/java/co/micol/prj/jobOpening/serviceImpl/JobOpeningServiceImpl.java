@@ -82,4 +82,10 @@ public class JobOpeningServiceImpl implements JobOpeningService {
 
 	}
 
+	@Override
+	public List<JobOpeningVO> selectJobOpeningListByZzimTop4() {
+		// TODO Auto-generated method stub
+		return map.selectJobOpeningListByZzimTop4();
+	}
+
 }

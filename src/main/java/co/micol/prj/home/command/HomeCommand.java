@@ -58,6 +58,12 @@ public class HomeCommand implements Command {
 			}
 			request.setAttribute("recommendList", recommendList);
 		}
+		
+		if(session.getAttribute("favorite") == null || session.getAttribute("memberNum") == null) {
+			request.setAttribute("zzim", dao.selectJobOpeningListByZzimTop4());
+//			관심직군이 없거나, 로그인을 하지 않은 유저는 찜순으로 조회한 기업을 볼 수 있음.
+		}
+		
 		return "home/home.tiles";
 	}
 }
