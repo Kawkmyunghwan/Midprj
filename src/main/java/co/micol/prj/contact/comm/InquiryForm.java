@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletResponse;
 import co.micol.prj.common.Command;
 import co.micol.prj.contact.service.ContactService;
 import co.micol.prj.contact.service.ContactVO;
+import co.micol.prj.contact.service.PageMaker;
+import co.micol.prj.contact.service.SearchCriteria;
 import co.micol.prj.contact.serviceImpl.ContactServiceImpl;
 
 public class InquiryForm implements Command {
@@ -14,16 +16,18 @@ public class InquiryForm implements Command {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		ContactService contactDao = new ContactServiceImpl();
 		ContactVO vo = new ContactVO();
+		PageMaker pageMaker = new PageMaker();
+		SearchCriteria cri = new SearchCriteria();
 		
-		int page = 1; // 시작 페이지
-		int itemsInAPage = 6;
-		int totalCount = contactDao.pagingTotalCount(vo);
-		int totalPage = (int) Math.ceil(totalCount / (double) itemsInAPage);
+		if(request.getParameter("page")!=null) {
+			cri.setPage(Integer.parseInt(request.getParameter("page")));
+		}
 		
-		request.setAttribute("totalCount", totalCount);
-		request.setAttribute("totalPage", totalPage);
-		request.setAttribute("page", page);
-		request.setAttribute("contacts", contactDao.contactSelectList());
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(contactDao.pagingTotalCount(vo));
+		
+		request.setAttribute("pageMaker", pageMaker);
+		request.setAttribute("contacts", contactDao.contactSelectList(cri));
 		
 		return "contact/inquiryForm.tiles";
 	}
