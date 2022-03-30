@@ -1,28 +1,54 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-<form id="" action="" method="post">
-<div align="center">
 <div>
-<table border="1">
-<tr>
-<td width="200">${notes.title }</td>
-<th width="100">¹ß½ÅÀÚ</th>
-<td width="150">${notes.sentId }</td>
-<th width="100">¹ß½ÅÀÏ</th>
-<td width="150">${notes.dateSent }</td>
-</tr>
-<tr>
-<td colspan="6" height="150">${notes.note }</td>
-</tr>
-</table>
-</div></div>
-</form>
+	<form id="frm" method="post">
+		<div align="center">
+			<div>
+				<table border="1">
+					<tr>
+						<td width="200">${note.title }</td>
+						<th width="100">ë°œì‹ ì</th>
+						<td width="150">${note.sentId }</td>
+						<th width="100">ë°œì‹ ì¼</th>
+						<td width="150">${note.dateSent }</td>
+					</tr>
+					<tr>
+						<td colspan="6" height="150">${note.note }</td>
+					</tr>
+				</table>
+			</div>
+			
+			<div>
+				<button type="button" onclick="reSentNote('${note.sentId }')">ë‹µ ì¥</button>
+				&nbsp;&nbsp;&nbsp;
+				<button type="button" onclick="deleteNote('${note.no}')">ì‚­ ì œ</button>
+				&nbsp;&nbsp;&nbsp;
+				<button type="button" onclick="location.href = 'notesListForm.do'">ìª½ì§€í•¨</button>
+			</div>
+<input type="hidden" id="reSent" name="reSent">
+		</div>
+	</form>
+	</div>
 </body>
+
+<script>
+function reSentNote(n){
+	frm.reSent.value = n;
+	frm.action = "notesInsertForm.do";
+	frm.submit();
+}
+
+function deleteNote(n){
+	frm.reSent.value = n;
+	frm.action = "noteDelete.do";
+	frm.submit();
+}
+</script>
 </html>

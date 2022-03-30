@@ -20,14 +20,16 @@ public class MemberDelete implements Command {
 		// 회원 탈퇴
 		MemberVO vo = new MemberVO();
 		HttpSession session = request.getSession();
-		MemberService mDao = new MemberServiceImpl();
+		MemberService dao = new MemberServiceImpl();
 		
 		
 		vo.setMemberId((String)session.getAttribute("memberId"));
 		
-		mDao.deleteMember(vo);
 		
-		return "home.do"; //나중에 로그아웃.do로 교체
+		
+		dao.deleteMember(vo);
+		
+		return "memberLogout.do"; //나중에 로그아웃.do로 교체
 	}
 
 }

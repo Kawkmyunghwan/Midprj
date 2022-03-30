@@ -323,15 +323,6 @@
 		}
 	}			
 	
-	
-	//댓글 SELECT
-	
-	var jobOpNumComment = []
-		<c:forEach items='${comment}' var='comment'>
-		jobOpNumComment.push("${comment.jobOpeningNum}")
-		</c:forEach>
-		console.log(jobOpNumComment);	
-	
 		
 	var xhtp = new XMLHttpRequest();
 		xhtp.open('post', 'AjaxJobOpeningCommentSel.do')		

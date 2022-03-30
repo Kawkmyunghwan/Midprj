@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 public interface ContactService {
 	
-	List<ContactVO> contactSelectList();
+	List<ContactVO> contactSelectList(SearchCriteria cri);
 	ContactVO contactSelect(ContactVO vo);
 	int contactInsert(ContactVO vo);
 	int contactUpdate(ContactVO vo);
@@ -17,4 +17,6 @@ public interface ContactService {
 	//넘어온 파라미터 키 값을, String key에 담겠다는 뜻.
 	List<ContactVO> contactSortList(String key);
 	int rewiewInsert(ContactVO vo);
+	
+	int pagingTotalCount(ContactVO vo);
 }

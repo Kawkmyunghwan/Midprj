@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.micol.prj.payment.service.PaymentMapper">
+	<resultMap type="co.micol.prj.payment.service.PaymentVO"
+		id="paymentMap">
+		<result property="memberNum" column="membernum" />
+		<result property="price" column="price" />
+		<result property="paymentDate" column="paymentDate" />		
+	</resultMap>
+
+	<select id="paymentSelect"
+		parameterType="co.micol.prj.payment.service.PaymentVO"
+		resultMap="paymentMap">
+		SELECT * FROM PAYMENT WHERE MEMBERNUM = #{memberNum}
+	</select>
+
+	<select id="paymentCount"
+		parameterType="co.micol.prj.payment.service.PaymentVO"
+		resultType="int">
+		SELECT COUNT(*) FROM PAYMENT WHERE MEMBERNUM = #{memberNum}
+	</select>
+
+	<insert id="paymentInsert"
+		parameterType="co.micol.prj.payment.service.PaymentVO">
+		INSERT INTO PAYMENT
+		VALUES (#{memberNum}, #{price},
+		SYSDATE)
+	</insert>
+
+	<update id="paymentUpdate"
+		parameterType="co.micol.prj.payment.service.PaymentVO">
+		UPDATE PAYMENT
+		<set>
+			PAYMENTDATE = TO_DATE(ADD_MONTHS(#{paymentDate}, +#{day}) , 'yyyy-mm-dd' )
+		</set>
+		WHERE MEMBERNUM = #{memberNum}
+	</update>
+
+	<delete id="paymentDelete"
+		parameterType="co.micol.prj.payment.service.PaymentVO">
+		DELETE FROM PAYMENT WHERE PAYMENTDATE =
+		TO_CHAR(ADD_MONTHS(SYSDATE, +1), 'YYYY-MM-DD')
+	</delete>
+</mapper>

@@ -1,44 +1,48 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="js/jquery-3.6.0.min.js"></script>
+
 </head>
 <body>
 	<div align="center">
-
 		<div>
-			<h1>ÂÊÁöÇÔ</h1>
+			<h1>ìª½ì§€í•¨</h1>
+			
+			<h2>
+				<b>ë°›ì€ ìª½ì§€</b>|<a onclick="location.href='notesSentListForm.do'">ë³´ë‚¸ ìª½ì§€</a>
+			</h2>
+			
 		</div>
 		<form id="frm" method="post">
 			<div>
 				<table border="1" id="contents">
 					<thead>
 						<tr align="center">
-							<th width="100"><input type="checkbox" name="deleteSel"
-										id="deleteSel" onclick="selectAll(this)">ÀüÃ¼¼±ÅÃ</th>
-							<th width="150">¹ß½ÅÀÚ</th>
-							<th width="300">Á¦ ¸ñ</th>
-							<th width="150">¹ß½ÅÀÏ</th>
+							<th width="100"><input type="checkbox" name="allSel"
+								id="allSel" value="allSelect" onclick="selectAll(this)">ì „ì²´ì„ íƒ</th>
+							<th width="150">ë°œì‹ ì</th>
+							<th width="300">ì œ ëª©</th>
+							<th width="150">ë°œì‹ ì¼</th>
 						</tr>
 					</thead>
 
 					<tbody id="notesBody">
 						<c:if test="${empty notes }">
 							<tr>
-								<td colspan="5">°Ô½Ã±ÛÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.</td>
+								<td colspan="5">ë°›ì€ ìª½ì§€ê°€ ì—†ìŠµë‹ˆë‹¤.</td>
 							</tr>
 						</c:if>
 						<c:if test="${not empty notes }">
 							<c:forEach items="${notes }" var="no">
 								<tr>
 									<td align="center"><input type="checkbox" name="deleteSel"
-										id="deleteSel" value="${no.no }"></td>
+										id="deleteSel${no.no }" value="${no.no }"></td>
 									<td align='center'>${no.sentId }</td>
 									<td align='center' onclick="notesContents(${no.no})">${no.title }</td>
 									<td align='center'>${no.dateSent }</td>
@@ -49,65 +53,94 @@
 				</table>
 			</div>
 			<br>
-
-			<div>				
-				<button type="button" onclick="notesDelete">»è Á¦</button>
-				<button type="button" onclick="location.href='notesInsertForm.do'">ÂÊÁö
-					¾²±â</button>
+<input type="hidden" id="notesNo" name="notesNo">
+			<div>
+				<button type="button" onclick="notesDelete()">ì‚­ ì œ</button>
+				<button type="button" onclick="location.href='notesInsertForm.do'">ìª½ì§€
+					ì“°ê¸°</button>
 			</div>
 		</form>
 
 	</div>
 
-	<script>
-	function selectAll(selectAll){
-		const check = document.getElementsByName('deleteSel');
-		check.forEach((checkbox) => {
-			checkbox.checked = selectAll.checked;
-		})
-	}
+
+</body>
+
+<script>
+
+function selectAll(allSelect){
+	var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+	checkboxes.forEach((checkbox) => {
+	    checkbox.checked = allSelect.checked
+	  })
+}
+
 	function notesContents(n){
-		frm.no.value = n;
+		frm.notesNo.value = n;
 		frm.action = "noteViewForm.do";
 		frm.submit();
 	}
+	
 	function notesDelete(){
-		if($('deleteSel:checked').length == null){
-			alert("»èÁ¦ÇÒ ÂÊÁö¸¦ Ã¼Å©ÇØÁÖ¼¼¿ä!");
+		
+		var val = document.getElementsByName("deleteSel");
+		console.log(val);
+		
+		var check = false;
+		
+		var count = 0;
+		var delArray = [];
+		
+		var data = '';
+		
+		for(var i=0; i<val.length; i++){
+			if(val[i].checked == true){
+				
+				delArray.push(val[i].value);
+				data = data + '-' + val[i].value;
+				
+				count++;
+			}
+		}
+		console.log(delArray);		
+		console.log(data);
+		
+
+		if(count < 1){	
+			alert("ì‚­ì œí•  ìª½ì§€ë¥¼ ì²´í¬í•´ì£¼ì„¸ìš”!");			
 		}else{
 		$.ajax({
-			url : "ajaxNotesDelete.do"
+			url : "ajaxNotesDelete.do",
 			type : "post",
-			data : {"deleteSel" : deleteSel.value},
-		    dataType : "json",
-		    success : function(data){
-		    	deleteResult(data);
-		    }
+			data : {"deleteSel" : data},
+		  dataType : "json",
+		  success : function(result){
+		  //deleteResult(result);
+		  if(result < 1){
+			  alert("ì‚­ì œì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.");
+		  }else{
+			alert(result+"ê±´ì´ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.");
+			location.href='notesListForm.do';
+		  }
+		  }
 		})
 	}
 	}
 	
-	function deleteResult(result){
+	/*function deleteResult(result){
 		var tb = $('#notesBody');
 		$("#notesBody").empty();
 		
 		$.each(result, function(index, item){
-			var html = $("<tr />").append(
-					$("<td />").attr({
-						'align' : 'center'
-						'type' : 'checkbox',
-						'name' : 'deleteSel',
-						'id' : 'deleteSel',
-						value : 'notesConetents('+ item.no +')'
-					}),
+			var html = $("<tr align='center'/>").append(					
+					$("<td align='center'/>").$('<input type="checkbox" name="deleteSel" id="deleteSel'+item.no+'" value="'+item.no'"'),
 					$("<td align='center'/>").text(item.sentId),
-					$("<td align='center' onclick='notesContents(${no.no})'/>").text(item.title),
+					$("<td align='center' onclick='notesContents("+item.no)'/>").text(item.title),
 					$("<td align='center'/>").text(item.dateSent)
 					);
 			tb.append(html);
 		});
 		$("#contents").append(tb);
-	} 
+	} */
 	</script>
-</body>
 </html>

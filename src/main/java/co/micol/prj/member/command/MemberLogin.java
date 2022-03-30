@@ -33,6 +33,7 @@ public class MemberLogin implements Command {
 			session.setAttribute("memberNum", vo.getMemberNum());
 			session.setAttribute("memberEmail", vo.getMemberEmail());
 			session.setAttribute("favorite", vo.getFavorite());
+			session.setAttribute("memberName", vo.getMemberName());
 			return "home.do";
 		}else {
 			request.setAttribute("message", "아이디 또는 패스워드가 일치하지 않습니다.");

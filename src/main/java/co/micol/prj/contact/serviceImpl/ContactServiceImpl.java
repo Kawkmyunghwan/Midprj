@@ -8,14 +8,15 @@ import co.micol.prj.common.DataSource;
 import co.micol.prj.contact.service.ContactMapper;
 import co.micol.prj.contact.service.ContactService;
 import co.micol.prj.contact.service.ContactVO;
+import co.micol.prj.contact.service.SearchCriteria;
 
 public class ContactServiceImpl implements ContactService {
 	private SqlSession sqlSession = DataSource.getInstance().openSession(true);
 	private ContactMapper map = sqlSession.getMapper(ContactMapper.class);
 	
 	@Override
-	public List<ContactVO> contactSelectList() {
-		return map.contactSelectList();
+	public List<ContactVO> contactSelectList(SearchCriteria cri) {
+		return map.contactSelectList(cri);
 	}
 
 	@Override
@@ -63,5 +64,12 @@ public class ContactServiceImpl implements ContactService {
 		// TODO Auto-generated method stub
 		return map.rewiewInsert(vo);
 	}
+
+	@Override
+	public int pagingTotalCount(ContactVO vo) {
+		return map.pagingTotalCount(vo);
+	}
+
+
 
 }
