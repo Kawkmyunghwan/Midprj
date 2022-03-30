@@ -6,17 +6,30 @@
 		SELECT * FROM MEMBER
 	</select>
 
-	<select id="selectMember"
-		parameterType="co.micol.prj.member.service.MemberVO"
-		resultType="co.micol.prj.member.service.MemberVO">
-		SELECT * FROM MEMBER WHERE MEMBERID = #{memberId}
-		AND MEMBERPASSWORD =
-		#{memberPassword}
-		<!-- 로그인 기능 -->
-	</select>
+   <select id="selectMember"
+      parameterType="co.micol.prj.member.service.MemberVO"
+      resultType="co.micol.prj.member.service.MemberVO">
+      SELECT * FROM MEMBER WHERE MEMBERID = #{memberId}
+      AND MEMBERPASSWORD = #{memberPassword}
+      <!-- 로그인 기능 -->
+   </select>
+   
+   <select id="selectMemberTwo"
+      parameterType="co.micol.prj.member.service.MemberVO"
+      resultType="co.micol.prj.member.service.MemberVO">
+      SELECT * FROM MEMBER WHERE MEMBERID = #{memberId}      
+   </select>
 
-	<insert id="insertMember"
-		parameterType="co.micol.prj.member.service.MemberVO">
+<insert id="insertMember"
+      parameterType="co.micol.prj.member.service.MemberVO">
+       <selectKey keyProperty="memberNum" resultType="int" order="BEFORE">
+     SELECT NVL(MAX(memberNum+1),1) FROM member
+  </selectKey>
+      INSERT INTO MEMBER
+      (memberNum, memberEmail, memberId, memberPassword, memberName, memberPhone, favorite)
+      VALUES
+      (#{memberNum}, #{memberEmail}, #{memberId}, #{memberPassword}, #{memberName}, #{memberPhone}, #{favorite})
+  </insert>   
 
 		<selectKey keyProperty="memberNum,memberSub"
 			resultType="int" order="BEFORE">
@@ -33,6 +46,7 @@
 		#{memberId}, #{memberPassword}, #{memberName},
 		#{memberPhone}, #{memberSub})
 	</insert>
+
 
 	<update id="updateMember"
 		parameterType="co.micol.prj.member.service.MemberVO">

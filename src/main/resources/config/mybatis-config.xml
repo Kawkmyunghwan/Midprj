@@ -29,7 +29,8 @@
 		<mapper resource="co/micol/prj/zzim/service/zzim-map.xml"/>	
 		<mapper resource="co/micol/prj/apply/service/apply-map.xml"/>
 		<mapper resource="co/micol/prj/board/service/board-map.xml"/>
-		<mapper resource="co/micol/prj/comments/service/comments-map.xml"/>	
 		<mapper resource="co/micol/prj/payment/service/payment-map.xml"/>
+		<mapper resource="co/micol/prj/comments/service/comments-map.xml"/>
+		<mapper resource="co/micol/prj/jOComment/service/jOComment-map.xml"/>
 	</mappers>
 </configuration>

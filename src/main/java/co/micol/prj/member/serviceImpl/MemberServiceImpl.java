@@ -55,6 +55,13 @@ public class MemberServiceImpl implements MemberService {
 	public int updateSub(MemberVO vo) {
 		// TODO Auto-generated method stub
 		return map.updateSub(vo);
+  }
+  
+  @Override
+	public MemberVO selectMemberTwo(MemberVO vo) {
+		// TODO Auto-generated method stub
+		return map.selectMemberTwo(vo);
+
 	}
 
 }

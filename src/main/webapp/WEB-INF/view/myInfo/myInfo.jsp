@@ -1,17 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 <div>
-<div><a href="memberUpdateForm.do"><h1>³» Á¤º¸ °ü¸®</h1></a></div>
-<div><a href=""><h1>Âò ¸ñ·Ï</h1></a></div>
-<div><a href="paymentInsertForm.do"><h1>±¸µ¶ÇÏ±â</h1></a></div>
-<div><a href="notesListForm.do"><h1>ÂÊÁöÇÔ</h1></a></div>
+<div><a href="memberUpdateForm.do"><h1>ë‚´ ì •ë³´ ê´€ë¦¬</h1></a></div>
+<div><a href="myZzim.do"><h1>ì°œ ëª©ë¡</h1></a></div>
+<div><a href="paymentInsertForm.do"><h1>êµ¬ë…í•˜ê¸°</h1></a></div>
+<div><a href="notesListForm.do"><h1>ìª½ì§€í•¨</h1></a></div>
 </div>
 </body>
 </html>

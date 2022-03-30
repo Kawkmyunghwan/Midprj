@@ -13,6 +13,8 @@ public class ZzimSearch implements Command {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		JobOpeningService dao = new JobOpeningServiceImpl();
 		request.setAttribute("zzim", dao.selectJobOpeningListByZzim());
+		
+		
 		return "jobOpening/zzimSearch.tiles";
 	}
 

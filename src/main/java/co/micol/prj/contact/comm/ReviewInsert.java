@@ -18,6 +18,6 @@ public class ReviewInsert implements Command {
 		vo.setInfoNum(Integer.parseInt(request.getParameter("infoNum")));
 		vo.setIsAnswer(request.getParameter("isAnswer"));
 		Dao.rewiewInsert(vo);
-		return "inquiryForm.do";
+		return "inquiryView.do";
 	}
 }
