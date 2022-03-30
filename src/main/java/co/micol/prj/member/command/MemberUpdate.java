@@ -17,6 +17,12 @@ public class MemberUpdate implements Command {
 		MemberVO vo = new MemberVO();		
 		HttpSession session = request.getSession();
 		MemberService dao = new MemberServiceImpl();
+		String[] favArr  = request.getParameterValues("favorite");
+		String favorite = String.join(",", favArr);
+		
+		
+		
+		
 		
 
 		vo.setMemberId((String) session.getAttribute("memberId"));
@@ -32,13 +38,16 @@ public class MemberUpdate implements Command {
 		
 		if (request.getParameter("memberPassword").length() > 0) {
 			vo.setMemberPassword(request.getParameter("memberPassword"));
-		} 
+		}
 		
-		
+		if (favArr.length > 0) {
+			
+			vo.setFavorite(favorite);
+		}				
 
 		dao.updateMember(vo);
 
-		return "member/memberUpdate";
+		return "member/memberUpdateSucess";
 	}
 
 }
