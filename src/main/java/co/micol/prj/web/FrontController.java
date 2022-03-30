@@ -39,6 +39,7 @@ import co.micol.prj.jobOpening.command.HotSearch;
 import co.micol.prj.jobOpening.command.JobDetail;
 import co.micol.prj.jobOpening.command.Jsearch;
 import co.micol.prj.jobOpening.command.LoginPage;
+import co.micol.prj.jobOpening.command.Myzzim;
 import co.micol.prj.jobOpening.command.Sample;
 import co.micol.prj.jobOpening.command.SearchLocation;
 import co.micol.prj.jobOpening.command.ZzimSearch;
@@ -135,19 +136,18 @@ public class FrontController extends HttpServlet {
 		map.put("/boardView.do", new BoardView());
 		map.put("/ajaxBoardSearch.do", new AjaxBoardSearch()); // 게시글 리스트에서 검색
 		map.put("/ajaxSortBoard.do", new AjaxSortBoard()); // 게시글 정렬
-    map.put("/reviewInsert.do", new ReviewInsert());
+		map.put("/reviewInsert.do", new ReviewInsert());
 		
 		map.put("/commentsInsert.do", new CommentsInsert());
 		map.put("/commentsUpdate.do", new CommentsUpdate()); //댓글 수정
-	  map.put("/commentsDelete.do", new CommentsDelete()); //댓글 삭제
+		map.put("/commentsDelete.do", new CommentsDelete()); //댓글 삭제
 		
 
 	  	map.put("/memberLogout.do", new MemberLogout());   //로그아웃
 	  	map.put("/naverLogin.do", new NaverLogin()); //네이버 로그인 API
 	  	map.put("/callBack.do", new CBack()); // 네이버 로그인 API 콜백
 	  	map.put("/Jsearch.do", new Jsearch()); //구인광고 검색
-	  	
-
+	  	map.put("/myZzim.do", new Myzzim()); //마이페이지 내 찜 리스트
 
 	}
 

@@ -2,19 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <form action="jobDetail.do" method="get" name="quickFrm">
-	<input type="hidden" name="jobOpeningNum">
+	<input type="hidden" name="jobOpeningNum">7141
 </form>
 <section class="featured-job-area feature-padding">
 	<div class="container">
 		<!-- Section Tittle -->
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="section-tittle text-center">
-					<h2>찜 목록</h2>
-				</div>
-			</div>
-		</div>
-		<div class="row justify-content-center">
+		<div class="row">?ewq	lass="row justify-content-center">
 			<div class="col-xl-10">
 				<!-- single-job-content -->
 				<c:forEach items="${zzim}" var="list">
@@ -34,7 +27,6 @@
 							</ul>
 						</div>
 					</div>
-					
 				</div>
 				</c:forEach>				
 			</div>

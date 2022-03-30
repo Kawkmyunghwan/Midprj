@@ -68,4 +68,10 @@ public class JobOpeningServiceImpl implements JobOpeningService {
 		return map.selectJobOpeningListByPost(cond);
 	}
 
+	@Override
+	public List<JobOpeningVO> selectJobOpeningListByMyzzim() {
+		// TODO Auto-generated method stub
+		return map.selectJobOpeningListByMyzzim();
+	}
+
 }
