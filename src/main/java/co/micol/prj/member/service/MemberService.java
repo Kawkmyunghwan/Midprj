@@ -8,6 +8,7 @@ public interface MemberService {
    int insertMember(MemberVO vo);      //등록
    int updateMember(MemberVO vo);      //수정
    int deleteMember(MemberVO vo);      //삭제
+   int updateSub(MemberVO vo);
    
    boolean isIdCheck(String str);      //아이디 중복체크. 존재하면 false
    

@@ -41,6 +41,15 @@
 
 
 	</select>
+	
+	<select id="selectRecommendation" 
+		parameterType="String" 
+		resultType="co.micol.prj.jobOpening.service.JobOpeningVO">
+		SELECT *
+		FROM JOBOPENING
+		WHERE JOBGROUP LIKE NVL('%'||#{jobGroup}||'%', JOBGROUP)
+	</select>
+	
 
 	<select id="selectJobOpeningListByMyzzim"
 		resultType="co.micol.prj.jobOpening.service.JobOpeningVO">
