@@ -14,32 +14,32 @@ import co.micol.prj.common.Command;
 
 public class CommentsDelete implements Command {
 
-	@Override
-	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		CommentsService dao = new CommentsServiceImpl();
-		CommentsVO vo = new CommentsVO();
-		HttpSession session = request.getSession();
-		
-		vo.setMemberId((String) session.getAttribute("memberId"));
-		int commentsNum = Integer.parseInt(request.getParameter("commentsNum"));
-		vo.setCommentsNum(commentsNum);
-		int n = dao.commentsDelete(vo);
-		BoardService boardDao= new BoardServiceImpl();
-		BoardVO bVo = new BoardVO();
-		int boardNum = Integer.parseInt(request.getParameter("boardNum"));
-		bVo.setBoardNum(boardNum);
-		
-		if (n != 0) {
-			request.setAttribute("message", "댓글 삭제를 성공하였습니다.");
-			request.setAttribute("boarders", boardDao.boardSelect(bVo));
-			request.setAttribute("comments", dao.commentsSelectList(boardNum));
-			return "board/boardView";
-		}else {
-			request.setAttribute("boarders", boardDao.boardSelect(bVo));
-			request.setAttribute("comments", dao.commentsSelectList(boardNum));
-			request.setAttribute("message", "댓글 삭제를 실패하였습니다.");
-			return "board/boardView";
-		}
-	}
+   @Override
+   public String exec(HttpServletRequest request, HttpServletResponse response) {
+      CommentsService dao = new CommentsServiceImpl();
+      CommentsVO vo = new CommentsVO();
+      HttpSession session = request.getSession();
+      
+      vo.setMemberId((String) session.getAttribute("memberId"));
+      int commentsNum = Integer.parseInt(request.getParameter("commentsNum"));
+      vo.setCommentsNum(commentsNum);
+      int n = dao.commentsDelete(vo);
+      BoardService boardDao= new BoardServiceImpl();
+      BoardVO bVo = new BoardVO();
+      int boardNum = Integer.parseInt(request.getParameter("boardNum"));
+      bVo.setBoardNum(boardNum);
+      
+      if (n != 0) {
+         request.setAttribute("message", "댓글 삭제를 성공하였습니다.");
+         request.setAttribute("boarders", boardDao.boardSelect(bVo));
+         request.setAttribute("comments", dao.commentsSelectList(boardNum));
+         return "board/boardView";
+      }else {
+         request.setAttribute("boarders", boardDao.boardSelect(bVo));
+         request.setAttribute("comments", dao.commentsSelectList(boardNum));
+         request.setAttribute("message", "댓글 삭제를 실패하였습니다.");
+         return "board/boardView";
+      }
+   }
 
 }

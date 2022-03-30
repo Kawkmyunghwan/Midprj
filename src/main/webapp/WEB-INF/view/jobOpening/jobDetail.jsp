@@ -82,11 +82,9 @@
                         
                         
                         
-                        <c:forEach items="comment" var="comment">
                         <!-- 코맨트 테이블에 들어있는 데이터 만큼 반복 -->
-                        <c:if test="${ SUBSCRIPTION ne null }">
-                   		<div class="comments-area">
-			                  <h4>05 Comments</h4>
+                   		<div class="comments-area">	
+                   			<c:if test="${ SUBSCRIPTION ne null }">                   			                  					                  
 			                  <div class="comment-list">
 			                     <div class="single-comment justify-content-between d-flex">
 			                        <div class="user justify-content-between d-flex">
@@ -105,17 +103,13 @@
 			                                    </h5>
 			                                    <p class="date">December 4, 2017 at 3:12 pm </p>
 			                                 </div>
-			                                 <div class="reply-btn">
-			                                    <a href="#" class="btn-reply text-uppercase">reply</a>
-			                                 </div>
 			                              </div>
 			                           </div>
 			                        </div>
 			                     </div>
 			                  </div>
+			                  </c:if>
 			               </div>
-			               </c:if>
-			               </c:forEach>
                
                
                
@@ -132,7 +126,7 @@
                         </div>
                      </div>
                      <div class="form-group">
-                        <button type="submit" class="button button-contactForm btn_1 boxed-btn" onClick="insertComment()">Send Message</button>
+                        <button type="button" class="button button-contactForm btn_1 boxed-btn" onClick="insertComment()">Send Message</button>
                      </div>
                   </form>
                </div>
@@ -154,13 +148,13 @@
                               <li>Salary :  <span>${jobOpening.salary }</span></li>
                               </c:if>
                               <li>Application date : <span>12 Sep 2020</span></li>
-                              <li>회사 홈페이지 :<span><a href="http://www.naver.com" style="color: black">${jobOpening.homepage }</a></span></li>                   
+                              <li>회사 홈페이지 :<span><a href="http://www.naver.com" style="color: black">${jobOpening.homepage }</a></span></li>                             
                           </ul>
                          <div class="apply-btn2" id="btn2">                                              							       
 							<button type="button" class="btn btn-primary" id="a" onclick="windowFnc(${jobOpening.jobOpeningNum})">Apply Now</button>							  					                        	            
                             <a href="" onclick='formFnc(${jobOpening.jobOpeningNum})' id="btn" class="btn">♡</a>                                                                                                
                          </div>
-                       </div> 
+                       </div>
                                                                                             
                        <form action="zzim.do" method="get" name="quickFrm">
                        		<input type="hidden" name="jobOpeningNum">
@@ -205,6 +199,7 @@
 		var popUrl = 'notilesApply.do?jobOpeningNum='+jobOpening_num+'';
 		var popOption = 'left=600, width=600, height=650, location=no, status=no, scrollbars=yes'
 		window.open(popUrl, "name", popOption);	
+		
 	}
 		
 // -----------------------------------------------------------------	
@@ -248,68 +243,160 @@
 	
 	
 	
-	// 댓글 INSERT
+	// 댓글 INSERT	
 	
-	function insertComment(){
-		event.preventdefault()
-		var memberNum = "<c:out value = '${memberNum}'/>";
-		var cv = comment.value
 		
+		
+	function insertComment(){	
+		var cm = document.getElementById('comment');
+		var cv = cm.value;	
+		var memberNum = "<c:out value = '${memberNum}'/>";
+			
 		var xhtp = new XMLHttpRequest();
 		xhtp.open('post', 'jobOpeningComment.do')
 		xhtp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xhtp.send('commentContent='+cv+'&jobOpeningNum='+jobOpNum+'&memberNum='+memberNum);
 		xhtp.onload = function() {
 			var result = xhtp.responseText;
-			result = JSON.parse(result);
-			var desc = document.querySelector('.desc');
+	        result = JSON.parse(result);
+	        console.log(result);
+
+			var commentList = document.createElement('div');
+			commentList.setAttribute('class', 'comment-list');
+			
+			var commentArea = document.querySelector('.comments-area');
+			commentArea.append(commentList);
+			
+			var singleComment = document.createElement('div');
+			singleComment.setAttribute('class', 'single-comment justify-content-between d-flex');
+			commentList.append(singleComment);
+			
+			var userJustify = document.createElement('div');
+			userJustify.setAttribute('class', 'user justify-content-between d-flex')
+			singleComment.append(userJustify);
+			
+			var thumb = document.createElement('div');
+			thumb.setAttribute('class', 'thumb');
+			userJustify.append(thumb);
+			
+			var img = document.createElement('img');
+			img.setAttribute('src', "assets/img/comment/comment_1.png");
+			img.setAttribute('alt', "");
+			thumb.append(img);
+			
+			var desc = document.createElement('div');
+			desc.setAttribute('class', 'desc');
+			userJustify.append(desc);
+			
 			var p = document.createElement('p');
-			p.innerText = result.commentContent;
+			p.innerText = result[result.length-1].commentContent;
 			desc.append(p);
 			
-			var commentName = document.getElementById('commentName');
-			var aTag = document.createElement('a');
-			aTag.setAttribute('href', '');
-			aTag.innerText = result.memberId;
-			commentName.append(aTag);
+			var dFlex = document.createElement('div');
+			dFlex.setAttribute('class', 'd-flex justify-content-between')
+			desc.append(dFlex);
 			
-			var sysdate = document.querySelector('.d-flex align-items-center');
-			var sp = document.createElement('p');
-			sp.innerText = result.commentDate;
-			sysdate.append(sp);
+			var dFlex2 = document.createElement('div');
+			dFlex2.setAttribute('class', 'd-flex align-items-center');
+			dFlex.append(dFlex2);
+			
+			var h5 = document.createElement('h5');
+			dFlex2.append(h5);
+			
+			var a = document.createElement('a');
+			a.setAttribute('href', '#')
+			a.innerText = result[result.length-1].memberName;
+			h5.append(a);
+			
+			var date = document.createElement('p');
+			date.setAttribute('class', 'date');
+			date.innerText = result[result.length-1].commentTime;
+			dFlex2.append(date);
+			
+			var infoA = document.createElement('a');
+			infoA.setAttribute('href', '#');
+			infoA.setAttribute('class', 'genric-btn info');
+			infoA.style.styleFloat = 'right';
+			infoA.innerText = '삭제'
+			dFlex2.append(infoA);
 			
 		}
-	}
+	}			
 	
-	
-	//댓글 SELECT
-	
+		
 	var xhtp = new XMLHttpRequest();
-	xhtp.open('post', 'jobOpeningComment.do')
-	xhtp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhtp.send('commentContent='+cv+'&jobOpeningNum='+jobOpNum+'&memberNum='+memberNum);
-	xhtp.onload = function() {
-		var result = xhtp.responseText;
-		result = JSON.parse(result);
-		var desc = document.querySelector('.desc');
-		var p = document.createElement('p');
-		p.innerText = result.commentContent;
-		desc.append(p);
-		
-		var commentName = document.getElementById('commentName');
-		var aTag = document.createElement('a');
-		aTag.setAttribute('href', '');
-		aTag.innerText = result.memberId;
-		commentName.append(aTag);
-		
-		var sysdate = document.querySelector('.d-flex align-items-center');
-		var sp = document.createElement('p');
-		sp.innerText = result.commentDate;
-		sysdate.append(sp);
-		
-	}
-	
-	
+		xhtp.open('post', 'AjaxJobOpeningCommentSel.do')		
+		xhtp.send();
+		xhtp.onload = function() {
+			var result = xhtp.responseText;			
+			result = JSON.parse(result);
+			console.log(result);
+			
+			for(let i=0; i<result.length; i++){
+				if(jobOpNumComment[i] == jobOpNum){
+					var commentList = document.createElement('div');
+					commentList.setAttribute('class', 'comment-list');
+					
+					var commentArea = document.querySelector('.comments-area');
+					commentArea.append(commentList);
+					
+					var singleComment = document.createElement('div');
+					singleComment.setAttribute('class', 'single-comment justify-content-between d-flex');
+					commentList.append(singleComment);
+					
+					var userJustify = document.createElement('div');
+					userJustify.setAttribute('class', 'user justify-content-between d-flex')
+					singleComment.append(userJustify);
+					
+					var thumb = document.createElement('div');
+					thumb.setAttribute('class', 'thumb');
+					userJustify.append(thumb);
+					
+					var img = document.createElement('img');
+					img.setAttribute('src', "assets/img/comment/comment_1.png");
+					img.setAttribute('alt', "");
+					thumb.append(img);
+					
+					var desc = document.createElement('div');
+					desc.setAttribute('class', 'desc');
+					userJustify.append(desc);
+					
+					var p = document.createElement('p');
+					p.innerText = result[i].commentContent;
+					desc.append(p);
+					
+					var dFlex = document.createElement('div');
+					dFlex.setAttribute('class', 'd-flex justify-content-between')
+					desc.append(dFlex);
+					
+					var dFlex2 = document.createElement('div');
+					dFlex2.setAttribute('class', 'd-flex align-items-center');
+					dFlex.append(dFlex2);
+					
+					var h5 = document.createElement('h5');
+					dFlex2.append(h5);
+					
+					var a = document.createElement('a');
+					a.setAttribute('href', '#')
+					a.innerText = result[i].memberName;
+					h5.append(a);
+					
+					var date = document.createElement('p');
+					date.setAttribute('class', 'date');
+					date.innerText = result[i].commentTime;
+					dFlex2.append(date);
+					
+					var infoA = document.createElement('a');
+					infoA.setAttribute('href', '#');		
+					infoA.setAttribute('class', 'genric-btn info');
+					infoA.style.styleFloat = 'right';
+					infoA.innerText = '삭제'
+					dFlex2.append(infoA);
+				}
+			}
+			
+		}
+
 	
 	
 	

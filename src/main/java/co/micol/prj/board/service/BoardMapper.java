@@ -11,8 +11,9 @@ public interface BoardMapper {
 	int boardUpdate(BoardVO vo);
 	int boardDelete(BoardVO vo);
 	int boardUpdateHit(int num);
-	List<BoardVO> boardSelectSearchList(@Param("key") String key, @Param("val") String val);
+	List<BoardVO> boarderSelectSearchList(@Param("key") String key, @Param("val") String val);
 	//검색할 항목, 검색할 내용	
 	//넘어온 파라미터 키 값을, String key에 담겠다는 뜻.
 	List<BoardVO> boardSortList(String key);
+	List<BoardVO> boardSelectSearchList(String key, String val);
 }

@@ -10,7 +10,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import co.micol.prj.common.Command;
-import co.micol.prj.member.service.MemberVO;
 import co.micol.prj.notes.service.NotesService;
 import co.micol.prj.notes.service.NotesVO;
 import co.micol.prj.notes.serviceImpl.NotesServiceImpl;
@@ -23,27 +22,32 @@ public class AjaxNotesDelete implements Command {
 		
 		NotesVO vo = new NotesVO(); 
 		NotesService dao = new NotesServiceImpl();
-		String[] del = (request.getParameterValues("deleteSel"));
-		int[] del2 = null;
-		for(int i=0; i<del.length; i++) {
-			del2[i] = Integer.parseInt(del[i]);
+		String str = request.getParameter("deleteSel");
+		
+		
+		String[] strArr = str.split("-");
+		
+		int result = 0;
+		
+		for(int i=1; i < strArr.length; i++) {
+			//System.out.println(strArr[i]);
+			vo.setNo(strArr[i]);
+			dao.notesDelete(vo);
+			result++;
 		}
 		
-		for(int i=0; i<del.length; i++) {
-			vo.setNo(del2[i]);
-			dao.notesDelete(vo);
-		}
-						
-		vo.setRecvId((String)session.getAttribute("memberId"));
+		
+        /*vo.setRecvId((String)session.getAttribute("memberId"));
 		
 		List<NotesVO> list = dao.notesSelectList(vo);
-		String data = null;
+		String result = null;
 		try {
-			data = new ObjectMapper().writeValueAsString(list); //json 객체로 변환
+			result = new ObjectMapper().writeValueAsString(list); //json 객체로 변환
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
-		}
-		return "ajax:" + data;
+		}*/
+						
+		return "ajax:" + result;
 	}
 
 }

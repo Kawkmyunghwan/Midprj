@@ -19,11 +19,13 @@ public class NoteInsert implements Command {
 		
 		vo.setSentId((String)session.getAttribute("memberId"));
 		vo.setTitle(request.getParameter("title"));
-		vo.setRecvId(request.getParameter("recvid"));
+		vo.setRecvId(request.getParameter("recvId"));
 		vo.setNote(request.getParameter("note"));
 		
+		//System.out.println(""+vo.getRecvId()+vo.getTitle()+vo.getSentId()+vo.getNote());
+		
 		int n = dao.notesSent(vo);
-		return null;
+		return "notes/noteInsertSucess.tiles";
 	}
 
 }
