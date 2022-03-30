@@ -13,6 +13,7 @@ import lombok.Setter;
 public class PaymentVO {
 	private int memberNum;
 	private int price;
+	private int day;
 	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
 	private Date paymentDate;
 	@Override

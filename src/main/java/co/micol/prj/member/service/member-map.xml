@@ -56,4 +56,13 @@
 		MEMBERID
 		FROM MEMBER WHERE MEMBERID = #{str}
 	</select>
+	
+	<update id="updateSub"
+		parameterType="co.micol.prj.member.service.MemberVO">
+		UPDATE MEMBER
+		<set>
+			SUBSCRIPTION = 1
+		</set>
+		WHERE MEMBERID = #{memberNum}
+	</update>
 </mapper>

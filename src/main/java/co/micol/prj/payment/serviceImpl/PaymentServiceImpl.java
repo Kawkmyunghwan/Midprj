@@ -29,4 +29,16 @@ public class PaymentServiceImpl implements PaymentService {
 		return map.paymentDelete(vo);
 	}
 
+	@Override
+	public int paymentCount(PaymentVO vo) {
+		// TODO Auto-generated method stub
+		return map.paymentCount(vo);
+	}
+
+	@Override
+	public int paymentUpdate(PaymentVO vo) {
+		// TODO Auto-generated method stub
+		return map.paymentUpdate(vo);
+	}
+
 }

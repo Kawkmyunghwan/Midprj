@@ -34,7 +34,7 @@ function iamport(){
 	}, function(rsp) {
 	    if ( rsp.success ) {
 	    	var msg = '결제가 완료되었습니다.';
-	        msg += '결제 금액 : ' + rsp.paid_amount + '원';
+	        msg += '결제 금액 : ' + rsp.paid_amount + '원';	        
 	        payment.submit();
 	    } else {
 	    	 var msg = '결제에 실패하였습니다.';

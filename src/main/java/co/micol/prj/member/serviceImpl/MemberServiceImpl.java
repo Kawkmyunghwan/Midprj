@@ -51,4 +51,10 @@ public class MemberServiceImpl implements MemberService {
 		return map.isIdCheck(str);
 	}
 
+	@Override
+	public int updateSub(MemberVO vo) {
+		// TODO Auto-generated method stub
+		return map.updateSub(vo);
+	}
+
 }
