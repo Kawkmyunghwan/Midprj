@@ -2,47 +2,61 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="js/jquery-3.6.0.min.js"></script>
-	
+
+<style>
+.w-btn-gra1 {
+    background: linear-gradient(-45deg, #33ccff 0%, #ff99cc 100%);
+    color: white;
+}
+
+
+
+.w-btn {
+    position: relative;
+    border: none;
+    display: inline-block;
+    padding: 23px 30px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+    float: left;
+}
+
+
+
+</style>	
 
 <div class="slider-area ">
-	<!-- Mobile Menu -->
-	<div class="slider-active">
-		<div class="online-cv cv-bg section-overly pt-90 pb-120" data-background="assets/img/hero/h1_hero.jpg">			
-			<div class="container">
-				<div class="row">
-					<div class="col-xl-6 col-lg-9 col-md-10">
-						<div class="hero__caption">
-							<h1>Find the most exciting startup jobs!!!!</h1>						
-						</div>
-					</div>
-				</div>
-				<!-- Search Box -->
-				<div class="row">
-					<div class="col-xl-8">
-						<!-- form -->
-						<form action="Jsearch.do" class="search-box">
-							<div class="input-form">
-								<input type="text" name="Jsearch" placeholder="Job Tittle or keyword">
-							</div>
-							<div class="select-form">
-								<div class="select-itms">
-									<select name="select" id="select1">
-										<option value="">Location BD</option>
-										<option value="">Location PK</option>
-										<option value="">Location US</option>
-										<option value="">Location UK</option>
-									</select>
-								</div>
-							</div>
-							<div class="search-form">
-								<button type="submit">Find job</button>								
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+   <!-- Mobile Menu -->
+   <div class="slider-active">
+      <div class="online-cv cv-bg section-overly pt-90 pb-120" data-background="assets/img/hero/h1_hero.jpg">         
+         <div class="container">
+            <div class="row">
+               <div class="col-xl-6 col-lg-9 col-md-10">
+                  <div class="hero__caption">
+                     <h1>Find the most exciting startup jobs!!!!</h1>
+                  </div>
+               </div>
+            </div>
+            <!-- Search Box -->
+            <div class="row">
+               <div class="col-xl-8">
+                  <!-- form -->
+                  <form action="Jsearch.do" class="search-box">
+                     <div class="input-form">
+                        <input type="text" name="Jsearch" placeholder="Job Tittle or keyword">
+                     </div>                     
+                     <div class="search-form">
+                        <button class="w-btn w-btn-gra1"  type="submit">Find job</button>                        
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
 </div>
 <!-- slider Area End-->
 <div class="our-services section-pad-t30">
@@ -52,7 +66,9 @@
 			<div class="col-lg-12">
 				<div class="section-tittle text-center">
 					<span>FEATURED TOURS Packages</span>
-					<h2>${memberId }님에게맞는 일자리는?</h2>
+					<c:if test="${memberId != null }">
+						<h2>${memberName }님, 이런 일자리는 어떠세요?</h2>
+					</c:if>
 					<a href="sample.do">dd</a>
 					
 				</div>
@@ -68,7 +84,7 @@
 					</div>
 					<div class="services-cap">
 						<h5>
-							<a href="javascript:formFncR.submit()" onclick='formFncR(${list.jobOpeningNum})'>${list.companyName }</a>
+							<a href="javascript:formFncR.submit()" onclick='formFncR(${list.jobOpeningNum})'>   ${list.companyName}</a>
 						</h5>
 						<span>${list.jobGroup }</span>
 					</div>

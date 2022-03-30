@@ -29,25 +29,8 @@
       (memberNum, memberEmail, memberId, memberPassword, memberName, memberPhone, favorite)
       VALUES
       (#{memberNum}, #{memberEmail}, #{memberId}, #{memberPassword}, #{memberName}, #{memberPhone}, #{favorite})
-  </insert>   
-
-		<selectKey keyProperty="memberNum,memberSub"
-			resultType="int" order="BEFORE">
-			SELECT NVL(MAX(memberNum+1),1), CASE WHEN
-			MAX(subscription) IS NULL THEN 1 END AS SUBSCRIPTION FROM (select
-			p.*, m.subscription from payment p, member m where p.membernum =
-			m.membernum)
-		</selectKey>
-		INSERT INTO MEMBER
-		(MEMBERNUM, MEMBEREMAIL, MEMBERID, MEMBERPASSWORD,
-		MEMBERNAME, MEMBERPHONE, MEMBERSUBSCRIPTION)
-		VALUES
-		(#{memberNum}, #{memberEmail},
-		#{memberId}, #{memberPassword}, #{memberName},
-		#{memberPhone}, #{memberSub})
-	</insert>
-
-
+  </insert> 
+    
 	<update id="updateMember"
 		parameterType="co.micol.prj.member.service.MemberVO">
 		UPDATE MEMBER
