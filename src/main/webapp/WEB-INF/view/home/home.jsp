@@ -69,8 +69,10 @@
 					<c:if test="${memberId != null }">
 						<h2>${memberName }님, 이런 일자리는 어떠세요?</h2>
 					</c:if>
-					<a href="sample.do">dd</a>
-					
+					<c:if test="${memberId == null}">
+						<h2>인기 기업을 골라보세요.</h2>
+					</c:if>
+					<a href="sample.do">dd</a>					
 				</div>
 			</div>
 		</div>
@@ -86,12 +88,32 @@
 						<h5>
 							<a href="javascript:formFncR.submit()" onclick='formFncR(${list.jobOpeningNum})'>   ${list.companyName}</a>
 						</h5>
-						<span>${list.jobGroup }</span>
+						<span>${list.jobGroup }</span>						
 					</div>
 				</div>
 			</div>
 		</c:forEach>
-		</c:if>			
+		</c:if>
+		
+		<c:forEach items="${zzim}" var="list">
+		<c:if test="${memberId == null || list.favorite == null}">		
+			<div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+				<div class="single-services text-center mb-30">
+					<div class="services-ion">
+						<span class="${list.companyImage }"></span>
+					</div>
+					<div class="services-cap">
+						<h5>
+							<a href="javascript:formFncR.submit()" onclick='formFncR(${list.jobOpeningNum})'>   ${list.companyName}</a>
+						</h5>
+						<span>${list.jobGroup }</span>
+						<span>♥ ${list.count }</span>
+					</div>
+				</div>
+			</div>
+		</c:if>
+		</c:forEach>
+								
 		</div>
 		
 		<form action="jobDetail.do" method="get" name="quickFrmR">
