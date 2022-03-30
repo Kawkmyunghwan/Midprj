@@ -235,7 +235,7 @@
 		var aBtn = document.createElement('a');
 		aBtn.setAttribute('href', '');
 		aBtn.setAttribute('class', 'btn');
-		btn.innerText = '지원완료';
+		aBtn.innerText = '지원완료';
 		btn2.append(aBtn);
 	}
 	
