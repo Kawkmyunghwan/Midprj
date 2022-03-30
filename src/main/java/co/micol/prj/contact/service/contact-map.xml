@@ -20,13 +20,13 @@
 	<select id="contactSelectList" resultMap="contactMap">
 		<if test="pageStart == null">
 		<![CDATA[
-		SELECT * FROM (SELECT ROWNUM AS rownumber, info_num, info_title, info_writer, info_date, info_hit FROM contact ORDER BY info_num DESC) 
+		SELECT * FROM (SELECT ROWNUM AS rownumber, A.* FROM(SELECT info_num, info_title, info_writer, info_date, info_hit FROM contact ORDER BY info_num DESC) A) 
 		WHERE rownumber > 0 and rownumber <= 5
 		]]>
 		</if>
 		<if test="pageStart != null">
 		<![CDATA[
-		SELECT * FROM (SELECT ROWNUM AS rownumber, info_num, info_title, info_writer, info_date, info_hit FROM contact ORDER BY info_num DESC) 
+		SELECT * FROM (SELECT ROWNUM AS rownumber, A.* FROM (SELECT info_num, info_title, info_writer, info_date, info_hit FROM contact ORDER BY info_num DESC) A) 
 		WHERE rownumber > #{pageStart} and rownumber <= #{pageStart}+5
 		]]>
 		</if>
