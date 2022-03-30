@@ -10,6 +10,7 @@ public interface JobOpeningService {
 	List<JobOpeningVO> selectJobOpeningListByMyzzim(); //찜 기반 전체리스트
 	   JobOpeningVO selectJobOpening(JobOpeningVO vo); //단일 리스트
 	   JobOpeningVO selectJobOpeningByNum(JobOpeningVO vo);
+	   List<JobOpeningVO> selectRecommendation(String jobGroup);
 	   int insertJobOpening(JobOpeningVO vo);      //등록
 	   int updateJobOpening(JobOpeningVO vo);      //수정
 	   int deleteJobOpening(JobOpeningVO vo);      //삭제

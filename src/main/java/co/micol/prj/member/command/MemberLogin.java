@@ -32,6 +32,7 @@ public class MemberLogin implements Command {
 			session.setAttribute("memberId", vo.getMemberId());
 			session.setAttribute("memberNum", vo.getMemberNum());
 			session.setAttribute("memberEmail", vo.getMemberEmail());
+			session.setAttribute("favorite", vo.getFavorite());
 			session.setAttribute("memberName", vo.getMemberName());
 			return "home.do";
 		}else {

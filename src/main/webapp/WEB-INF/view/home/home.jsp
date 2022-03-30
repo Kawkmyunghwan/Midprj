@@ -2,31 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="js/jquery-3.6.0.min.js"></script>
+	
 
-<style>
-.w-btn-gra1 {
-    background: linear-gradient(-45deg, #33ccff 0%, #ff99cc 100%);
-    color: white;
-}
-
-
-
-.w-btn {
-    position: relative;
-    border: none;
-    display: inline-block;
-    padding: 23px 30px;
-    font-family: "paybooc-Light", sans-serif;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.25s;
-    float: left;
-}
-
-
-
-</style>	
 <div class="slider-area ">
 	<!-- Mobile Menu -->
 	<div class="slider-active">
@@ -35,7 +12,7 @@
 				<div class="row">
 					<div class="col-xl-6 col-lg-9 col-md-10">
 						<div class="hero__caption">
-							<h1>Find the most exciting startup jobs!!!!</h1>
+							<h1>Find the most exciting startup jobs!!!!</h1>						
 						</div>
 					</div>
 				</div>
@@ -46,9 +23,19 @@
 						<form action="Jsearch.do" class="search-box">
 							<div class="input-form">
 								<input type="text" name="Jsearch" placeholder="Job Tittle or keyword">
-							</div>							
+							</div>
+							<div class="select-form">
+								<div class="select-itms">
+									<select name="select" id="select1">
+										<option value="">Location BD</option>
+										<option value="">Location PK</option>
+										<option value="">Location US</option>
+										<option value="">Location UK</option>
+									</select>
+								</div>
+							</div>
 							<div class="search-form">
-								<button class="w-btn w-btn-gra1"  type="submit">Find job</button>								
+								<button type="submit">Find job</button>								
 							</div>
 						</form>
 					</div>
@@ -72,111 +59,29 @@
 			</div>
 		</div>
 		<div class="row d-flex justify-contnet-center">
+		<c:if test="${memberId != null }">
+		<c:forEach items="${recommendList}" var="list">
 			<div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
 				<div class="single-services text-center mb-30">
 					<div class="services-ion">
-						<span class="flaticon-tour"></span>
+						<span class="${list.companyImage }"></span>
 					</div>
 					<div class="services-cap">
 						<h5>
-							<a href="job_listing.html">Design & Creative</a>
+							<a href="javascript:formFncR.submit()" onclick='formFncR(${list.jobOpeningNum})'>${list.companyName }</a>
 						</h5>
-						<span>(653)</span>
+						<span>${list.jobGroup }</span>
 					</div>
 				</div>
 			</div>
-			<div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-				<div class="single-services text-center mb-30">
-					<div class="services-ion">
-						<span class="flaticon-cms"></span>
-					</div>
-					<div class="services-cap">
-						<h5>
-							<a href="job_listing.html">	</a>
-						</h5>
-						<span>(658)</span>
-					</div>
-				</div>
-			</div>
-			<div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-				<div class="single-services text-center mb-30">
-					<div class="services-ion">
-						<span class="flaticon-report"></span>
-					</div>
-					<div class="services-cap">
-						<h5>
-							<a href="job_listing.html">Sales & Marketing</a>
-						</h5>
-						<span>(658)</span>
-					</div>
-				</div>
-			</div>
-			<div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-				<div class="single-services text-center mb-30">
-					<div class="services-ion">
-						<span class="flaticon-app"></span>
-					</div>
-					<div class="services-cap">
-						<h5>
-							<a href="job_listing.html">Mobile Application</a>
-						</h5>
-						<span>(658)</span>
-					</div>
-				</div>
-			</div>
-			<div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-				<div class="single-services text-center mb-30">
-					<div class="services-ion">
-						<span class="flaticon-helmet"></span>
-					</div>
-					<div class="services-cap">
-						<h5>
-							<a href="job_listing.html">Construction</a>
-						</h5>
-						<span>(658)</span>
-					</div>
-				</div>
-			</div>
-			<div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-				<div class="single-services text-center mb-30">
-					<div class="services-ion">
-						<span class="flaticon-high-tech"></span>
-					</div>
-					<div class="services-cap">
-						<h5>
-							<a href="job_listing.html">Information Technology</a>
-						</h5>
-						<span>(658)</span>
-					</div>
-				</div>
-			</div>
-			<div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-				<div class="single-services text-center mb-30">
-					<div class="services-ion">
-						<span class="flaticon-real-estate"></span>
-					</div>
-					<div class="services-cap">
-						<h5>
-							<a href="job_listing.html">Real Estate</a>
-						</h5>
-						<span>(658)</span>
-					</div>
-				</div>
-			</div>
-			<div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-				<div class="single-services text-center mb-30">
-					<div class="services-ion">
-						<span class="flaticon-content"></span>
-					</div>
-					<div class="services-cap">
-						<h5>
-							<a href="job_listing.html">Content Writer</a>
-						</h5>
-						<span>(658)</span>
-					</div>
-				</div>
-			</div>
+		</c:forEach>
+		</c:if>			
 		</div>
+		
+		<form action="jobDetail.do" method="get" name="quickFrmR">
+				<input type="hidden" name="jobOpeningNum">
+		</form>
+		
 		<!-- More Btn -->
 		<!-- Section Button -->
 		<div class="row">
@@ -281,6 +186,13 @@ function formFnc(jobOpening_num) {
 	console.log(jobOpening_num)
 	quickFrm.jobOpeningNum.value=jobOpening_num;
 	quickFrm.submit();
+}
+
+function formFncR(jobOpening_num){
+	event.preventDefault();
+	console.log(jobOpening_num)
+	quickFrmR.jobOpeningNum.value=jobOpening_num;
+	quickFrmR.submit();
 }
 
 </script>
