@@ -245,8 +245,8 @@
 	
 	// 댓글 INSERT	
 	
-		
-		
+	
+	
 	function insertComment(){	
 		var cm = document.getElementById('comment');
 		var cv = cm.value;	
@@ -322,6 +322,15 @@
 			
 		}
 	}			
+	
+	
+	//댓글 SELECT
+	
+	var jobOpNumComment = []
+		<c:forEach items='${comment}' var='comment'>
+		jobOpNumComment.push("${comment.jobOpeningNum}")
+		</c:forEach>
+		console.log(jobOpNumComment);	
 	
 		
 	var xhtp = new XMLHttpRequest();
