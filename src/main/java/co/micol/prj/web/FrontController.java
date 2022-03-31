@@ -37,6 +37,7 @@ import co.micol.prj.contact.comm.ReviewInsert;
 import co.micol.prj.home.command.HomeCommand;
 import co.micol.prj.jOComment.command.AjaxJobOpeningComment;
 import co.micol.prj.jOComment.command.AjaxJobOpeningCommentSel;
+import co.micol.prj.jobOpening.command.AjaxLocationSelect;
 import co.micol.prj.jobOpening.command.HotSearch;
 import co.micol.prj.jobOpening.command.JobDetail;
 import co.micol.prj.jobOpening.command.Jsearch;
@@ -48,6 +49,7 @@ import co.micol.prj.jobOpening.command.ZzimSearch;
 import co.micol.prj.member.command.AjaxMemberIdCheck;
 import co.micol.prj.member.command.CBack;
 import co.micol.prj.member.command.KakaoLogin;
+import co.micol.prj.member.command.KakaoLoginForm;
 import co.micol.prj.member.command.MemberDelete;
 import co.micol.prj.member.command.MemberJoin;
 import co.micol.prj.member.command.MemberJoinForm;
@@ -65,11 +67,10 @@ import co.micol.prj.notes.command.NoteDelete;
 import co.micol.prj.notes.command.NoteInsert;
 import co.micol.prj.notes.command.NoteViewForm;
 import co.micol.prj.notes.command.NotesInsertForm;
+import co.micol.prj.notes.command.NotesSentListForm;
 import co.micol.prj.payment.command.PaymentInsert;
 import co.micol.prj.payment.command.PaymentInsertForm;
-import co.micol.prj.notes.command.NotesSentListForm;
 import co.micol.prj.zzim.command.Zzim;
-
 
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -94,33 +95,33 @@ public class FrontController extends HttpServlet {
 		map.put("/borderView.do", new BoardView());
 		map.put("/ajaxBorderSearch.do", new AjaxBoardSearch()); // 게시글 리스트에서 검색
 		map.put("/ajaxSortBorder.do", new AjaxSortBoard()); // 게시글 정렬
-		
+
 // ----------------------곽명환------------------------
-		map.put("/hotSearch.do", new HotSearch()); 								// 조회수 기반 HOT100 조회
-		map.put("/zzimSearch.do", new ZzimSearch());							// 찜 기반 HOT100 조회
-		map.put("/notilesApply.do", new NotilesApply());						// 지원신청서 팝업창
-		map.put("/sample.do", new Sample());									// 
-		map.put("/jobDetail.do", new JobDetail());								// 구인공고 상세페이지
-		map.put("/loginPage.do", new LoginPage());								// 로그인 페이지
-		map.put("/zzim.do", new Zzim());										// 찜 버튼 클릭 시 찜 테이블로 INSERT
-		map.put("/searchLocation.do", new SearchLocation());					// 지역별 구인공고 조회
-		map.put("/application.do", new Application());							// 지원신청서 작성 후 버튼 클릭 시 APPLY테이블로 INSERT
+		map.put("/hotSearch.do", new HotSearch()); // 조회수 기반 HOT100 조회
+		map.put("/zzimSearch.do", new ZzimSearch()); // 찜 기반 HOT100 조회
+		map.put("/notilesApply.do", new NotilesApply()); // 지원신청서 팝업창
+		map.put("/sample.do", new Sample()); //
+		map.put("/jobDetail.do", new JobDetail()); // 구인공고 상세페이지
+		map.put("/loginPage.do", new LoginPage()); // 로그인 페이지
+		map.put("/zzim.do", new Zzim()); // 찜 버튼 클릭 시 찜 테이블로 INSERT
+		map.put("/searchLocation.do", new SearchLocation()); // 지역별 구인공고 조회
+		map.put("/application.do", new Application()); // 지원신청서 작성 후 버튼 클릭 시 APPLY테이블로 INSERT
 		map.put("/jobOpeningComment.do", new AjaxJobOpeningComment());
 		map.put("/AjaxJobOpeningCommentSel.do", new AjaxJobOpeningCommentSel());
+		map.put("/ajaxLocationSelect.do", new AjaxLocationSelect());
 // ---------------------------------------------------
 
-		
-		//고객센터
-		map.put("/contactForm.do", new ContactForm()); //고객센터 메인폼
-		map.put("/inquiryForm.do", new InquiryForm()); //문의게시판
-		map.put("/inquiryInsertForm.do", new InquiryInsertForm()); //문의게시판 글쓰기 폼
+		// 고객센터
+		map.put("/contactForm.do", new ContactForm()); // 고객센터 메인폼
+		map.put("/inquiryForm.do", new InquiryForm()); // 문의게시판
+		map.put("/inquiryInsertForm.do", new InquiryInsertForm()); // 문의게시판 글쓰기 폼
 		map.put("/inquiryInsert.do", new InquiryInsert()); // 게시판 등록
-		map.put("/inquiryView.do", new InquiryView()); //상세보기
-		map.put("/inquiryUpdate.do", new InquiryUpdate()); //수정
+		map.put("/inquiryView.do", new InquiryView()); // 상세보기
+		map.put("/inquiryUpdate.do", new InquiryUpdate()); // 수정
 		map.put("/searchLocation.do", new SearchLocation());
 		map.put("/inquiryDelete.do", new InquiryDelete()); // 삭제
-		map.put("/ajaxcontactSearch.do", new AjaxcontactSearch()); //리스트검색
-		map.put("/ajaxSortContact.do", new AjaxSortContact()); //정렬
+		map.put("/ajaxcontactSearch.do", new AjaxcontactSearch()); // 리스트검색
+		map.put("/ajaxSortContact.do", new AjaxSortContact()); // 정렬
 
 		// 김세명 마이페이지------------------------------------
 		map.put("/myInfo.do", new MyInfo()); // 마이페이지
@@ -136,7 +137,7 @@ public class FrontController extends HttpServlet {
 		map.put("/notesInsertForm.do", new NotesInsertForm()); // 쪽지 쓰기 폼
 		map.put("/noteInsert.do", new NoteInsert()); // 쪽지 쓰기
 		map.put("/paymentInsertForm.do", new PaymentInsertForm()); // 구독권결제 페이지
-		map.put("/paymentInsert.do", new PaymentInsert()); //구독권결제
+		map.put("/paymentInsert.do", new PaymentInsert()); // 구독권결제
 		map.put("/noteDelete.do", new NoteDelete()); // 단일 쪽지 삭제
 
 //		---------------------------------------------------
@@ -149,16 +150,18 @@ public class FrontController extends HttpServlet {
 		map.put("/boardView.do", new BoardView());
 		map.put("/ajaxBoardSearch.do", new AjaxBoardSearch()); // 게시글 리스트에서 검색
 		map.put("/ajaxSortBoard.do", new AjaxSortBoard()); // 게시글 정렬
-		map.put("/reviewInsert.do", new ReviewInsert());	
+		map.put("/reviewInsert.do", new ReviewInsert());
 		map.put("/commentsInsert.do", new CommentsInsert());
-		map.put("/commentsUpdate.do", new CommentsUpdate()); //댓글 수정
-		map.put("/commentsDelete.do", new CommentsDelete()); //댓글 삭제
-	  	map.put("/memberLogout.do", new MemberLogout());   //로그아웃
-	  	map.put("/naverLogin.do", new NaverLogin()); //네이버 로그인 API
-	  	map.put("/callBack.do", new CBack()); // 네이버 로그인 API 콜백
-	  	map.put("/Jsearch.do", new Jsearch()); //구인광고 검색
-	  	map.put("/myZzim.do", new Myzzim()); //마이페이지 내 찜 리스트
-	  	map.put("/kakaoLogin.do", new KakaoLogin()); //카카오 API 로그인
+
+		map.put("/commentsUpdate.do", new CommentsUpdate()); // 댓글 수정
+		map.put("/commentsDelete.do", new CommentsDelete()); // 댓글 삭제
+		map.put("/memberLogout.do", new MemberLogout()); // 로그아웃
+		map.put("/naverLogin.do", new NaverLogin()); // 네이버 로그인 API
+		map.put("/callBack.do", new CBack()); // 네이버 로그인 API 콜백
+		map.put("/Jsearch.do", new Jsearch()); // 구인광고 검색
+		map.put("/myZzim.do", new Myzzim()); // 마이페이지 내 찜 리스트
+		map.put("/kakaoLogin.do", new KakaoLoginForm()); // 카카오 API 로그인 폼
+		map.put("/kakaoLoginProcess.do", new KakaoLogin()); // 카카오 API 로그인 처리
 
 	}
 
@@ -171,24 +174,26 @@ public class FrontController extends HttpServlet {
 
 		Command comm = map.get(page);
 		String viewPage = comm.exec(request, response);
+		
+		if (viewPage != null) {
+			if (!viewPage.endsWith(".do")) {
+				if (viewPage.startsWith("ajax:")) {
+					// ajax 처리
+					response.setContentType("text/html; charset=UTF-8");
+					response.getWriter().append(viewPage.substring(5));
+					return;
+				} else if (viewPage.endsWith(".jsp")) {
+					viewPage = "WEB-INF/view/" + viewPage;
+				} else {
+					viewPage = viewPage + ".tiles";
 
-		if(!viewPage.endsWith(".do")) {
-			if(viewPage.startsWith("ajax:")) {
-				//ajax 처리
-				response.setContentType("text/html; charset=UTF-8");
-				response.getWriter().append(viewPage.substring(5));
-				return;
-			} else if(viewPage.endsWith(".jsp")) {
-				viewPage = "WEB-INF/view/" + viewPage;
-			} else {
-				viewPage = viewPage + ".tiles";
-				
+				}
+
 			}
-			
-		}
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
-		dispatcher.forward(request, response);
+			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
+			dispatcher.forward(request, response);
+		}
 	}
 
 }

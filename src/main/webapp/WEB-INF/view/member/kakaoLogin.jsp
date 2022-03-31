@@ -15,16 +15,16 @@
 	<ul>
 	<li onclick="kakaoLogin();">
       <a href="javascript:void(0)">
-          <h1>Ä«Ä«¿À ·Î±×ÀÎ</h1>
+          <h1>ì¹´ì¹´ì˜¤ ë¡œê·¸ì¸</h1>
       </a>
 	</li>
 	<li onclick="kakaoLogout();">
       <a href="javascript:void(0)">
-          <h1>Ä«Ä«¿À ·Î±×¾Æ¿ô</h1>
+          <h1>ì¹´ì¹´ì˜¤ ë¡œê·¸ì•„ì›ƒ</h1>
       </a>
 	</li>
 </ul>
-<form id="form" action="home.do" method="post">
+<form id="form" action="kakaoLoginProcess.do" method="post">
 	<input type="hidden" id="kakaoId" name="memberId" >
 	<button type="submit"></button>
 </form>
@@ -34,14 +34,12 @@
 
 
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-<!-- Ä«Ä«¿À ½ºÅ©¸³Æ® -->
+<!-- Ä«Ä«ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½Æ® -->
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script>
-Kakao.init('41e1ab98f2247787ec82b6241bd8e6d1'); //¹ß±Ş¹ŞÀº Å° Áß javascriptÅ°¸¦ »ç¿ëÇØÁØ´Ù.
-console.log(Kakao.isInitialized()); // sdkÃÊ±âÈ­¿©ºÎÆÇ´Ü
-//Ä«Ä«¿À·Î±×ÀÎ
+Kakao.init('41e1ab98f2247787ec82b6241bd8e6d1'); //
 
-   //Ä«Ä«¿À·Î±×ÀÎ
+  
 function kakaoLogin() {
     Kakao.Auth.login({
       success: function (response) {
@@ -67,7 +65,7 @@ function kakaoLogin() {
     })
   }
   
-//Ä«Ä«¿À·Î±×¾Æ¿ô  
+
 function kakaoLogout() {
     if (Kakao.Auth.getAccessToken()) {
       Kakao.API.request({

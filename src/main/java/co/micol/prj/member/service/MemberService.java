@@ -12,7 +12,7 @@ public interface MemberService {
    int insertKakaoMember(MemberVO vo); // 카카오 아이디 회원가입
 
    int updateSub(MemberVO vo);
-   
+   int insertKakaoMember(MemberVO vo); // 카카오 아이디 회원가입
    boolean isIdCheck(String str);      //아이디 중복체크. 존재하면 false
    
    MemberVO selectMemberTwo(MemberVO vo); // 업데이트용 셀렉트

@@ -187,7 +187,7 @@
         <!-- job post company End -->
        
 <script type="text/javascript">
-
+	var memberNum = "<c:out value = '${memberNum}'/>";
 
 	function formFnc(jobOpening_num) {
 	    event.preventDefault();
@@ -196,10 +196,13 @@
 	    }
 	
 	function windowFnc(jobOpening_num){
-		var popUrl = 'notilesApply.do?jobOpeningNum='+jobOpening_num+'';
-		var popOption = 'left=600, width=600, height=650, location=no, status=no, scrollbars=yes'
-		window.open(popUrl, "name", popOption);	
-		
+		if(memberNum != null){
+			var popUrl = 'notilesApply.do?jobOpeningNum='+jobOpening_num+'';
+			var popOption = 'left=600, width=600, height=650, location=no, status=no, scrollbars=yes'
+			window.open(popUrl, "name", popOption);	
+		}else if(memberNum == null){
+			alert('로그인 하세요.')
+		}
 	}
 		
 // -----------------------------------------------------------------	
@@ -231,12 +234,14 @@
 	   console.log(jobOpNum);
 	   
 	if(applyJobOpNum.indexOf(jobOpNum) != -1){
-		document.getElementById('a').remove();
-		var aBtn = document.createElement('a');
-		aBtn.setAttribute('href', '');
-		aBtn.setAttribute('class', 'btn');
-		aBtn.innerText = '지원완료';
-		btn2.append(aBtn);
+		if(memberNum != null){
+			document.getElementById('a').remove();
+			var aBtn = document.createElement('a');
+			aBtn.setAttribute('href', '');
+			aBtn.setAttribute('class', 'btn');
+			aBtn.innerText = '지원완료';
+			btn2.append(aBtn);
+		}
 	}
 	
 	
@@ -251,75 +256,78 @@
 		var cm = document.getElementById('comment');
 		var cv = cm.value;	
 		var memberNum = "<c:out value = '${memberNum}'/>";
-			
-		var xhtp = new XMLHttpRequest();
-		xhtp.open('post', 'jobOpeningComment.do')
-		xhtp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xhtp.send('commentContent='+cv+'&jobOpeningNum='+jobOpNum+'&memberNum='+memberNum);
-		xhtp.onload = function() {
-			var result = xhtp.responseText;
-	        result = JSON.parse(result);
-	        console.log(result);
-
-			var commentList = document.createElement('div');
-			commentList.setAttribute('class', 'comment-list');
-			
-			var commentArea = document.querySelector('.comments-area');
-			commentArea.append(commentList);
-			
-			var singleComment = document.createElement('div');
-			singleComment.setAttribute('class', 'single-comment justify-content-between d-flex');
-			commentList.append(singleComment);
-			
-			var userJustify = document.createElement('div');
-			userJustify.setAttribute('class', 'user justify-content-between d-flex')
-			singleComment.append(userJustify);
-			
-			var thumb = document.createElement('div');
-			thumb.setAttribute('class', 'thumb');
-			userJustify.append(thumb);
-			
-			var img = document.createElement('img');
-			img.setAttribute('src', "assets/img/comment/comment_1.png");
-			img.setAttribute('alt', "");
-			thumb.append(img);
-			
-			var desc = document.createElement('div');
-			desc.setAttribute('class', 'desc');
-			userJustify.append(desc);
-			
-			var p = document.createElement('p');
-			p.innerText = result[result.length-1].commentContent;
-			desc.append(p);
-			
-			var dFlex = document.createElement('div');
-			dFlex.setAttribute('class', 'd-flex justify-content-between')
-			desc.append(dFlex);
-			
-			var dFlex2 = document.createElement('div');
-			dFlex2.setAttribute('class', 'd-flex align-items-center');
-			dFlex.append(dFlex2);
-			
-			var h5 = document.createElement('h5');
-			dFlex2.append(h5);
-			
-			var a = document.createElement('a');
-			a.setAttribute('href', '#')
-			a.innerText = result[result.length-1].memberName;
-			h5.append(a);
-			
-			var date = document.createElement('p');
-			date.setAttribute('class', 'date');
-			date.innerText = result[result.length-1].commentTime;
-			dFlex2.append(date);
-			
-			var infoA = document.createElement('a');
-			infoA.setAttribute('href', '#');
-			infoA.setAttribute('class', 'genric-btn info');
-			infoA.style.styleFloat = 'right';
-			infoA.innerText = '삭제'
-			dFlex2.append(infoA);
-			
+		
+		if(memberNum != null){
+			var xhtp = new XMLHttpRequest();
+			xhtp.open('post', 'jobOpeningComment.do')
+			xhtp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhtp.send('commentContent='+cv+'&jobOpeningNum='+jobOpNum+'&memberNum='+memberNum);
+			xhtp.onload = function() {
+				var result = xhtp.responseText;
+		        result = JSON.parse(result);
+		        console.log(result);
+	
+				var commentList = document.createElement('div');
+				commentList.setAttribute('class', 'comment-list');
+				
+				var commentArea = document.querySelector('.comments-area');
+				commentArea.append(commentList);
+				
+				var singleComment = document.createElement('div');
+				singleComment.setAttribute('class', 'single-comment justify-content-between d-flex');
+				commentList.append(singleComment);
+				
+				var userJustify = document.createElement('div');
+				userJustify.setAttribute('class', 'user justify-content-between d-flex')
+				singleComment.append(userJustify);
+				
+				var thumb = document.createElement('div');
+				thumb.setAttribute('class', 'thumb');
+				userJustify.append(thumb);
+				
+				var img = document.createElement('img');
+				img.setAttribute('src', "assets/img/comment/comment_1.png");
+				img.setAttribute('alt', "");
+				thumb.append(img);
+				
+				var desc = document.createElement('div');
+				desc.setAttribute('class', 'desc');
+				userJustify.append(desc);
+				
+				var p = document.createElement('p');
+				p.innerText = result[result.length-1].commentContent;
+				desc.append(p);
+				
+				var dFlex = document.createElement('div');
+				dFlex.setAttribute('class', 'd-flex justify-content-between')
+				desc.append(dFlex);
+				
+				var dFlex2 = document.createElement('div');
+				dFlex2.setAttribute('class', 'd-flex align-items-center');
+				dFlex.append(dFlex2);
+				
+				var h5 = document.createElement('h5');
+				dFlex2.append(h5);
+				
+				var a = document.createElement('a');
+				a.setAttribute('href', '#')
+				a.innerText = result[result.length-1].memberName;
+				h5.append(a);
+				
+				var date = document.createElement('p');
+				date.setAttribute('class', 'date');
+				date.innerText = result[result.length-1].commentTime;
+				dFlex2.append(date);
+				
+				var infoA = document.createElement('a');
+				infoA.setAttribute('href', '#');
+				infoA.setAttribute('class', 'genric-btn info');
+				infoA.style.styleFloat = 'right';
+				infoA.innerText = '삭제'
+				dFlex2.append(infoA);
+			}else if(memberNum == null) {
+				alert("로그인 하세요.")
+			}
 		}
 	}			
 	

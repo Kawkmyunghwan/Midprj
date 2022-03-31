@@ -33,14 +33,18 @@ public class JobDetail implements Command {
 		ApplyVO aVo = new ApplyVO();
 		
 		vo.setJobOpeningNum(Integer.parseInt(request.getParameter("jobOpeningNum")));
-		zVo.setMemberNum((int)session.getAttribute("memberNum"));			
-		aVo.setMemberNum((int)session.getAttribute("memberNum"));		
-		
+		if(session.getAttribute("memberNum") != null) {
+			zVo.setMemberNum((int)session.getAttribute("memberNum"));			
+			aVo.setMemberNum((int)session.getAttribute("memberNum"));		
+		}
 		request.setAttribute("apply", applyDao.ApplySelect(aVo));
 		request.setAttribute("jobOpening", dao.selectJobOpeningByNum(vo));
 		request.setAttribute("zzim", zDao.selectZzim(zVo));
 		request.setAttribute("comment", jDao.selectJOCommentList());
 		
+		int hit = (Integer.parseInt(request.getParameter("jobOpeningNum")));
+		dao.jobOpeningUpdateHit(hit);
+//		조회수 증가
 		return "jobOpening/jobDetail.tiles";
 	}
 

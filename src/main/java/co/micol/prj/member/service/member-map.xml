@@ -10,7 +10,9 @@
       parameterType="co.micol.prj.member.service.MemberVO"
       resultType="co.micol.prj.member.service.MemberVO">
       SELECT * FROM MEMBER WHERE MEMBERID = #{memberId}
-      AND MEMBERPASSWORD = #{memberPassword}
+      <if test = "memberPassword != null">
+       AND MEMBERPASSWORD = #{memberPassword}
+      </if>
       <!-- 로그인 기능 -->
    </select>
    
@@ -78,5 +80,6 @@
 		</set>
 		WHERE MEMBERID = #{memberId}
 	</update>
+
 
 </mapper>

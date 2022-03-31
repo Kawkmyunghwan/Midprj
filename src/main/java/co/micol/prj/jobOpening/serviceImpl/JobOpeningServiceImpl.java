@@ -32,11 +32,6 @@ public class JobOpeningServiceImpl implements JobOpeningService {
 		return map.insertJobOpening(vo);
 	}
 
-	@Override
-	public int updateJobOpening(JobOpeningVO vo) {
-		// TODO Auto-generated method stub
-		return map.updateJobOpening(vo);
-	}
 
 	@Override
 	public int deleteJobOpening(JobOpeningVO vo) {
@@ -84,6 +79,18 @@ public class JobOpeningServiceImpl implements JobOpeningService {
 		// TODO Auto-generated method stub
 		return map.selectJobOpeningListByZzimTop4();
 
+	}
+
+	@Override
+	public int jobOpeningUpdateHit(int hit) {
+		// TODO Auto-generated method stub
+		return map.jobOpeningUpdateHit(hit);
+	}
+
+	@Override
+	public List<JobOpeningVO> selectLocationList(String location) {
+		// TODO Auto-generated method stub
+		return map.selectLocationList(location);
 	}
 
 }

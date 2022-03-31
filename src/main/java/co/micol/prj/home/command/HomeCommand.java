@@ -2,9 +2,11 @@ package co.micol.prj.home.command;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import co.micol.prj.common.Command;
 import co.micol.prj.jobOpening.service.JobOpeningService;
 import co.micol.prj.jobOpening.service.JobOpeningVO;
@@ -91,7 +93,7 @@ public class HomeCommand implements Command {
 			request.setAttribute("zzim", dao.selectJobOpeningListByZzimTop4());
 //			관심직군이 없거나, 로그인을 하지 않은 유저는 찜순으로 조회한 기업을 볼 수 있음.
 		}
-		
+		System.out.println(session.getAttribute("memberId"));
 		return "home/home.tiles";
 
 	}
