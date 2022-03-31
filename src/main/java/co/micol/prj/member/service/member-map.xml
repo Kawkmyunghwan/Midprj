@@ -20,7 +20,7 @@
       SELECT * FROM MEMBER WHERE MEMBERID = #{memberId}      
    </select>
 
-<insert id="insertMember"
+	<insert id="insertMember"
       parameterType="co.micol.prj.member.service.MemberVO">
        <selectKey keyProperty="memberNum" resultType="int" order="BEFORE">
      SELECT NVL(MAX(memberNum+1),1) FROM member
@@ -51,12 +51,24 @@
 		 WHERE MEMBERID = #{memberId}
 	</delete>
 
-	<select id="isIdCheck" parameterType="String"
-		resultType="boolean">
-		SELECT CASE WHEN COUNT(MEMBERID) = 1 THEN 0 ELSE 1 END AS
-		MEMBERID
-		FROM MEMBER WHERE MEMBERID = #{str}
-	</select>
+   <select id="isIdCheck" parameterType="String"
+      resultType="boolean">
+      SELECT CASE WHEN COUNT(MEMBERID) = 1 THEN 0 ELSE 1 END AS
+      MEMBERID
+      FROM MEMBER WHERE MEMBERID = #{str}
+   </select>
+   
+   <insert id="insertKakaoMember"
+      parameterType="co.micol.prj.member.service.MemberVO">
+       <selectKey keyProperty="memberNum" resultType="int" order="BEFORE">
+     SELECT NVL(MAX(memberNum+1),1) FROM member
+  </selectKey>
+      INSERT INTO MEMBER
+      (memberNum, memberId, memberName)
+      VALUES
+      (#{memberNum}, #{memberId}, #{memberId})
+  </insert>   
+
 	
 	<update id="updateSub"
 		parameterType="co.micol.prj.member.service.MemberVO">
@@ -66,4 +78,5 @@
 		</set>
 		WHERE MEMBERID = #{memberId}
 	</update>
+
 </mapper>

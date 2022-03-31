@@ -81,6 +81,7 @@
                            <div class="header-btn d-none f-right d-lg-block">
                               <a href="memberLogout.do" class="btn head-btn2">Logout</a>
                               <a href="myInfo.do" class="btn head-btn2">MyPage</a>
+                           </div>
                         </c:if>                      
                     </div>
                 </div>
