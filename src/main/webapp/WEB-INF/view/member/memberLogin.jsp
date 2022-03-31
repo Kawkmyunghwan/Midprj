@@ -101,3 +101,6 @@
 </body>
 </html>       
     <!-- Register Form Section End -->
+<script>
+	
+</script>
