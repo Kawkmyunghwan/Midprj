@@ -48,7 +48,7 @@ import co.micol.prj.jobOpening.command.SearchLocation;
 import co.micol.prj.jobOpening.command.ZzimSearch;
 import co.micol.prj.member.command.AjaxMemberIdCheck;
 import co.micol.prj.member.command.CBack;
-import co.micol.prj.member.command.KaKaoLogin;
+import co.micol.prj.member.command.KakaoLogin;
 import co.micol.prj.member.command.KakaoLoginForm;
 import co.micol.prj.member.command.MemberDelete;
 import co.micol.prj.member.command.MemberJoin;
@@ -152,6 +152,7 @@ public class FrontController extends HttpServlet {
 		map.put("/ajaxSortBoard.do", new AjaxSortBoard()); // 게시글 정렬
 		map.put("/reviewInsert.do", new ReviewInsert());
 		map.put("/commentsInsert.do", new CommentsInsert());
+
 		map.put("/commentsUpdate.do", new CommentsUpdate()); // 댓글 수정
 		map.put("/commentsDelete.do", new CommentsDelete()); // 댓글 삭제
 		map.put("/memberLogout.do", new MemberLogout()); // 로그아웃
@@ -160,7 +161,7 @@ public class FrontController extends HttpServlet {
 		map.put("/Jsearch.do", new Jsearch()); // 구인광고 검색
 		map.put("/myZzim.do", new Myzzim()); // 마이페이지 내 찜 리스트
 		map.put("/kakaoLogin.do", new KakaoLoginForm()); // 카카오 API 로그인 폼
-		map.put("/kakaoLoginProcess.do", new KaKaoLogin()); // 카카오 API 로그인 처리
+		map.put("/kakaoLoginProcess.do", new KakaoLogin()); // 카카오 API 로그인 처리
 
 	}
 

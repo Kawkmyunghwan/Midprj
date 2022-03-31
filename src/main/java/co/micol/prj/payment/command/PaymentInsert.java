@@ -27,7 +27,7 @@ public class PaymentInsert implements Command{
 		HttpSession session = request.getSession();
 		
 		vo.setMemberNum((int)session.getAttribute("memberNum"));
-		memberVo.setMemberNum(vo.getMemberNum());
+		memberVo.setMemberId((String)session.getAttribute("memberId"));
 		
 		int check = (int)paymentDao.paymentCount(vo);
 		int a = 1;
@@ -40,6 +40,7 @@ public class PaymentInsert implements Command{
 		if(check < 1) {
 		vo.setPrice(Integer.parseInt(request.getParameter("price")));
 		
+		memberDao.updateSub(memberVo);
 		n = paymentDao.paymentInsert(vo);
 		}else {
 			vo = paymentDao.paymentSelect(vo);
@@ -50,7 +51,7 @@ public class PaymentInsert implements Command{
 			
 			//System.out.println(vo.getMemberNum()+" "+vo.getDay()+" "+vo.getPrice()+" "+vo.getPaymentDate());
 			
-			memberDao.updateSub(memberVo);
+			
 			n = paymentDao.paymentUpdate(vo);
 		}
 		
