@@ -18,7 +18,7 @@ public class Zzim implements Command {
 		ZzimVO vo = new ZzimVO();
 		ZzimService dao = new ZzimServiceImpl();		
 				
-		
+		vo.setMemberId(request.getParameter("memberId"));
 		vo.setMemberNum((int)session.getAttribute("memberNum"));
 		vo.setJobOpeningNum(Integer.parseInt(request.getParameter("jobOpeningNum")));
 		dao.insertZzim(vo);				

@@ -64,4 +64,10 @@ public class MemberServiceImpl implements MemberService {
 
 	}
 
+	@Override
+	public int insertKakaoMember(MemberVO vo) {
+		// TODO Auto-generated method stub
+		return map.insertKakaoMember(vo);
+	}
+
 }

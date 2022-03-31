@@ -70,22 +70,20 @@ public class JobOpeningServiceImpl implements JobOpeningService {
 
 	@Override
 
+	public List<JobOpeningVO> selectJobOpeningListByMyzzim(int co) {
+		return map.selectJobOpeningListByMyzzim(co);
+	}
+
 	public List<JobOpeningVO> selectRecommendation(String jobGroup) {
 		// TODO Auto-generated method stub
 		return map.selectRecommendation(jobGroup);
-	}
-	@Override
-	
-	public List<JobOpeningVO> selectJobOpeningListByMyzzim() {
-		// TODO Auto-generated method stub
-		return map.selectJobOpeningListByMyzzim();
-
 	}
 
 	@Override
 	public List<JobOpeningVO> selectJobOpeningListByZzimTop4() {
 		// TODO Auto-generated method stub
 		return map.selectJobOpeningListByZzimTop4();
+
 	}
 
 }
