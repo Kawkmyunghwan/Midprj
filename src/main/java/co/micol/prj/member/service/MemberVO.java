@@ -15,6 +15,7 @@ private int subscription;
 private int memberNum;
 private String memberEmail;
 private String favorite;
+private int secession;
 
 @Override
 public String toString() {
