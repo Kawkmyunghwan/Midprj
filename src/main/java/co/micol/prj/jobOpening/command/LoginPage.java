@@ -10,7 +10,7 @@ public class LoginPage implements Command {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		
-		return "member/memberLogin.tiles";
+		return "member/memberLogin.jsp";
 	}
 
 }

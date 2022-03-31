@@ -10,7 +10,7 @@ public class MemberJoinForm implements Command {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		// 회원가입 폼 호출
-		return "member/memberJoinForm.tiles";
+		return "member/memberJoinForm.jsp";
 	}
 
 }

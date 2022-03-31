@@ -41,6 +41,15 @@
 
 
 	</select>
+	
+	<select id="selectRecommendation" 
+		parameterType="String" 
+		resultType="co.micol.prj.jobOpening.service.JobOpeningVO">
+		SELECT *
+		FROM JOBOPENING
+		WHERE JOBGROUP LIKE NVL('%'||#{jobGroup}||'%', JOBGROUP)
+	</select>
+	
 
 	<select id="selectJobOpeningListByMyzzim"
 		parameterType="int"
@@ -56,7 +65,17 @@
 		ORDER BY COUNT DESC
 	</select>
 
-
-
+	<select id="selectJobOpeningListByZzimTop4" 
+		resultType="co.micol.prj.jobOpening.service.JobOpeningVO">
+		SELECT  J.JOBOPENINGNUM, J.COMPANYNAME, J.SALARY,
+		J.COMPANYADDRESS, J.COMPANYIMAGE, COUNT(J.JOBOPENINGNUM) AS COUNT 
+		FROM
+		JOBOPENING J JOIN ZZIM Z 
+		ON J.JOBOPENINGNUM = Z.JOBOPENINGNUM 
+		WHERE <![CDATA[ ROWNUM <= 4 ]]>
+		GROUP BY J.JOBOPENINGNUM, J.COMPANYNAME, J.SALARY, J.COMPANYADDRESS, J.COMPANYIMAGE 
+        ORDER BY COUNT DESC
+	</select>
+	
 
 </mapper>

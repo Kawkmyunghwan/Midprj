@@ -27,35 +27,36 @@
 
 
 </style>	
+
 <div class="slider-area ">
-	<!-- Mobile Menu -->
-	<div class="slider-active">
-		<div class="online-cv cv-bg section-overly pt-90 pb-120" data-background="assets/img/hero/h1_hero.jpg">			
-			<div class="container">
-				<div class="row">
-					<div class="col-xl-6 col-lg-9 col-md-10">
-						<div class="hero__caption">
-							<h1>Find the most exciting startup jobs!!!!</h1>
-						</div>
-					</div>
-				</div>
-				<!-- Search Box -->
-				<div class="row">
-					<div class="col-xl-8">
-						<!-- form -->
-						<form action="Jsearch.do" class="search-box">
-							<div class="input-form">
-								<input type="text" name="Jsearch" placeholder="Job Tittle or keyword">
-							</div>							
-							<div class="search-form">
-								<button class="w-btn w-btn-gra1"  type="submit">Find job</button>								
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+   <!-- Mobile Menu -->
+   <div class="slider-active">
+      <div class="online-cv cv-bg section-overly pt-90 pb-120" data-background="assets/img/hero/h1_hero.jpg">         
+         <div class="container">
+            <div class="row">
+               <div class="col-xl-6 col-lg-9 col-md-10">
+                  <div class="hero__caption">
+                     <h1>Find the most exciting startup jobs!!!!</h1>
+                  </div>
+               </div>
+            </div>
+            <!-- Search Box -->
+            <div class="row">
+               <div class="col-xl-8">
+                  <!-- form -->
+                  <form action="Jsearch.do" class="search-box">
+                     <div class="input-form">
+                        <input type="text" name="Jsearch" placeholder="Job Tittle or keyword">
+                     </div>                     
+                     <div class="search-form">
+                        <button class="w-btn w-btn-gra1"  type="submit">Find job</button>                        
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
 </div>
 <!-- slider Area End-->
 <div class="our-services section-pad-t30">
@@ -65,118 +66,60 @@
 			<div class="col-lg-12">
 				<div class="section-tittle text-center">
 					<span>FEATURED TOURS Packages</span>
-					<h2>${memberId }님에게맞는 일자리는?</h2>
-					<a href="sample.do">dd</a>
-					
+					<c:if test="${memberId != null }">
+						<h2>${memberName }님, 이런 일자리는 어떠세요?</h2>
+					</c:if>
+					<c:if test="${memberId == null}">
+						<h2>인기 기업을 골라보세요.</h2>
+					</c:if>
+					<a href="sample.do">dd</a>					
 				</div>
 			</div>
 		</div>
 		<div class="row d-flex justify-contnet-center">
+		<c:if test="${memberId != null }">
+		<c:forEach items="${recommendList}" var="list">
 			<div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
 				<div class="single-services text-center mb-30">
 					<div class="services-ion">
-						<span class="flaticon-tour"></span>
+						<span class="${list.companyImage }"></span>
 					</div>
 					<div class="services-cap">
 						<h5>
-							<a href="job_listing.html">Design & Creative</a>
+							<a href="javascript:formFncR.submit()" onclick='formFncR(${list.jobOpeningNum})'>   ${list.companyName}</a>
 						</h5>
-						<span>(653)</span>
+						<span>${list.jobGroup }</span>						
 					</div>
 				</div>
 			</div>
+		</c:forEach>
+		</c:if>
+		
+		<c:forEach items="${zzim}" var="list">
+		<c:if test="${memberId == null || list.favorite == null}">		
 			<div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
 				<div class="single-services text-center mb-30">
 					<div class="services-ion">
-						<span class="flaticon-cms"></span>
+						<span class="${list.companyImage }"></span>
 					</div>
 					<div class="services-cap">
 						<h5>
-							<a href="job_listing.html">	</a>
+							<a href="javascript:formFncR.submit()" onclick='formFncR(${list.jobOpeningNum})'>   ${list.companyName}</a>
 						</h5>
-						<span>(658)</span>
+						<span>${list.jobGroup }</span>
+						<span>♥ ${list.count }</span>
 					</div>
 				</div>
 			</div>
-			<div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-				<div class="single-services text-center mb-30">
-					<div class="services-ion">
-						<span class="flaticon-report"></span>
-					</div>
-					<div class="services-cap">
-						<h5>
-							<a href="job_listing.html">Sales & Marketing</a>
-						</h5>
-						<span>(658)</span>
-					</div>
-				</div>
-			</div>
-			<div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-				<div class="single-services text-center mb-30">
-					<div class="services-ion">
-						<span class="flaticon-app"></span>
-					</div>
-					<div class="services-cap">
-						<h5>
-							<a href="job_listing.html">Mobile Application</a>
-						</h5>
-						<span>(658)</span>
-					</div>
-				</div>
-			</div>
-			<div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-				<div class="single-services text-center mb-30">
-					<div class="services-ion">
-						<span class="flaticon-helmet"></span>
-					</div>
-					<div class="services-cap">
-						<h5>
-							<a href="job_listing.html">Construction</a>
-						</h5>
-						<span>(658)</span>
-					</div>
-				</div>
-			</div>
-			<div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-				<div class="single-services text-center mb-30">
-					<div class="services-ion">
-						<span class="flaticon-high-tech"></span>
-					</div>
-					<div class="services-cap">
-						<h5>
-							<a href="job_listing.html">Information Technology</a>
-						</h5>
-						<span>(658)</span>
-					</div>
-				</div>
-			</div>
-			<div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-				<div class="single-services text-center mb-30">
-					<div class="services-ion">
-						<span class="flaticon-real-estate"></span>
-					</div>
-					<div class="services-cap">
-						<h5>
-							<a href="job_listing.html">Real Estate</a>
-						</h5>
-						<span>(658)</span>
-					</div>
-				</div>
-			</div>
-			<div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-				<div class="single-services text-center mb-30">
-					<div class="services-ion">
-						<span class="flaticon-content"></span>
-					</div>
-					<div class="services-cap">
-						<h5>
-							<a href="job_listing.html">Content Writer</a>
-						</h5>
-						<span>(658)</span>
-					</div>
-				</div>
-			</div>
+		</c:if>
+		</c:forEach>
+								
 		</div>
+		
+		<form action="jobDetail.do" method="get" name="quickFrmR">
+				<input type="hidden" name="jobOpeningNum">
+		</form>
+		
 		<!-- More Btn -->
 		<!-- Section Button -->
 		<div class="row">
@@ -281,6 +224,13 @@ function formFnc(jobOpening_num) {
 	console.log(jobOpening_num)
 	quickFrm.jobOpeningNum.value=jobOpening_num;
 	quickFrm.submit();
+}
+
+function formFncR(jobOpening_num){
+	event.preventDefault();
+	console.log(jobOpening_num)
+	quickFrmR.jobOpeningNum.value=jobOpening_num;
+	quickFrmR.submit();
 }
 
 </script>
