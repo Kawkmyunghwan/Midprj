@@ -81,17 +81,6 @@ public class JobOpeningServiceImpl implements JobOpeningService {
 
 	}
 
-	@Override
-	public int jobOpeningUpdateHit(int hit) {
-		// TODO Auto-generated method stub
-		return map.jobOpeningUpdateHit(hit);
-	}
-
-	@Override
-	public List<JobOpeningVO> selectLocationList(String location) {
-		// TODO Auto-generated method stub
-		return map.selectLocationList(location);
-	}
 
 	@Override
 	public int jobOpeningUpdateHit(int hit) {
