@@ -66,10 +66,10 @@
 			<div class="col-lg-12">
 				<div class="section-tittle text-center">
 					<span>FEATURED TOURS Packages</span>
-					<c:if test="${memberId != null }">
+					<c:if test="${memberId ne null }">
 						<h2>${memberName }님, 이런 일자리는 어떠세요?</h2>
 					</c:if>
-					<c:if test="${memberId == null}">
+					<c:if test="${memberId eq null}">
 						<h2>인기 기업을 골라보세요.</h2>
 					</c:if>
 					<a href="sample.do">dd</a>					

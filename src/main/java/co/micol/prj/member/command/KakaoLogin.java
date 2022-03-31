@@ -31,11 +31,14 @@ public class KakaoLogin implements Command {
       if (info == null) {   
          // ----------------------------------------------- 파라미터값을 DB에 저장
          int n = memberDao.insertKakaoMember(vo);
-         if(n > 0)
-            session.setAttribute("memberId", vo.getMemberId());
-      }else {
-         session.setAttribute("memberId", info.getMemberId());
+         if(n > 0) {
+        	 info = memberDao.selectMember(vo);
+         }
+         	
       }
+      session.setAttribute("memberNum", info.getMemberNum());
+      session.setAttribute("memberId", info.getMemberId());
+      session.setAttribute("memberName", info.getMemberName());
       
       try {
          response.sendRedirect("home.do");

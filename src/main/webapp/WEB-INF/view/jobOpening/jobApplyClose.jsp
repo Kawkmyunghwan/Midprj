@@ -2,4 +2,5 @@
     pageEncoding="UTF-8"%>
 <script>
 window.close();
+alert('완료')
 </script>

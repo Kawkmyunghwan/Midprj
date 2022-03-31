@@ -4,9 +4,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import co.micol.prj.apply.service.ApplyService;
-import co.micol.prj.apply.service.ApplyVO;
-import co.micol.prj.apply.serviceImpl.ApplyServiceImpl;
 import co.micol.prj.common.Command;
 import co.micol.prj.jobOpening.service.JobOpeningService;
 import co.micol.prj.jobOpening.service.JobOpeningVO;

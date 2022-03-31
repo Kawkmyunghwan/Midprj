@@ -24,7 +24,7 @@ public class HomeCommand implements Command {
       int a[] = new int[4];
 
       
-      if(session.getAttribute("memberNum") != null) {         
+      if(session.getAttribute("memberId") != null && session.getAttribute("favorite") != null) {         
          String[] jobGroup = new String[dao.selectJobOpeningList().size()];
          
          for(int i=0; i<dao.selectJobOpeningList().size(); i++) {
@@ -58,7 +58,7 @@ public class HomeCommand implements Command {
          request.setAttribute("recommendList", recommendList);
       }
       
-      if(session.getAttribute("favorite") == null || session.getAttribute("memberNum") == null) {
+      if(session.getAttribute("favorite") == null || session.getAttribute("memberId") == null) {
          request.setAttribute("zzim", dao.selectJobOpeningListByZzimTop4());
 //         관심직군이 없거나, 로그인을 하지 않은 유저는 찜순으로 조회한 기업을 볼 수 있음.
       }
