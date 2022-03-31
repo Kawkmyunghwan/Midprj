@@ -17,29 +17,28 @@
 			</div>
 			
 			<div>
-				<div class="container"style="max-width:950px;">
-				<div class="container"style="max-width:900px;">
-				<table border="1" >
+				
+				<div class="container"style="max-width:880px;" class="card">
+				<table border="1" class="card">
 					<tr>
-						<th width="100">작성자</th>
-						<td width="150">${contact.infoWriter}</td>
-						<th width="100">작성일자</th>
-						<td width="150">${contact.infoDate}</td>
+						<th width="160" height="39" style="padding:1px 1px 1px 10px"> 작성자</th>
+						<td width="250" style="padding:1px 1px 1px 10px">${contact.infoWriter}</td>
+						<th width="150" height="39" style="padding:1px 1px 1px 10px">작성일자</th>
+						<td width="290" style="padding:1px 1px 1px 10px">${contact.infoDate}</td>
 					</tr>
 					<tr>
-						<th>제목</th>
-						<td colspan="3">${contact.infoTitle}</td>
+						<th height="39" style="padding:1px 1px 1px 10px">제목</th>
+						<td colspan="3" style="padding:1px 1px 1px 10px">${contact.infoTitle}</td>
 					</tr>
 					<tr>
-						<th>내용</th>
+						<th style="padding:1px 1px 1px 10px">내용</th>
 						<td colspan="3">
-							<textarea rows="10" id="infoAnswerContent" name="infoAnswerContent" cols="80">${contact.infoAnswerContent}</textarea>
+							<textarea rows="10" class="form-control" id="infoAnswerContent" name="infoAnswerContent" cols="80">${contact.infoAnswerContent}</textarea>
 						</td>
 					</tr>
 					
 				</table>
 				<br/>
-				</div>
 				</div>
 				
 				
@@ -76,13 +75,12 @@
 
 	
 		</div>
-		<div align="center">
-			<button type="button" onclick="location.href = 'inquiryForm.do'">목록가기</button>
+		<div align="center" style="padding : 10px 40px">
+			<button type="button" onclick="location.href = 'inquiryForm.do'" class="genric-btn primary small">목록가기</button>
 			&nbsp;&nbsp;
-			<%-- 		<button type="button" onclick="location.href = 'inquiryUpdate.do?infoNum=${contact.infoNum}&infoAnswerContent=${contact.infoAnswerContent}'">수정</button>&nbsp;&nbsp; --%>
-			<button type="button" onclick="contentsUpdate()">수정</button>
+			<button type="button" onclick="contentsUpdate()" class="genric-btn primary small">수정</button>
 			&nbsp;&nbsp;
-			<button type="button" onclick="contentsDelete()">삭제</button>
+			<button type="button" onclick="contentsDelete()" class="genric-btn primary small">삭제</button>
 
 		</div>
 	</div>
@@ -92,7 +90,8 @@
 </body>
 <script type="text/javascript">
 	$(document).ready(function(){
-		if("${contact.isAnswer}" != "" || "${contact.isAnswer}" == null){
+		var str = `${contact.isAnswer}`;
+		if(str != "" || str == null){
 			$("#isAnswer").hide();
 		}else{
 			$("#isAnswer").show();
