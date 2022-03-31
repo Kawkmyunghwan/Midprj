@@ -38,6 +38,7 @@ public class MemberLogin implements Command {
 			session.setAttribute("memberEmail", vo.getMemberEmail());
 			session.setAttribute("favorite", vo.getFavorite());
 			session.setAttribute("memberName", vo.getMemberName());
+			session.setAttribute("subscription", vo.getSubscription());
 			viewPage = "member/memberLoginSuccess.tiles";
 			
 			}else {
@@ -46,7 +47,6 @@ public class MemberLogin implements Command {
 		}else {
 			viewPage = "member/memberLoginFail.tiles";
 		}
-		
 		
 		return viewPage;
 	

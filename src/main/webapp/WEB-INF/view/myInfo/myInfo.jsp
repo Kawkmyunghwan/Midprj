@@ -61,7 +61,7 @@
          <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
             <div class="single-services text-center mb-30">
                <div class="services-ion">
-                  <a href=""><span class="flaticon-content"></span></a>
+                  <a href="myZzim.do"><span class="flaticon-content"></span></a>
                </div>
                <div class="services-cap">
                   <h5>
