@@ -37,6 +37,7 @@ import co.micol.prj.contact.comm.ReviewInsert;
 import co.micol.prj.home.command.HomeCommand;
 import co.micol.prj.jOComment.command.AjaxJobOpeningComment;
 import co.micol.prj.jOComment.command.AjaxJobOpeningCommentSel;
+import co.micol.prj.jobOpening.command.AjaxLocationSelect;
 import co.micol.prj.jobOpening.command.HotSearch;
 import co.micol.prj.jobOpening.command.JobDetail;
 import co.micol.prj.jobOpening.command.Jsearch;
@@ -106,6 +107,7 @@ public class FrontController extends HttpServlet {
 		map.put("/application.do", new Application());							// 지원신청서 작성 후 버튼 클릭 시 APPLY테이블로 INSERT
 		map.put("/jobOpeningComment.do", new AjaxJobOpeningComment());
 		map.put("/AjaxJobOpeningCommentSel.do", new AjaxJobOpeningCommentSel());
+		map.put("/ajaxLocationSelect.do", new AjaxLocationSelect());
 // ---------------------------------------------------
 
 		
