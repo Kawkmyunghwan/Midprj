@@ -48,6 +48,7 @@ import co.micol.prj.jobOpening.command.SearchLocation;
 import co.micol.prj.jobOpening.command.ZzimSearch;
 import co.micol.prj.member.command.AjaxMemberIdCheck;
 import co.micol.prj.member.command.CBack;
+import co.micol.prj.member.command.KakaoLogin;
 import co.micol.prj.member.command.MemberDelete;
 import co.micol.prj.member.command.MemberJoin;
 import co.micol.prj.member.command.MemberJoinForm;
@@ -155,6 +156,7 @@ public class FrontController extends HttpServlet {
 	  	map.put("/callBack.do", new CBack()); // 네이버 로그인 API 콜백
 	  	map.put("/Jsearch.do", new Jsearch()); //구인광고 검색
 	  	map.put("/myZzim.do", new Myzzim()); //마이페이지 내 찜 리스트
+	  	map.put("/kakaoLogin.do", new KakaoLogin()); //카카오 API 로그인
 
 	}
 

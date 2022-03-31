@@ -26,7 +26,7 @@
                             <a href="naverLogin.do" id="naverIdLogin_loginButton" class="btn head-btn2">
                                  <span>네이버 로그인</span>
                               </a>
-                              <a href="naverLogin.do" id="naverIdLogin_loginButton" class="btn head-btn2">
+                              <a href="kakaoLogin.do" id="naverIdLogin_loginButton" class="btn head-btn2">
                                  <span>카카오 로그인</span>
                               </a>
                         </form>                       
