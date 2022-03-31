@@ -16,7 +16,7 @@
 				<div>
 					<table border="1">
 						<tr>
-							<th width="100">받는 사람ID!</th>
+							<th width="100">받는 사람ID</th>
 							
 							<td width="150"><input type="text" id="recvId" name="recvId"
 								required="required" value="${recv }"></td>							

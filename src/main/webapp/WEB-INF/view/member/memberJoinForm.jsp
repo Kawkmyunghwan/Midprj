@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +11,7 @@
 
 <!-- Font Icon -->
 <link rel="stylesheet"
-	href="./assets/fonts/signup/material-icon/css/material-design-iconic-font.min.css">
+   href="./assets/fonts/signup/material-icon/css/material-design-iconic-font.min.css">
 
 <!-- Main css -->
 <link rel="stylesheet" href="./assets/css/signup/style.css">
@@ -21,78 +21,78 @@
 </head>
 <body>
 
-	<div class="main">
+   <div class="main">
 
-		<!-- Sign up form -->
-		<section class="signup">
-			<div class="container">
-				<div class="signup-content">
-					<div class="signup-form">
-						<h2 class="form-title">회원가입</h2>
-						<form id="frm" action="memberJoin.do" onsubmit="return formCheck()"
-				method="post">
-							<button  type="button" id="checkId"
-								value="No" onclick="isIdCheck()" style="float: right;">중복체크</button>
-							<div class="form-group">
-								
-								<label for="name">아이디</label> 
-								<input type="text" name="memberId" id="memberId" required="required"  />
-							</div>
-							<div class="form-group">
-								<label for="password">비밀번호</label> <input type="password"
-									name="memberPassword" id="memberPassword"/>
-							</div>
-							<div class="form-group">
-								<label for="password">비밀번호 확인</label> <input type="password"
-									name="memberPassword1" id="memberPassword1" />
-							</div>
-							<div class="form-group">
-								<label for="re-pass">이 름</label> <input type="text"
-									name="memberName" id="memberName"  />
-							</div>
-							<div class="form-group">
-								<label for="re-pass">전화번호</label> <input type="text"
-									name="memberPhone" id="memberPhone"  />
-							</div>
-							<div class="form-group">
-								<label for="re-pass">이메일</label> <input type="email"
-									name="memberEmail" id="memberEmail"  />
-							</div>
+      <!-- Sign up form -->
+      <section class="signup">
+         <div class="container">
+            <div class="signup-content">
+               <div class="signup-form">
+                  <h2 class="form-title">회원가입</h2>
+                  <form id="frm" action="memberJoin.do" onsubmit="return formCheck()"
+            method="post">
+                     <button  type="button" id="checkId"
+                        value="No" onclick="isIdCheck()" style="float: right;">중복체크</button>
+                     <div class="form-group">
+                        
+                        <label for="name">아이디</label> 
+                        <input type="text" name="memberId" id="memberId" required="required"  />
+                     </div>
+                     <div class="form-group">
+                        <label for="password">비밀번호</label> <input type="password"
+                           name="memberPassword" id="memberPassword"/>
+                     </div>
+                     <div class="form-group">
+                        <label for="password">비밀번호 확인</label> <input type="password"
+                           name="memberPassword1" id="memberPassword1" />
+                     </div>
+                     <div class="form-group">
+                        <label for="re-pass">이 름</label> <input type="text"
+                           name="memberName" id="memberName"  />
+                     </div>
+                     <div class="form-group">
+                        <label for="re-pass">전화번호</label> <input type="text"
+                           name="memberPhone" id="memberPhone"  />
+                     </div>
+                     <div class="form-group">
+                        <label for="re-pass">이메일</label> <input type="email"
+                           name="memberEmail" id="memberEmail"  />
+                     </div>
 
-							<div class="btn-group" style="position: static; display: inline; width: auto;">
+                     <div class="btn-group" style="position: static; display: inline; width: auto;">
 
-								<div class="form-check">
-									<input class="form-check-input" type="radio"name="favorite" value="IT" style="position: static; display: inline; width: auto;"> 
-									<label class="form-check-label" for="IT" style="position: static; display: inline; width: auto;">IT</label>
-								</div>
-								<div class="form-check">
-									<input class="form-check-input" type="radio" name="favorite" value="기획" style="position: static; display: inline; width: auto;">
-									<label class="form-check-label" for="기획" style="position: static; display: inline; width: auto;">기획</label>
-								</div>
-								<div class="form-check">
-									<input class="form-check-input" type="radio" name="favorite" value="건축" style="position: static; display: inline; width: auto;">
-									<label class="form-check-label" for="건축" style="position: static; display: inline; width: auto;">건축</label>
-								</div>
+                        <div class="form-check">
+                           <input class="form-check-input" type="radio"name="favorite" value="IT" style="position: static; display: inline; width: auto;"> 
+                           <label class="form-check-label" for="IT" style="position: static; display: inline; width: auto;">IT</label>
+                        </div>
+                        <div class="form-check">
+                           <input class="form-check-input" type="radio" name="favorite" value="기획" style="position: static; display: inline; width: auto;">
+                           <label class="form-check-label" for="기획" style="position: static; display: inline; width: auto;">기획</label>
+                        </div>
+                        <div class="form-check">
+                           <input class="form-check-input" type="radio" name="favorite" value="건축" style="position: static; display: inline; width: auto;">
+                           <label class="form-check-label" for="건축" style="position: static; display: inline; width: auto;">건축</label>
+                        </div>
 
-							</div>
+                     </div>
 
-							<div class="form-group form-button">
-								<input type="submit" name="signup" id="signup"
-									class="form-submit" value="회원가입" />
-							</div>
-						</form>
-					</div>
-					<div class="signup-image">
-						<figure>
-							<img src="./assets/img/signup/signin-image.jpg"
-								alt="sing up image">
-						</figure>
-						<a href="#" class="signup-image-link">이미 회원이신가요?</a>
-					</div>
-				</div>
-			</div>
-		</section>
-	</div>
+                     <div class="form-group form-button">
+                        <input type="submit" name="signup" id="signup"
+                           class="form-submit" value="회원가입" />
+                     </div>
+                  </form>
+               </div>
+               <div class="signup-image">
+                  <figure>
+                     <img src="./assets/img/signup/signin-image.jpg"
+                        alt="sing up image">
+                  </figure>
+                  <a href="#" class="signup-image-link">이미 회원이신가요?</a>
+               </div>
+            </div>
+         </div>
+      </section>
+   </div>
 <script type="text/javascript">
       function isIdCheck() {
          $.ajax({
@@ -136,7 +136,7 @@
       }
    </script>
    <script src="js/jquery-3.6.0.min.js"></script>
-	<script src="./assets/js/signup/main.js"></script>
+   <script src="./assets/js/signup/main.js"></script>
 </body>
 <!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>
