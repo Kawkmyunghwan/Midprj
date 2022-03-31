@@ -259,7 +259,7 @@ function searchLocation(){
 				  var reCol = document.createElement('div');
 				  reCol.setAttribute('class', 'col-xl-10');
 				  var row = document.getElementById('row');
-				  row.append(reCol);
+				  parentTag.append(reCol);
 				  			  
 				  var singleJob = document.createElement('div');
 				  singleJob.setAttribute('class', 'single-job-items mb-30');
@@ -287,7 +287,6 @@ function searchLocation(){
 				  
 				  var jsa = document.createElement('a');
 				  jsa.setAttribute('href', 'javascript:formFnc.submit())');
-				  jsa.setAttribute('onclick', 'formFnc(${list.jobOpeningNum})')
 				  tittle.append(jsa);
 				  
 				  var h4 = document.createElement('h4');
@@ -320,8 +319,7 @@ function searchLocation(){
 				  span.innerText = '7 hours ago';
 				  itemLink.append(span);
 			 	
-				  
-				  parentTag.append(itemLink);
+				  				  
 			  }
 		}
 	})	

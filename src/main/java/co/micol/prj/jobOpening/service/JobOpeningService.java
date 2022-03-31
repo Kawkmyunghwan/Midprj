@@ -8,7 +8,9 @@ public interface JobOpeningService {
 	List<JobOpeningVO> selectJobOpeningListByZzim(); //찜 기반 전체리스트
 	List<JobOpeningVO> selectJobOpeningListByPost(String cond); //회사 기반 구인광고 검색
 	List<JobOpeningVO> selectLocationList(String location); //지역 기반 구인광고 검색
+
 	List<JobOpeningVO> selectJobOpeningListByMyzzim(int co); //찜 기반 전체리스트
+
 	List<JobOpeningVO> selectJobOpeningListByZzimTop4();
 
 	   JobOpeningVO selectJobOpening(JobOpeningVO vo); //단일 리스트

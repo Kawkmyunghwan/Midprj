@@ -185,7 +185,8 @@
             </div>
         </div>
         <!-- job post company End -->
-       
+       <form id ="frm2" action="home.do" method="post">      
+       </form>
 <script type="text/javascript">
 	var memberNum = "<c:out value = '${memberNum}'/>";
 
@@ -199,12 +200,11 @@
 		if(memberNum != null){
 			var popUrl = 'notilesApply.do?jobOpeningNum='+jobOpening_num+'';
 			var popOption = 'left=600, width=600, height=650, location=no, status=no, scrollbars=yes'
-			window.open(popUrl, "name", popOption);	
-		}else if(memberNum == null){
-			alert('로그인 하세요.')
+			window.open(popUrl, "name", popOption);
+			frm2.submit();
 		}
 	}
-		
+	
 // -----------------------------------------------------------------	
 	var jobOpNum = "<c:out value = '${jobOpening.jobOpeningNum}'/>";	
 	var zzimJobOpNum = [] 
@@ -256,7 +256,7 @@
 		var cm = document.getElementById('comment');
 		var cv = cm.value;	
 		var memberNum = "<c:out value = '${memberNum}'/>";
-		
+
 		if(memberNum != null){
 			var xhtp = new XMLHttpRequest();
 			xhtp.open('post', 'jobOpeningComment.do')
@@ -319,14 +319,7 @@
 				date.innerText = result[result.length-1].commentTime;
 				dFlex2.append(date);
 				
-				var infoA = document.createElement('a');
-				infoA.setAttribute('href', '#');
-				infoA.setAttribute('class', 'genric-btn info');
-				infoA.style.styleFloat = 'right';
-				infoA.innerText = '삭제'
-				dFlex2.append(infoA);
-			}else if(memberNum == null) {
-				alert("로그인 하세요.")
+				
 			}
 		}
 	}			
@@ -403,12 +396,7 @@
 					date.innerText = result[i].commentTime;
 					dFlex2.append(date);
 					
-					var infoA = document.createElement('a');
-					infoA.setAttribute('href', '#');		
-					infoA.setAttribute('class', 'genric-btn info');
-					infoA.style.styleFloat = 'right';
-					infoA.innerText = '삭제'
-					dFlex2.append(infoA);
+					
 				}
 			}
 			
