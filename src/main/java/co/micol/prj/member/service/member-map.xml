@@ -30,7 +30,7 @@
       VALUES
       (#{memberNum}, #{memberEmail}, #{memberId}, #{memberPassword}, #{memberName}, #{memberPhone}, #{favorite})
   </insert>   
-
+	<insert id="">
 		<selectKey keyProperty="memberNum,memberSub"
 			resultType="int" order="BEFORE">
 			SELECT NVL(MAX(memberNum+1),1), CASE WHEN
