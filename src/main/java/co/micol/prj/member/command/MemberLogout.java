@@ -14,7 +14,7 @@ public class MemberLogout implements Command {
        session.invalidate(); 
        /*session.removeAttribute("memberId");
       session.removeAttribute("memberNum");*/
-      return "home/home";
+      return "home.do";
    }
 
 }

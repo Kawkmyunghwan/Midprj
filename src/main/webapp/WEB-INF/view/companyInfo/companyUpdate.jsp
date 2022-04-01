@@ -10,12 +10,15 @@
 </head>
 <body>
 	<div class="container" style="max-width: 400px;" align="left">
+
 		<div style="padding:1px 1px 10px 1px">
+
 			<h1>회사정보 수정</h1>
 		</div>
 		<div>
 			<form id="frm" action="companyUpdate.do" method="post">
 				<div>
+
 					<table >
 						<tr>
 							<th>이름</th>
@@ -25,6 +28,7 @@
 						<tr>
 							<th>주소</th>
 							<td><input type="text" id="COMPANYADDRESS"
+
 								name="COMPANYADDRESS" onclick="abc()" class="form-control" value="${company.COMPANYADDRESS}"></td>
 						</tr>
 <!-- 						<tr> -->
@@ -46,6 +50,7 @@
 							<th>대표이름</th>
 							<td><input type="text" id="REPRESENTATIVE"
 								name="REPRESENTATIVE" class="form-control" value="${company.REPRESENTATIVE}"></td>
+
 						</tr>
 						<tr>
 							<th>직원수</th>

@@ -66,10 +66,10 @@
 			<div class="col-lg-12">
 				<div class="section-tittle text-center">
 					<span>FEATURED TOURS Packages</span>
-					<c:if test="${memberId != null }">
+					<c:if test="${memberId ne null }">
 						<h2>${memberName }님, 이런 일자리는 어떠세요?</h2>
 					</c:if>
-					<c:if test="${memberId == null}">
+					<c:if test="${memberId eq null}">
 						<h2>인기 기업을 골라보세요.</h2>
 					</c:if>
 					<a href="sample.do">dd</a>					
@@ -157,7 +157,7 @@
 				<div class="section-tittle text-center">
 					<span>Recent Job</span>
 					<h2>구직공고</h2>
-					<form action="searchLocation.do" onclick="open1()" method="get">
+					<form method="post">
 						<div>
 							<table border="1" align="center">
 								<tr>
@@ -167,7 +167,7 @@
 								</tr>
 							</table>  							
 						</div>	
-						<button>검색</button>
+						<button type="button" onclick="searchLocation()">검색</button>
 					</form>
 				</div>
 			</div>
@@ -175,8 +175,8 @@
 		<form action="jobDetail.do" method="get" name="quickFrm">
 				<input type="hidden" name="jobOpeningNum">
 		</form>
-		<div class="row justify-content-center">
-			<div class="col-xl-10">
+		<div id = "row" class="row justify-content-center">
+			<div id ="col" class="col-xl-10">
 				<!-- single-job-content -->
 				<c:forEach items="${jobList }" var="list">
 				<div class="single-job-items mb-30">
@@ -205,18 +205,6 @@
 </section>
 <!-- Featured_job_end -->
 <script>
-//var xhtp = new XMLHttpRequest();
-//xhtp.open('get', 'sample.do');
-//xhtp.send();
-//xhtp.onload = function() {	
-//	var result = xhtp.responseText;	
-//	console.log(result);			
-//}
-
-function open1(){
-	event.preventDefault();
-	window.open('searchLocation.do')
-}
 
 
 function formFnc(jobOpening_num) {
@@ -231,6 +219,112 @@ function formFncR(jobOpening_num){
 	console.log(jobOpening_num)
 	quickFrmR.jobOpeningNum.value=jobOpening_num;
 	quickFrmR.submit();
+}
+
+
+
+
+function searchLocation(){	
+	var val = document.getElementsByName("locationCheck");
+	var check = false;
+	var selArray = [];
+	var data = '';
+	
+	for(var i=0; i<val.length; i++){
+		if(val[i].checked == true){			
+			selArray.push(val[i].value);
+			if(data != '')
+				data = data + '-' + val[i].value;
+			else
+				data = val[i].value;
+		}
+	}
+	if(data != null){
+		$.ajax({
+			url : "ajaxLocationSelect.do",
+			type : "post",
+			data : {"selectBox" : data},
+		  dataType : "json",
+		  success : function(result){
+			  console.log(result);
+			  
+			  
+			  var col = document.getElementById('col');
+			  col.remove();
+			  
+			  var parentTag = document.getElementById('row');
+			  
+			  for(let i=0; i<result.length; i++){
+			  			  
+				  var reCol = document.createElement('div');
+				  reCol.setAttribute('class', 'col-xl-10');
+				  var row = document.getElementById('row');
+				  parentTag.append(reCol);
+				  			  
+				  var singleJob = document.createElement('div');
+				  singleJob.setAttribute('class', 'single-job-items mb-30');
+				  reCol.append(singleJob);
+				  
+				  var jobItems = document.createElement('div');
+				  jobItems.setAttribute('class', 'job-items');
+				  singleJob.append(jobItems);
+				  
+				  var companyImg = document.createElement('div');
+				  companyImg.setAttribute('class', 'company-img');
+				  jobItems.append(companyImg);
+				  
+				  var a = document.createElement('a');
+				  a.setAttribute('href', 'job_details.html');
+				  companyImg.append(a);
+				  
+				  var img = document.createElement('img');
+				  img.setAttribute('src', 'assets/img/icon/job-list1.png')
+				  a.append(img);
+				  
+				  var tittle = document.createElement('div');
+				  tittle.setAttribute('class', 'job-tittle');
+				  jobItems.append(tittle);
+				  
+				  var jsa = document.createElement('a');
+				  jsa.setAttribute('href', 'javascript:formFnc.submit())');
+				  tittle.append(jsa);
+				  
+				  var h4 = document.createElement('h4');
+				  h4.innerText = result[i].companyName
+				  jsa.append(h4);
+				 
+				  var ul = document.createElement('ul');
+				  tittle.append(ul);
+				  
+				  var li1 = document.createElement('li');
+				  li1.innerText = 'Creative Agency'
+				  ul.append(li1);
+				  var li2 = document.createElement('li');
+				  li2.innerText = result[i].companyAddress
+				  ul.append(li2);
+				  var li3 = document.createElement('li');			  
+				  li3.innerText = '$3500 - $4000'
+				  ul.append(li3);
+				  
+				  var itemLink = document.createElement('div');
+				  itemLink.setAttribute('class', 'items-link f-right');
+				  singleJob.append(itemLink);
+				 
+				  var ahj = document.createElement('a');
+				  ahj.setAttribute('href', 'job_details.html');
+				  ahj.innerText = 'Full Time'
+				  itemLink.append(ahj);
+				  
+				  var span = document.createElement('span');
+				  span.innerText = '7 hours ago';
+				  itemLink.append(span);
+			 	
+				  				  
+			  }
+		}
+	})	
+}
+
 }
 
 </script>

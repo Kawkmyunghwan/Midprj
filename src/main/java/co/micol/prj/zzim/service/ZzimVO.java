@@ -8,11 +8,10 @@ import lombok.Setter;
 public class ZzimVO {
 	private int memberNum;
 	private int jobOpeningNum;
+	private String memberId;
 	
 	@Override
 	public String toString() {
-		return "ZzimVO [memberNum=" + memberNum + ", jobOpeningNum=" + jobOpeningNum + "]";
+		return "ZzimVO [memberNum=" + memberNum + ", jobOpeningNum=" + jobOpeningNum + ", memberId=" + memberId + "]";
 	}
-	
-	
 }

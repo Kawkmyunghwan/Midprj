@@ -8,6 +8,7 @@ public interface MemberMapper {
 	int insertMember(MemberVO vo); // 등록
 	int updateMember(MemberVO vo); // 수정
 	int deleteMember(MemberVO vo); // 삭제
+	int insertKakaoMember(MemberVO vo); // 카카오 아이디 회원가입
 
 	int updateSub(MemberVO vo);
 

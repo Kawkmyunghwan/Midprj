@@ -16,7 +16,9 @@ public class CompanyUpdate implements Command {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		CompanyService companyDao = new CompanyServiceImpl();
 		CompanyVO vo = new CompanyVO();
+
 		vo.setJOBOPENINGNUM(Integer.parseInt(request.getParameter("JOBOPENINGNUM")));
+
 		vo.setCOMPANYNAME(request.getParameter("COMPANYNAME"));
 		vo.setCOMPANYIMAGE(request.getParameter("COMPANYIMAGE"));
 		vo.setJOBGROUP(request.getParameter("JOBGROUP"));
@@ -35,7 +37,9 @@ public class CompanyUpdate implements Command {
 		companyDao.CompanyUpdate(vo);
 		response.setContentType("text/html; charset=UTF-8");
 		request.setAttribute("conpanyVO", vo);
+
 		return "companyInfo/companyInfoForm.do";
+
 	}
 
 }

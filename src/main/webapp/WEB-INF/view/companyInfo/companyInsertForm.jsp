@@ -33,7 +33,9 @@ window.onload = function abc() {
 </script>
 </head>
 <body>
+
 	<div class="container" style="max-width: 700px;" align="left">
+
 		<div>
 			<h1>회사정보 입력</h1>
 		</div>
@@ -99,13 +101,13 @@ window.onload = function abc() {
 					</table>
 				</div>
 				<br>
+
 				<div style="padding : 10px 40px">
 					<button type="submit" class="genric-btn primary small">글등록</button>
 					&nbsp;&nbsp;&nbsp;
 					<button type="reset" class="genric-btn primary small">취 소</button>
 					&nbsp;&nbsp;&nbsp;
-					<button type="button" onclick="location.href = 'inquiryForm.do'" class="genric-btn primary small">목
-						록</button>
+					<button type="button" onclick="location.href = 'inquiryForm.do'" class="genric-btn primary small">목록</button>
 					&nbsp;&nbsp;&nbsp;
 				</div>
 			</form>

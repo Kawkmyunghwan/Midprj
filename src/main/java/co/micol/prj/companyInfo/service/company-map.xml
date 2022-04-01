@@ -24,11 +24,13 @@
 		BY JOBOPENINGNUM ASC
 	</select>
 
+
 	<select id="CompanySelect"
 		parameterType="co.micol.prj.companyInfo.service.CompanyVO"
 		resultMap="companyMap">
 		select * from JOBOPENING where JOBOPENINGNUM = #{JOBOPENINGNUM}
 	</select>
+
 
 
 	<insert id="CompanyInsert"
@@ -42,6 +44,7 @@
 		INSERT INTO JOBOPENING (JOBOPENINGNUM,COMPANYNAME,COMPANYIMAGE,JOBGROUP,COMPANYADDRESS,SALARY,COMPANYCONTENT,REPRESENTATIVE,EMPLOYEENUM,COMPANYBUILDDATE,HOMEPAGE)
 		VALUES(#{JOBOPENINGNUM},#{COMPANYNAME},#{COMPANYIMAGE},#{JOBGROUP},#{COMPANYADDRESS},#{SALARY},#{COMPANYCONTENT},#{REPRESENTATIVE},#{EMPLOYEENUM},#{COMPANYBUILDDATE},#{HOMEPAGE})
 	</insert>
+
 
 
 	<update id="CompanyUpdate" 
@@ -64,5 +67,6 @@
 		delete from JOBOPENING
 		where JOBOPENINGNUM = #{JOBOPENINGNUM}
 	</delete> 
+
 	
 </mapper>

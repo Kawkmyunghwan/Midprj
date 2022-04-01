@@ -50,15 +50,24 @@
 		WHERE JOBGROUP LIKE NVL('%'||#{jobGroup}||'%', JOBGROUP)
 	</select>
 	
+	<select id="selectLocationList" 
+		parameterType="String" 
+		resultType="co.micol.prj.jobOpening.service.JobOpeningVO">
+		SELECT *
+		FROM JOBOPENING
+		WHERE COMPANYADDRESS LIKE('%'||#{location}||'%')
+	</select>
+	
 
 	<select id="selectJobOpeningListByMyzzim"
+		parameterType="int"
 		resultType="co.micol.prj.jobOpening.service.JobOpeningVO">
 		SELECT J.JOBOPENINGNUM, J.COMPANYNAME, J.SALARY,
 		J.COMPANYADDRESS, J.COMPANYIMAGE, COUNT(J.JOBOPENINGNUM) AS COUNT
 		FROM
 		JOBOPENING J JOIN ZZIM Z
 		ON J.JOBOPENINGNUM = Z.JOBOPENINGNUM
-		WHERE 1=1
+		WHERE MEMBERNUM = #{memberNum}
 		GROUP BY J.JOBOPENINGNUM, J.COMPANYNAME, J.SALARY, J.COMPANYADDRESS,
 		J.COMPANYIMAGE
 		ORDER BY COUNT DESC
@@ -75,6 +84,11 @@
 		GROUP BY J.JOBOPENINGNUM, J.COMPANYNAME, J.SALARY, J.COMPANYADDRESS, J.COMPANYIMAGE 
         ORDER BY COUNT DESC
 	</select>
+		
+	<update id="jobOpeningUpdateHit" parameterType="int">
+      UPDATE JOBOPENING SET
+      JOBOPENINGHIT = JOBOPENINGHIT + 1 WHERE JOBOPENINGNUM = #{jobOpeningNum}
+   </update>
 	
 
 </mapper>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
 <!doctype html>
 <html class="no-js" lang="zxx">
     <head>
@@ -87,6 +87,7 @@
                            <div class="header-btn d-none f-right d-lg-block">
                               <a href="memberLogout.do" class="btn head-btn2">Logout</a>
                               <a href="myInfo.do" class="btn head-btn2">MyPage</a>
+                           </div>
                         </c:if>                      
                     </div>
                 </div>

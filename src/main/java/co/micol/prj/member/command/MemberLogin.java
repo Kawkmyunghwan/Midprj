@@ -25,18 +25,26 @@ public class MemberLogin implements Command {
 		vo = memberDao.selectMember(vo);
 		request.setAttribute("member", vo);
 		String viewPage;
-		if(vo.getMemberId() != null) {
+		
+		if(vo != null) {
+			if(vo.getSecession() != 1) {
 			//여기서 세션 처리하고
 			session.setAttribute("memberId", vo.getMemberId());
 			session.setAttribute("memberNum", vo.getMemberNum());
 			session.setAttribute("memberEmail", vo.getMemberEmail());
 			session.setAttribute("favorite", vo.getFavorite());
 			session.setAttribute("memberName", vo.getMemberName());
-			viewPage = "member/memberLoginSuccess.tiles";
-		}else {
+			session.setAttribute("subscription", vo.getSubscription());
+			viewPage = "member/memberLoginSuccess.tiles";			
+			}else {				
+				viewPage = "member/memberLoginFail.tiles";
+			}
+		}else {			
 			viewPage = "member/memberLoginFail.tiles";
 		}
+		
 		return viewPage;
+	
 	}
-
 }
+ 
