@@ -22,10 +22,11 @@ public class MemberJoin implements Command {
 		vo.setMemberName(request.getParameter("memberName"));
 		vo.setMemberPhone(request.getParameter("memberPhone"));
 		String[] favArr  = request.getParameterValues("favorite");
-		String favorite = String.join(",", favArr);
-		System.out.println(favorite);
-		vo.setFavorite(favorite);
-		
+		if(favArr != null) {
+			String favorite = String.join(",", favArr);
+			System.out.println(favorite);
+			vo.setFavorite(favorite);
+		}
 			
 		
 		
