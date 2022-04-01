@@ -50,6 +50,17 @@
 		WHERE JOBGROUP LIKE NVL('%'||#{jobGroup}||'%', JOBGROUP)
 	</select>
 	
+	<select id="selectRecommendationNo" 
+		parameterType="String" 
+		resultType="co.micol.prj.jobOpening.service.JobOpeningVO">
+		SELECT *
+		FROM JOBOPENING
+		WHERE JOBGROUP LIKE NVL('%'||#{jobGroup}||'%', JOBGROUP)
+		AND <![CDATA[ ROWNUM <= 4 ]]>
+	</select>
+	
+	
+	
 	<select id="selectLocationList" 
 		parameterType="String" 
 		resultType="co.micol.prj.jobOpening.service.JobOpeningVO">

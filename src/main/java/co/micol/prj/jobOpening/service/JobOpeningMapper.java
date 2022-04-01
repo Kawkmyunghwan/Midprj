@@ -16,6 +16,7 @@ public interface JobOpeningMapper {
 	   JobOpeningVO selectJobOpening(JobOpeningVO vo); //단일 리스트
 	   JobOpeningVO selectJobOpeningByNum(JobOpeningVO vo);
 	   List<JobOpeningVO> selectRecommendation(String jobGroup);
+	   List<JobOpeningVO> selectRecommendationNo(String jobGroup);
 	   int insertJobOpening(JobOpeningVO vo);      //등록
 	   int jobOpeningUpdateHit(int hit);      	   //조회수 증가
 	   int deleteJobOpening(JobOpeningVO vo);      //삭제

@@ -35,32 +35,53 @@ public class HomeCommand implements Command {
          for(int i=0; i<dao.selectJobOpeningList().size(); i++) {
             jobGroup[i] = dao.selectJobOpeningList().get(i).getJobGroup();
          }      
-               
-         String favorite = (String)session.getAttribute("favorite"); //
-         String favoriteArr[] = favorite.split(",");   
          
-         for(int i=0; i<favoriteArr.length; i++) {               
-            boolean result = favoriteArr[i].contains(jobGroup[i]);            
-            if(result == true) {
-               for(i=0; i<favoriteArr.length; i++) {
-                  dao.selectRecommendation(favoriteArr[i]);
-                  list.addAll(dao.selectRecommendation(favoriteArr[i]));                  
-               }
-            }
-         }         
+                 
+         String favorite = (String)session.getAttribute("favorite"); //
 
-         for(int i=0; i<4; i++) {
-            a[i] = (int)(Math.random()*list.size());
-            for(int j=0; j<i; j++) {
-               if(a[i]==a[j]) {
-                  i--;
-               }
-            }
+         if(favorite.contains(",") == true) {
+	         String favoriteArr[] = favorite.split(",");   
+	         
+	         for(int i=0; i<favoriteArr.length; i++) {               
+	            boolean result = favoriteArr[i].contains(jobGroup[i]);            
+	            if(result == true) {
+	               for(i=0; i<favoriteArr.length; i++) {
+	                  dao.selectRecommendation(favoriteArr[i]);
+	                  list.addAll(dao.selectRecommendation(favoriteArr[i]));                  
+	               }
+	            }
+	         }         
+	
+	         for(int i=0; i<4; i++) {
+	            a[i] = (int)(Math.random()*list.size());
+	            for(int j=0; j<i; j++) {
+	               if(a[i]==a[j]) {
+	                  i--;
+	               }
+	            }
+	         }
+	         for(int value : a) {
+	            recommendList.add(list.get(value));
+	         }
+	         request.setAttribute("recommendList", recommendList);
+	      }
+         
+         if(favorite.contains(",") == false) {
+        	 dao.selectRecommendationNo(favorite);       	 
+        	 for(int i=0; i<4; i++) {
+ 	            a[i] = (int)(Math.random()*dao.selectRecommendationNo(favorite).size());
+ 	            for(int j=0; j<i; j++) {
+ 	               if(a[i]==a[j]) {
+ 	                  i--;
+ 	               }
+ 	            }
+ 	         }
+ 	         for(int value : a) {
+ 	        	list.add(dao.selectRecommendationNo(favorite).get(value));
+ 	         }
+        	 request.setAttribute("recommendList", list);
          }
-         for(int value : a) {
-            recommendList.add(list.get(value));
-         }
-         request.setAttribute("recommendList", recommendList);
+         
       }
       
       if(session.getAttribute("favorite") == null || session.getAttribute("memberId") == null) {
@@ -68,6 +89,7 @@ public class HomeCommand implements Command {
 //         관심직군이 없거나, 로그인을 하지 않은 유저는 찜순으로 조회한 기업을 볼 수 있음.
       }
       System.out.println(session.getAttribute("memberId"));
+      
       return "home/home.tiles";
    }
 }
