@@ -89,6 +89,13 @@
       UPDATE JOBOPENING SET
       JOBOPENINGHIT = JOBOPENINGHIT + 1 WHERE JOBOPENINGNUM = #{jobOpeningNum}
    </update>
+   
+   <select id="selectJobOpeningLocation"
+   
+		resultType="String">
+	SELECT DISTINCT LOCATION FROM JOBOPENING	
+		
+	</select>
 	
 
 </mapper>

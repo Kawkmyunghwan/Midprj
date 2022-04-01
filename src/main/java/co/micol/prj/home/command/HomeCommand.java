@@ -21,6 +21,11 @@ public class HomeCommand implements Command {
       request.setAttribute("jobList", dao.selectJobOpeningList());   
       List<JobOpeningVO> list = new ArrayList<>();
       List<JobOpeningVO> recommendList = new ArrayList<>();
+      
+       
+      String[] jobLo = dao.selectJobOpeningLocation();
+      request.setAttribute("jobLocation", jobLo);
+      
       int a[] = new int[4];
 
       

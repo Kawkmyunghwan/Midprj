@@ -19,4 +19,6 @@ public interface JobOpeningMapper {
 	   int insertJobOpening(JobOpeningVO vo);      //등록
 	   int jobOpeningUpdateHit(int hit);      	   //조회수 증가
 	   int deleteJobOpening(JobOpeningVO vo);      //삭제
+	   
+	   String[] selectJobOpeningLocation();   
 }
