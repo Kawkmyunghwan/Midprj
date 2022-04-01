@@ -44,12 +44,12 @@
 				</tr>
 			</table>
 		</div>
-		<div align="center">
-			<button type="submit" class="btn head-btn1">수 정</button>
+		<div align="center" style="padding : 10px 40px">
+			<button type="submit" class="genric-btn primary small">수 정</button>
 
-			<button type="reset" class="btn head-btn1">취 소</button>
+			<button type="reset" class="genric-btn primary small">취 소</button>
 
-			<button type="button" onclick="deleteInfo()" class="btn head-btn1">회원탈퇴</button>
+			<button type="button" onclick="deleteInfo()" class="genric-btn primary small">회원탈퇴</button>
 		</div>
 	</form>
 

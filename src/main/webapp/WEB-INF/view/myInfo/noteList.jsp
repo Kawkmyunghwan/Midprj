@@ -54,9 +54,9 @@
 			</div>
 			<br>
 <input type="hidden" id="notesNo" name="notesNo">
-			<div>
-				<button type="button" onclick="notesDelete()">삭 제</button>
-				<button type="button" onclick="location.href='notesInsertForm.do'">쪽지
+			<div  align="center" style="padding : 10px 40px">
+				<button type="button" onclick="notesDelete()" class="genric-btn primary small">삭 제</button>
+				<button type="button" onclick="location.href='notesInsertForm.do'" class="genric-btn primary small">쪽지
 					쓰기</button>
 			</div>
 		</form>
