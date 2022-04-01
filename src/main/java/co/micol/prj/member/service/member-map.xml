@@ -39,7 +39,8 @@
 		<set>
 			MEMBERPASSWORD = #{memberPassword},
 			MEMBERNAME = #{memberName},
-			MEMBERPHONE = #{memberPhone}
+			MEMBERPHONE = #{memberPhone},
+			FAVORITE = #{favorite}
 		</set>
 		WHERE MEMBERID = #{memberId}
 	</update>
