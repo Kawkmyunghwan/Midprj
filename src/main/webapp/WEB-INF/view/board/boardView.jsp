@@ -78,8 +78,10 @@
                      <button type="button"
                         onclick="commentsInsert(${boarders.boardNum})"
                         style="background-color: black">등록</button>
+                        <c:if test="${c.memberId == memberId }">
                      <button type="submit" id="edit_btn" formaction="commentsUpdate.do"
                         style="background-color: black; visibility: hidden;">수정</button>
+                        </c:if>
                   </div>
                </div>
 
@@ -89,12 +91,14 @@
             <button type="button" onclick="location.href = 'boardList.do'"
                style="background-color: black">목록가기</button>
             &nbsp;&nbsp;
+            <c:if test="${boarders.boardWriter == memberId }">
             <button type="button" onclick="boardUpdate(${boarders.boardNum})"
                style="background-color: black">수정</button>
             &nbsp;&nbsp;
             <button type="button" onclick="boardDelete(${boarders.boardNum})"
                style="background-color: black">삭제</button>
             &nbsp;&nbsp;
+            </c:if>
          </div>
          <input type="hidden" id="boardNum" name="boardNum"
             value=${boarders.boardNum }> <input type="hidden"
