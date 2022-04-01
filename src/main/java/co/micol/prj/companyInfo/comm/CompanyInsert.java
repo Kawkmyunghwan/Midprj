@@ -35,7 +35,8 @@ public class CompanyInsert implements Command {
 		
 		
 		CompanyDao.CompanyInsert(vo);	
-		return "companyInfo/companyInfoForm.tiles";
+		return "companyInfoForm.do";
+
 	}
 
 }

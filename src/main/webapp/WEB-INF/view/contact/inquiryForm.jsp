@@ -11,12 +11,11 @@
 </head>
 <body>
 	<div class="container" style="max-width: 850px;" align="left">
-		<div>
+		<div style="padding:1px 1px 10px 1px">
 			<h1>문의게시판</h1>
 		</div>
 		<form id="frm" method="post">
-
-			<table class="table">
+			<table class="table table-hover">
 				<thead>
 					<tr align="center">
 						<th width="150"><a onclick="sortContact(1)">No</a></th>
@@ -73,23 +72,8 @@
 				
 				
 			</div>
-<!-- 			<div align="right"> -->
-<!-- 					<nav aria-label="Page navigation example"> -->
-<!-- 						<ul class="pagination"> -->
-<%-- 							<c:if test="page != 1"> --%>
-							
-<%-- 							</c:if> --%>
-							
-<!-- 							<li class="page-item"><a class="page-link" href="#" aria-label="Previous"> <span aria-hidden="true">&laquo;</span></a></li> -->
-<!-- 							<li class="page-item"><a class="page-link" href="#">1</a></li> -->
-<!-- 							<li class="page-item"><a class="page-link" href="#">2</a></li> -->
-<!-- 							<li class="page-item"><a class="page-link" href="#">3</a></li> -->
-<!-- 							<li class="page-item"><a class="page-link" href="#"	aria-label="Next"> <span aria-hidden="true">&raquo;</span></a></li> -->
-<!-- 						</ul> -->
-<!-- 					</nav> -->
-<!-- 				</div> -->
 		<div class="row">
-			<div class="col-lg-12">
+			<div class="col-lg-12" style="padding:1px 1px 15px 11px">
 				<div class="">
 					<ul class="pagination justify-content-center">
 	

@@ -16,9 +16,11 @@
 		</div>
 		<form id="frm" method="post">
 
-			<table class="table table-hover">
+
+			<table class="table table-hover" style="font-size: 10pt;">
 				<thead>
-					<tr align="center">
+					<tr align="center" >
+
 						<th width="40">번호</th>
 						<th width="90">이름</th>
 						<th width="40">직군</th>
@@ -39,7 +41,9 @@
 					</c:if>
 					<c:if test="${not empty company }">
 						<c:forEach items="${company }" var="c">
-							<tr>
+
+							<tr onclick="companyContents(${c.JOBOPENINGNUM})">
+
 								<td>${c.JOBOPENINGNUM }</td>
 								<td>${c.COMPANYNAME }</td>
 								<td>${c.JOBGROUP }</td>
@@ -61,5 +65,15 @@
 			</div>
 		</form>
 	</div>
+
+<script type="text/javascript">
+function companyContents(n){
+//    frm.JOBOPENINGNUM.value = n;
+//    frm.action = "companyUpdateForm.do";
+//    frm.submit();
+	location.href = "companyUpdateForm.do?JOBOPENINGNUM="+n;
+}
+</script>
+
 </body>
 </html>

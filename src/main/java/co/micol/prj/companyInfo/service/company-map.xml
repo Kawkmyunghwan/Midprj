@@ -24,11 +24,13 @@
 		BY JOBOPENINGNUM ASC
 	</select>
 
-	<!-- <select id="contactSelect"
-		parameterType="co.micol.prj.contact.service.ContactVO"
-		resultMap="contactMap">
-		select * from contact where info_num = #{infoNum}
-	</select> -->
+
+	<select id="CompanySelect"
+		parameterType="co.micol.prj.companyInfo.service.CompanyVO"
+		resultMap="companyMap">
+		select * from JOBOPENING where JOBOPENINGNUM = #{JOBOPENINGNUM}
+	</select>
+
 
 
 	<insert id="CompanyInsert"
@@ -44,17 +46,27 @@
 	</insert>
 
 
-<!-- 	<update id="contactUpdate" 
-		parameterType="co.micol.prj.contact.service.ContactVO">
-		update contact set 
-		info_answercontent = #{infoAnswerContent}
-		where info_num = #{infoNum}
+
+	<update id="CompanyUpdate" 
+		parameterType="co.micol.prj.companyInfo.service.CompanyVO">
+		update JOBOPENING set 
+		COMPANYNAME = #{COMPANYNAME},
+		COMPANYIMAGE = #{COMPANYIMAGE},
+		JOBGROUP = #{JOBGROUP},
+		COMPANYADDRESS = #{COMPANYADDRESS},
+		SALARY = #{SALARY},
+		COMPANYCONTENT = #{COMPANYCONTENT},
+		REPRESENTATIVE = #{REPRESENTATIVE},
+		EMPLOYEENUM = #{EMPLOYEENUM} ,
+		COMPANYBUILDDATE = #{COMPANYBUILDDATE},
+		HOMEPAGE = #{HOMEPAGE}  
+		where JOBOPENINGNUM = #{JOBOPENINGNUM}
 	</update>
 	
-	<delete id="contactDelete">
-		delete from contact
-		where info_num = #{infoNum}
-	</delete> -->
+	<delete id="CompanyDelete" parameterType="co.micol.prj.companyInfo.service.CompanyVO">
+		delete from JOBOPENING
+		where JOBOPENINGNUM = #{JOBOPENINGNUM}
+	</delete> 
 
 	
 </mapper>

@@ -61,38 +61,45 @@
 
                      <div class="btn-group" style="position: static; display: inline; width: auto;">
 
-                        <div class="form-check">
-                           <input class="form-check-input" type="radio"name="favorite" value="IT" style="position: static; display: inline; width: auto;"> 
-                           <label class="form-check-label" for="IT" style="position: static; display: inline; width: auto;">IT</label>
-                        </div>
-                        <div class="form-check">
-                           <input class="form-check-input" type="radio" name="favorite" value="기획" style="position: static; display: inline; width: auto;">
-                           <label class="form-check-label" for="기획" style="position: static; display: inline; width: auto;">기획</label>
-                        </div>
-                        <div class="form-check">
-                           <input class="form-check-input" type="radio" name="favorite" value="건축" style="position: static; display: inline; width: auto;">
-                           <label class="form-check-label" for="건축" style="position: static; display: inline; width: auto;">건축</label>
-                        </div>
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox"name="favorite" value="IT" style="position: static; display: inline; width: auto;"> 
+									<label class="form-check-label" for="IT" style="position: static; display: inline; width: auto;">IT</label>
+								</div>
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" name="favorite" value="기획" style="position: static; display: inline; width: auto;">
+									<label class="form-check-label" for="기획" style="position: static; display: inline; width: auto;">기획</label>
+								</div>
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" name="favorite" value="건축" style="position: static; display: inline; width: auto;">
+									<label class="form-check-label" for="건축" style="position: static; display: inline; width: auto;">건축</label>
+								</div>
 
                      </div>
 
-                     <div class="form-group form-button">
-                        <input type="submit" name="signup" id="signup"
-                           class="form-submit" value="회원가입" />
-                     </div>
-                  </form>
-               </div>
-               <div class="signup-image">
-                  <figure>
-                     <img src="./assets/img/signup/signin-image.jpg"
-                        alt="sing up image">
-                  </figure>
-                  <a href="#" class="signup-image-link">이미 회원이신가요?</a>
-               </div>
-            </div>
-         </div>
-      </section>
-   </div>
+							<div class="form-group form-button">
+								<input type="submit" name="signup" id="signup"
+									class="form-submit" value="회원가입" />
+							</div>
+						</form>
+					</div>
+					<div class="signup-image">
+						<figure>
+							<img src="./assets/img/signup/signin-image.jpg"
+								alt="sing up image">
+						</figure>
+						<div class="social-wrap">
+									<p class="or">
+									<div class="w-100 text-center">
+										<p class="mt-4">
+											이미 회원이신가요? <a href="loginPage.do">로그인으로</a>
+										</p>
+									</div>
+								</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
 <script type="text/javascript">
       function isIdCheck() {
          $.ajax({
