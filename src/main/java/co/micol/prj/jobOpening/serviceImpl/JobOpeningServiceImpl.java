@@ -94,4 +94,10 @@ public class JobOpeningServiceImpl implements JobOpeningService {
 		return map.selectLocationList(location);
 	}
 
+	@Override
+	public String[] selectJobOpeningLocation() {
+		// TODO Auto-generated method stub
+		return map.selectJobOpeningLocation();
+	}
+
 }

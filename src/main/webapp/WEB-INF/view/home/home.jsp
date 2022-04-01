@@ -158,18 +158,26 @@
 				<div class="section-tittle text-center">
 					<span>Recent Job</span>
 					<h2>구직공고</h2>
+					
 					<form method="post">
+					
 						<div>
-							<table border="1" align="center">
+					
+						
+							<table align="center">
 								<tr>
-									<td><input type="checkbox" name="locationCheck" id="locationCheck" value="대구">대구</td>													
-									<td><input type="checkbox" name="locationCheck" id="locationCheck" value="서울">서울</td>
-									<td><input type="checkbox" name="locationCheck" id="locationCheck" value="부산">부산</td>
+								<c:forEach items="${jobLocation }" var="jobLo">
+								<td><input type="checkbox" class="genric-btn primary radius" id="locationCheck" name="locationCheck" value="${jobLo}">${jobLo }&nbsp;&nbsp;&nbsp;</td>									
+								</c:forEach>
 								</tr>
-							</table>  							
-						</div>	
-						<button type="button" onclick="searchLocation()">검색</button>
+							</table>
+						  		</fieldset>					
+						</div>
+						<br>	
+						<button type="button" onclick="searchLocation()" class="genric-btn primary circle arrow">검색</button>
+						
 					</form>
+					
 				</div>
 			</div>
 		</div>
@@ -259,6 +267,8 @@ function searchLocation(){
 			  			  
 				  var reCol = document.createElement('div');
 				  reCol.setAttribute('class', 'col-xl-10');
+				  reCol.setAttribute('id', 'col');
+				  
 				  var row = document.getElementById('row');
 				  parentTag.append(reCol);
 				  			  
