@@ -17,6 +17,12 @@
 	<select id="ApplySelect"
 		parameterType="co.micol.prj.apply.service.ApplyVO" 
 		resultType="co.micol.prj.apply.service.ApplyVO">
-		SELECT * FROM APPLY WHERE MEMBERNUM = #{memberNum}
+		SELECT J.JOBOPENINGNUM, J.COMPANYNAME, J.SALARY,
+		J.COMPANYADDRESS, J.COMPANYIMAGE
+		FROM
+		JOBOPENING J JOIN APPLY A
+		ON J.JOBOPENINGNUM = A.JOBOPENINGNUM
+		WHERE A.MEMBERNUM = ${memberNum}
 	</select>
+		
 </mapper>

@@ -57,19 +57,20 @@
                                                 </ul>
                                             </li>                                            
                                             <li><a href="boardList.do">커뮤니티</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
                                             <li><a href="contactForm.do">고객센터</a>
                                                 <ul class="submenu">
                                                     <li><a href="inquiryForm.do">문의게시판</a></li>
                                                 </ul>
                                             </li>
+                                            <c:if test="${memberId eq 'admin'}">
                                             <li><a>회사정보</a>
                                                 <ul class="submenu">
                                                     <li><a href="companyInsertForm.do">회사정보 입력</a></li>
                                                     <li><a href="companyInfoForm.do">회사리스트 조회</a></li>
-                                                    
+                                                   
                                                 </ul>
                                             </li>
+                                            </c:if>
                                     
                                         </ul>
                                     </nav>

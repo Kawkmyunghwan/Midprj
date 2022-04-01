@@ -28,104 +28,105 @@
             </div>
          </div>
       </div>
-      <div class="row d-flex justify-contnet-center">
-      
-         <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-            <div class="single-services text-center mb-30">
-               <div class="services-ion">
-                  <a href="memberUpdateForm.do"><span class="flaticon-search"></span></a>
-               </div>
-               <div class="services-cap">
-                  <h5>
-                     <a href="memberUpdateForm.do">내 정보 관리</a>
-                  </h5>
-                  
-               </div>
-            </div>
-         </div>
- 
-         <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-            <div class="single-services text-center mb-30">
-               <div class="services-ion">
-                  <a href="notesListForm.do"><span class="flaticon-real-estate"></span></a>
-               </div>
-               <div class="services-cap">
-                  <h5>
-                     <a href="notesListForm.do">쪽지함</a>
-                  </h5>
-                  
-               </div>
-            </div>
-         </div>
-         
-         <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-            <div class="single-services text-center mb-30">
-               <div class="services-ion">
-                  <a href="myZzim.do"><span class="flaticon-content"></span></a>
-               </div>
-               <div class="services-cap">
-                  <h5>
-                     <a href="myZzim.do">찜 목록</a>
-                  </h5>                  
-               </div>
-            </div>
-         </div>
-         
-        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-               <div class="single-services text-center mb-30">
-                  
-                              
-                        <div class="services-ion">
-                           <a onclick="iamport()"><span class="flaticon-tour"></span></a>
-                        </div>
-               
+			<div class="row d-flex justify-contnet-center">
 
-                        <div class="services-cap">
-                             <a onclick="iamport()">
-                           <h5>구독하기</h5>
-                           </a>                  
-                        </div>
-                        
-                     
-               </div>
-            </div>
-                   
-         
-      </div>      
-      
-   </div>
+				<div class="col-xl-4 col-lg-3 col-md-4 col-sm-6">
+					<div class="single-services text-center mb-30">
+						<div class="services-ion">
+							<a href="memberUpdateForm.do"><span class="flaticon-search"></span></a>
+						</div>
+						<div class="services-cap">
+							<h5>
+								<a href="memberUpdateForm.do">내 정보 관리</a>
+							</h5>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="col-xl-4 col-lg-3 col-md-4 col-sm-6">
+					<div class="single-services text-center mb-30">
+						<div class="services-ion">
+							<a href="notesListForm.do"><span class="flaticon-real-estate"></span></a>
+						</div>
+						<div class="services-cap">
+							<h5>
+								<a href="notesListForm.do">쪽지함</a>
+							</h5>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="col-xl-4 col-lg-3 col-md-4 col-sm-6">
+					<div class="single-services text-center mb-30">
+						<div class="services-ion">
+							<a href="myZzim.do"><span class="flaticon-content"></span></a>
+						</div>
+						<div class="services-cap">
+							<h5>
+								<a href="myZzim.do">찜 목록</a>
+							</h5>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-xl-4 col-lg-3 col-md-4 col-sm-6">
+					<div class="single-services text-center mb-30">
+						<div class="services-ion">
+							<a onclick="iamport()"><span class="flaticon-tour"></span></a>
+						</div>
+						<div class="services-cap">
+							<a onclick="iamport()">
+								<h5>구독하기</h5>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-4 col-lg-3 col-md-4 col-sm-6">
+					<div class="single-services text-center mb-30">
+						<div class="services-ion">
+							<a href="applicationSelect.do"><span class="flaticon-report"></span></a>
+						</div>
+						<div class="services-report">							
+								<h5><a href="applicationSelect.do">지원현황</a></h5>							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 </div>
 <form id="payment" action="paymentInsert.do" method="post">
             <input type="hidden" id="price" name="price" value="100">
                          <input type="hidden" id="memberNum" name="memberNum" value=${memberNum }>
             </form>
 <script>
-function iamport(){
-   //가맹점 식별코드
-   IMP.init('imp60368887');
-   IMP.request_pay({
-       pg : 'kakaopay',
-       pay_method : 'card',
-       merchant_uid : 'merchant_' + new Date().getTime(),
-       name : '한달 구독권' , //결제창에서 보여질 이름
-       amount : 100, //실제 결제되는 가격
-       buyer_email : 'iamport@siot.do',
-       buyer_name : '구매자이름',
-       buyer_tel : '010-1234-5678',
-       buyer_addr : '서울 강남구 도곡동',
-       buyer_postcode : '123-456'
-   }, function(rsp) {
-       if ( rsp.success ) {
-          var msg = '결제가 완료되었습니다.';
-           msg += '결제 금액 : ' + rsp.paid_amount + '원';           
-           payment.submit();
-       } else {
-           var msg = '결제에 실패하였습니다.';
-            msg += '에러내용 : ' + rsp.error_msg;
-       }
-       alert(msg);
-   });
-}
+	function iamport() {
+		//가맹점 식별코드
+		IMP.init('imp60368887');
+		IMP.request_pay({
+			pg : 'kakaopay',
+			pay_method : 'card',
+			merchant_uid : 'merchant_' + new Date().getTime(),
+			name : '한달 구독권', //결제창에서 보여질 이름
+			amount : 100, //실제 결제되는 가격
+			buyer_email : 'iamport@siot.do',
+			buyer_name : '구매자이름',
+			buyer_tel : '010-1234-5678',
+			buyer_addr : '서울 강남구 도곡동',
+			buyer_postcode : '123-456'
+		}, function(rsp) {
+			if (rsp.success) {
+				var msg = '결제가 완료되었습니다.';
+				msg += '결제 금액 : ' + rsp.paid_amount + '원';
+				payment.submit();
+			} else {
+				var msg = '결제에 실패하였습니다.';
+				msg += '에러내용 : ' + rsp.error_msg;
+			}
+			alert(msg);
+		});
+	}
 </script>
 </body>
 </html>

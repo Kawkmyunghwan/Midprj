@@ -14,36 +14,34 @@ import co.micol.prj.common.Command;
 
 public class CommentsUpdate implements Command {
 
-   @Override
-   public String exec(HttpServletRequest request, HttpServletResponse response) {
-      CommentsService dao = new CommentsServiceImpl();
-      CommentsVO vo = new CommentsVO();
-      HttpSession session = request.getSession();
-      BoardService boardDao = new BoardServiceImpl();
-      BoardVO boardVo = new BoardVO();
-      
-      int cNum = Integer.parseInt(request.getParameter("commentsNum"));
-      int bNum = Integer.parseInt(request.getParameter("boardNum"));
-      vo.setCommentsNum(cNum);
-      vo.setCommentsContent(request.getParameter("commentsContent"));
-      
-      int n = dao.commentsUpdate(vo);
-      
-      boardVo.setBoardNum(bNum);
-      if (n != 0) {
-         request.setAttribute("message", "댓글 수정이 성공하였습니다.");
-         request.setAttribute("boarders", boardDao.boardSelect(boardVo));
-         request.setAttribute("comments", dao.commentsSelectList(bNum ));
-         
-         
-         
-         return "board/boardView";
-      }else {
-         request.setAttribute("message", "댓글 수정이 실패하였습니다.");
-         request.setAttribute("boarders", boardDao.boardSelect(boardVo));
-         request.setAttribute("comments", dao.commentsSelectList(bNum));
-         return "board/boardView";
-      }
-   }
+	@Override
+	public String exec(HttpServletRequest request, HttpServletResponse response) {
+		CommentsService dao = new CommentsServiceImpl();
+		CommentsVO vo = new CommentsVO();
+		HttpSession session = request.getSession();
+		BoardService boardDao = new BoardServiceImpl();
+		BoardVO boardVo = new BoardVO();
+		
+		int cNum = Integer.parseInt(request.getParameter("commentsNum"));
+		int bNum = Integer.parseInt(request.getParameter("boardNum"));
+		vo.setCommentsNum(cNum);
+		vo.setCommentsContent(request.getParameter("commentsContent"));
+		
+		int n = dao.commentsUpdate(vo);
+		
+		boardVo.setBoardNum(bNum);
+		if (n != 0) {
+			request.setAttribute("message", "댓글 수정이 성공하였습니다.");
+			request.setAttribute("boarders", boardDao.boardSelect(boardVo));
+			request.setAttribute("comments", dao.commentsSelectList(bNum ));
+			
+			return "board/boardView";
+		}else {
+			request.setAttribute("message", "댓글 수정이 실패하였습니다.");
+			request.setAttribute("boarders", boardDao.boardSelect(boardVo));
+			request.setAttribute("comments", dao.commentsSelectList(bNum));
+			return "board/boardView";
+		}
+	}
 
 }

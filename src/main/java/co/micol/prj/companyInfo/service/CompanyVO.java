@@ -14,6 +14,7 @@ public class CompanyVO {
 	private int JOBOPENINGNUM; //번호
 	private String COMPANYNAME; //이름
 	private String COMPANYIMAGE; //이미지
+	private String LOCATION; // 지역
 	private String JOBGROUP; //직군
 	private String COMPANYADDRESS; //주소
 	private int SALARY; //연봉

@@ -12,11 +12,19 @@ public class ApplyVO {
 	private String memberEmail;
 	private String title;
 	private String content;
+	private String companyName;
+	private int salary;
+	private String companyAddress;
+	private String companyImage;
 	
 	@Override
 	public String toString() {
 		return "ApplyVO [memberNum=" + memberNum + ", jobOpeningNum=" + jobOpeningNum + ", memberId=" + memberId
-				+ ", memberEmail=" + memberEmail + ", title=" + title + ", content=" + content + "]";
+				+ ", memberEmail=" + memberEmail + ", title=" + title + ", content=" + content + ", companyName="
+				+ companyName + ", salary=" + salary + ", companyAddress=" + companyAddress + ", companyImage="
+				+ companyImage + "]";
 	}
+	
+	
 	
 }

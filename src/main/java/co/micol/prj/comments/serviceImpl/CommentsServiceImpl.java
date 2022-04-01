@@ -11,32 +11,32 @@ import co.micol.prj.common.DataSource;
 
 
 public class CommentsServiceImpl implements CommentsService {
-   private SqlSession sqlSession = DataSource.getInstance().openSession(true);
-   private CommentsMapper map = sqlSession.getMapper(CommentsMapper.class);
-   
-   @Override
-   public List<CommentsVO> commentsSelectList(int boardNum) {
-      return map.commentsSelectList(boardNum);
-   }
+	private SqlSession sqlSession = DataSource.getInstance().openSession(true);
+	private CommentsMapper map = sqlSession.getMapper(CommentsMapper.class);
+	
+	@Override
+	public List<CommentsVO> commentsSelectList(int boardNum) {
+		return map.commentsSelectList(boardNum);
+	}
 
-   @Override
-   public int commentsInsert(CommentsVO vo) {
-      return map.commentsInsert(vo);
-   }
+	@Override
+	public int commentsInsert(CommentsVO vo) {
+		return map.commentsInsert(vo);
+	}
 
-   @Override
-   public int commentsUpdate(CommentsVO vo) {
-      return map.commentsUpdate(vo);
-   }
+	@Override
+	public int commentsUpdate(CommentsVO vo) {
+		return map.commentsUpdate(vo);
+	}
 
-   @Override
-   public int commentsDelete(CommentsVO vo) {
-      return map.commentsDelete(vo);
-   }
+	@Override
+	public int commentsDelete(CommentsVO vo) {
+		return map.commentsDelete(vo);
+	}
 
-   @Override
-   public CommentsVO commentsSelect(CommentsVO vo) {
-      return map.commentsSelect(vo);
-   }
+	@Override
+	public CommentsVO commentsSelect(CommentsVO vo) {
+		return map.commentsSelect(vo);
+	}
 
 }
