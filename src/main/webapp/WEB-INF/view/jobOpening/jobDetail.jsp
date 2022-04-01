@@ -89,7 +89,7 @@
                         
                         <!-- 코맨트 테이블에 들어있는 데이터 만큼 반복 -->
                    		<div class="comments-area">	
-                   			<c:if test="${ SUBSCRIPTION eq null }">                   			                  					                  
+                   			<c:if test="${ SUBSCRIPTION eq 23 }">                   			                  					                  
 			                  <div class="comment-list">
 			                     <div class="single-comment justify-content-between d-flex">
 			                        <div class="user justify-content-between d-flex">
