@@ -26,6 +26,7 @@
 
 
 
+
 </style>	
 
 <div class="slider-area ">
