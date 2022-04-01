@@ -23,7 +23,7 @@
                      <td width="150"><input type="text" id="recvId" name="recvId"
                         required="required" value="${recv }"></td>
                      <td><button  type="button" id="checkId"
-                        value="No" onclick="isIdCheck()">중복체크</button></td>                  
+                        value="No" onclick="isIdCheck()" class="genric-btn primary small">중복체크</button></td>                  
                      
                   </tr>
                   <tr>
@@ -39,7 +39,7 @@
                </table>
             </div>
             <br>
-            <div>
+            <div style="padding : 10px 40px">
                <button type="button" onclick="formCheck()" class="genric-btn primary small">보내기</button>
                &nbsp;&nbsp;&nbsp;
                <button type="reset" class="genric-btn primary small">취 소</button>
@@ -62,7 +62,7 @@
             dataType : "text",
             success : function(result) {
                if (result == '0') {
-                  alert("중복체크 완료.");
+                  alert("확인 성공.");
                   $("#checkId").attr("disabled", "disabled");
                   $("#checkId").val('Yes');
                   

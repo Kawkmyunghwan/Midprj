@@ -65,6 +65,11 @@ public class HomeCommand implements Command {
 	         }
 	         request.setAttribute("recommendList", recommendList);
 	      }
+ 
+         
+         
+         
+         
          
          if(favorite.contains(",") == false) {
         	 dao.selectRecommendationNo(favorite);       	 
@@ -83,6 +88,11 @@ public class HomeCommand implements Command {
          }
          
       }
+      
+      
+      
+      
+      
       
       if(session.getAttribute("favorite") == null || session.getAttribute("memberId") == null) {
          request.setAttribute("zzim", dao.selectJobOpeningListByZzimTop4());

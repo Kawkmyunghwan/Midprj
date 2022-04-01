@@ -78,13 +78,18 @@
                                </ul>
                             </div>
                         </div>
-                         
+                        
+                         <div class="job-post-details">
+	                        <div class="post-details2  mb-50">
+	                                <div id="map" style="width:100%;height:350px;"></div>
+	                        </div>
+	                     </div>
                          
                         
                         
                         <!-- 코맨트 테이블에 들어있는 데이터 만큼 반복 -->
                    		<div class="comments-area">	
-                   			<c:if test="${ SUBSCRIPTION ne null }">                   			                  					                  
+                   			<c:if test="${ SUBSCRIPTION eq null }">                   			                  					                  
 			                  <div class="comment-list">
 			                     <div class="single-comment justify-content-between d-flex">
 			                        <div class="user justify-content-between d-flex">
@@ -144,7 +149,7 @@
                               <li>Location : <span>${jobOpening.companyAddress }</span></li>
                               <li>Vacancy : <span>02</span></li>
                               <li>Job nature : <span>Full time</span></li>
-                              <c:if test="${ SUBSCRIPTION ne 1 }">
+                              <c:if test="${subscription eq 1 }">
                               <li>Salary :  <span>${jobOpening.salary }</span></li>
                               </c:if>                              
                               <li>Application date : <span>12 Sep 2020</span></li>
@@ -187,9 +192,53 @@
         <!-- job post company End -->
        <form id ="frm2" action="home.do" method="post">      
        </form>
+       
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1a684655c5e2122f2fb8dccc310bc71a&libraries=services"></script>
+<script>
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = {
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };  
+
+// 지도를 생성합니다    
+var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+// 주소-좌표 변환 객체를 생성합니다
+var geocoder = new kakao.maps.services.Geocoder();
+
+// 주소로 좌표를 검색합니다
+geocoder.addressSearch('${company.COMPANYADDRESS}', function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면 
+     if (status === kakao.maps.services.Status.OK) {
+
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        // 결과값으로 받은 위치를 마커로 표시합니다
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: coords
+        });
+
+        // 인포윈도우로 장소에 대한 설명을 표시합니다
+        var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">${company.COMPANYNAME}</div>'
+        });
+        infowindow.open(map, marker);
+
+        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+        map.setCenter(coords);
+    } 
+});    
+</script>
+       
+       
 <script type="text/javascript">
 	var memberNum = "<c:out value = '${memberNum}'/>";
-
+	var subs = "<c:out value = '${subscription}'/>";
+	
+	
 	function formFnc(jobOpening_num) {
 	    event.preventDefault();
 	    quickFrm.jobOpeningNum.value=jobOpening_num;
@@ -344,59 +393,57 @@
 			
 			for(let i=0; i<result.length; i++){
 				if(jobOpNumComment[i] == jobOpNum){
-					var commentList = document.createElement('div');
-					commentList.setAttribute('class', 'comment-list');
-					
-					var commentArea = document.querySelector('.comments-area');
-					commentArea.append(commentList);
-					
-					var singleComment = document.createElement('div');
-					singleComment.setAttribute('class', 'single-comment justify-content-between d-flex');
-					commentList.append(singleComment);
-					
-					var userJustify = document.createElement('div');
-					userJustify.setAttribute('class', 'user justify-content-between d-flex')
-					singleComment.append(userJustify);
-					
-					var thumb = document.createElement('div');
-					thumb.setAttribute('class', 'thumb');
-					userJustify.append(thumb);
-					
-					var img = document.createElement('img');
-					img.setAttribute('src', "assets/img/comment/comment_1.png");
-					img.setAttribute('alt', "");
-					thumb.append(img);
-					
-					var desc = document.createElement('div');
-					desc.setAttribute('class', 'desc');
-					userJustify.append(desc);
-					
-					var p = document.createElement('p');
-					p.innerText = result[i].commentContent;
-					desc.append(p);
-					
-					var dFlex = document.createElement('div');
-					dFlex.setAttribute('class', 'd-flex justify-content-between')
-					desc.append(dFlex);
-					
-					var dFlex2 = document.createElement('div');
-					dFlex2.setAttribute('class', 'd-flex align-items-center');
-					dFlex.append(dFlex2);
-					
-					var h5 = document.createElement('h5');
-					dFlex2.append(h5);
-					
-					var a = document.createElement('a');
-					a.setAttribute('href', '#')
-					a.innerText = result[i].memberName;
-					h5.append(a);
-					
-					var date = document.createElement('p');
-					date.setAttribute('class', 'date');
-					date.innerText = result[i].commentTime;
-					dFlex2.append(date);
-					
-					
+						var commentList = document.createElement('div');
+						commentList.setAttribute('class', 'comment-list');
+						
+						var commentArea = document.querySelector('.comments-area');
+						commentArea.append(commentList);
+						
+						var singleComment = document.createElement('div');
+						singleComment.setAttribute('class', 'single-comment justify-content-between d-flex');
+						commentList.append(singleComment);
+						
+						var userJustify = document.createElement('div');
+						userJustify.setAttribute('class', 'user justify-content-between d-flex')
+						singleComment.append(userJustify);
+						
+						var thumb = document.createElement('div');
+						thumb.setAttribute('class', 'thumb');
+						userJustify.append(thumb);
+						
+						var img = document.createElement('img');
+						img.setAttribute('src', "assets/img/comment/comment_1.png");
+						img.setAttribute('alt', "");
+						thumb.append(img);
+						
+						var desc = document.createElement('div');
+						desc.setAttribute('class', 'desc');
+						userJustify.append(desc);
+						
+						var p = document.createElement('p');
+						p.innerText = result[i].commentContent;
+						desc.append(p);
+						
+						var dFlex = document.createElement('div');
+						dFlex.setAttribute('class', 'd-flex justify-content-between')
+						desc.append(dFlex);
+						
+						var dFlex2 = document.createElement('div');
+						dFlex2.setAttribute('class', 'd-flex align-items-center');
+						dFlex.append(dFlex2);
+						
+						var h5 = document.createElement('h5');
+						dFlex2.append(h5);
+						
+						var a = document.createElement('a');
+						a.setAttribute('href', '#')
+						a.innerText = result[i].memberName;
+						h5.append(a);
+						
+						var date = document.createElement('p');
+						date.setAttribute('class', 'date');
+						date.innerText = result[i].commentTime;
+						dFlex2.append(date);									
 				}
 			}
 			

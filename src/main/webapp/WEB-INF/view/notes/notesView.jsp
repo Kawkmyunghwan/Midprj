@@ -25,12 +25,12 @@
 				</table>
 			</div>
 			
-			<div>
-				<button type="button" onclick="reSentNote('${note.sentId }')">답 장</button>
+			<div style="padding : 10px 40px">
+				<button type="button" onclick="reSentNote('${note.sentId }')" class="genric-btn primary small">답 장</button>
 				&nbsp;&nbsp;&nbsp;
-				<button type="button" onclick="deleteNote('${note.no}')">삭 제</button>
+				<button type="button" onclick="deleteNote('${note.no}')" class="genric-btn primary small">삭 제</button>
 				&nbsp;&nbsp;&nbsp;
-				<button type="button" onclick="location.href = 'notesListForm.do'">쪽지함</button>
+				<button type="button" onclick="location.href = 'notesListForm.do'" class="genric-btn primary small">쪽지함</button>
 			</div>
 <input type="hidden" id="reSent" name="reSent">
 		</div>

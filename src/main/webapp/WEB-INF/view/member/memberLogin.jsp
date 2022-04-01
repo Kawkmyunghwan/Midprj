@@ -82,8 +82,7 @@
 
 									<div>
 										<a href="./memberJoinForm.do">회원가입</a><br> 
-										<a href="./findId.do">아이디찾기</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										<a href="./findPw.do">비밀번호찾기</a><br>
+										
                             			<a href="naverLogin.do" id="naverIdLogin_loginButton" >네이버 로그인</a>&nbsp;&nbsp;&nbsp;&nbsp;
                             			<a href="kakaoLogin.do" id="naverIdLogin_loginButton" >카카오 로그인</a>
 									</div>
