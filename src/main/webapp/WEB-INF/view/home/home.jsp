@@ -194,7 +194,7 @@
 								src="assets/img/icon/job-list1.png" alt=""></a>
 						</div>
 						<div class="job-tittle">
-							<a href="javascript:formFnc.submit())" onclick='formFnc(${list.jobOpeningNum})'><h4>${list.companyName }</h4></a>
+							<a href="javascript:formFnc.submit()" onclick='formFnc(${list.jobOpeningNum})'><h4>${list.companyName }</h4></a>
 							<ul>
 								<li>Creative Agency</li>
 								<li><i class="fas fa-map-marker-alt"></i>${list.companyAddress }</li>
@@ -231,8 +231,7 @@ function formFncR(jobOpening_num){
 
 
 
-
-function searchLocation(){	
+function searchLocation(){
 	var val = document.getElementsByName("locationCheck");
 	var check = false;
 	var selArray = [];
@@ -263,7 +262,8 @@ function searchLocation(){
 			  var parentTag = document.getElementById('row');
 			  
 			  for(let i=0; i<result.length; i++){
-			  			  
+				  var jO = result[i].jobOpeningNum;		
+				  
 				  var reCol = document.createElement('div');
 				  reCol.setAttribute('class', 'col-xl-10');
 				  reCol.setAttribute('id', 'col');
@@ -285,6 +285,7 @@ function searchLocation(){
 				  
 				  var a = document.createElement('a');
 				  a.setAttribute('href', 'job_details.html');
+				  
 				  companyImg.append(a);
 				  
 				  var img = document.createElement('img');
@@ -296,7 +297,8 @@ function searchLocation(){
 				  jobItems.append(tittle);
 				  
 				  var jsa = document.createElement('a');
-				  jsa.setAttribute('href', 'javascript:formFnc.submit())');
+				  jsa.setAttribute('href', 'javascript:formFnc.submit()');
+				  jsa.setAttribute('onclick', "formFnc("+jO+")");
 				  tittle.append(jsa);
 				  
 				  var h4 = document.createElement('h4');
