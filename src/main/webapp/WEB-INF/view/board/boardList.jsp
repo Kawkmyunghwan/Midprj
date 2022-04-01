@@ -35,11 +35,11 @@
                   <tr onmouseover='this.style.background="#fcecae";' 
                      onmouseleave='this.style.background="#FFFFFF";'
                      onclick="boardContents(${b.boardNum})">
-                     <td>${b.boardNum }</td>
-                     <td>${b.boardWriter }</td>
-                     <td>${b.boardName }</td>
-                     <td>${b.boardDate }</td>
-                     <td>${b.boardHit }</td>
+                     <td align="center">${b.boardNum }</td>
+                     <td align="center">${b.boardWriter }</td>
+                     <td align="center">${b.boardName }</td>
+                     <td align="center">${b.boardDate }</td>
+                     <td align="center">${b.boardHit }</td>
                   </tr>
                </c:forEach>
             </c:if>
