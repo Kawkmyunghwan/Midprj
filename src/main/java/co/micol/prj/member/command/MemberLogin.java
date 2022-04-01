@@ -26,12 +26,8 @@ public class MemberLogin implements Command {
 		request.setAttribute("member", vo);
 		String viewPage;
 		
-		int str = vo.getSecession();
-		
-		System.out.println(str);
-		
-		if(vo.getMemberId() != null) {
-			if(str != 1) {
+		if(vo != null) {
+			if(vo.getSecession() != 1) {
 			//여기서 세션 처리하고
 			session.setAttribute("memberId", vo.getMemberId());
 			session.setAttribute("memberNum", vo.getMemberNum());
@@ -39,12 +35,11 @@ public class MemberLogin implements Command {
 			session.setAttribute("favorite", vo.getFavorite());
 			session.setAttribute("memberName", vo.getMemberName());
 			session.setAttribute("subscription", vo.getSubscription());
-			viewPage = "member/memberLoginSuccess.tiles";
-			
-			}else {
+			viewPage = "member/memberLoginSuccess.tiles";			
+			}else {				
 				viewPage = "member/memberLoginFail.tiles";
 			}
-		}else {
+		}else {			
 			viewPage = "member/memberLoginFail.tiles";
 		}
 		

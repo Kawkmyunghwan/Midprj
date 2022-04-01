@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="co.micol.prj.companyInfo.service.CompanyMapper">
+
+	<resultMap type="co.micol.prj.companyInfo.service.CompanyVO"
+		id="companyMap">
+		<id property="JOBOPENINGNUM" column="JOBOPENINGNUM" />
+		<result property="COMPANYNAME" column="COMPANYNAME" />
+		<result property="COMPANYIMAGE" column="COMPANYIMAGE" />
+		<result property="JOBGROUP" column="JOBGROUP" />
+		<result property="COMPANYADDRESS" column="COMPANYADDRESS" />
+		<result property="SALARY" column="SALARY" />
+		<result property="COMPANYCONTENT" column="COMPANYCONTENT" />
+		<result property="REPRESENTATIVE" column="REPRESENTATIVE" />
+		<result property="EMPLOYEENUM" column="EMPLOYEENUM" />
+		<result property="COMPANYBUILDDATE" column="COMPANYBUILDDATE" />
+		<result property="HOMEPAGE" column="HOMEPAGE" />
+	</resultMap>
+
+
+	<select id="CompanySelectList" resultMap="companyMap">
+		SELECT * FROM JOBOPENING ORDER
+		BY JOBOPENINGNUM ASC
+	</select>
+
+
+	<select id="CompanySelect"
+		parameterType="co.micol.prj.companyInfo.service.CompanyVO"
+		resultMap="companyMap">
+		select * from JOBOPENING where JOBOPENINGNUM = #{JOBOPENINGNUM}
+	</select>
+
+
+
+	<insert id="CompanyInsert"
+		parameterType="co.micol.prj.companyInfo.service.CompanyVO">
+		<selectKey keyProperty="JOBOPENINGNUM" resultType="int"
+			order="BEFORE">
+			SELECT CASE WHEN MAX(JOBOPENINGNUM) IS NULL THEN 1 ELSE
+			MAX(JOBOPENINGNUM)+1 END AS ID FROM JOBOPENING
+		</selectKey>
+
+		INSERT INTO JOBOPENING (JOBOPENINGNUM,COMPANYNAME,COMPANYIMAGE,JOBGROUP,COMPANYADDRESS,SALARY,COMPANYCONTENT,REPRESENTATIVE,EMPLOYEENUM,COMPANYBUILDDATE,HOMEPAGE)
+		VALUES(#{JOBOPENINGNUM},#{COMPANYNAME},#{COMPANYIMAGE},#{JOBGROUP},#{COMPANYADDRESS},#{SALARY},#{COMPANYCONTENT},#{REPRESENTATIVE},#{EMPLOYEENUM},#{COMPANYBUILDDATE},#{HOMEPAGE})
+	</insert>
+
+
+
+	<update id="CompanyUpdate" 
+		parameterType="co.micol.prj.companyInfo.service.CompanyVO">
+		update JOBOPENING set 
+		COMPANYNAME = #{COMPANYNAME},
+		COMPANYIMAGE = #{COMPANYIMAGE},
+		JOBGROUP = #{JOBGROUP},
+		COMPANYADDRESS = #{COMPANYADDRESS},
+		SALARY = #{SALARY},
+		COMPANYCONTENT = #{COMPANYCONTENT},
+		REPRESENTATIVE = #{REPRESENTATIVE},
+		EMPLOYEENUM = #{EMPLOYEENUM} ,
+		COMPANYBUILDDATE = #{COMPANYBUILDDATE},
+		HOMEPAGE = #{HOMEPAGE}  
+		where JOBOPENINGNUM = #{JOBOPENINGNUM}
+	</update>
+	
+	<delete id="CompanyDelete" parameterType="co.micol.prj.companyInfo.service.CompanyVO">
+		delete from JOBOPENING
+		where JOBOPENINGNUM = #{JOBOPENINGNUM}
+	</delete> 
+
+	
+</mapper>

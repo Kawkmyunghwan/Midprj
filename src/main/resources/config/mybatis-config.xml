@@ -32,5 +32,6 @@
 		<mapper resource="co/micol/prj/payment/service/payment-map.xml"/>
 		<mapper resource="co/micol/prj/comments/service/comments-map.xml"/>
 		<mapper resource="co/micol/prj/jOComment/service/jOComment-map.xml"/>
+		<mapper resource="co/micol/prj/companyInfo/service/company-map.xml"/>
 	</mappers>
 </configuration>

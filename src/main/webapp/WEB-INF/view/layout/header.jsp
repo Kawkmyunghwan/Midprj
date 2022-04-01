@@ -60,11 +60,17 @@
                                             <li><a href="contact.html">Contact</a></li>
                                             <li><a href="contactForm.do">고객센터</a>
                                                 <ul class="submenu">
-                                                    <li><a href="reviewForm.do">취업후기</a></li>
                                                     <li><a href="inquiryForm.do">문의게시판</a></li>
-                                                    <li><a href="faqForm.do">FAQ</a></li>
                                                 </ul>
                                             </li>
+                                            <li><a>회사정보</a>
+                                                <ul class="submenu">
+                                                    <li><a href="companyInsertForm.do">회사정보 입력</a></li>
+                                                    <li><a href="companyInfoForm.do">회사리스트 조회</a></li>
+                                                    
+                                                </ul>
+                                            </li>
+                                    
                                         </ul>
                                     </nav>
                                 </div>          

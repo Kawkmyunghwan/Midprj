@@ -24,6 +24,12 @@ import co.micol.prj.comments.command.CommentsDelete;
 import co.micol.prj.comments.command.CommentsInsert;
 import co.micol.prj.comments.command.CommentsUpdate;
 import co.micol.prj.common.Command;
+import co.micol.prj.companyInfo.comm.CompanyDelect;
+import co.micol.prj.companyInfo.comm.CompanyInfoForm;
+import co.micol.prj.companyInfo.comm.CompanyInsert;
+import co.micol.prj.companyInfo.comm.CompanyInsertForm;
+import co.micol.prj.companyInfo.comm.CompanyUpdate;
+import co.micol.prj.companyInfo.comm.CompanyUpdateForm;
 import co.micol.prj.contact.comm.AjaxSortContact;
 import co.micol.prj.contact.comm.AjaxcontactSearch;
 import co.micol.prj.contact.comm.ContactForm;
@@ -120,8 +126,19 @@ public class FrontController extends HttpServlet {
 		map.put("/inquiryUpdate.do", new InquiryUpdate()); // 수정
 		map.put("/searchLocation.do", new SearchLocation());
 		map.put("/inquiryDelete.do", new InquiryDelete()); // 삭제
-		map.put("/ajaxcontactSearch.do", new AjaxcontactSearch()); // 리스트검색
-		map.put("/ajaxSortContact.do", new AjaxSortContact()); // 정렬
+
+		map.put("/ajaxcontactSearch.do", new AjaxcontactSearch()); //리스트검색
+		map.put("/ajaxSortContact.do", new AjaxSortContact()); //정렬
+		
+		
+		//회사정보
+		map.put("/companyInfoForm.do", new CompanyInfoForm()); //회사정보 출력폼
+		map.put("/companyInsertForm.do", new CompanyInsertForm()); //회사정보 입력폼
+		map.put("/companyInsert.do", new CompanyInsert()); //입력 리퀘스트
+		map.put("/companyUpdateForm.do", new CompanyUpdateForm()); //수정 폼
+		map.put("/companyUpdate.do", new CompanyUpdate()); //수정 리퀘스트
+		map.put("/companyDelect.do", new CompanyDelect());
+		
 
 		// 김세명 마이페이지------------------------------------
 		map.put("/myInfo.do", new MyInfo()); // 마이페이지

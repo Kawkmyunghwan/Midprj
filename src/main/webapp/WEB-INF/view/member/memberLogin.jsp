@@ -65,7 +65,7 @@
 								<form id="frm" name="frm" action="memberLogin.do" method="post">
 
 									<div class="form-group mb-3">
-										<label class="label" for="name">이름</label> <input type="text"
+										<label class="label" for="name">아이디</label> <input type="text"
 											id="memberId" name="memberId" class="form-control"
 											placeholder="Username" required>
 									</div>
@@ -101,3 +101,6 @@
 </body>
 </html>       
     <!-- Register Form Section End -->
+<script>
+	
+</script>
