@@ -78,8 +78,8 @@
                                </ul>
                             </div>
                         </div>
-                        
-                        
+                         
+                         
                         
                         
                         <!-- 코맨트 테이블에 들어있는 데이터 만큼 반복 -->
@@ -144,7 +144,7 @@
                               <li>Location : <span>${jobOpening.companyAddress }</span></li>
                               <li>Vacancy : <span>02</span></li>
                               <li>Job nature : <span>Full time</span></li>
-                              <c:if test="${ SUBSCRIPTION eq 1 }">
+                              <c:if test="${ SUBSCRIPTION ne 1 }">
                               <li>Salary :  <span>${jobOpening.salary }</span></li>
                               </c:if>                              
                               <li>Application date : <span>12 Sep 2020</span></li>

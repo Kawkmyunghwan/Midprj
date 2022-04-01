@@ -55,8 +55,7 @@
                                                     <li><a href="hotSearch.do">조회수</a></li>
                                                     <li><a href="zzimSearch.do">찜</a></li>
                                                 </ul>
-                                            </li>
-                                            <li><a href="about.html">About</a></li>
+                                            </li>                                            
                                             <li><a href="boardList.do">커뮤니티</a></li>
                                             <li><a href="contact.html">Contact</a></li>
                                             <li><a href="contactForm.do">고객센터</a>
