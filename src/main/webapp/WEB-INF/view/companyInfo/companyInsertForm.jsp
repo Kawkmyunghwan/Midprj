@@ -81,7 +81,7 @@ window.onload = function abc() {
 						<tr>
 							<th>설립일</th>
 							<td><input type="text" id="COMPANYBUILDDATE"
-								name="COMPANYBUILDDATE" class="form-control"></td>
+								name="COMPANYBUILDDATE" class="form-control" placeholder="Ex)2022-04-01"></td>
 						</tr>
 						<tr>
 							<th>홈페이지</th>
@@ -90,13 +90,23 @@ window.onload = function abc() {
 						</tr>
 						<tr>
 							<th>직군</th>
-							<td><input type="text" id="JOBGROUP" name="JOBGROUP"
-								class="form-control"></td>
+							<td>
+								<select name="JOBGROUP" id="JOBGROUP">
+									<option value="IT">IT</option>
+									<option value="기획">기획</option>
+									<option value="건축">건축</option>
+								</select>
+							</td>
 						</tr>
 						<tr>
 							<th>이미지</th>
-							<td><input type="text" id="COMPANYIMAGE" name="COMPANYIMAGE"
-								class="form-control"></td>
+							<td>
+								<select name="COMPANYIMAGE" id="COMPANYIMAGE">
+									<option value="flaticon-cms">IT</option>
+									<option value="flaticon-report">기획</option>
+									<option value="flaticon-helmet">건축</option>
+								</select>
+							</td>
 						</tr>
 					</table>
 				</div>

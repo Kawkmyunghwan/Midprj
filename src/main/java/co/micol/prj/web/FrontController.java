@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.micol.prj.apply.command.Application;
+import co.micol.prj.apply.command.ApplicationSelect;
 import co.micol.prj.apply.command.NotilesApply;
 import co.micol.prj.board.command.AjaxBoardSearch;
 import co.micol.prj.board.command.AjaxSortBoard;
@@ -115,6 +116,7 @@ public class FrontController extends HttpServlet {
 		map.put("/jobOpeningComment.do", new AjaxJobOpeningComment());
 		map.put("/AjaxJobOpeningCommentSel.do", new AjaxJobOpeningCommentSel());
 		map.put("/ajaxLocationSelect.do", new AjaxLocationSelect());
+		map.put("/applicationSelect.do", new ApplicationSelect());
 // ---------------------------------------------------
 
 		// 고객센터

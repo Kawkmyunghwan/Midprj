@@ -19,7 +19,7 @@ public class AjaxSortBoard implements Command {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		BoardService boardDao = new BoardServiceImpl();
 		String key = request.getParameter("key");
-		System.out.println(key + "=========");
+
 		List<BoardVO> list = boardDao.boardSortList(key);
 		String data = null;
 		try {

@@ -28,6 +28,10 @@ public class CompanyInsert implements Command {
 		vo.setCOMPANYBUILDDATE(Date.valueOf(request.getParameter("COMPANYBUILDDATE")));
 		vo.setHOMEPAGE(request.getParameter("HOMEPAGE"));
 		
+		String subAdd = request.getParameter("COMPANYADDRESS");
+		String location = subAdd.substring(0,2);
+		vo.setLOCATION(location);
+		//실제 주소에서 앞 두글자만 잘라서 그 값을 데이터베이스 LOCATION에 넣어줌.
 		String addr1 = request.getParameter("COMPANYADDRESS");
 		String addr2 = request.getParameter("ADDRESSDETAIL");
 		String addr = addr1 + " " + addr2;
